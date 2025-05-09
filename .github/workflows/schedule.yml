@@ -2,7 +2,7 @@ name: Daily BNR Email
 
 on:
   schedule:
-    - cron: '18 09 * * *'  # ⏰ Runs daily at 10:30 UTC
+    - cron: '25 09 * * *'  # ⏰ Runs daily at 10:30 UTC
   workflow_dispatch:        # Optional: allows manual run from GitHub UI
 
 jobs:
