@@ -2,7 +2,7 @@ name: Daily BNR Email
 
 on:
   schedule:
-  - cron: '*/5 * * * *'
+    - cron: '* * * * *'  # Runs every minute
   workflow_dispatch:        # Optional: allows manual run from GitHub UI
 
 jobs:
