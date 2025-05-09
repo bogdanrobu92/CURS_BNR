@@ -28,4 +28,3 @@ jobs:
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
         run: |
           python3 main.py
-Add GitHub Action to run main.py daily
