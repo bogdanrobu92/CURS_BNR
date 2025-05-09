@@ -1,14 +1,31 @@
-name: Test Cron Schedule
+name: Daily BNR Email
 
 on:
   schedule:
-    - cron: '* * * * *'  # Every minute
-  workflow_dispatch:  # Optional: allows manual run from GitHub UI
+  - cron: '* * * * *'  # Every 5 minutes
+  workflow_dispatch:        # Optional: allows manual run from GitHub UI
 
 jobs:
-  test-cron:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Log Cron Test
-        run: echo "Cron job is running at $(date)"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+        run: |
+          python3 main.py
