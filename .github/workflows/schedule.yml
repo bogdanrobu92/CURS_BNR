@@ -2,7 +2,7 @@ name: Daily BNR Email
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Run once every hour
+    - cron: '30 10 * * *'  # Runs at 13:30 Romania time (10:30 UTC)
   workflow_dispatch:      # Manual trigger remains available
 
 jobs:
