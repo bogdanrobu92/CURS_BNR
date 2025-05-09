@@ -1,0 +1,31 @@
+name: Daily BNR Email
+
+on:
+  schedule:
+    - cron: '30 10 * * *'  # ⏰ Runs daily at 10:30 UTC
+  workflow_dispatch:        # Optional: allows manual run from GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        run: |
+          python3 main.py
+Add GitHub Action to run main.py daily
