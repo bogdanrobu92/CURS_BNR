@@ -5,7 +5,6 @@ import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime
 
-
 # Cursuri BNR
 def get_bnr_api_rate(currency):
     response = requests.get('https://www.bnr.ro/nbrfxrates.xml')
@@ -16,12 +15,10 @@ def get_bnr_api_rate(currency):
             return rate.text
     return None
 
-
 # Trimitere email
 def send_email(subject, body, to_email):
     from_email = os.environ['EMAIL_SENDER']
     app_password = os.environ['EMAIL_PASS']
-    to_email = os.environ['EMAIL_RECIPIENT']
 
     msg = MIMEText(body)
     msg['Subject'] = subject
@@ -31,7 +28,6 @@ def send_email(subject, body, to_email):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(from_email, app_password)
         smtp.send_message(msg)
-
 
 # Job principal
 def job():
@@ -46,8 +42,8 @@ def job():
     print(body)  # Poți verifica în consolă
     send_email(subject=f"Curs BNR {today}",
                body=body,
-               to_email="destinatar@email.com")
+               to_email=os.environ['EMAIL_RECIPIENT'])
 
-
-# Rulare imediată
-job()
+# Do not run job immediately if it's a cron trigger
+if __name__ == "__main__":
+    job()
