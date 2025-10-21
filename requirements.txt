@@ -1,1 +1,12 @@
-requests
+# Core dependencies with security-focused version pinning
+requests>=2.31.0,<3.0.0
+urllib3>=2.0.0,<3.0.0
+
+# Security and validation
+certifi>=2023.7.22
+charset-normalizer>=3.3.0
+idna>=3.4
+
+# Optional: for enhanced security scanning
+# bandit>=1.7.5
+# safety>=2.3.5

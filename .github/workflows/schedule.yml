@@ -8,23 +8,36 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    timeout-minutes: 10  # Prevent hanging jobs
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Security scan (optional)
+        run: |
+          # Uncomment to enable security scanning
+          # pip install bandit safety
+          # bandit -r . -f json -o bandit-report.json || true
+          # safety check --json --output safety-report.json || true
+          echo "Security scanning skipped (uncomment to enable)"
 
       - name: Log run time
         run: |
           echo "Workflow started at: $(date)"
+          echo "Python version: $(python --version)"
+          echo "Pip version: $(pip --version)"
 
       - name: Run script
         env:
@@ -33,3 +46,13 @@ jobs:
           EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
         run: |
           python3 main.py
+
+      - name: Upload logs (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: error-logs
+          path: |
+            *.log
+            bandit-report.json
+            safety-report.json
