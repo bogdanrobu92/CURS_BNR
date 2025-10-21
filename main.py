@@ -11,6 +11,14 @@ from typing import Optional, Dict, List
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
+# Import monitoring modules
+try:
+    from monitoring.metrics import MetricsCollector
+    from monitoring.health_check import HealthChecker
+    MONITORING_AVAILABLE = True
+except ImportError:
+    MONITORING_AVAILABLE = False
+
 # Configure secure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -155,7 +163,19 @@ def send_email(subject: str, body: str, to_email: str) -> bool:
         return False
 
 def job() -> bool:
-    """Main job function with comprehensive error handling and security."""
+    """Main job function with comprehensive error handling, security, and monitoring."""
+    job_start_time = time.time()
+    api_start_time = None
+    email_start_time = None
+    
+    # Initialize monitoring
+    metrics_collector = None
+    if MONITORING_AVAILABLE:
+        try:
+            metrics_collector = MetricsCollector()
+        except Exception as e:
+            logger.warning(f"Failed to initialize metrics collector: {e}")
+    
     try:
         logger.info("Starting BNR exchange rate job")
         
@@ -166,7 +186,10 @@ def job() -> bool:
             return False
         
         # Fetch exchange rates securely
+        api_start_time = time.time()
         rates = {}
+        error_count = 0
+        
         for currency in SUPPORTED_CURRENCIES:
             rate = get_bnr_api_rate(currency)
             rates[currency] = rate
@@ -174,6 +197,9 @@ def job() -> bool:
                 logger.info(f"Retrieved {currency} rate: {rate}")
             else:
                 logger.warning(f"Failed to retrieve {currency} rate")
+                error_count += 1
+        
+        api_response_time = time.time() - api_start_time if api_start_time else 0
         
         # Format email body securely
         today = datetime.now().strftime("%d.%m.%Y")
@@ -192,11 +218,48 @@ def job() -> bool:
         logger.info(f"Retrieved {successful_rates}/{len(SUPPORTED_CURRENCIES)} exchange rates")
         
         # Send email
+        email_start_time = time.time()
         subject = f"Curs BNR {today}"
         email_sent = send_email(subject, body, recipient_email)
+        email_send_time = time.time() - email_start_time if email_start_time else 0
+        
+        job_execution_time = time.time() - job_start_time
+        job_success = email_sent
+        
+        # Collect metrics
+        if metrics_collector:
+            try:
+                # Collect application metrics
+                app_metrics = metrics_collector.collect_application_metrics(
+                    job_execution_time=job_execution_time,
+                    api_response_time=api_response_time,
+                    email_send_time=email_send_time,
+                    rates_retrieved=successful_rates,
+                    rates_failed=len(SUPPORTED_CURRENCIES) - successful_rates,
+                    job_success=job_success,
+                    error_count=error_count
+                )
+                metrics_collector.save_metrics(app_metrics, metrics_collector.app_metrics_file)
+                
+                # Collect business metrics
+                api_availability = (successful_rates / len(SUPPORTED_CURRENCIES)) * 100
+                business_metrics = metrics_collector.collect_business_metrics(
+                    eur_rate=rates.get('EUR'),
+                    usd_rate=rates.get('USD'),
+                    gbp_rate=rates.get('GBP'),
+                    api_availability=api_availability
+                )
+                metrics_collector.save_metrics(business_metrics, metrics_collector.business_metrics_file)
+                
+                # Collect system metrics
+                system_metrics = metrics_collector.collect_system_metrics()
+                metrics_collector.save_metrics(system_metrics, metrics_collector.system_metrics_file)
+                
+            except Exception as e:
+                logger.warning(f"Failed to collect metrics: {e}")
         
         if email_sent:
-            logger.info("Job completed successfully")
+            logger.info(f"Job completed successfully in {job_execution_time:.2f} seconds")
             return True
         else:
             logger.error("Job failed - email not sent")
