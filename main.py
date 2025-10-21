@@ -19,6 +19,14 @@ try:
 except ImportError:
     MONITORING_AVAILABLE = False
 
+# Import database and backup sources
+try:
+    from database.models import DatabaseManager, ExchangeRate, SystemMetrics
+    from sources.backup_sources import BackupRateProvider
+    DATABASE_AVAILABLE = True
+except ImportError:
+    DATABASE_AVAILABLE = False
+
 # Configure secure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -163,18 +171,28 @@ def send_email(subject: str, body: str, to_email: str) -> bool:
         return False
 
 def job() -> bool:
-    """Main job function with comprehensive error handling, security, and monitoring."""
+    """Main job function with comprehensive error handling, security, monitoring, and data persistence."""
     job_start_time = time.time()
     api_start_time = None
     email_start_time = None
     
-    # Initialize monitoring
+    # Initialize components
     metrics_collector = None
+    db_manager = None
+    rate_provider = None
+    
     if MONITORING_AVAILABLE:
         try:
             metrics_collector = MetricsCollector()
         except Exception as e:
             logger.warning(f"Failed to initialize metrics collector: {e}")
+    
+    if DATABASE_AVAILABLE:
+        try:
+            db_manager = DatabaseManager()
+            rate_provider = BackupRateProvider()
+        except Exception as e:
+            logger.warning(f"Failed to initialize database components: {e}")
     
     try:
         logger.info("Starting BNR exchange rate job")
@@ -185,23 +203,70 @@ def job() -> bool:
             logger.error("Invalid or missing EMAIL_RECIPIENT environment variable")
             return False
         
-        # Fetch exchange rates securely
+        # Fetch exchange rates with fallback logic
         api_start_time = time.time()
         rates = {}
         error_count = 0
         
-        for currency in SUPPORTED_CURRENCIES:
-            rate = get_bnr_api_rate(currency)
-            rates[currency] = rate
-            if rate:
-                logger.info(f"Retrieved {currency} rate: {rate}")
-            else:
-                logger.warning(f"Failed to retrieve {currency} rate")
-                error_count += 1
+        if rate_provider and db_manager:
+            # Use backup sources with fallback
+            try:
+                all_rates = rate_provider.get_rates_with_fallback(SUPPORTED_CURRENCIES)
+                best_rates = rate_provider.get_best_rates(SUPPORTED_CURRENCIES)
+                
+                # Save all rates to database
+                exchange_rates = []
+                for source_name, source_rates in all_rates.items():
+                    for currency, rate in source_rates.items():
+                        if currency in SUPPORTED_CURRENCIES:
+                            exchange_rate = ExchangeRate(
+                                id=None,
+                                currency=currency,
+                                rate=rate,
+                                source=source_name,
+                                timestamp=datetime.now(),
+                                multiplier=1,
+                                is_valid=True
+                            )
+                            exchange_rates.append(exchange_rate)
+                
+                if exchange_rates:
+                    db_manager.save_exchange_rates(exchange_rates)
+                    logger.info(f"Saved {len(exchange_rates)} rates to database")
+                
+                # Use best rates for email
+                rates = best_rates
+                successful_rates = len([r for r in rates.values() if r])
+                
+            except Exception as e:
+                logger.error(f"Backup sources failed: {e}, falling back to BNR only")
+                # Fallback to original BNR API
+                for currency in SUPPORTED_CURRENCIES:
+                    rate = get_bnr_api_rate(currency)
+                    rates[currency] = rate
+                    if rate:
+                        logger.info(f"Retrieved {currency} rate: {rate}")
+                    else:
+                        logger.warning(f"Failed to retrieve {currency} rate")
+                        error_count += 1
+                
+                successful_rates = sum(1 for rate in rates.values() if rate)
+        else:
+            # Original BNR API only
+            for currency in SUPPORTED_CURRENCIES:
+                rate = get_bnr_api_rate(currency)
+                rates[currency] = rate
+                if rate:
+                    logger.info(f"Retrieved {currency} rate: {rate}")
+                else:
+                    logger.warning(f"Failed to retrieve {currency} rate")
+                    error_count += 1
+            
+            successful_rates = sum(1 for rate in rates.values() if rate)
         
         api_response_time = time.time() - api_start_time if api_start_time else 0
         
-        # Format email body securely
+        # Format email body with enhanced information
         today = datetime.now().strftime("%d.%m.%Y")
         body_lines = [f"Curs BNR - {today}", ""]
         
@@ -211,10 +276,21 @@ def job() -> bool:
             else:
                 body_lines.append(f"{currency}: Curs indisponibil")
         
+        # Add trend information if available
+        if db_manager:
+            try:
+                trends = db_manager.get_rate_trends('EUR', 7)
+                if trends:
+                    latest_trend = trends[-1]
+                    body_lines.append("")
+                    body_lines.append("Tendințe (7 zile):")
+                    body_lines.append(f"EUR: {latest_trend.change_percentage:+.2f}% ({latest_trend.trend_direction})")
+            except Exception as e:
+                logger.warning(f"Failed to add trend information: {e}")
+        
         body = "\n".join(body_lines)
         
         # Log summary (without sensitive data)
-        successful_rates = sum(1 for rate in rates.values() if rate)
         logger.info(f"Retrieved {successful_rates}/{len(SUPPORTED_CURRENCIES)} exchange rates")
         
         # Send email
@@ -226,7 +302,7 @@ def job() -> bool:
         job_execution_time = time.time() - job_start_time
         job_success = email_sent
         
-        # Collect metrics
+        # Collect and save metrics
         if metrics_collector:
             try:
                 # Collect application metrics
@@ -257,6 +333,31 @@ def job() -> bool:
                 
             except Exception as e:
                 logger.warning(f"Failed to collect metrics: {e}")
+        
+        # Save system metrics to database
+        if db_manager:
+            try:
+                import psutil
+                memory = psutil.virtual_memory()
+                cpu_percent = psutil.cpu_percent()
+                
+                system_metrics = SystemMetrics(
+                    id=None,
+                    timestamp=datetime.now(),
+                    job_execution_time=job_execution_time,
+                    api_response_time=api_response_time,
+                    email_send_time=email_send_time,
+                    rates_retrieved=successful_rates,
+                    rates_failed=len(SUPPORTED_CURRENCIES) - successful_rates,
+                    job_success=job_success,
+                    error_count=error_count,
+                    memory_usage_mb=memory.used / (1024 * 1024),
+                    cpu_percent=cpu_percent
+                )
+                db_manager.save_system_metrics(system_metrics)
+                
+            except Exception as e:
+                logger.warning(f"Failed to save system metrics to database: {e}")
         
         if email_sent:
             logger.info(f"Job completed successfully in {job_execution_time:.2f} seconds")

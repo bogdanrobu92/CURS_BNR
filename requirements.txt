@@ -24,6 +24,13 @@ black>=23.7.0,<24.0.0
 flake8>=6.0.0,<7.0.0
 mypy>=1.5.0,<2.0.0
 
+# Web framework
+flask>=2.3.0,<3.0.0
+flask-cors>=4.0.0,<5.0.0
+
+# Database
+sqlite3  # Built into Python
+
 # Optional: for enhanced security scanning
 # bandit>=1.7.5
 # safety>=2.3.5
