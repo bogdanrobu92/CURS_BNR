@@ -41,12 +41,12 @@ def main():
     
     # Start the Flask application
     print("\n🚀 Starting web server...")
-    print("📊 Dashboard will be available at: http://localhost:5000")
-    print("🔗 API endpoints available at: http://localhost:5000/api/")
+    print("📊 Dashboard will be available at: http://localhost:8080")
+    print("🔗 API endpoints available at: http://localhost:8080/api/")
     print("\nPress Ctrl+C to stop the server")
     
     try:
-        app.run(host='0.0.0.0', port=5000, debug=False)
+        app.run(host='0.0.0.0', port=8080, debug=False)
     except KeyboardInterrupt:
         print("\n👋 Web dashboard stopped")
     except Exception as e:

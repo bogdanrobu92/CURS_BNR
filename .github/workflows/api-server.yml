@@ -1,0 +1,106 @@
+name: API Server
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Run every 6 hours
+  workflow_dispatch:      # Manual trigger
+  push:
+    branches: [ main ]
+    paths: [ 'api/**', 'web/**', 'database/**', 'sources/**' ]
+
+jobs:
+  api-server:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run API server and collect data
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+        run: |
+          # Run the main job to collect data
+          python3 main.py
+          
+          # Start API server in background
+          python3 -c "
+          import os
+          import sys
+          sys.path.insert(0, '.')
+          from web.app import app
+          app.run(host='0.0.0.0', port=8080, debug=False)
+          " &
+          
+          # Wait for server to start
+          sleep 10
+          
+          # Test API endpoints
+          curl -f http://localhost:8080/api/health || exit 1
+          curl -f http://localhost:8080/api/rates/latest || exit 1
+          
+          # Generate API data files
+          mkdir -p api
+          
+          # Get latest rates
+          curl -s http://localhost:8080/api/rates/latest > api/rates-latest.json
+          
+          # Get rate history
+          curl -s http://localhost:8080/api/rates/history?days=30 > api/rates-history.json
+          
+          # Get trends
+          curl -s http://localhost:8080/api/rates/trends?currency=EUR&days=7 > api/rates-trends.json
+          
+          # Get statistics
+          curl -s http://localhost:8080/api/rates/statistics?currency=EUR&days=30 > api/rates-statistics.json
+          
+          # Get sources status
+          curl -s http://localhost:8080/api/sources/status > api/sources-status.json
+          
+          # Get health status
+          curl -s http://localhost:8080/api/health > api/health.json
+          
+          # Get system info
+          curl -s http://localhost:8080/api/system/info > api/system-info.json
+          
+          # Export data
+          curl -s http://localhost:8080/api/export?format=json&days=30 > api/export-data.json
+          
+          echo "API data collection completed"
+
+      - name: Commit and push API data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Add API data files
+          git add api/
+          
+          # Commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Update API data - $(date)"
+            git push
+          fi
+
+      - name: Upload API data as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-data
+          path: api/
+          retention-days: 30
