@@ -3,173 +3,519 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BNR Exchange Rate Monitor</title>
+    <title>BNR Exchange Rate Monitor - Interactive Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             color: #333;
         }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border-radius: 10px;
+            margin-bottom: 30px;
         }
-        .status {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: bold;
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        .status.healthy { background: #d4edda; color: #155724; }
-        .status.degraded { background: #fff3cd; color: #856404; }
-        .status.unhealthy { background: #f8d7da; color: #721c24; }
-        .card {
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .controls {
             background: white;
-            border: 1px solid #e1e5e9;
-            border-radius: 8px;
+            border-radius: 15px;
             padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
-        .rates {
+
+        .time-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-btn {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .time-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .time-btn.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .currency-toggle {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .currency-toggle label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .currency-toggle label:hover {
+            background: #f8f9fa;
+        }
+
+        .currency-toggle input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            margin-bottom: 20px;
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+            gap: 20px;
+            margin-top: 20px;
         }
-        .rate-card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            border-left: 4px solid #007bff;
-        }
-        .rate-value {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #007bff;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #666;
-            border-top: 1px solid #e1e5e9;
-        }
-        .api-link {
-            display: inline-block;
-            background: #007bff;
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 5px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
-        .api-link:hover {
-            background: #0056b3;
+
+        .stat-card h3 {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .time-selector {
+                justify-content: center;
+            }
+
+            .time-btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+
+            .currency-toggle {
+                justify-content: center;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🏦 BNR Exchange Rate Monitor</h1>
-        <p>Romanian National Bank Exchange Rate Monitoring System</p>
-        <span class="status healthy">System Operational</span>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>📈 BNR Exchange Rate Monitor</h1>
+            <p>Interactive Charts & Historical Data</p>
+        </div>
 
-    <div class="card">
-        <h2>📊 Current Exchange Rates</h2>
-        <div class="rates">
-            <div class="rate-card">
-                <h3>EUR</h3>
-                <div class="rate-value" id="eur-rate">Loading...</div>
-                <small>Euro</small>
+        <div class="controls">
+            <div class="time-selector">
+                <button class="time-btn active" data-period="1D">1 Day</button>
+                <button class="time-btn" data-period="1M">1 Month</button>
+                <button class="time-btn" data-period="1Y">1 Year</button>
+                <button class="time-btn" data-period="5Y">5 Years</button>
             </div>
-            <div class="rate-card">
-                <h3>USD</h3>
-                <div class="rate-value" id="usd-rate">Loading...</div>
-                <small>US Dollar</small>
-            </div>
-            <div class="rate-card">
-                <h3>GBP</h3>
-                <div class="rate-value" id="gbp-rate">Loading...</div>
-                <small>British Pound</small>
+
+            <div class="currency-toggle">
+                <label>
+                    <input type="checkbox" checked data-currency="EUR">
+                    <span>🇪🇺 EUR</span>
+                </label>
+                <label>
+                    <input type="checkbox" checked data-currency="USD">
+                    <span>🇺🇸 USD</span>
+                </label>
+                <label>
+                    <input type="checkbox" checked data-currency="GBP">
+                    <span>🇬🇧 GBP</span>
+                </label>
             </div>
         </div>
-        <p><small>Last updated: <span id="last-updated">Loading...</span></small></p>
-    </div>
 
-    <div class="card">
-        <h2>🔗 API Endpoints</h2>
-        <p>Access real-time data through our REST API:</p>
-        <a href="api/rates-latest.json" class="api-link">Latest Rates</a>
-        <a href="api/health.json" class="api-link">Health Status</a>
-        <a href="api/sources-status.json" class="api-link">Sources Status</a>
-    </div>
+        <div class="chart-container">
+            <div class="chart-title">Exchange Rate Trends</div>
+            <div class="chart-wrapper">
+                <canvas id="exchangeRateChart"></canvas>
+            </div>
+            <div class="loading" id="loadingIndicator">Loading chart data...</div>
+            <div class="error" id="errorMessage" style="display: none;"></div>
+        </div>
 
-    <div class="card">
-        <h2>📚 Documentation</h2>
-        <ul>
-            <li><a href="TECHNICAL_SPECIFICATION.md">Technical Specification</a></li>
-            <li><a href="USER_MANUAL.md">User Manual</a></li>
-            <li><a href="https://github.com/bogdanrobu92/CURS_BNR">GitHub Repository</a></li>
-        </ul>
-    </div>
+        <div class="stats-grid" id="statsGrid">
+            <!-- Stats will be populated by JavaScript -->
+        </div>
 
-    <div class="card">
-        <h2>⚙️ System Information</h2>
-        <p><strong>Version:</strong> 2.0.0</p>
-        <p><strong>Status:</strong> <span class="status healthy">Operational</span></p>
-        <p><strong>Last Deployment:</strong> <span id="deployment-time">Loading...</span></p>
-        <p><strong>Repository Status:</strong> <span class="status healthy">Public - GitHub Pages Ready</span></p>
-        <p><strong>Monitoring:</strong> Automated daily email reports</p>
-        <p><strong>Security:</strong> SSL/TLS encryption, input validation</p>
-    </div>
-
-    <div class="footer">
-        <p>BNR Exchange Rate Monitor v2.0.0 | Built with ❤️ by Bogdan Robu</p>
-        <p>Data source: <a href="https://www.bnr.ro/">Romanian National Bank</a></p>
+        <div class="last-updated" id="lastUpdated">
+            Last updated: Loading...
+        </div>
     </div>
 
     <script>
-        // Load API data
-        async function loadRates() {
-            try {
-                const response = await fetch('api/rates-latest.json');
-                const data = await response.json();
-                
-                if (data.success && data.data) {
-                    document.getElementById('eur-rate').textContent = data.data.EUR?.rate || 'N/A';
-                    document.getElementById('usd-rate').textContent = data.data.USD?.rate || 'N/A';
-                    document.getElementById('gbp-rate').textContent = data.data.GBP?.rate || 'N/A';
-                    document.getElementById('last-updated').textContent = new Date(data.timestamp).toLocaleString();
+        // Chart configuration
+        let chart = null;
+        let currentPeriod = '1D';
+        let chartData = {};
+
+        // Chart colors
+        const colors = {
+            EUR: '#667eea',
+            USD: '#f093fb',
+            GBP: '#4facfe'
+        };
+
+        // Initialize chart
+        function initChart() {
+            const ctx = document.getElementById('exchangeRateChart').getContext('2d');
+            
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: []
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: 'white',
+                            bodyColor: 'white',
+                            borderColor: '#667eea',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.parsed.y.toFixed(4)} RON`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            },
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Rate (RON)'
+                            },
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        }
+                    },
+                    elements: {
+                        point: {
+                            radius: 3,
+                            hoverRadius: 6
+                        },
+                        line: {
+                            tension: 0.4
+                        }
+                    }
                 }
+            });
+        }
+
+        // Load chart data
+        async function loadChartData(period) {
+            try {
+                document.getElementById('loadingIndicator').style.display = 'block';
+                document.getElementById('errorMessage').style.display = 'none';
+
+                // For now, generate sample data
+                // In production, this would fetch from your API
+                const data = generateSampleData(period);
+                
+                updateChart(data);
+                updateStats(data);
+                
+                document.getElementById('loadingIndicator').style.display = 'none';
+                document.getElementById('lastUpdated').textContent = 
+                    `Last updated: ${new Date().toLocaleString()}`;
+
             } catch (error) {
-                console.log('API not available, using static data');
-                // Fallback to static data
-                document.getElementById('eur-rate').textContent = '4.9500';
-                document.getElementById('usd-rate').textContent = '4.5500';
-                document.getElementById('gbp-rate').textContent = '5.7500';
-                document.getElementById('last-updated').textContent = new Date().toLocaleString();
+                console.error('Error loading chart data:', error);
+                document.getElementById('loadingIndicator').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('errorMessage').textContent = 
+                    'Failed to load chart data. Please try again.';
             }
         }
 
-        // Set deployment time
-        document.getElementById('deployment-time').textContent = new Date().toLocaleString();
-        
-        // Load data on page load
-        loadRates();
-        
-        // Refresh data every 5 minutes
-        setInterval(loadRates, 300000);
+        // Generate sample data (replace with real API call)
+        function generateSampleData(period) {
+            const now = new Date();
+            const data = {
+                labels: [],
+                datasets: []
+            };
+
+            // Generate time labels based on period
+            let pointCount, timeStep;
+            switch (period) {
+                case '1D':
+                    pointCount = 24;
+                    timeStep = 60 * 60 * 1000; // 1 hour
+                    break;
+                case '1M':
+                    pointCount = 30;
+                    timeStep = 24 * 60 * 60 * 1000; // 1 day
+                    break;
+                case '1Y':
+                    pointCount = 52;
+                    timeStep = 7 * 24 * 60 * 60 * 1000; // 1 week
+                    break;
+                case '5Y':
+                    pointCount = 60;
+                    timeStep = 30 * 24 * 60 * 60 * 1000; // 1 month
+                    break;
+            }
+
+            // Generate labels
+            for (let i = pointCount; i >= 0; i--) {
+                const date = new Date(now.getTime() - (i * timeStep));
+                data.labels.push(date.toLocaleDateString());
+            }
+
+            // Generate datasets for each currency
+            const currencies = ['EUR', 'USD', 'GBP'];
+            const baseRates = { EUR: 4.95, USD: 4.55, GBP: 5.75 };
+
+            currencies.forEach(currency => {
+                const dataset = {
+                    label: currency,
+                    data: [],
+                    borderColor: colors[currency],
+                    backgroundColor: colors[currency] + '20',
+                    fill: false,
+                    tension: 0.4
+                };
+
+                // Generate rate data with some variation
+                for (let i = 0; i <= pointCount; i++) {
+                    const variation = (Math.random() - 0.5) * 0.1;
+                    const rate = baseRates[currency] + variation;
+                    dataset.data.push(parseFloat(rate.toFixed(4)));
+                }
+
+                data.datasets.push(dataset);
+            });
+
+            return data;
+        }
+
+        // Update chart with new data
+        function updateChart(data) {
+            if (!chart) return;
+
+            // Filter datasets based on selected currencies
+            const selectedCurrencies = Array.from(
+                document.querySelectorAll('.currency-toggle input:checked')
+            ).map(input => input.dataset.currency);
+
+            const filteredData = {
+                labels: data.labels,
+                datasets: data.datasets.filter(dataset => 
+                    selectedCurrencies.includes(dataset.label)
+                )
+            };
+
+            chart.data = filteredData;
+            chart.update('active');
+        }
+
+        // Update statistics
+        function updateStats(data) {
+            const statsGrid = document.getElementById('statsGrid');
+            const selectedCurrencies = Array.from(
+                document.querySelectorAll('.currency-toggle input:checked')
+            ).map(input => input.dataset.currency);
+
+            statsGrid.innerHTML = '';
+
+            selectedCurrencies.forEach(currency => {
+                const dataset = data.datasets.find(d => d.label === currency);
+                if (!dataset) return;
+
+                const rates = dataset.data;
+                const current = rates[rates.length - 1];
+                const previous = rates[rates.length - 2];
+                const change = current - previous;
+                const changePercent = ((change / previous) * 100).toFixed(2);
+
+                const statCard = document.createElement('div');
+                statCard.className = 'stat-card';
+                statCard.innerHTML = `
+                    <h3>${currency}</h3>
+                    <div class="value">${current.toFixed(4)}</div>
+                    <div style="font-size: 0.8rem; margin-top: 5px; opacity: 0.9;">
+                        ${change >= 0 ? '+' : ''}${changePercent}%
+                    </div>
+                `;
+                statsGrid.appendChild(statCard);
+            });
+        }
+
+        // Event listeners
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentPeriod = this.dataset.period;
+                loadChartData(currentPeriod);
+            });
+        });
+
+        document.querySelectorAll('.currency-toggle input').forEach(input => {
+            input.addEventListener('change', function() {
+                if (chartData.labels) {
+                    updateChart(chartData);
+                    updateStats(chartData);
+                }
+            });
+        });
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initChart();
+            loadChartData(currentPeriod);
+        });
     </script>
 </body>
 </html>

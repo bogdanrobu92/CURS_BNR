@@ -29,21 +29,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run API server and collect data
-        env:
-          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
         run: |
           # Create API directory
           mkdir -p api
           
-          # Run the main job to collect data (if credentials are available)
-          if [ -n "$EMAIL_SENDER" ] && [ -n "$EMAIL_PASS" ] && [ -n "$EMAIL_RECIPIENT" ]; then
-            echo "Running main job to collect data..."
-            python3 main.py || echo "Main job failed, continuing with API data generation..."
-          else
-            echo "Email credentials not available, skipping main job..."
-          fi
+          # Run the main job to collect data
+          echo "Running main job to collect data..."
+          python3 main.py || echo "Main job failed, continuing with API data generation..."
           
           # Generate static API data files (fallback when server is not available)
           echo "Generating static API data files..."

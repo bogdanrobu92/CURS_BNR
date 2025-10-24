@@ -124,10 +124,6 @@ jobs:
           echo "Pip version: $(pip --version)"
 
       - name: Run script
-        env:
-          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
         run: |
           python3 main.py
 
