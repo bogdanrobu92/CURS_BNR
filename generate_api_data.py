@@ -18,48 +18,21 @@ try:
 except ImportError:
     DATABASE_AVAILABLE = False
 
-def generate_chart_data(period='1M', currencies=['EUR', 'USD', 'GBP']):
-    """Generate chart data for the specified period and currencies."""
+def generate_chart_data(currencies=['EUR']):
+    """Generate chart data for EUR only."""
     
     if DATABASE_AVAILABLE:
         try:
             db_manager = DatabaseManager()
             
-            # Calculate date range based on period
+            # Get all available rates from database
             now = datetime.now()
-            if period == '1D':
-                start_date = now - timedelta(days=1)
-            elif period == '1M':
-                start_date = now - timedelta(days=30)
-            elif period == '1Y':
-                start_date = now - timedelta(days=365)
-            elif period == '5Y':
-                # For 5Y, get all available data (2014-2025)
-                start_date = datetime(2014, 1, 1)
-            else:
-                start_date = now - timedelta(days=30)
-            
-            # Get rates from database
+            start_date = datetime(2014, 1, 1)  # Get all available data
             rates = db_manager.get_rates_by_date_range(start_date, now)
             
-            # For periods with limited recent data, use 2024 data
-            using_fallback = False
             if not rates:
-                if period in ['1D', '1M', '1Y']:
-                    print(f"Using 2024 data for {period} period")
-                    rates = db_manager.get_rates_by_date_range(datetime(2024, 1, 1), datetime(2024, 12, 31))
-                    using_fallback = True
-            else:
-                # Check if we have enough unique dates
-                unique_dates = len(set(r.timestamp.date() for r in rates))
-                if unique_dates < 5 and period in ['1D', '1M', '1Y']:
-                    print(f"Only {unique_dates} unique dates for {period}, using 2024 data")
-                    rates = db_manager.get_rates_by_date_range(datetime(2024, 1, 1), datetime(2024, 12, 31))
-                    using_fallback = True
-            
-            if not rates:
-                print(f"No rates found for period {period}, using sample data")
-                return generate_sample_data(period, currencies)
+                print("No rates found, using sample data")
+                return generate_sample_data(currencies)
             
             # Group by currency and create chart data
             chart_data = {
@@ -69,24 +42,6 @@ def generate_chart_data(period='1M', currencies=['EUR', 'USD', 'GBP']):
             
             # Get unique timestamps and sort them
             timestamps = sorted(set(rate.timestamp for rate in rates))
-            
-            # Filter timestamps based on period for better performance
-            # Only apply filtering if we have recent data and not using fallback
-            if rates and len(set(r.timestamp.date() for r in rates)) > 5 and not using_fallback:
-                if period == '1D':
-                    # For 1D, take last 24 hours
-                    cutoff = now - timedelta(hours=24)
-                    timestamps = [ts for ts in timestamps if ts >= cutoff]
-                elif period == '1M':
-                    # For 1M, take last 30 days
-                    cutoff = now - timedelta(days=30)
-                    timestamps = [ts for ts in timestamps if ts >= cutoff]
-                elif period == '1Y':
-                    # For 1Y, take last 365 days
-                    cutoff = now - timedelta(days=365)
-                    timestamps = [ts for ts in timestamps if ts >= cutoff]
-                # For 5Y, use all timestamps
-            
             chart_data['labels'] = [ts.strftime('%Y-%m-%d') for ts in timestamps]
             
             # Create datasets for each currency
@@ -110,37 +65,23 @@ def generate_chart_data(period='1M', currencies=['EUR', 'USD', 'GBP']):
             return {
                 'success': True,
                 'data': chart_data,
-                'period': period,
                 'currencies': currencies,
                 'timestamp': datetime.now().isoformat()
             }
             
         except Exception as e:
             print(f"Error generating chart data from database: {e}")
-            return generate_sample_data(period, currencies)
+            return generate_sample_data(currencies)
     else:
-        return generate_sample_data(period, currencies)
+        return generate_sample_data(currencies)
 
-def generate_sample_data(period='1M', currencies=['EUR', 'USD', 'GBP']):
+def generate_sample_data(currencies=['EUR']):
     """Generate sample data for demonstration."""
     
-    # Generate time labels based on period
+    # Generate 30 days of sample data
     now = datetime.now()
-    if period == '1D':
-        point_count = 24
-        time_step = timedelta(hours=1)
-    elif period == '1M':
-        point_count = 30
-        time_step = timedelta(days=1)
-    elif period == '1Y':
-        point_count = 52
-        time_step = timedelta(weeks=1)
-    elif period == '5Y':
-        point_count = 60
-        time_step = timedelta(days=30)
-    else:
-        point_count = 30
-        time_step = timedelta(days=1)
+    point_count = 30
+    time_step = timedelta(days=1)
     
     # Generate labels
     labels = []
@@ -148,36 +89,30 @@ def generate_sample_data(period='1M', currencies=['EUR', 'USD', 'GBP']):
         date = now - (i * time_step)
         labels.append(date.strftime('%Y-%m-%d'))
     
-    # Generate datasets
-    datasets = []
-    base_rates = {'EUR': 4.95, 'USD': 4.55, 'GBP': 5.75}
+    # Generate EUR dataset only
+    import random
+    dataset = {
+        'label': 'EUR',
+        'data': [],
+        'borderColor': get_currency_color('EUR'),
+        'backgroundColor': get_currency_color('EUR') + '20',
+        'fill': False,
+        'tension': 0.4
+    }
     
-    for currency in currencies:
-        dataset = {
-            'label': currency,
-            'data': [],
-            'borderColor': get_currency_color(currency),
-            'backgroundColor': get_currency_color(currency) + '20',
-            'fill': False,
-            'tension': 0.4
-        }
-        
-        # Generate rate data with some variation
-        for i in range(point_count + 1):
-            import random
-            variation = (random.random() - 0.5) * 0.1
-            rate = base_rates[currency] + variation
-            dataset['data'].append(round(rate, 4))
-        
-        datasets.append(dataset)
+    # Generate rate data with some variation
+    base_rate = 5.08  # Current EUR rate
+    for i in range(point_count + 1):
+        variation = (random.random() - 0.5) * 0.1
+        rate = base_rate + variation
+        dataset['data'].append(round(rate, 4))
     
     return {
         'success': True,
         'data': {
             'labels': labels,
-            'datasets': datasets
+            'datasets': [dataset]
         },
-        'period': period,
         'currencies': currencies,
         'timestamp': datetime.now().isoformat(),
         'sample_data': True
@@ -200,10 +135,10 @@ def generate_latest_rates():
             db_manager = DatabaseManager()
             latest_rates = db_manager.get_latest_rates()
             
-            # Group by currency and get latest
+            # Get only EUR rates
             rates_data = {}
             for rate in latest_rates:
-                if rate.currency not in rates_data:
+                if rate.currency == 'EUR':
                     rates_data[rate.currency] = {
                         'rate': rate.rate,
                         'source': rate.source,
@@ -229,19 +164,7 @@ def generate_sample_latest_rates():
         'success': True,
         'data': {
             'EUR': {
-                'rate': 4.9500,
-                'source': 'BNR',
-                'timestamp': datetime.now().isoformat(),
-                'multiplier': 1
-            },
-            'USD': {
-                'rate': 4.5500,
-                'source': 'BNR',
-                'timestamp': datetime.now().isoformat(),
-                'multiplier': 1
-            },
-            'GBP': {
-                'rate': 5.7500,
+                'rate': 5.0835,
                 'source': 'BNR',
                 'timestamp': datetime.now().isoformat(),
                 'multiplier': 1
@@ -260,14 +183,12 @@ def main():
     
     print("Generating API data files...")
     
-    # Generate chart data for different periods
-    periods = ['1D', '1M', '1Y', '5Y']
-    for period in periods:
-        chart_data = generate_chart_data(period)
-        filename = api_dir / f'chart-data-{period.lower()}.json'
-        with open(filename, 'w') as f:
-            json.dump(chart_data, f, indent=2)
-        print(f"Generated {filename}")
+    # Generate chart data for EUR only
+    chart_data = generate_chart_data()
+    filename = api_dir / 'chart-data.json'
+    with open(filename, 'w') as f:
+        json.dump(chart_data, f, indent=2)
+    print(f"Generated {filename}")
     
     # Generate latest rates
     latest_rates = generate_latest_rates()
