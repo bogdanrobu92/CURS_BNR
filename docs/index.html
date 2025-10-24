@@ -700,10 +700,24 @@
 
         // Initialize chart
         function initChart() {
+            console.log('Initializing chart...');
+            
+            // Check if Chart.js is loaded
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js not loaded!');
+                return;
+            }
+            
             // Register the annotation plugin
-            Chart.register(ChartAnnotation);
+            if (typeof ChartAnnotation !== 'undefined') {
+                Chart.register(ChartAnnotation);
+                console.log('Chart annotation plugin registered');
+            } else {
+                console.warn('Chart annotation plugin not available');
+            }
             
             const ctx = document.getElementById('exchangeRateChart').getContext('2d');
+            console.log('Chart context created');
             
             chart = new Chart(ctx, {
                 type: 'line',
@@ -789,6 +803,7 @@
         // Load chart data
         async function loadChartData() {
             try {
+                console.log('Loading chart data...');
                 document.getElementById('loadingIndicator').style.display = 'block';
                 document.getElementById('errorMessage').style.display = 'none';
 
@@ -798,18 +813,25 @@
                 let realData = null;
                 
                 try {
+                    console.log('Fetching data from API...');
                     const response = await fetch(`https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/chart-data.json`);
+                    console.log('Response status:', response.status);
+                    
                     if (response.ok) {
                         realData = await response.json();
+                        console.log('API data received:', realData);
                         
                         // Filter data based on date range on the frontend
                         if (realData && realData.success && realData.data) {
                             const filteredData = filterDataByDateRange(realData.data, currentDateRange.start, currentDateRange.end);
                             realData.data = filteredData;
+                            console.log('Filtered data:', filteredData);
                         }
+                    } else {
+                        console.error('API response not ok:', response.status);
                     }
                 } catch (error) {
-                    console.log('Direct fetch failed:', error);
+                    console.error('Direct fetch failed:', error);
                 }
                 
                 if (realData && realData.success) {
@@ -888,7 +910,11 @@
 
         // Update chart with new data
         function updateChart(data, alerts = []) {
-            if (!chart) return;
+            console.log('Updating chart with data:', data);
+            if (!chart) {
+                console.error('Chart not initialized!');
+                return;
+            }
 
             // Add alert highlighting zones to chart options
             if (alerts.length > 0) {
@@ -982,10 +1008,15 @@
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
             initializeDatePicker();
+            console.log('Date picker initialized');
             initializeNewsModal();
+            console.log('News modal initialized');
             initChart();
+            console.log('Chart initialized');
             loadChartData();
+            console.log('Chart data loading started');
         });
     </script>
 </body>
