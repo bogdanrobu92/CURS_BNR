@@ -1,5 +1,24 @@
 {
   "success": true,
-  "data": {},
-  "timestamp": "2025-10-24T14:45:49.549709"
+  "data": {
+    "USD": {
+      "rate": 4.3789,
+      "source": "BNR",
+      "timestamp": "2024-01-31T00:00:00",
+      "multiplier": 1
+    },
+    "GBP": {
+      "rate": 5.8344,
+      "source": "BNR",
+      "timestamp": "2024-01-31T00:00:00",
+      "multiplier": 1
+    },
+    "EUR": {
+      "rate": 5.0835,
+      "source": "BNR",
+      "timestamp": "2024-01-31T00:00:00",
+      "multiplier": 1
+    }
+  },
+  "timestamp": "2025-10-24T14:50:16.997830"
 }

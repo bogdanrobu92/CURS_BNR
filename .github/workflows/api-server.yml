@@ -37,6 +37,10 @@ jobs:
           echo "Running main job to collect data..."
           python3 main.py || echo "Main job failed, continuing with API data generation..."
           
+          # Back-fill recent historical data (last 30 days)
+          echo "Back-filling recent historical data..."
+          python3 quick_backfill.py $(date -d '30 days ago' +%Y-%m-%d) $(date -d '1 day ago' +%Y-%m-%d) || echo "Back-fill failed, continuing..."
+          
           # Generate static API data files (fallback when server is not available)
           echo "Generating static API data files..."
           
