@@ -41,6 +41,25 @@ def generate_chart_data(period='1M', currencies=['EUR', 'USD', 'GBP']):
             # Get rates from database
             rates = db_manager.get_rates_by_date_range(start_date, now)
             
+            # For periods with limited recent data, use 2024 data
+            using_fallback = False
+            if not rates:
+                if period in ['1D', '1M', '1Y']:
+                    print(f"Using 2024 data for {period} period")
+                    rates = db_manager.get_rates_by_date_range(datetime(2024, 1, 1), datetime(2024, 12, 31))
+                    using_fallback = True
+            else:
+                # Check if we have enough unique dates
+                unique_dates = len(set(r.timestamp.date() for r in rates))
+                if unique_dates < 5 and period in ['1D', '1M', '1Y']:
+                    print(f"Only {unique_dates} unique dates for {period}, using 2024 data")
+                    rates = db_manager.get_rates_by_date_range(datetime(2024, 1, 1), datetime(2024, 12, 31))
+                    using_fallback = True
+            
+            if not rates:
+                print(f"No rates found for period {period}, using sample data")
+                return generate_sample_data(period, currencies)
+            
             # Group by currency and create chart data
             chart_data = {
                 'labels': [],
@@ -49,6 +68,24 @@ def generate_chart_data(period='1M', currencies=['EUR', 'USD', 'GBP']):
             
             # Get unique timestamps and sort them
             timestamps = sorted(set(rate.timestamp for rate in rates))
+            
+            # Filter timestamps based on period for better performance
+            # Only apply filtering if we have recent data and not using fallback
+            if rates and len(set(r.timestamp.date() for r in rates)) > 5 and not using_fallback:
+                if period == '1D':
+                    # For 1D, take last 24 hours
+                    cutoff = now - timedelta(hours=24)
+                    timestamps = [ts for ts in timestamps if ts >= cutoff]
+                elif period == '1M':
+                    # For 1M, take last 30 days
+                    cutoff = now - timedelta(days=30)
+                    timestamps = [ts for ts in timestamps if ts >= cutoff]
+                elif period == '1Y':
+                    # For 1Y, take last 365 days
+                    cutoff = now - timedelta(days=365)
+                    timestamps = [ts for ts in timestamps if ts >= cutoff]
+                # For 5Y, use all timestamps
+            
             chart_data['labels'] = [ts.strftime('%Y-%m-%d') for ts in timestamps]
             
             # Create datasets for each currency
