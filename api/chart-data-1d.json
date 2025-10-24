@@ -1,11 +1,37 @@
 {
   "success": true,
   "data": {
-    "labels": [],
+    "labels": [
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24",
+      "2025-10-24"
+    ],
     "datasets": [
       {
         "label": "EUR",
-        "data": [],
+        "data": [
+          5.0835,
+          null,
+          null,
+          5.08,
+          null,
+          null,
+          5.0835,
+          null,
+          null,
+          5.08,
+          null,
+          null
+        ],
         "borderColor": "#667eea",
         "backgroundColor": "#667eea20",
         "fill": false,
@@ -13,7 +39,20 @@
       },
       {
         "label": "USD",
-        "data": [],
+        "data": [
+          null,
+          null,
+          4.3789,
+          null,
+          null,
+          4.379310344827586,
+          null,
+          null,
+          4.3789,
+          null,
+          null,
+          4.379310344827586
+        ],
         "borderColor": "#f093fb",
         "backgroundColor": "#f093fb20",
         "fill": false,
@@ -21,7 +60,20 @@
       },
       {
         "label": "GBP",
-        "data": [],
+        "data": [
+          null,
+          5.8344,
+          null,
+          null,
+          5.832376578645236,
+          null,
+          null,
+          5.8344,
+          null,
+          null,
+          5.832376578645236,
+          null
+        ],
         "borderColor": "#4facfe",
         "backgroundColor": "#4facfe20",
         "fill": false,
@@ -35,5 +87,5 @@
     "USD",
     "GBP"
   ],
-  "timestamp": "2025-10-24T14:50:16.995887"
+  "timestamp": "2025-10-24T15:55:02.762198"
 }
