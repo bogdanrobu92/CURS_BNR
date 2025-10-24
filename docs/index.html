@@ -574,8 +574,8 @@
             modal.style.display = 'block';
             
             try {
-                // Fetch news for the date
-                const response = await fetch(`https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/news.json?date=${date}`);
+                // Fetch news for the date (using static file for now)
+                const response = await fetch(`https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/news.json`);
                 const newsData = await response.json();
                 
                 if (newsData.success) {
@@ -640,6 +640,43 @@
             }
             
             return true;
+        }
+        
+        function filterDataByDateRange(data, startDate, endDate) {
+            if (!data || !data.labels || !data.datasets) {
+                return data;
+            }
+            
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            
+            // Find indices for the date range
+            const startIndex = data.labels.findIndex(label => new Date(label) >= start);
+            const endIndex = data.labels.findIndex(label => new Date(label) > end);
+            
+            // If no valid range found, return all data
+            if (startIndex === -1) {
+                return data;
+            }
+            
+            const filteredLabels = data.labels.slice(
+                startIndex, 
+                endIndex === -1 ? data.labels.length : endIndex
+            );
+            
+            // Filter datasets
+            const filteredDatasets = data.datasets.map(dataset => ({
+                ...dataset,
+                data: dataset.data.slice(
+                    startIndex,
+                    endIndex === -1 ? dataset.data.length : endIndex
+                )
+            }));
+            
+            return {
+                labels: filteredLabels,
+                datasets: filteredDatasets
+            };
         }
 
         // Initialize chart
@@ -742,10 +779,15 @@
                 let realData = null;
                 
                 try {
-                    const url = `https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/chart-data.json?start=${currentDateRange.start}&end=${currentDateRange.end}`;
-                    const response = await fetch(url);
+                    const response = await fetch(`https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/chart-data.json`);
                     if (response.ok) {
                         realData = await response.json();
+                        
+                        // Filter data based on date range on the frontend
+                        if (realData && realData.success && realData.data) {
+                            const filteredData = filterDataByDateRange(realData.data, currentDateRange.start, currentDateRange.end);
+                            realData.data = filteredData;
+                        }
                     }
                 } catch (error) {
                     console.log('Direct fetch failed:', error);

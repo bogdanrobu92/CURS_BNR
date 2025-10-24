@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "date": "2025-10-24",
+  "europe": [
+    {
+      "title": "European Central Bank Maintains Interest Rates",
+      "description": "The ECB kept its main refinancing rate unchanged at 4.5%, citing ongoing inflation concerns and economic stability measures.",
+      "source": "European Central Bank",
+      "url": "https://example.com/ecb-rates",
+      "published_at": "2025-10-24T09:00:00Z"
+    },
+    {
+      "title": "EU Economic Growth Shows Resilience",
+      "description": "Latest GDP figures indicate steady economic growth across European Union member states, with positive indicators for Q4 2025.",
+      "source": "Eurostat",
+      "url": "https://example.com/eu-growth",
+      "published_at": "2025-10-24T13:00:00Z"
+    },
+    {
+      "title": "Euro Zone Inflation Remains Above Target",
+      "description": "Consumer prices in the euro area continue to exceed the ECB's 2% inflation target, prompting continued monetary policy vigilance.",
+      "source": "European Commission",
+      "url": "https://example.com/eu-inflation",
+      "published_at": "2025-10-24T17:00:00Z"
+    }
+  ],
+  "romania": [
+    {
+      "title": "BNR Maintains Monetary Policy Stance",
+      "description": "The National Bank of Romania kept its key interest rate steady at 7.0%, focusing on inflation control and economic stability.",
+      "source": "BNR",
+      "url": "https://example.com/bnr-policy",
+      "published_at": "2025-10-24T10:00:00Z"
+    },
+    {
+      "title": "Romanian Economy Shows Strong Performance",
+      "description": "Economic indicators suggest continued growth in the Romanian economy, with positive trends in manufacturing and services sectors.",
+      "source": "Romanian Statistical Office",
+      "url": "https://example.com/romania-economy",
+      "published_at": "2025-10-24T14:00:00Z"
+    },
+    {
+      "title": "Romanian Leu Exchange Rate Stability",
+      "description": "The RON exchange rate remains stable against major currencies, reflecting confidence in Romania's economic fundamentals.",
+      "source": "Financial Markets",
+      "url": "https://example.com/ron-stability",
+      "published_at": "2025-10-24T18:00:00Z"
+    }
+  ],
+  "timestamp": "2025-10-24T18:05:00Z"
+}
