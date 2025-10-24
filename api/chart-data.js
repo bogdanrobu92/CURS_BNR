@@ -6,7 +6,16 @@ const API_BASE = 'https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/a
 // Fetch real chart data from your API
 async function fetchRealChartData(period, currencies = ['EUR', 'USD', 'GBP']) {
     try {
-        const response = await fetch(`${API_BASE}/chart-data.json?period=${period}&currencies=${currencies.join(',')}`);
+        // Map period to actual file names
+        const periodMap = {
+            '1D': 'chart-data-1d.json',
+            '1M': 'chart-data-1m.json', 
+            '1Y': 'chart-data-1y.json',
+            '5Y': 'chart-data-5y.json'
+        };
+        
+        const filename = periodMap[period] || 'chart-data-1m.json';
+        const response = await fetch(`${API_BASE}/${filename}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
