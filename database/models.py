@@ -51,6 +51,20 @@ class RateAlert:
 
 
 @dataclass
+class NewsArticle:
+    """News article data model for caching."""
+    id: Optional[int]
+    date: datetime
+    region: str  # 'europe' or 'romania'
+    title: str
+    description: str
+    source: str
+    url: str
+    published_at: datetime
+    timestamp: datetime
+
+
+@dataclass
 class SystemMetrics:
     """System metrics data model."""
     id: Optional[int]
@@ -145,6 +159,22 @@ class DatabaseManager:
                 )
             """)
             
+            # News articles table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS news_articles (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    date DATETIME NOT NULL,
+                    region TEXT NOT NULL,
+                    title TEXT NOT NULL,
+                    description TEXT,
+                    source TEXT NOT NULL,
+                    url TEXT NOT NULL,
+                    published_at DATETIME NOT NULL,
+                    timestamp DATETIME NOT NULL,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            
             # Create indexes for better performance
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_rates_currency_timestamp ON exchange_rates(currency, timestamp)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_rates_timestamp ON exchange_rates(timestamp)")
@@ -152,6 +182,8 @@ class DatabaseManager:
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_alerts_currency_date ON rate_alerts(currency, start_date)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_alerts_timestamp ON rate_alerts(timestamp)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_trends_currency_timestamp ON rate_trends(currency, timestamp)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_news_date_region ON news_articles(date, region)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_news_timestamp ON news_articles(timestamp)")
             
             conn.commit()
     
@@ -543,5 +575,61 @@ class DatabaseManager:
             duration_days=row['duration_days'],
             alert_type=row['alert_type'],
             severity=row['severity'],
+            timestamp=datetime.fromisoformat(row['timestamp'])
+        )
+    
+    def save_news_article(self, article: NewsArticle) -> int:
+        """Save news article to database."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                INSERT INTO news_articles 
+                (date, region, title, description, source, url, published_at, timestamp)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                article.date,
+                article.region,
+                article.title,
+                article.description,
+                article.source,
+                article.url,
+                article.published_at,
+                article.timestamp
+            ))
+            return cursor.lastrowid
+    
+    def get_news_articles(self, date: datetime, region: str = None) -> List[NewsArticle]:
+        """Get news articles for a specific date and optional region."""
+        with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            
+            if region:
+                cursor.execute("""
+                    SELECT * FROM news_articles 
+                    WHERE date = ? AND region = ?
+                    ORDER BY published_at DESC
+                """, (date, region))
+            else:
+                cursor.execute("""
+                    SELECT * FROM news_articles 
+                    WHERE date = ?
+                    ORDER BY region, published_at DESC
+                """, (date,))
+            
+            rows = cursor.fetchall()
+            return [self._row_to_news_article(row) for row in rows]
+    
+    def _row_to_news_article(self, row) -> NewsArticle:
+        """Convert database row to NewsArticle object."""
+        return NewsArticle(
+            id=row['id'],
+            date=datetime.fromisoformat(row['date']),
+            region=row['region'],
+            title=row['title'],
+            description=row['description'],
+            source=row['source'],
+            url=row['url'],
+            published_at=datetime.fromisoformat(row['published_at']),
             timestamp=datetime.fromisoformat(row['timestamp'])
         )

@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
     from generate_api_data import generate_chart_data, generate_latest_rates
     from database.models import DatabaseManager
+    from news_fetcher import get_news_for_date
     DATABASE_AVAILABLE = True
 except ImportError:
     DATABASE_AVAILABLE = False
@@ -52,6 +53,32 @@ def get_latest_rates():
     try:
         latest_rates = generate_latest_rates()
         return jsonify(latest_rates)
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
+
+@app.route('/api/news.json')
+def get_news():
+    """Get news articles for a specific date."""
+    try:
+        # Get query parameters
+        date = request.args.get('date')
+        region = request.args.get('region')  # 'europe' or 'romania'
+        
+        if not date:
+            return jsonify({
+                'success': False,
+                'error': 'Date parameter is required',
+                'timestamp': datetime.now().isoformat()
+            }), 400
+        
+        # Fetch news for the specified date
+        news_data = get_news_for_date(date, region)
+        return jsonify(news_data)
         
     except Exception as e:
         return jsonify({
