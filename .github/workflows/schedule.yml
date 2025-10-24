@@ -35,17 +35,17 @@ jobs:
 
       - name: Run unit tests
         run: |
-          python run_tests.py --mode unit --coverage --html
+          python3 run_tests.py --mode unit --coverage --html
 
       - name: Run integration tests
         run: |
-          python run_tests.py --mode integration
+          python3 run_tests.py --mode integration
 
       - name: Run code quality checks
         run: |
-          python -m flake8 main.py tests/
-          python -m mypy main.py
-          python -m black --check main.py tests/
+          python3 -m flake8 main.py tests/
+          python3 -m mypy main.py
+          python3 -m black --check main.py tests/
 
       - name: Upload test results
         uses: actions/upload-artifact@v3
@@ -115,7 +115,7 @@ jobs:
 
       - name: Run tests before execution
         run: |
-          python run_tests.py --mode unit
+          python3 run_tests.py --mode unit
 
       - name: Log run time
         run: |

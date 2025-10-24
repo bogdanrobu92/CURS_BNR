@@ -1,0 +1,55 @@
+# GitHub Pages configuration for BNR Exchange Rate Monitor
+title: BNR Exchange Rate Monitor
+description: A secure, enterprise-grade application that monitors Romanian National Bank exchange rates
+baseurl: ""
+url: "https://bogdanrobu92.github.io"
+repository: "bogdanrobu92/CURS_BNR"
+
+# Jekyll configuration
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - .github/
+  - tests/
+  - main.py
+  - run_tests.py
+  - requirements.txt
+  - pytest.ini
+  - data/
+  - metrics/
+  - monitoring/
+  - database/
+  - sources/
+  - web/
+  - api/
+  - *.log
+  - *.db
+  - __pycache__/
+  - .pytest_cache/
+
+# Include files
+include:
+  - _config.yml
+  - index.html
+  - TECHNICAL_SPECIFICATION.md
+  - USER_MANUAL.md
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

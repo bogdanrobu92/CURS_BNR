@@ -46,7 +46,18 @@ def validate_currency(currency: str) -> bool:
 
 def validate_email(email: str) -> bool:
     """Validate email format."""
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if not isinstance(email, str) or not email:
+        return False
+    
+    # RFC 5322 compliant email validation pattern
+    pattern = r'^[a-zA-Z0-9]([a-zA-Z0-9._%+-]*[a-zA-Z0-9])?@[a-zA-Z0-9]([a-zA-Z0-9.-]*[a-zA-Z0-9])?\.[a-zA-Z]{2,}$'
+    
+    # Additional checks for common invalid patterns
+    if '..' in email or email.startswith('.') or email.endswith('.'):
+        return False
+    if email.count('@') != 1:
+        return False
+    
     return re.match(pattern, email) is not None
 
 def create_secure_session() -> requests.Session:
