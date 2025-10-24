@@ -119,6 +119,15 @@ class DatabaseManager:
             
             conn.commit()
     
+    def clear_all_rates(self) -> None:
+        """Clear all exchange rate data from the database."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM exchange_rates")
+            cursor.execute("DELETE FROM rate_trends")
+            cursor.execute("DELETE FROM system_metrics")
+            conn.commit()
+    
     def save_exchange_rate(self, rate: ExchangeRate) -> int:
         """Save exchange rate to database."""
         with sqlite3.connect(self.db_path) as conn:

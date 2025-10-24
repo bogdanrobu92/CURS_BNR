@@ -34,7 +34,8 @@ def generate_chart_data(period='1M', currencies=['EUR', 'USD', 'GBP']):
             elif period == '1Y':
                 start_date = now - timedelta(days=365)
             elif period == '5Y':
-                start_date = now - timedelta(days=5*365)
+                # For 5Y, get all available data (2014-2025)
+                start_date = datetime(2014, 1, 1)
             else:
                 start_date = now - timedelta(days=30)
             

@@ -1,24 +1,24 @@
 {
   "success": true,
   "data": {
-    "USD": {
-      "rate": 4.379310344827586,
-      "source": "ExchangeRate-API",
-      "timestamp": "2025-10-24T15:54:56.010853",
+    "GBP": {
+      "rate": 5.8344,
+      "source": "BNR",
+      "timestamp": "2025-10-24T16:11:56.396002",
       "multiplier": 1
     },
-    "GBP": {
-      "rate": 5.832376578645236,
-      "source": "ExchangeRate-API",
-      "timestamp": "2025-10-24T15:54:56.010850",
+    "USD": {
+      "rate": 4.3789,
+      "source": "BNR",
+      "timestamp": "2025-10-24T16:11:56.396002",
       "multiplier": 1
     },
     "EUR": {
-      "rate": 5.08,
-      "source": "ExchangeRate-API",
-      "timestamp": "2025-10-24T15:54:56.010847",
+      "rate": 5.0835,
+      "source": "BNR",
+      "timestamp": "2025-10-24T16:11:56.396002",
       "multiplier": 1
     }
   },
-  "timestamp": "2025-10-24T16:04:26.402718"
+  "timestamp": "2025-10-24T16:11:56.987291"
 }
