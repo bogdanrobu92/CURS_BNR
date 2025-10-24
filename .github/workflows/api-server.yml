@@ -28,7 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run API server and collect data
+      - name: Run data collection and API generation
         run: |
           # Create API directory
           mkdir -p api
@@ -41,73 +41,11 @@ jobs:
           echo "Back-filling recent historical data..."
           python3 quick_backfill.py $(date -d '30 days ago' +%Y-%m-%d) $(date -d '1 day ago' +%Y-%m-%d) || echo "Back-fill failed, continuing..."
           
-          # Generate static API data files (fallback when server is not available)
-          echo "Generating static API data files..."
+          # Generate API data files using our script
+          echo "Generating API data files..."
+          python3 generate_api_data.py
           
-          # Create basic API responses
-          cat > api/rates-latest.json << 'EOF'
-          {
-            "success": true,
-            "data": {
-              "EUR": {
-                "rate": "4.9500",
-                "source": "BNR",
-                "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)",
-                "multiplier": 1
-              },
-              "USD": {
-                "rate": "4.5500", 
-                "source": "BNR",
-                "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)",
-                "multiplier": 1
-              },
-              "GBP": {
-                "rate": "5.7500",
-                "source": "BNR", 
-                "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)",
-                "multiplier": 1
-              }
-            },
-            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)"
-          }
-          EOF
-          
-          cat > api/health.json << 'EOF'
-          {
-            "success": true,
-            "data": {
-              "overall_status": "healthy",
-              "checks": [
-                {
-                  "service": "System",
-                  "status": "healthy",
-                  "message": "System configuration valid",
-                  "response_time": null,
-                  "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)"
-                }
-              ]
-            },
-            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)"
-          }
-          EOF
-          
-          cat > api/sources-status.json << 'EOF'
-          {
-            "success": true,
-            "data": {
-              "BNR": {
-                "available": true,
-                "response_time": 0.5,
-                "rates_count": 3,
-                "priority": 1,
-                "last_check": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)"
-              }
-            },
-            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)"
-          }
-          EOF
-          
-          echo "Static API data files generated successfully"
+          echo "API data files generated successfully"
 
       - name: Commit and push API data
         run: |

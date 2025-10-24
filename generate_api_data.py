@@ -18,17 +18,29 @@ try:
 except ImportError:
     DATABASE_AVAILABLE = False
 
-def generate_chart_data(currencies=['EUR']):
-    """Generate chart data for EUR only."""
+def generate_chart_data(currencies=['EUR'], start_date_str=None, end_date_str=None):
+    """Generate chart data for EUR only with optional date filtering."""
     
     if DATABASE_AVAILABLE:
         try:
             db_manager = DatabaseManager()
             
-            # Get all available rates from database
-            now = datetime.now()
-            start_date = datetime(2014, 1, 1)  # Get all available data
-            rates = db_manager.get_rates_by_date_range(start_date, now)
+            # Parse date range parameters
+            if start_date_str and end_date_str:
+                try:
+                    start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
+                    end_date = datetime.strptime(end_date_str, '%Y-%m-%d')
+                    print(f"Filtering data from {start_date_str} to {end_date_str}")
+                except ValueError:
+                    print("Invalid date format, using all available data")
+                    start_date = datetime(2014, 1, 1)
+                    end_date = datetime.now()
+            else:
+                # Get all available rates from database
+                start_date = datetime(2014, 1, 1)
+                end_date = datetime.now()
+            
+            rates = db_manager.get_rates_by_date_range(start_date, end_date)
             
             if not rates:
                 print("No rates found, using sample data")

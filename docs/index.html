@@ -101,6 +101,74 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
+        .date-range-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .date-input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .date-input-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .date-input-group input[type="date"] {
+            padding: 8px 12px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .date-input-group input[type="date"]:focus {
+            outline: none;
+            border-color: #667eea;
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+        }
+
+        .date-input-group input[type="date"]:read-only {
+            background: rgba(255,255,255,0.05);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .update-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .update-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .update-btn:active {
+            transform: translateY(0);
+        }
+
         .chart-container {
             background: white;
             border-radius: 15px;
@@ -217,6 +285,17 @@
             <div class="currency-info">
                 <span class="currency-display">🇪🇺 EUR/RON Exchange Rate</span>
             </div>
+            <div class="date-range-selector">
+                <div class="date-input-group">
+                    <label for="startDate">From:</label>
+                    <input type="date" id="startDate" value="2025-10-24" readonly>
+                </div>
+                <div class="date-input-group">
+                    <label for="endDate">To:</label>
+                    <input type="date" id="endDate">
+                </div>
+                <button id="updateChartBtn" class="update-btn">Update Chart</button>
+            </div>
         </div>
 
         <div class="chart-container">
@@ -245,11 +324,78 @@
         // Chart configuration
         let chart = null;
         let chartData = {};
+        let currentDateRange = {
+            start: '2025-10-24',
+            end: null
+        };
 
         // Chart colors
         const colors = {
             EUR: '#667eea'
         };
+
+        // Date picker functionality
+        function initializeDatePicker() {
+            const startDateInput = document.getElementById('startDate');
+            const endDateInput = document.getElementById('endDate');
+            const updateBtn = document.getElementById('updateChartBtn');
+            
+            // Set today as default end date
+            const today = new Date().toISOString().split('T')[0];
+            endDateInput.value = today;
+            currentDateRange.end = today;
+            
+            // Set minimum date to start date (2025-10-24)
+            endDateInput.min = '2025-10-24';
+            
+            // Update button click handler
+            updateBtn.addEventListener('click', function() {
+                const startDate = startDateInput.value;
+                const endDate = endDateInput.value;
+                
+                if (validateDateRange(startDate, endDate)) {
+                    currentDateRange.start = startDate;
+                    currentDateRange.end = endDate;
+                    loadChartData();
+                }
+            });
+            
+            // Auto-update on date change
+            endDateInput.addEventListener('change', function() {
+                const startDate = startDateInput.value;
+                const endDate = endDateInput.value;
+                
+                if (validateDateRange(startDate, endDate)) {
+                    currentDateRange.start = startDate;
+                    currentDateRange.end = endDate;
+                    loadChartData();
+                }
+            });
+        }
+        
+        function validateDateRange(startDate, endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const minDate = new Date('2025-10-24');
+            const today = new Date();
+            
+            if (start < minDate) {
+                alert('Start date cannot be before 2025-10-24');
+                return false;
+            }
+            
+            if (end > today) {
+                alert('End date cannot be in the future');
+                return false;
+            }
+            
+            if (start > end) {
+                alert('Start date cannot be after end date');
+                return false;
+            }
+            
+            return true;
+        }
 
         // Initialize chart
         function initChart() {
@@ -328,11 +474,12 @@
 
                 let data;
                 
-                // Try to fetch real data first
+                // Try to fetch real data first with date range
                 let realData = null;
                 
                 try {
-                    const response = await fetch(`https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/chart-data.json`);
+                    const url = `https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/chart-data.json?start=${currentDateRange.start}&end=${currentDateRange.end}`;
+                    const response = await fetch(url);
                     if (response.ok) {
                         realData = await response.json();
                     }
@@ -444,6 +591,7 @@
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
+            initializeDatePicker();
             initChart();
             loadChartData();
         });
