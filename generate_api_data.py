@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
     from database.models import DatabaseManager
+    from change_detector import analyze_exchange_rates
     DATABASE_AVAILABLE = True
 except ImportError:
     DATABASE_AVAILABLE = False
@@ -74,9 +75,35 @@ def generate_chart_data(currencies=['EUR'], start_date_str=None, end_date_str=No
                 }
                 chart_data['datasets'].append(dataset)
             
+            # Detect and include alerts for significant changes
+            alerts = []
+            try:
+                # Analyze exchange rates for significant changes
+                changes = analyze_exchange_rates('EUR')
+                
+                # Convert changes to alert format for frontend
+                for change in changes:
+                    alert = {
+                        'start_date': change.start_date.strftime('%Y-%m-%d'),
+                        'end_date': change.end_date.strftime('%Y-%m-%d'),
+                        'start_rate': change.start_rate,
+                        'end_rate': change.end_rate,
+                        'change_percent': change.change_percent,
+                        'duration_days': change.duration_days,
+                        'alert_type': change.alert_type,
+                        'severity': change.severity
+                    }
+                    alerts.append(alert)
+                
+                print(f"Detected {len(alerts)} significant changes")
+                
+            except Exception as e:
+                print(f"Error detecting changes: {e}")
+            
             return {
                 'success': True,
                 'data': chart_data,
+                'alerts': alerts,
                 'currencies': currencies,
                 'timestamp': datetime.now().isoformat()
             }

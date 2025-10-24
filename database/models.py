@@ -35,6 +35,22 @@ class RateTrend:
 
 
 @dataclass
+class RateAlert:
+    """Rate alert data model for significant changes."""
+    id: Optional[int]
+    currency: str
+    start_date: datetime
+    end_date: datetime
+    start_rate: float
+    end_rate: float
+    change_percent: float
+    duration_days: int
+    alert_type: str  # 'positive' or 'negative'
+    severity: str    # 'low', 'medium', 'high'
+    timestamp: datetime
+
+
+@dataclass
 class SystemMetrics:
     """System metrics data model."""
     id: Optional[int]
@@ -111,10 +127,30 @@ class DatabaseManager:
                 )
             """)
             
+            # Rate alerts table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS rate_alerts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    currency TEXT NOT NULL,
+                    start_date DATETIME NOT NULL,
+                    end_date DATETIME NOT NULL,
+                    start_rate REAL NOT NULL,
+                    end_rate REAL NOT NULL,
+                    change_percent REAL NOT NULL,
+                    duration_days INTEGER NOT NULL,
+                    alert_type TEXT NOT NULL,
+                    severity TEXT NOT NULL,
+                    timestamp DATETIME NOT NULL,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            
             # Create indexes for better performance
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_rates_currency_timestamp ON exchange_rates(currency, timestamp)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_rates_timestamp ON exchange_rates(timestamp)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_metrics_timestamp ON system_metrics(timestamp)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_alerts_currency_date ON rate_alerts(currency, start_date)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_alerts_timestamp ON rate_alerts(timestamp)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_trends_currency_timestamp ON rate_trends(currency, timestamp)")
             
             conn.commit()
@@ -185,6 +221,21 @@ class DatabaseManager:
                     WHERE is_valid = 1
                     ORDER BY timestamp DESC
                 """)
+            
+            rows = cursor.fetchall()
+            return [self._row_to_exchange_rate(row) for row in rows]
+    
+    def get_rates_by_currency(self, currency: str) -> List[ExchangeRate]:
+        """Get all exchange rates for a specific currency."""
+        with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT * FROM exchange_rates 
+                WHERE currency = ? AND is_valid = 1
+                ORDER BY timestamp ASC
+            """, (currency,))
             
             rows = cursor.fetchall()
             return [self._row_to_exchange_rate(row) for row in rows]
@@ -425,4 +476,72 @@ class DatabaseManager:
             error_count=row['error_count'],
             memory_usage_mb=row['memory_usage_mb'],
             cpu_percent=row['cpu_percent']
+        )
+    
+    def save_rate_alert(self, alert: RateAlert) -> int:
+        """Save rate alert to database."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                INSERT INTO rate_alerts 
+                (currency, start_date, end_date, start_rate, end_rate, 
+                 change_percent, duration_days, alert_type, severity, timestamp)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                alert.currency,
+                alert.start_date,
+                alert.end_date,
+                alert.start_rate,
+                alert.end_rate,
+                alert.change_percent,
+                alert.duration_days,
+                alert.alert_type,
+                alert.severity,
+                alert.timestamp
+            ))
+            return cursor.lastrowid
+    
+    def get_rate_alerts(self, currency: str = None, start_date: datetime = None, 
+                       end_date: datetime = None) -> List[RateAlert]:
+        """Get rate alerts with optional filtering."""
+        with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            
+            query = "SELECT * FROM rate_alerts WHERE 1=1"
+            params = []
+            
+            if currency:
+                query += " AND currency = ?"
+                params.append(currency)
+            
+            if start_date:
+                query += " AND start_date >= ?"
+                params.append(start_date)
+            
+            if end_date:
+                query += " AND end_date <= ?"
+                params.append(end_date)
+            
+            query += " ORDER BY start_date DESC"
+            
+            cursor.execute(query, params)
+            rows = cursor.fetchall()
+            
+            return [self._row_to_rate_alert(row) for row in rows]
+    
+    def _row_to_rate_alert(self, row) -> RateAlert:
+        """Convert database row to RateAlert object."""
+        return RateAlert(
+            id=row['id'],
+            currency=row['currency'],
+            start_date=datetime.fromisoformat(row['start_date']),
+            end_date=datetime.fromisoformat(row['end_date']),
+            start_rate=row['start_rate'],
+            end_rate=row['end_rate'],
+            change_percent=row['change_percent'],
+            duration_days=row['duration_days'],
+            alert_type=row['alert_type'],
+            severity=row['severity'],
+            timestamp=datetime.fromisoformat(row['timestamp'])
         )
