@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BNR Exchange Rate Monitor - Interactive Charts</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
-    <script src="https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/chart-data.js"></script>
     <style>
         * {
             margin: 0;
@@ -708,12 +707,16 @@
                 return;
             }
             
-            // Register the annotation plugin
-            if (typeof ChartAnnotation !== 'undefined') {
-                Chart.register(ChartAnnotation);
-                console.log('Chart annotation plugin registered');
-            } else {
-                console.warn('Chart annotation plugin not available');
+            // Register the annotation plugin if available
+            try {
+                if (typeof ChartAnnotation !== 'undefined') {
+                    Chart.register(ChartAnnotation);
+                    console.log('Chart annotation plugin registered');
+                } else {
+                    console.warn('Chart annotation plugin not available - continuing without annotations');
+                }
+            } catch (error) {
+                console.warn('Error registering annotation plugin:', error);
             }
             
             const ctx = document.getElementById('exchangeRateChart').getContext('2d');
@@ -1013,10 +1016,14 @@
             console.log('Date picker initialized');
             initializeNewsModal();
             console.log('News modal initialized');
-            initChart();
-            console.log('Chart initialized');
-            loadChartData();
-            console.log('Chart data loading started');
+            
+            // Wait a bit for all scripts to load, then initialize chart
+            setTimeout(() => {
+                initChart();
+                console.log('Chart initialized');
+                loadChartData();
+                console.log('Chart data loading started');
+            }, 100);
         });
     </script>
 </body>
