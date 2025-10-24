@@ -263,6 +263,10 @@
         <div class="last-updated" id="lastUpdated">
             Last updated: Loading...
         </div>
+        
+        <div class="data-source-info" style="text-align: center; color: #666; font-size: 0.8rem; margin-top: 10px;">
+            <span id="dataSource">📊 Data Source: Sample Data (Demo Mode)</span>
+        </div>
     </div>
 
     <script>
@@ -358,9 +362,27 @@
                 document.getElementById('loadingIndicator').style.display = 'block';
                 document.getElementById('errorMessage').style.display = 'none';
 
-                // For now, generate sample data
-                // In production, this would fetch from your API
-                const data = generateSampleData(period);
+                let data;
+                
+                // Try to fetch real data first
+                if (window.ChartAPI) {
+                    const realData = await window.ChartAPI.fetchRealChartData(period);
+                    if (realData && realData.success) {
+                        data = realData.data;
+                        console.log('Using real data from API');
+                        document.getElementById('dataSource').textContent = '📊 Data Source: BNR API (Live Data)';
+                    } else {
+                        console.log('Real data not available, using sample data');
+                        data = generateSampleData(period);
+                        document.getElementById('dataSource').textContent = '📊 Data Source: Sample Data (Demo Mode)';
+                    }
+                } else {
+                    console.log('API not loaded, using sample data');
+                    data = generateSampleData(period);
+                    document.getElementById('dataSource').textContent = '📊 Data Source: Sample Data (Demo Mode)';
+                }
+                
+                chartData = data; // Store data globally
                 
                 updateChart(data);
                 updateStats(data);
@@ -460,6 +482,22 @@
             chart.update('active');
         }
 
+        // Update chart visibility based on currency selection
+        function updateChartVisibility() {
+            if (!chart) return;
+
+            const selectedCurrencies = Array.from(
+                document.querySelectorAll('.currency-toggle input:checked')
+            ).map(input => input.dataset.currency);
+
+            // Show/hide datasets based on selection
+            chart.data.datasets.forEach(dataset => {
+                dataset.hidden = !selectedCurrencies.includes(dataset.label);
+            });
+
+            chart.update('active');
+        }
+
         // Update statistics
         function updateStats(data) {
             const statsGrid = document.getElementById('statsGrid');
@@ -505,7 +543,7 @@
         document.querySelectorAll('.currency-toggle input').forEach(input => {
             input.addEventListener('change', function() {
                 if (chartData.labels) {
-                    updateChart(chartData);
+                    updateChartVisibility();
                     updateStats(chartData);
                 }
             });

@@ -1,0 +1,39 @@
+{
+  "success": true,
+  "data": {
+    "labels": [],
+    "datasets": [
+      {
+        "label": "EUR",
+        "data": [],
+        "borderColor": "#667eea",
+        "backgroundColor": "#667eea20",
+        "fill": false,
+        "tension": 0.4
+      },
+      {
+        "label": "USD",
+        "data": [],
+        "borderColor": "#f093fb",
+        "backgroundColor": "#f093fb20",
+        "fill": false,
+        "tension": 0.4
+      },
+      {
+        "label": "GBP",
+        "data": [],
+        "borderColor": "#4facfe",
+        "backgroundColor": "#4facfe20",
+        "fill": false,
+        "tension": 0.4
+      }
+    ]
+  },
+  "period": "5Y",
+  "currencies": [
+    "EUR",
+    "USD",
+    "GBP"
+  ],
+  "timestamp": "2025-10-24T14:45:49.549403"
+}

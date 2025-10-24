@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "data": {
+    "overall_status": "healthy",
+    "checks": [
+      {
+        "service": "System",
+        "status": "healthy",
+        "message": "System configuration valid",
+        "response_time": null,
+        "timestamp": "2025-10-24T14:45:49.549791"
+      }
+    ]
+  },
+  "timestamp": "2025-10-24T14:45:49.549793"
+}
