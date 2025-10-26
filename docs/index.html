@@ -640,15 +640,9 @@
             const start = new Date(startDate);
             const end = new Date(endDate);
             const minDate = new Date('2025-10-24');
-            const today = new Date();
             
             if (start < minDate) {
-                alert('Start date cannot be before 2025-10-24');
-                return false;
-            }
-            
-            if (end > today) {
-                alert('End date cannot be in the future');
+                alert('Start date cannot be before 2025-10-24 (first data collection date)');
                 return false;
             }
             
@@ -657,6 +651,7 @@
                 return false;
             }
             
+            // Future dates are allowed - useful for planning/forecasting
             return true;
         }
         
