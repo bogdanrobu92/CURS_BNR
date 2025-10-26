@@ -21,6 +21,7 @@ except ImportError:
 try:
     from database.models import DatabaseManager, ExchangeRate, SystemMetrics
     from sources.backup_sources import BackupRateProvider
+    from fallback_handler import apply_fallback_if_needed
     DATABASE_AVAILABLE = True
 except ImportError:
     DATABASE_AVAILABLE = False
@@ -190,6 +191,13 @@ def collect_exchange_rates() -> Dict[str, str]:
                     error_count += 1
             
             successful_rates = sum(1 for rate in rates.values() if rate)
+        
+        # Apply fallback logic if API didn't return data
+        if successful_rates == 0 and db_manager:
+            logger.info("No rates from API, applying fallback logic...")
+            rates = apply_fallback_if_needed(rates, db_manager, max_age_days=2)
+            successful_rates = len([r for r in rates.values() if r])
+            logger.info(f"After fallback: Retrieved {successful_rates}/{len(SUPPORTED_CURRENCIES)} exchange rates")
         
         # Log summary
         logger.info(f"Retrieved {successful_rates}/{len(SUPPORTED_CURRENCIES)} exchange rates")
