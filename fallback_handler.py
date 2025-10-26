@@ -25,7 +25,7 @@ def get_last_published_rate(currency: str, db_manager: DatabaseManager) -> Optio
         logger.error(f"Error retrieving last published rate: {e}")
         return None
 
-def apply_fallback_if_needed(rates: Dict[str, str], db_manager: DatabaseManager, max_age_days: int = 2) -> Dict[str, str]:
+def apply_fallback_if_needed(rates: Dict[str, str], db_manager: DatabaseManager, max_age_days: int = 3) -> Dict[str, str]:
     """
     Apply fallback logic: if BNR API returns no data, use the last published rate.
     
