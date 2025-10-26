@@ -236,17 +236,20 @@ class NewsFetcher:
                 {
                     'title': 'European Central Bank Maintains Interest Rates',
                     'description': 'The ECB kept its main refinancing rate unchanged at 4.5%, citing ongoing inflation concerns.',
-                    'source': 'European Central Bank'
+                    'source': 'European Central Bank',
+                    'url': 'https://www.ecb.europa.eu/press/pr/date/html/index.en.html'
                 },
                 {
                     'title': 'EU Economic Growth Shows Resilience',
                     'description': 'Latest GDP figures indicate steady economic growth across European Union member states.',
-                    'source': 'Eurostat'
+                    'source': 'Eurostat',
+                    'url': 'https://ec.europa.eu/eurostat/web/main/home'
                 },
                 {
                     'title': 'Euro Zone Inflation Remains Above Target',
                     'description': 'Consumer prices in the euro area continue to exceed the ECB\'s 2% inflation target.',
-                    'source': 'European Commission'
+                    'source': 'European Commission',
+                    'url': 'https://ec.europa.eu/commission/presscorner/home/en'
                 }
             ]
         else:  # romania
@@ -254,17 +257,20 @@ class NewsFetcher:
                 {
                     'title': 'BNR Maintains Monetary Policy Stance',
                     'description': 'The National Bank of Romania kept its key interest rate steady, focusing on inflation control.',
-                    'source': 'BNR'
+                    'source': 'BNR',
+                    'url': 'https://www.bnr.ro/Home.aspx'
                 },
                 {
                     'title': 'Romanian Economy Shows Strong Performance',
                     'description': 'Economic indicators suggest continued growth in the Romanian economy.',
-                    'source': 'Romanian Statistical Office'
+                    'source': 'Romanian Statistical Office',
+                    'url': 'https://insse.ro/cms/en'
                 },
                 {
                     'title': 'Romanian Leu Exchange Rate Stability',
                     'description': 'The RON exchange rate remains stable against major currencies.',
-                    'source': 'Financial Markets'
+                    'source': 'Financial Markets',
+                    'url': 'https://www.bnr.ro/Exchange-Rates-12-16-3.aspx'
                 }
             ]
         
@@ -280,7 +286,7 @@ class NewsFetcher:
                 title=article_data['title'],
                 description=article_data['description'],
                 source=article_data['source'],
-                url=f'https://example.com/article-{i+1}',
+                url=article_data['url'],
                 published_at=published_at,
                 timestamp=datetime.now()
             )
