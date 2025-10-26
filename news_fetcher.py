@@ -39,6 +39,18 @@ class NewsFetcher:
             'User-Agent': 'BNR-Exchange-Rate-Monitor/1.0'
         }
     
+    def _get_source_url(self, source: str) -> str:
+        """Get the appropriate URL for a news source."""
+        source_urls = {
+            'European Central Bank': 'https://www.ecb.europa.eu/home/html/index.en.html',
+            'Eurostat': 'https://ec.europa.eu/eurostat/data/database',
+            'European Commission': 'https://ec.europa.eu/info/news_en',
+            'BNR': 'https://www.bnr.ro',
+            'Romanian Statistical Office': 'https://insse.ro',
+            'Financial Markets': 'https://www.bnr.ro/nbrfxrates.xml'
+        }
+        return source_urls.get(source, 'https://www.bnr.ro')
+    
     def fetch_news_for_date(self, date: datetime, region: str = 'europe') -> List[NewsArticle]:
         """
         Fetch news articles for a specific date and region.
@@ -280,7 +292,7 @@ class NewsFetcher:
                 title=article_data['title'],
                 description=article_data['description'],
                 source=article_data['source'],
-                url='https://www.ecb.europa.eu/' if region == 'europe' else 'https://www.bnr.ro/',
+                url=self._get_source_url(article_data['source']),
                 published_at=published_at,
                 timestamp=datetime.now()
             )

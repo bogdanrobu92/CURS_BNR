@@ -67,6 +67,23 @@ def apply_fallback_if_needed(rates: Dict[str, str], db_manager: DatabaseManager,
                 rates[currency] = str(last_rate.rate)
                 logger.info(f"Applied fallback for {currency}: using rate {last_rate.rate} from {last_rate.timestamp}")
                 fallback_applied = True
+                
+                # Save the fallback rate to database with today's date
+                try:
+                    from database.models import ExchangeRate
+                    fallback_rate = ExchangeRate(
+                        id=None,
+                        currency=currency,
+                        rate=last_rate.rate,
+                        source='BNR (Fallback)',
+                        timestamp=now,
+                        multiplier=1,
+                        is_valid=True
+                    )
+                    db_manager.save_exchange_rates([fallback_rate])
+                    logger.info(f"Saved fallback rate for {currency} to database")
+                except Exception as e:
+                    logger.warning(f"Failed to save fallback rate to database: {e}")
             else:
                 logger.warning(f"Last rate for {currency} is too old ({rate_age.days} days), not applying fallback")
         else:
