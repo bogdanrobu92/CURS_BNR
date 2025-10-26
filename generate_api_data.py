@@ -53,21 +53,46 @@ def generate_chart_data(currencies=['EUR'], start_date_str=None, end_date_str=No
                 'datasets': []
             }
             
-            # Get unique timestamps and sort them
-            timestamps = sorted(set(rate.timestamp for rate in rates))
-            chart_data['labels'] = [ts.strftime('%Y-%m-%d') for ts in timestamps]
+            # Group rates by DATE (not timestamp) to get one value per day
+            # We'll prefer BNR source and take the most recent rate for each day
+            from collections import defaultdict
+            rates_by_date = defaultdict(list)
+            
+            for rate in rates:
+                date_key = rate.timestamp.date()
+                rates_by_date[date_key].append(rate)
+            
+            # Sort dates
+            unique_dates = sorted(rates_by_date.keys())
+            chart_data['labels'] = [d.strftime('%Y-%m-%d') for d in unique_dates]
             
             # Create datasets for each currency
             for currency in currencies:
-                currency_rates = [r for r in rates if r.currency == currency]
+                daily_rates = []
                 
-                # Create rate map for quick lookup
-                rate_map = {r.timestamp: r.rate for r in currency_rates}
+                for date in unique_dates:
+                    # Get all rates for this date and currency
+                    date_rates = [r for r in rates_by_date[date] 
+                                 if r.currency == currency]
+                    
+                    if date_rates:
+                        # Prefer BNR source, otherwise take the most recent
+                        bnr_rates = [r for r in date_rates if 'BNR' in r.source]
+                        if bnr_rates:
+                            # Take the most recent BNR rate
+                            best_rate = max(bnr_rates, key=lambda r: r.timestamp)
+                        else:
+                            # Take the most recent rate from any source
+                            best_rate = max(date_rates, key=lambda r: r.timestamp)
+                        
+                        daily_rates.append(best_rate.rate)
+                    else:
+                        daily_rates.append(None)
                 
                 # Create dataset
                 dataset = {
                     'label': currency,
-                    'data': [rate_map.get(ts, None) for ts in timestamps],
+                    'data': daily_rates,
                     'borderColor': get_currency_color(currency),
                     'backgroundColor': get_currency_color(currency) + '20',
                     'fill': False,
