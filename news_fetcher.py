@@ -243,22 +243,27 @@ class NewsFetcher:
     
     def _generate_sample_news(self, date: datetime, region: str) -> List[NewsArticle]:
         """Generate sample news articles for demonstration."""
+        date_str = date.strftime('%Y/%m/%d')
+        
         if region == 'europe':
             sample_articles = [
                 {
                     'title': 'European Central Bank Maintains Interest Rates',
                     'description': 'The ECB kept its main refinancing rate unchanged at 4.5%, citing ongoing inflation concerns.',
-                    'source': 'European Central Bank'
+                    'source': 'European Central Bank',
+                    'url': f'https://www.ecb.europa.eu/press/pr/date/{date.year}/html/ecb.pr{date.strftime("%y%m%d")}.en.html'
                 },
                 {
                     'title': 'EU Economic Growth Shows Resilience',
                     'description': 'Latest GDP figures indicate steady economic growth across European Union member states.',
-                    'source': 'Eurostat'
+                    'source': 'Eurostat',
+                    'url': f'https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-{date.strftime("%Y%m%d")}-1'
                 },
                 {
                     'title': 'Euro Zone Inflation Remains Above Target',
                     'description': 'Consumer prices in the euro area continue to exceed the ECB\'s 2% inflation target.',
-                    'source': 'European Commission'
+                    'source': 'European Commission',
+                    'url': f'https://ec.europa.eu/commission/presscorner/detail/en/ip_{date.year}_{date.strftime("%m%d")}'
                 }
             ]
         else:  # romania
@@ -266,17 +271,20 @@ class NewsFetcher:
                 {
                     'title': 'BNR Maintains Monetary Policy Stance',
                     'description': 'The National Bank of Romania kept its key interest rate steady, focusing on inflation control.',
-                    'source': 'BNR'
+                    'source': 'BNR',
+                    'url': f'https://www.bnr.ro/Press-release-{date.strftime("%Y-%m-%d")}.aspx'
                 },
                 {
                     'title': 'Romanian Economy Shows Strong Performance',
                     'description': 'Economic indicators suggest continued growth in the Romanian economy.',
-                    'source': 'Romanian Statistical Office'
+                    'source': 'Romanian Statistical Office',
+                    'url': f'https://insse.ro/cms/en/content/press-release-nr-{date.strftime("%m")}-{date.year}'
                 },
                 {
                     'title': 'Romanian Leu Exchange Rate Stability',
                     'description': 'The RON exchange rate remains stable against major currencies.',
-                    'source': 'Financial Markets'
+                    'source': 'Financial Markets',
+                    'url': f'https://www.bnr.ro/Exchange-rates-{date.strftime("%Y-%m-%d")}.aspx'
                 }
             ]
         
@@ -292,7 +300,7 @@ class NewsFetcher:
                 title=article_data['title'],
                 description=article_data['description'],
                 source=article_data['source'],
-                url=self._get_source_url(article_data['source']),
+                url=article_data['url'],
                 published_at=published_at,
                 timestamp=datetime.now()
             )
