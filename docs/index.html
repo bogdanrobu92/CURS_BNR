@@ -1015,6 +1015,13 @@
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing...');
+            
+            // Ensure error message is hidden on page load
+            const errorEl = document.getElementById('errorMessage');
+            if (errorEl) {
+                errorEl.style.display = 'none';
+            }
+            
             initializeDatePicker();
             console.log('Date picker initialized');
             initializeNewsModal();
