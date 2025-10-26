@@ -280,7 +280,7 @@ class NewsFetcher:
                 title=article_data['title'],
                 description=article_data['description'],
                 source=article_data['source'],
-                url=f'https://example.com/article-{i+1}',
+                url='https://www.ecb.europa.eu/' if region == 'europe' else 'https://www.bnr.ro/',
                 published_at=published_at,
                 timestamp=datetime.now()
             )
