@@ -450,11 +450,11 @@
 
         <div class="chart-container">
             <div class="chart-title">Exchange Rate Trends</div>
-            <div class="chart-wrapper" style="position: relative;">
+            <div class="chart-wrapper" style="position: relative; overflow: hidden;">
                 <canvas id="exchangeRateChart"></canvas>
                 <!-- Drag selection overlay -->
-                <div id="dragOverlay" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;">
-                    <div style="position: absolute; background: rgba(102, 126, 234, 0.2); border: 2px solid #667eea; border-radius: 4px;"></div>
+                <div id="dragOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: none;">
+                    <div id="dragSelection" style="position: absolute; background: rgba(102, 126, 234, 0.2); border: 2px solid #667eea; border-radius: 4px;"></div>
                     <div id="dragInfo" style="position: absolute; background: rgba(0,0,0,0.9); color: white; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>
                 </div>
             </div>
@@ -809,7 +809,7 @@
             const canvas = chart.canvas;
             const overlay = document.getElementById('dragOverlay');
             const dragInfo = document.getElementById('dragInfo');
-            const selection = overlay.firstElementChild;
+            const selection = document.getElementById('dragSelection');
 
             canvas.addEventListener('mousedown', function(event) {
                 // Check if it's a click on a data point first
@@ -831,6 +831,14 @@
                 // Start drag selection
                 const rect = canvas.getBoundingClientRect();
                 const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                
+                // Only start drag if within chart area
+                const chartArea = chart.chartArea;
+                if (x < chartArea.left || x > chartArea.right || 
+                    y < chartArea.top || y > chartArea.bottom) {
+                    return;
+                }
                 
                 dragSelection.isSelecting = true;
                 dragSelection.startX = x;
@@ -847,14 +855,16 @@
                 
                 dragSelection.endIndex = getDataIndexAtX(x);
                 
-                // Update selection visualization
-                const startX = Math.min(dragSelection.startX, x);
-                const width = Math.abs(x - dragSelection.startX);
+                // Update selection visualization - constrain to chart area
+                const chartArea = chart.chartArea;
+                const startX = Math.max(chartArea.left, Math.min(dragSelection.startX, x));
+                const endX = Math.min(chartArea.right, Math.max(dragSelection.startX, x));
+                const width = Math.abs(endX - startX);
                 
                 selection.style.left = startX + 'px';
                 selection.style.width = width + 'px';
-                selection.style.top = '0px';
-                selection.style.height = canvas.height + 'px';
+                selection.style.top = chartArea.top + 'px';
+                selection.style.height = (chartArea.bottom - chartArea.top) + 'px';
                 
                 // Calculate and show percentage change
                 updateDragInfo();
