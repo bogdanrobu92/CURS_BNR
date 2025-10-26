@@ -859,7 +859,9 @@
                 chartData = data; // Store data globally
                 updateStats(data);
                 
+                // Hide loading and error indicators on success
                 document.getElementById('loadingIndicator').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'none';
                 document.getElementById('lastUpdated').textContent = 
                     `Last updated: ${new Date().toLocaleString()}`;
 
