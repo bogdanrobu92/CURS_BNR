@@ -663,31 +663,37 @@
             const start = new Date(startDate);
             const end = new Date(endDate);
             
-            // Find indices for the date range
-            const startIndex = data.labels.findIndex(label => new Date(label) >= start);
-            const endIndex = data.labels.findIndex(label => new Date(label) > end);
+            // Create a map of existing data for quick lookup
+            const dataMap = {};
+            data.labels.forEach((label, index) => {
+                dataMap[label] = index;
+            });
             
-            // If no valid range found, return all data
-            if (startIndex === -1) {
-                return data;
+            // Generate all dates from start to end (including future dates)
+            const allLabels = [];
+            const currentDate = new Date(start);
+            
+            while (currentDate <= end) {
+                allLabels.push(currentDate.toISOString().split('T')[0]);
+                currentDate.setDate(currentDate.getDate() + 1);
             }
             
-            const filteredLabels = data.labels.slice(
-                startIndex, 
-                endIndex === -1 ? data.labels.length : endIndex
-            );
-            
-            // Filter datasets
-            const filteredDatasets = data.datasets.map(dataset => ({
-                ...dataset,
-                data: dataset.data.slice(
-                    startIndex,
-                    endIndex === -1 ? dataset.data.length : endIndex
-                )
-            }));
+            // Build filtered datasets with null for missing dates
+            const filteredDatasets = data.datasets.map(dataset => {
+                const newData = allLabels.map(label => {
+                    const originalIndex = dataMap[label];
+                    return originalIndex !== undefined ? dataset.data[originalIndex] : null;
+                });
+                
+                return {
+                    ...dataset,
+                    data: newData,
+                    spanGaps: false  // Don't connect lines across gaps (null values)
+                };
+            });
             
             return {
-                labels: filteredLabels,
+                labels: allLabels,
                 datasets: filteredDatasets
             };
         }
