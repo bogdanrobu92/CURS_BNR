@@ -1,51 +1,100 @@
 {
   "success": true,
-  "date": "2025-10-24",
+  "date": "2025-10-26",
   "europe": [
     {
-      "title": "European Central Bank Maintains Interest Rates",
-      "description": "The ECB kept its main refinancing rate unchanged at 4.5%, citing ongoing inflation concerns and economic stability measures.",
-      "source": "European Central Bank",
-      "url": "https://www.ecb.europa.eu/home/html/index.en.html",
-      "published_at": "2025-10-24T09:00:00Z"
+      "title": "\u2018We need to score more goals\u2019 \u2013 Stephen Kenny on goal-shy Saints as Euro hopes hang by a thread after Waterford draw",
+      "description": "Stephen Kenny admits that the inability of his St Patrick\u2019s Athletic side to put away their chances has been their downfall in a season which could see the club miss out on European football for next season unless a series of results go their way in the final\u2026",
+      "source": "Independent.ie",
+      "url": "https://www.independent.ie/sport/soccer/league-of-ireland/we-need-to-score-more-goals-stephen-kenny-on-goal-shy-saints-as-euro-hopes-hang-by-a-thread-after-waterford-draw/a932363524.html",
+      "published_at": "2025-10-25T07:15:35+00:00"
     },
     {
-      "title": "EU Economic Growth Shows Resilience",
-      "description": "Latest GDP figures indicate steady economic growth across European Union member states, with positive indicators for Q4 2025.",
-      "source": "Eurostat",
-      "url": "https://ec.europa.eu/eurostat",
-      "published_at": "2025-10-24T13:00:00Z"
+      "title": "'Not pretty or nice but Scotland come up clutch in Casablanca'",
+      "description": "Scotland's first victory in almost a year wasn't \"pretty or nice,\" says midfielder Erin Cuthbert, but it shows the national team can \"come up clutch\" in the testing moments.",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/sport/football/articles/cy4pendn08vo",
+      "published_at": "2025-10-25T07:10:36+00:00"
     },
     {
-      "title": "Euro Zone Inflation Remains Above Target",
-      "description": "Consumer prices in the euro area continue to exceed the ECB's 2% inflation target, prompting continued monetary policy vigilance.",
-      "source": "European Commission",
-      "url": "https://ec.europa.eu/eurostat/web/products-datasets/-/prc_hpip_m",
-      "published_at": "2025-10-24T17:00:00Z"
+      "title": "AdamEvertsson.se: More fun modules for Drupal",
+      "description": "Drupal continues to be my favorite playground on the web \u2014 not just because it\u2019s powerful, but because there\u2019s so much creativity and humor in the community. In the post 12 fun modules for Drupal, I listed a few amusing modules that showed developers sometime\u2026",
+      "source": "Adamevertsson.se",
+      "url": "https://www.adamevertsson.se/en/articles/more-fun-modules-drupal",
+      "published_at": "2025-10-25T07:07:27+00:00"
+    },
+    {
+      "title": "Ferrari aims at AI generation with crypto auction for Le Mans car",
+      "description": "MILAN (Reuters) -Ferrari is tapping into crypto markets and tech-rich youngsters with a planned new digital token that its wealthiest fans will be able to...",
+      "source": "Yahoo Entertainment",
+      "url": "https://finance.yahoo.com/news/ferrari-aims-ai-generation-crypto-070644820.html",
+      "published_at": "2025-10-25T07:06:44+00:00"
+    },
+    {
+      "title": "Ferrari aims at AI generation with crypto auction for Le Mans car",
+      "description": "By Giulio Piovaccari MILAN (Reuters) -Ferrari is tapping into crypto markets and tech-rich youngsters with a planned new digital token that its wealthiest...",
+      "source": "Yahoo Entertainment",
+      "url": "https://www.yahoo.com/news/articles/ferrari-aims-ai-generation-crypto-070644975.html",
+      "published_at": "2025-10-25T07:06:44+00:00"
+    },
+    {
+      "title": "The Universe\u2019s first radio waves could reveal dark matter",
+      "description": "Researchers propose that hydrogen gas from the early Universe emitted detectable radio waves influenced by dark matter. Studying these signals, especially from the Moon\u2019s radio-quiet environment, could reveal how dark matter clumped together before the first \u2026",
+      "source": "Science Daily",
+      "url": "https://www.sciencedaily.com/releases/2025/10/251024041755.htm",
+      "published_at": "2025-10-25T07:02:30+00:00"
+    },
+    {
+      "title": "\u2018The top players \u2013 and Palmer looked ready to start showing he was one \u2013 don\u2019t just want the medal or the experience, they want to play a key role\u2019 David James on Cole Palmer\u2019s winning attitude",
+      "description": "The former England stopper has been impressed by the young Chelsea star\u2019s desire to succeed",
+      "source": "FourFourTwo",
+      "url": "https://www.fourfourtwo.com/person/player/the-top-players-and-palmer-looked-ready-to-start-showing-he-was-one-dont-just-want-the-medal-or-the-experience-they-want-to-play-a-key-role-david-james-on-cole-palmers-winning-attitude",
+      "published_at": "2025-10-25T07:00:00+00:00"
+    },
+    {
+      "title": "Administrators lined up for North Sea oilfield services group Petrofac",
+      "description": "Administrators are on standby this weekend to handle the collapse of Petrofac, the oil and energy services group - an insolvency which could threaten the future of more than 2,000 jobs in Scotland.",
+      "source": "Sky.com",
+      "url": "https://news.sky.com/story/administrators-lined-up-for-north-sea-oilfield-services-group-petrofac-13457010",
+      "published_at": "2025-10-25T06:56:00+00:00"
+    },
+    {
+      "title": "I tested the Oukitel's latest rugged phone - I love the price, size, and camera, but one baffling decision means it will struggle with the most demanding apps",
+      "description": "The Oukitel WP60 is a relatively lightweight rugged phone with a good camera sensor, but it's less impressive in other respects.",
+      "source": "TechRadar",
+      "url": "https://www.techradar.com/pro/phone-communications/oukitel-wp60-rugged-phone-review",
+      "published_at": "2025-10-25T06:47:00+00:00"
+    },
+    {
+      "title": "Saab CEO: Europe needs to do more together in defense #politics",
+      "description": "Saab CEO Micael Johansson tells Guy Johnson that Europe needs to work more closely together on defense to create scale and ...",
+      "source": "Biztoc.com",
+      "url": "https://biztoc.com/x/5aea71524b8b9d6e",
+      "published_at": "2025-10-25T06:39:50+00:00"
     }
   ],
   "romania": [
     {
-      "title": "BNR Maintains Monetary Policy Stance",
-      "description": "The National Bank of Romania kept its key interest rate steady at 7.0%, focusing on inflation control and economic stability.",
-      "source": "BNR",
-      "url": "https://www.bnr.ro",
-      "published_at": "2025-10-24T10:00:00Z"
+      "title": "World\u2019s Largest Orthodox Church Opens Doors to Divided Romania",
+      "description": "",
+      "source": "Biztoc.com",
+      "url": "https://biztoc.com/x/918a1aff6a7c198d",
+      "published_at": "2025-10-25T07:16:31+00:00"
     },
     {
-      "title": "Romanian Economy Shows Strong Performance",
-      "description": "Economic indicators suggest continued growth in the Romanian economy, with positive trends in manufacturing and services sectors.",
-      "source": "Romanian Statistical Office",
-      "url": "https://insse.ro",
-      "published_at": "2025-10-24T14:00:00Z"
+      "title": "There Will Be No Ukraine Peace Deal: Putin Should Quickly Win the Conflict Before It Leaves His Control",
+      "description": "One wonders how much longer Putin and Lavrov will take it or even if they comprehend the situation.\u00a0\u00a0 For four years Putin and Lavrov have demonstrated enormous interest in ending the conflict by resolving the basic cause.\u00a0 The West has never bothered to unde\u2026",
+      "source": "Lewrockwell.com",
+      "url": "https://www.lewrockwell.com/2025/10/paul-craig-roberts/there-will-be-no-ukraine-peace-deal-putin-should-quickly-win-the-conflict-before-it-leaves-his-control/",
+      "published_at": "2025-10-25T04:01:00+00:00"
     },
     {
-      "title": "Romanian Leu Exchange Rate Stability",
-      "description": "The RON exchange rate remains stable against major currencies, reflecting confidence in Romania's economic fundamentals.",
-      "source": "Financial Markets",
-      "url": "https://www.bnr.ro/nbrfxrates.xml",
-      "published_at": "2025-10-24T18:00:00Z"
+      "title": "verbecc 1.11.5",
+      "description": "Verbs Completely Conjugated: machine learning conjugator for Catalan, French, Italian, Portuguese, Romanian and Spanish",
+      "source": "Pypi.org",
+      "url": "https://pypi.org/project/verbecc/1.11.5/",
+      "published_at": "2025-10-25T01:36:10+00:00"
     }
   ],
-  "timestamp": "2025-10-24T18:05:00Z"
+  "timestamp": "2025-10-26T09:19:43.539004"
 }
