@@ -9,6 +9,8 @@ jobs:
   collect-data:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
 
     steps:
       - name: Checkout repository

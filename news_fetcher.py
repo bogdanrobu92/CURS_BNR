@@ -137,7 +137,10 @@ class NewsFetcher:
     def _fetch_from_newsapi(self, date: datetime, region: str) -> List[NewsArticle]:
         """Fetch articles from NewsAPI."""
         if self.newsapi_key == 'demo_key':
+            print(f"NewsAPI: Skipping (demo_key)")
             return []
+        
+        print(f"NewsAPI: Fetching for {date.date()} ({region})")
         
         # Calculate date range (±1 day for better coverage)
         from_date = (date - timedelta(days=1)).strftime('%Y-%m-%d')
@@ -146,29 +149,35 @@ class NewsFetcher:
         # Set up query parameters based on region
         if region == 'europe':
             query = 'europe OR EU OR "European Union" OR euro OR ECB'
-            sources = 'bbc-news,reuters,cnn,independent'
         else:  # romania
             query = 'romania OR "Romanian" OR BNR OR "National Bank of Romania"'
-            sources = 'bbc-news,reuters'
         
         params = {
             'q': query,
-            'sources': sources,
             'from': from_date,
             'to': to_date,
             'sortBy': 'publishedAt',
+            'language': 'en',
             'pageSize': 10,
             'apiKey': self.newsapi_key
         }
+        
+        print(f"NewsAPI: Calling API with query='{query[:50]}...', date range={from_date} to {to_date}")
         
         response = requests.get(self.newsapi_url, params=params, headers=self.headers, timeout=10)
         response.raise_for_status()
         
         data = response.json()
+        print(f"NewsAPI: Status={data.get('status')}, Total Results={data.get('totalResults', 0)}")
+        
         articles = []
         
-        for article_data in data.get('articles', []):
+        for i, article_data in enumerate(data.get('articles', []), 1):
             try:
+                print(f"NewsAPI: Parsing article {i}/{len(data.get('articles', []))}")
+                print(f"  Title: {article_data.get('title', 'N/A')[:50]}...")
+                print(f"  Published: {article_data.get('publishedAt', 'N/A')}")
+                
                 published_at = datetime.fromisoformat(article_data['publishedAt'].replace('Z', '+00:00'))
                 
                 article = NewsArticle(
@@ -183,10 +192,14 @@ class NewsFetcher:
                     timestamp=datetime.now()
                 )
                 articles.append(article)
+                print(f"  ✅ Parsed successfully")
             except Exception as e:
-                print(f"Error parsing NewsAPI article: {e}")
+                print(f"  ❌ NewsAPI: Error parsing article: {e}")
+                import traceback
+                traceback.print_exc()
                 continue
         
+        print(f"NewsAPI: Parsed {len(articles)} articles successfully")
         return articles
     
     def _fetch_from_guardian(self, date: datetime, region: str) -> List[NewsArticle]:
