@@ -450,8 +450,13 @@
 
         <div class="chart-container">
             <div class="chart-title">Exchange Rate Trends</div>
-            <div class="chart-wrapper">
+            <div class="chart-wrapper" style="position: relative;">
                 <canvas id="exchangeRateChart"></canvas>
+                <!-- Drag selection overlay -->
+                <div id="dragOverlay" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;">
+                    <div style="position: absolute; background: rgba(102, 126, 234, 0.2); border: 2px solid #667eea; border-radius: 4px;"></div>
+                    <div id="dragInfo" style="position: absolute; background: rgba(0,0,0,0.9); color: white; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>
+                </div>
             </div>
             <div class="loading" id="loadingIndicator">Loading chart data...</div>
             <div class="error" id="errorMessage" style="display: none;"></div>
@@ -508,6 +513,14 @@
         // Chart colors
         const colors = {
             EUR: '#667eea'
+        };
+
+        // Drag selection state
+        let dragSelection = {
+            isSelecting: false,
+            startIndex: null,
+            endIndex: null,
+            startX: null
         };
 
         // Date picker functionality
@@ -787,11 +800,23 @@
                 }
             });
             
-            // Add click event listener to chart
-            chart.canvas.addEventListener('click', function(event) {
+            // Initialize drag selection
+            initializeDragSelection();
+        }
+
+        // Drag selection functionality (Google Finance style)
+        function initializeDragSelection() {
+            const canvas = chart.canvas;
+            const overlay = document.getElementById('dragOverlay');
+            const dragInfo = document.getElementById('dragInfo');
+            const selection = overlay.firstElementChild;
+
+            canvas.addEventListener('mousedown', function(event) {
+                // Check if it's a click on a data point first
                 const points = chart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, true);
                 
-                if (points.length > 0) {
+                // If clicking directly on a point, show news (don't start drag)
+                if (points.length > 0 && event.shiftKey === false) {
                     const firstPoint = points[0];
                     const dataIndex = firstPoint.index;
                     const date = chart.data.labels[dataIndex];
@@ -799,9 +824,129 @@
                     if (date) {
                         console.log(`Clicked on date: ${date}`);
                         showNewsModal(date);
+                        return;
                     }
                 }
+
+                // Start drag selection
+                const rect = canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                
+                dragSelection.isSelecting = true;
+                dragSelection.startX = x;
+                dragSelection.startIndex = getDataIndexAtX(x);
+                
+                overlay.style.display = 'block';
             });
+
+            canvas.addEventListener('mousemove', function(event) {
+                if (!dragSelection.isSelecting) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                
+                dragSelection.endIndex = getDataIndexAtX(x);
+                
+                // Update selection visualization
+                const startX = Math.min(dragSelection.startX, x);
+                const width = Math.abs(x - dragSelection.startX);
+                
+                selection.style.left = startX + 'px';
+                selection.style.width = width + 'px';
+                selection.style.top = '0px';
+                selection.style.height = canvas.height + 'px';
+                
+                // Calculate and show percentage change
+                updateDragInfo();
+            });
+
+            canvas.addEventListener('mouseup', function(event) {
+                if (!dragSelection.isSelecting) return;
+                
+                dragSelection.isSelecting = false;
+                
+                // Keep the selection visible for a moment
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    dragSelection.startIndex = null;
+                    dragSelection.endIndex = null;
+                }, 2000);
+            });
+
+            canvas.addEventListener('mouseleave', function(event) {
+                if (dragSelection.isSelecting) {
+                    dragSelection.isSelecting = false;
+                    overlay.style.display = 'none';
+                }
+            });
+        }
+
+        function getDataIndexAtX(x) {
+            const chartArea = chart.chartArea;
+            const datasetMeta = chart.getDatasetMeta(0);
+            
+            if (!datasetMeta || !datasetMeta.data) return null;
+            
+            // Find closest data point
+            let closestIndex = 0;
+            let closestDistance = Math.abs(datasetMeta.data[0].x - x);
+            
+            for (let i = 1; i < datasetMeta.data.length; i++) {
+                const distance = Math.abs(datasetMeta.data[i].x - x);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = i;
+                }
+            }
+            
+            return closestIndex;
+        }
+
+        function updateDragInfo() {
+            const { startIndex, endIndex } = dragSelection;
+            
+            if (startIndex === null || endIndex === null) return;
+            
+            const start = Math.min(startIndex, endIndex);
+            const end = Math.max(startIndex, endIndex);
+            
+            const dataset = chart.data.datasets[0];
+            const startRate = dataset.data[start];
+            const endRate = dataset.data[end];
+            
+            if (startRate === null || endRate === null) {
+                dragInfo.innerHTML = 'No data for selected range';
+                return;
+            }
+            
+            const change = endRate - startRate;
+            const changePercent = ((change / startRate) * 100).toFixed(2);
+            const startDate = chart.data.labels[start];
+            const endDate = chart.data.labels[end];
+            
+            const arrow = change >= 0 ? '↑' : '↓';
+            const color = change >= 0 ? '#22c55e' : '#ef4444';
+            
+            dragInfo.innerHTML = `
+                <div style="font-weight: bold; color: ${color};">
+                    ${arrow} ${Math.abs(changePercent)}%
+                </div>
+                <div style="font-size: 0.75rem; opacity: 0.9; margin-top: 4px;">
+                    ${startDate} → ${endDate}
+                </div>
+                <div style="font-size: 0.75rem; opacity: 0.8;">
+                    ${startRate.toFixed(4)} → ${endRate.toFixed(4)}
+                </div>
+            `;
+            
+            // Position the info box
+            const rect = chart.canvas.getBoundingClientRect();
+            const datasetMeta = chart.getDatasetMeta(0);
+            const midIndex = Math.floor((start + end) / 2);
+            const midPoint = datasetMeta.data[midIndex];
+            
+            dragInfo.style.left = (midPoint.x - 60) + 'px';
+            dragInfo.style.top = (midPoint.y - 80) + 'px';
         }
 
         // Load chart data
