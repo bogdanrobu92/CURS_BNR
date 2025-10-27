@@ -160,31 +160,6 @@
             color: #b4b4b9;
         }
 
-        .update-btn {
-            padding: 10px 24px;
-            background: rgba(88, 166, 255, 0.15);
-            color: #58a6ff;
-            border: 1px solid rgba(88, 166, 255, 0.3);
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.9375rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            letter-spacing: -0.01em;
-            font-family: inherit;
-            backdrop-filter: blur(10px);
-        }
-
-        .update-btn:hover {
-            background: rgba(88, 166, 255, 0.25);
-            border-color: rgba(88, 166, 255, 0.5);
-            transform: translateY(-1px);
-        }
-
-        .update-btn:active {
-            transform: scale(0.98) translateY(0);
-        }
-
         /* News Modal Styles - Dark Glass Morphism */
         .modal {
             position: fixed;
@@ -490,7 +465,6 @@
                     <label for="endDate">To:</label>
                     <input type="date" id="endDate">
             </div>
-                <button id="updateChartBtn" class="update-btn">Update Chart</button>
             </div>
         </div>
 
@@ -577,7 +551,6 @@
         function initializeDatePicker() {
             const startDateInput = document.getElementById('startDate');
             const endDateInput = document.getElementById('endDate');
-            const updateBtn = document.getElementById('updateChartBtn');
             
             // Set today as default end date
             const today = new Date().toISOString().split('T')[0];
@@ -586,18 +559,6 @@
             
             // Set minimum date to start date (2025-10-24)
             endDateInput.min = '2025-10-24';
-            
-            // Update button click handler
-            updateBtn.addEventListener('click', function() {
-                const startDate = startDateInput.value;
-                const endDate = endDateInput.value;
-                
-                if (validateDateRange(startDate, endDate)) {
-                    currentDateRange.start = startDate;
-                    currentDateRange.end = endDate;
-                    loadChartData();
-                }
-            });
             
             // Auto-update on date change
             endDateInput.addEventListener('change', function() {
