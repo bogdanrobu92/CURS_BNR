@@ -36,7 +36,8 @@ class TestPerformance:
             
             # Should complete within 1 second (mocked)
             assert response_time < 1.0
-            assert rate == '4.9500'
+            assert rate == 4.9500
+            assert isinstance(rate, float)
     
     def test_job_execution_time(self, sample_rates_data):
         """Test job execution time is within acceptable limits."""

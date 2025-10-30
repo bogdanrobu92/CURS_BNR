@@ -73,9 +73,9 @@ def temp_log_file():
 def sample_rates_data():
     """Sample exchange rates data for testing."""
     return {
-        'EUR': '4.9500',
-        'USD': '4.5500',
-        'GBP': '5.7500'
+        'EUR': 4.9500,
+        'USD': 4.5500,
+        'GBP': 5.7500
     }
 
 

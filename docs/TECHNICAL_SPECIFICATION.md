@@ -41,9 +41,9 @@ The BNR Exchange Rate Monitor is an automated system that fetches daily exchange
 ### 2.1 Core Functions
 
 #### 2.1.1 Exchange Rate Fetching
-- **Function**: `get_bnr_api_rate(currency: str) -> Optional[str]`
+- **Function**: `get_bnr_api_rate(currency: str) -> Optional[float]`
 - **Input**: 3-letter currency code (EUR, USD, GBP)
-- **Output**: Exchange rate as string or None
+- **Output**: Exchange rate as float or None
 - **Error Handling**: Graceful degradation on API failures
 
 #### 2.1.2 Email Notification

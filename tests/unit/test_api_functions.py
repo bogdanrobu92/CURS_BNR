@@ -47,7 +47,8 @@ class TestBNRAPIRate:
         # Test successful rate retrieval
         rate = get_bnr_api_rate('EUR')
         
-        assert rate == '4.9500'
+        assert rate == 4.9500
+        assert isinstance(rate, float)
         mock_session.get.assert_called_once()
         mock_session.close.assert_called_once()
     

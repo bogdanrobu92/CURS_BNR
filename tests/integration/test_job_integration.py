@@ -47,7 +47,7 @@ class TestJobIntegration:
         """Test job execution with partial rate retrieval."""
         # Setup mocks - only EUR and USD succeed
         def mock_rate_side_effect(currency):
-            rates = {'EUR': '4.9500', 'USD': '4.5500', 'GBP': None}
+            rates = {'EUR': 4.9500, 'USD': 4.5500, 'GBP': None}
             return rates.get(currency)
         
         mock_get_rate.side_effect = mock_rate_side_effect

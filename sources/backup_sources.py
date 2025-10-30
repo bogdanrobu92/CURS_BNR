@@ -89,10 +89,15 @@ class BackupRateProvider:
     
     def get_rates_from_bnr(self) -> Dict[str, float]:
         """Get rates from BNR (primary source)."""
+        bnr_source = next((s for s in self.sources if s.name == "BNR"), None)
+        if not bnr_source:
+            self.logger.error("BNR source not found")
+            return {}
+        
         try:
             response = self.session.get(
-                self.sources[0].url,
-                timeout=self.sources[0].timeout,
+                bnr_source.url,
+                timeout=bnr_source.timeout,
                 verify=True
             )
             response.raise_for_status()
@@ -120,10 +125,15 @@ class BackupRateProvider:
     
     def get_rates_from_ecb(self) -> Dict[str, float]:
         """Get rates from European Central Bank."""
+        ecb_source = next((s for s in self.sources if s.name == "ECB"), None)
+        if not ecb_source:
+            self.logger.error("ECB source not found")
+            return {}
+        
         try:
             response = self.session.get(
-                self.sources[1].url,
-                timeout=self.sources[1].timeout,
+                ecb_source.url,
+                timeout=ecb_source.timeout,
                 verify=True
             )
             response.raise_for_status()
@@ -151,15 +161,20 @@ class BackupRateProvider:
     
     def get_rates_from_fixer(self) -> Dict[str, float]:
         """Get rates from Fixer.io."""
-        if not self.sources[2].api_key:
+        fixer_source = next((s for s in self.sources if s.name == "Fixer"), None)
+        if not fixer_source:
+            self.logger.warning("Fixer source not found")
+            return {}
+        
+        if not fixer_source.api_key:
             self.logger.warning("Fixer.io API key not configured")
             return {}
         
         try:
-            url = f"{self.sources[2].url}&access_key={self.sources[2].api_key}"
+            url = f"{fixer_source.url}&access_key={fixer_source.api_key}"
             response = self.session.get(
                 url,
-                timeout=self.sources[2].timeout,
+                timeout=fixer_source.timeout,
                 verify=True
             )
             response.raise_for_status()
@@ -188,10 +203,15 @@ class BackupRateProvider:
     
     def get_rates_from_exchangerate_api(self) -> Dict[str, float]:
         """Get rates from ExchangeRate-API."""
+        exchangerate_source = next((s for s in self.sources if s.name == "ExchangeRate-API"), None)
+        if not exchangerate_source:
+            self.logger.error("ExchangeRate-API source not found")
+            return {}
+        
         try:
             response = self.session.get(
-                self.sources[3].url,
-                timeout=self.sources[3].timeout,
+                exchangerate_source.url,
+                timeout=exchangerate_source.timeout,
                 verify=True
             )
             response.raise_for_status()

@@ -21,6 +21,24 @@ try:
 except ImportError:
     DATABASE_AVAILABLE = False
 
+# Configure structured logging
+try:
+    import sys
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from utils.logging_config import setup_logging, get_logger
+    logger = setup_logging(
+        log_level=os.getenv('LOG_LEVEL', 'INFO'),
+        log_file=os.getenv('LOG_FILE', 'api_server.log'),
+        log_dir=os.getenv('LOG_DIR', 'logs'),
+        use_json=os.getenv('LOG_FORMAT', '').lower() == 'json'
+    )
+    logger = get_logger(__name__)
+except ImportError:
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
+
 app = Flask(__name__)
 
 @app.route('/api/chart-data.json')
@@ -122,4 +140,8 @@ if __name__ == '__main__':
     print("  GET /api/rates-latest.json")
     print("  GET /api/health.json")
     
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(
+        host='0.0.0.0',
+        port=int(os.getenv('PORT', 5000)),
+        debug=os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    )

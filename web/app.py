@@ -19,14 +19,70 @@ from database.models import DatabaseManager, ExchangeRate, SystemMetrics
 from sources.backup_sources import BackupRateProvider
 from monitoring.health_check import HealthChecker
 from monitoring.metrics import MetricsCollector
+from main import SUPPORTED_CURRENCIES
+
+# Configure structured logging
+try:
+    from utils.logging_config import setup_logging, get_logger
+    logger = setup_logging(
+        log_level=os.getenv('LOG_LEVEL', 'INFO'),
+        log_file=os.getenv('LOG_FILE', 'web.log'),
+        log_dir=os.getenv('LOG_DIR', 'logs'),
+        use_json=os.getenv('LOG_FORMAT', '').lower() == 'json'
+    )
+    logger = get_logger(__name__)
+except ImportError:
+    # Fallback to basic logging if logging_config not available
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
 
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+# Configure rate limiting
+try:
+    from flask_limiter import Limiter
+    from flask_limiter.util import get_remote_address
+    
+    limiter = Limiter(
+        app=app,
+        key_func=get_remote_address,
+        default_limits=os.getenv('RATE_LIMIT_DEFAULT', '200 per day, 50 per hour').split(', '),
+        storage_uri=os.getenv('RATE_LIMIT_STORAGE', 'memory://'),  # Use Redis in production: 'redis://localhost:6379'
+        strategy='fixed-window',
+        headers_enabled=True
+    )
+    RATE_LIMITING_ENABLED = True
+    
+    # Helper function for rate limit decorators
+    def rate_limit(limit_str):
+        """Apply rate limit decorator if rate limiting is enabled."""
+        return limiter.limit(limit_str)
+    
+    logger.info("Rate limiting enabled")
+except ImportError:
+    limiter = None
+    RATE_LIMITING_ENABLED = False
+    
+    # No-op decorator when rate limiting is disabled
+    def rate_limit(limit_str):
+        """No-op decorator when rate limiting is disabled."""
+        def decorator(func):
+            return func
+        return decorator
+    
+    logger.warning("Flask-Limiter not available, rate limiting disabled")
+except Exception as e:
+    limiter = None
+    RATE_LIMITING_ENABLED = False
+    
+    def rate_limit(limit_str):
+        def decorator(func):
+            return func
+        return decorator
+    
+    logger.warning(f"Failed to initialize rate limiting: {e}")
 
 # Initialize components
 db_manager = DatabaseManager()
@@ -42,6 +98,7 @@ def dashboard():
 
 
 @app.route('/api/rates/latest')
+@rate_limit("10 per minute")
 def get_latest_rates():
     """Get latest exchange rates."""
     try:
@@ -73,11 +130,25 @@ def get_latest_rates():
 
 
 @app.route('/api/rates/history')
+@rate_limit("20 per minute")
 def get_rate_history():
     """Get historical exchange rates."""
     try:
         currency = request.args.get('currency')
-        days = int(request.args.get('days', 7))
+        days = request.args.get('days', 7, type=int)
+        
+        # Validate input
+        if days < 1 or days > 365:
+            return jsonify({
+                'success': False,
+                'error': 'Days must be between 1 and 365'
+            }), 400
+        
+        if currency and currency not in SUPPORTED_CURRENCIES:
+            return jsonify({
+                'success': False,
+                'error': f'Unsupported currency: {currency}. Supported currencies: {", ".join(SUPPORTED_CURRENCIES)}'
+            }), 400
         
         start_date = datetime.now() - timedelta(days=days)
         rates = db_manager.get_rates_by_date_range(start_date, datetime.now(), currency)
@@ -100,6 +171,11 @@ def get_rate_history():
             'period_days': days
         })
     
+    except ValueError:
+        return jsonify({
+            'success': False,
+            'error': 'Invalid days parameter. Must be an integer between 1 and 365'
+        }), 400
     except Exception as e:
         logger.error(f"Error getting rate history: {e}")
         return jsonify({
@@ -109,11 +185,25 @@ def get_rate_history():
 
 
 @app.route('/api/rates/trends')
+@rate_limit("20 per minute")
 def get_rate_trends():
     """Get rate trends and analysis."""
     try:
         currency = request.args.get('currency', 'EUR')
-        days = int(request.args.get('days', 7))
+        days = request.args.get('days', 7, type=int)
+        
+        # Validate input
+        if days < 1 or days > 365:
+            return jsonify({
+                'success': False,
+                'error': 'Days must be between 1 and 365'
+            }), 400
+        
+        if currency not in SUPPORTED_CURRENCIES:
+            return jsonify({
+                'success': False,
+                'error': f'Unsupported currency: {currency}. Supported currencies: {", ".join(SUPPORTED_CURRENCIES)}'
+            }), 400
         
         trends = db_manager.get_rate_trends(currency, days)
         
@@ -137,6 +227,11 @@ def get_rate_trends():
             'period_days': days
         })
     
+    except ValueError:
+        return jsonify({
+            'success': False,
+            'error': 'Invalid days parameter. Must be an integer between 1 and 365'
+        }), 400
     except Exception as e:
         logger.error(f"Error getting rate trends: {e}")
         return jsonify({
@@ -146,11 +241,25 @@ def get_rate_trends():
 
 
 @app.route('/api/rates/statistics')
+@rate_limit("20 per minute")
 def get_rate_statistics():
     """Get currency statistics."""
     try:
         currency = request.args.get('currency', 'EUR')
-        days = int(request.args.get('days', 30))
+        days = request.args.get('days', 30, type=int)
+        
+        # Validate input
+        if days < 1 or days > 365:
+            return jsonify({
+                'success': False,
+                'error': 'Days must be between 1 and 365'
+            }), 400
+        
+        if currency not in SUPPORTED_CURRENCIES:
+            return jsonify({
+                'success': False,
+                'error': f'Unsupported currency: {currency}. Supported currencies: {", ".join(SUPPORTED_CURRENCIES)}'
+            }), 400
         
         stats = db_manager.get_currency_statistics(currency, days)
         
@@ -161,6 +270,11 @@ def get_rate_statistics():
             'period_days': days
         })
     
+    except ValueError:
+        return jsonify({
+            'success': False,
+            'error': 'Invalid days parameter. Must be an integer between 1 and 365'
+        }), 400
     except Exception as e:
         logger.error(f"Error getting rate statistics: {e}")
         return jsonify({
@@ -170,6 +284,7 @@ def get_rate_statistics():
 
 
 @app.route('/api/sources/status')
+@rate_limit("30 per minute")
 def get_sources_status():
     """Get status of all rate sources."""
     try:
@@ -190,6 +305,7 @@ def get_sources_status():
 
 
 @app.route('/api/sources/refresh')
+@rate_limit("5 per minute")
 def refresh_rates():
     """Manually refresh rates from all sources."""
     try:
@@ -228,6 +344,7 @@ def refresh_rates():
 
 
 @app.route('/api/health')
+@rate_limit("30 per minute")
 def get_health_status():
     """Get system health status."""
     try:
@@ -270,6 +387,7 @@ def get_health_status():
 
 
 @app.route('/api/metrics/system')
+@rate_limit("30 per minute")
 def get_system_metrics():
     """Get system performance metrics."""
     try:
@@ -306,6 +424,7 @@ def get_system_metrics():
 
 
 @app.route('/api/export')
+@rate_limit("10 per minute")
 def export_data():
     """Export data in various formats."""
     try:
@@ -391,4 +510,8 @@ if __name__ == '__main__':
     os.makedirs('web/templates', exist_ok=True)
     
     # Run the Flask app
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(
+        host='0.0.0.0',
+        port=int(os.getenv('PORT', 5000)),
+        debug=os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    )

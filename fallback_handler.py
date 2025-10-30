@@ -1,7 +1,7 @@
 """Fallback handler for BNR exchange rates when API returns no new data."""
 
 from datetime import datetime, timedelta
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 import logging
 try:
     from database.models import DatabaseManager, ExchangeRate
@@ -25,17 +25,18 @@ def get_last_published_rate(currency: str, db_manager: DatabaseManager) -> Optio
         logger.error(f"Error retrieving last published rate: {e}")
         return None
 
-def apply_fallback_if_needed(rates: Dict[str, str], db_manager: DatabaseManager, max_age_days: int = 3) -> Dict[str, str]:
+def apply_fallback_if_needed(rates: Dict[str, Optional[float]], db_manager: DatabaseManager, supported_currencies: List[str], max_age_days: int = 3) -> Dict[str, Optional[float]]:
     """
     Apply fallback logic: if BNR API returns no data, use the last published rate.
     
     Args:
-        rates: Dictionary of fetched rates (may be empty or incomplete)
+        rates: Dictionary of fetched rates (may be empty or incomplete). Values are Optional[float].
         db_manager: Database manager instance
+        supported_currencies: List of supported currency codes to process
         max_age_days: Maximum age (in days) for which to accept a fallback rate
     
     Returns:
-        Dictionary with rates (either from API or fallback)
+        Dictionary with rates (either from API or fallback) as Optional[float]
     """
     if not DATABASE_AVAILABLE or not db_manager:
         logger.warning("Database not available, cannot apply fallback")
@@ -46,8 +47,8 @@ def apply_fallback_if_needed(rates: Dict[str, str], db_manager: DatabaseManager,
     max_age = timedelta(days=max_age_days)
     
     # Check each currency
-    for currency in ['EUR', 'USD', 'GBP']:  # Only process supported currencies
-        if currency in rates and rates[currency]:
+    for currency in supported_currencies:
+        if currency in rates and rates[currency] is not None:
             # We have a rate, check if it's recent
             last_rate = get_last_published_rate(currency, db_manager)
             if last_rate:
@@ -64,7 +65,7 @@ def apply_fallback_if_needed(rates: Dict[str, str], db_manager: DatabaseManager,
         if last_rate:
             rate_age = now - last_rate.timestamp
             if rate_age <= max_age:
-                rates[currency] = str(last_rate.rate)
+                rates[currency] = last_rate.rate
                 logger.info(f"Applied fallback for {currency}: using rate {last_rate.rate} from {last_rate.timestamp}")
                 fallback_applied = True
                 

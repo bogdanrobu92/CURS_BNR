@@ -57,11 +57,11 @@ def store_todays_bnr_data(db_manager: DatabaseManager):
         
         for currency in SUPPORTED_CURRENCIES:
             rate = get_bnr_api_rate(currency)
-            if rate:
+            if rate is not None:
                 exchange_rate = ExchangeRate(
                     id=None,
                     currency=currency,
-                    rate=rate,
+                    rate=rate,  # rate is already float
                     source='BNR',
                     timestamp=today,
                     multiplier=1,

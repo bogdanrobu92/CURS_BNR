@@ -5,9 +5,13 @@ Provides data persistence and historical analysis capabilities.
 import sqlite3
 import json
 from datetime import datetime, timedelta
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Any
 from dataclasses import dataclass
 from pathlib import Path
+from contextlib import contextmanager
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -88,9 +92,32 @@ class DatabaseManager:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self.init_database()
     
+    @contextmanager
+    def get_connection(self):
+        """Context manager for database connections with automatic commit/rollback.
+        
+        Usage:
+            with db_manager.get_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute(...)
+        
+        Yields:
+            sqlite3.Connection: Database connection with row_factory set
+        """
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        try:
+            yield conn
+            conn.commit()
+        except Exception:
+            conn.rollback()
+            raise
+        finally:
+            conn.close()
+    
     def init_database(self) -> None:
         """Initialize database with required tables."""
-        with sqlite3.connect(self.db_path) as conn:
+        with self.get_connection() as conn:
             cursor = conn.cursor()
             
             # Exchange rates table
@@ -184,42 +211,35 @@ class DatabaseManager:
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_trends_currency_timestamp ON rate_trends(currency, timestamp)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_news_date_region ON news_articles(date, region)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_news_timestamp ON news_articles(timestamp)")
-            
-            conn.commit()
+        
+        # Run migrations after initial setup
+        try:
+            from database.migrations import run_migrations
+            run_migrations(str(self.db_path))
+        except ImportError:
+            # Migrations module not available, skip
+            pass
+        except Exception as e:
+            logger.warning(f"Failed to run migrations: {e}")
     
     def clear_all_rates(self) -> None:
         """Clear all exchange rate data from the database."""
         with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("DELETE FROM exchange_rates")
-            cursor.execute("DELETE FROM rate_trends")
-            cursor.execute("DELETE FROM system_metrics")
-            conn.commit()
+            try:
+                cursor = conn.cursor()
+                cursor.execute("DELETE FROM exchange_rates")
+                cursor.execute("DELETE FROM rate_trends")
+                cursor.execute("DELETE FROM system_metrics")
+                conn.commit()
+            except Exception as e:
+                conn.rollback()
+                raise
     
     def save_exchange_rate(self, rate: ExchangeRate) -> int:
         """Save exchange rate to database."""
         with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-                INSERT INTO exchange_rates 
-                (currency, rate, source, timestamp, multiplier, is_valid)
-                VALUES (?, ?, ?, ?, ?, ?)
-            """, (
-                rate.currency,
-                rate.rate,
-                rate.source,
-                rate.timestamp,
-                rate.multiplier,
-                rate.is_valid
-            ))
-            return cursor.lastrowid
-    
-    def save_exchange_rates(self, rates: List[ExchangeRate]) -> List[int]:
-        """Save multiple exchange rates to database."""
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            ids = []
-            for rate in rates:
+            try:
+                cursor = conn.cursor()
                 cursor.execute("""
                     INSERT INTO exchange_rates 
                     (currency, rate, source, timestamp, multiplier, is_valid)
@@ -232,8 +252,44 @@ class DatabaseManager:
                     rate.multiplier,
                     rate.is_valid
                 ))
-                ids.append(cursor.lastrowid)
-            return ids
+                conn.commit()
+                return cursor.lastrowid
+            except Exception as e:
+                conn.rollback()
+                raise
+    
+    def save_exchange_rates(self, rates: List[ExchangeRate]) -> List[int]:
+        """Save multiple exchange rates to database using bulk insert."""
+        if not rates:
+            return []
+        
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            try:
+                cursor.executemany("""
+                    INSERT INTO exchange_rates 
+                    (currency, rate, source, timestamp, multiplier, is_valid)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                """, [
+                    (
+                        rate.currency,
+                        rate.rate,
+                        rate.source,
+                        rate.timestamp,
+                        rate.multiplier,
+                        rate.is_valid
+                    )
+                    for rate in rates
+                ])
+                conn.commit()
+                
+                # Calculate IDs: lastrowid is the ID of the last inserted row
+                # SQLite guarantees sequential IDs, so we can calculate backwards
+                first_id = cursor.lastrowid - len(rates) + 1
+                return list(range(first_id, cursor.lastrowid + 1))
+            except Exception as e:
+                conn.rollback()
+                raise
     
     def get_latest_rates(self, currency: Optional[str] = None) -> List[ExchangeRate]:
         """Get latest exchange rates."""
@@ -346,7 +402,7 @@ class DatabaseManager:
             
             return trends
     
-    def get_currency_statistics(self, currency: str, days: int = 30) -> Dict:
+    def get_currency_statistics(self, currency: str, days: int = 30) -> Dict[str, Any]:
         """Get statistics for a currency."""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
@@ -379,26 +435,31 @@ class DatabaseManager:
     def save_system_metrics(self, metrics: SystemMetrics) -> int:
         """Save system metrics to database."""
         with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-                INSERT INTO system_metrics 
-                (timestamp, job_execution_time, api_response_time, email_send_time,
-                 rates_retrieved, rates_failed, job_success, error_count,
-                 memory_usage_mb, cpu_percent)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, (
-                metrics.timestamp,
-                metrics.job_execution_time,
-                metrics.api_response_time,
-                metrics.email_send_time,
-                metrics.rates_retrieved,
-                metrics.rates_failed,
-                metrics.job_success,
-                metrics.error_count,
-                metrics.memory_usage_mb,
-                metrics.cpu_percent
-            ))
-            return cursor.lastrowid
+            try:
+                cursor = conn.cursor()
+                cursor.execute("""
+                    INSERT INTO system_metrics 
+                    (timestamp, job_execution_time, api_response_time, email_send_time,
+                     rates_retrieved, rates_failed, job_success, error_count,
+                     memory_usage_mb, cpu_percent)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    metrics.timestamp,
+                    metrics.job_execution_time,
+                    metrics.api_response_time,
+                    metrics.email_send_time,
+                    metrics.rates_retrieved,
+                    metrics.rates_failed,
+                    metrics.job_success,
+                    metrics.error_count,
+                    metrics.memory_usage_mb,
+                    metrics.cpu_percent
+                ))
+                conn.commit()
+                return cursor.lastrowid
+            except Exception as e:
+                conn.rollback()
+                raise
     
     def get_system_metrics(self, days: int = 7) -> List[SystemMetrics]:
         """Get system metrics for the specified period."""
@@ -463,26 +524,30 @@ class DatabaseManager:
     def cleanup_old_data(self, days: int = 90) -> int:
         """Clean up old data to keep database size manageable."""
         with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            
-            cutoff_date = datetime.now() - timedelta(days=days)
-            
-            # Delete old exchange rates
-            cursor.execute("DELETE FROM exchange_rates WHERE timestamp < ?", (cutoff_date,))
-            rates_deleted = cursor.rowcount
-            
-            # Delete old system metrics
-            cursor.execute("DELETE FROM system_metrics WHERE timestamp < ?", (cutoff_date,))
-            metrics_deleted = cursor.rowcount
-            
-            # Delete old trends
-            cursor.execute("DELETE FROM rate_trends WHERE timestamp < ?", (cutoff_date,))
-            trends_deleted = cursor.rowcount
-            
-            conn.commit()
-            return rates_deleted + metrics_deleted + trends_deleted
+            try:
+                cursor = conn.cursor()
+                
+                cutoff_date = datetime.now() - timedelta(days=days)
+                
+                # Delete old exchange rates
+                cursor.execute("DELETE FROM exchange_rates WHERE timestamp < ?", (cutoff_date,))
+                rates_deleted = cursor.rowcount
+                
+                # Delete old system metrics
+                cursor.execute("DELETE FROM system_metrics WHERE timestamp < ?", (cutoff_date,))
+                metrics_deleted = cursor.rowcount
+                
+                # Delete old trends
+                cursor.execute("DELETE FROM rate_trends WHERE timestamp < ?", (cutoff_date,))
+                trends_deleted = cursor.rowcount
+                
+                conn.commit()
+                return rates_deleted + metrics_deleted + trends_deleted
+            except Exception as e:
+                conn.rollback()
+                raise
     
-    def _row_to_exchange_rate(self, row) -> ExchangeRate:
+    def _row_to_exchange_rate(self, row: sqlite3.Row) -> ExchangeRate:
         """Convert database row to ExchangeRate object."""
         return ExchangeRate(
             id=row['id'],
@@ -494,7 +559,7 @@ class DatabaseManager:
             is_valid=bool(row['is_valid'])
         )
     
-    def _row_to_system_metrics(self, row) -> SystemMetrics:
+    def _row_to_system_metrics(self, row: sqlite3.Row) -> SystemMetrics:
         """Convert database row to SystemMetrics object."""
         return SystemMetrics(
             id=row['id'],
@@ -513,25 +578,30 @@ class DatabaseManager:
     def save_rate_alert(self, alert: RateAlert) -> int:
         """Save rate alert to database."""
         with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-                INSERT INTO rate_alerts 
-                (currency, start_date, end_date, start_rate, end_rate, 
-                 change_percent, duration_days, alert_type, severity, timestamp)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, (
-                alert.currency,
-                alert.start_date,
-                alert.end_date,
-                alert.start_rate,
-                alert.end_rate,
-                alert.change_percent,
-                alert.duration_days,
-                alert.alert_type,
-                alert.severity,
-                alert.timestamp
-            ))
-            return cursor.lastrowid
+            try:
+                cursor = conn.cursor()
+                cursor.execute("""
+                    INSERT INTO rate_alerts 
+                    (currency, start_date, end_date, start_rate, end_rate, 
+                     change_percent, duration_days, alert_type, severity, timestamp)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    alert.currency,
+                    alert.start_date,
+                    alert.end_date,
+                    alert.start_rate,
+                    alert.end_rate,
+                    alert.change_percent,
+                    alert.duration_days,
+                    alert.alert_type,
+                    alert.severity,
+                    alert.timestamp
+                ))
+                conn.commit()
+                return cursor.lastrowid
+            except Exception as e:
+                conn.rollback()
+                raise
     
     def get_rate_alerts(self, currency: str = None, start_date: datetime = None, 
                        end_date: datetime = None) -> List[RateAlert]:
@@ -562,7 +632,7 @@ class DatabaseManager:
             
             return [self._row_to_rate_alert(row) for row in rows]
     
-    def _row_to_rate_alert(self, row) -> RateAlert:
+    def _row_to_rate_alert(self, row: sqlite3.Row) -> RateAlert:
         """Convert database row to RateAlert object."""
         return RateAlert(
             id=row['id'],
@@ -581,22 +651,27 @@ class DatabaseManager:
     def save_news_article(self, article: NewsArticle) -> int:
         """Save news article to database."""
         with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-                INSERT INTO news_articles 
-                (date, region, title, description, source, url, published_at, timestamp)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """, (
-                article.date,
-                article.region,
-                article.title,
-                article.description,
-                article.source,
-                article.url,
-                article.published_at,
-                article.timestamp
-            ))
-            return cursor.lastrowid
+            try:
+                cursor = conn.cursor()
+                cursor.execute("""
+                    INSERT INTO news_articles 
+                    (date, region, title, description, source, url, published_at, timestamp)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    article.date,
+                    article.region,
+                    article.title,
+                    article.description,
+                    article.source,
+                    article.url,
+                    article.published_at,
+                    article.timestamp
+                ))
+                conn.commit()
+                return cursor.lastrowid
+            except Exception as e:
+                conn.rollback()
+                raise
     
     def get_news_articles(self, date: datetime, region: str = None) -> List[NewsArticle]:
         """Get news articles for a specific date and optional region."""
@@ -620,7 +695,7 @@ class DatabaseManager:
             rows = cursor.fetchall()
             return [self._row_to_news_article(row) for row in rows]
     
-    def _row_to_news_article(self, row) -> NewsArticle:
+    def _row_to_news_article(self, row: sqlite3.Row) -> NewsArticle:
         """Convert database row to NewsArticle object."""
         return NewsArticle(
             id=row['id'],

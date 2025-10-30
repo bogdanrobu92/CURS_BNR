@@ -108,14 +108,14 @@ Edit `main.py` to modify:
 
 ### Core Functions
 
-#### `get_bnr_api_rate(currency: str) -> Optional[str]`
+#### `get_bnr_api_rate(currency: str) -> Optional[float]`
 Fetches exchange rate for specified currency from BNR API.
 
 **Parameters:**
 - `currency` (str): 3-letter currency code (EUR, USD, GBP)
 
 **Returns:**
-- `Optional[str]`: Exchange rate as string, or None if not found
+- `Optional[float]`: Exchange rate as float, or None if not found
 
 **Raises:**
 - No exceptions (graceful error handling)
