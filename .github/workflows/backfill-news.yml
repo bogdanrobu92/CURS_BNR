@@ -1,0 +1,60 @@
+name: Backfill News Articles
+
+on:
+  workflow_dispatch:  # Manual trigger only
+  schedule:
+    # Run weekly on Sunday at 2 AM UTC to backfill any missing news
+    - cron: '0 2 * * 0'
+
+jobs:
+  backfill-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install -r requirements.txt
+
+      - name: Backfill News Articles
+        run: |
+          echo "Starting news backfill process..."
+          python3 backfill_news.py
+          echo "✅ News backfill completed!"
+
+      - name: Generate API Data Files
+        run: |
+          echo "Generating API data files..."
+          mkdir -p api
+          python3 generate_api_data.py
+          echo "✅ API data files generated successfully"
+
+      - name: Commit and push changes
+        continue-on-error: true
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          
+          # Add database and API files
+          git add data/exchange_rates.db api/ || echo "No files to add"
+          
+          # Commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Backfill news articles - $(date +%Y-%m-%d)" || echo "Commit skipped"
+            git push || echo "Push failed (this is OK)"
+          fi
+

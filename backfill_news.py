@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""
+Backfill news articles for historical dates.
+Fetches real news articles from NewsAPI for all dates that have exchange rate data.
+"""
+import os
+import sys
+from datetime import datetime, timedelta
+import time
+import logging
+
+# Add parent directory to path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+try:
+    from database.models import DatabaseManager
+    from news_fetcher import NewsFetcher
+    DATABASE_AVAILABLE = True
+except ImportError:
+    DATABASE_AVAILABLE = False
+    print("Error: Database or news_fetcher modules not available")
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+def get_dates_with_exchange_rates(db_manager: DatabaseManager) -> list:
+    """Get all unique dates that have exchange rate data."""
+    try:
+        # Get all exchange rates
+        rates = db_manager.get_rates_by_date_range(
+            datetime(2020, 1, 1),  # Start from 2020
+            datetime.now()
+        )
+        
+        # Extract unique dates
+        unique_dates = sorted(set(rate.timestamp.date() for rate in rates))
+        logger.info(f"Found {len(unique_dates)} dates with exchange rate data")
+        return unique_dates
+    except Exception as e:
+        logger.error(f"Error getting dates with exchange rates: {e}")
+        return []
+
+def get_dates_without_news(db_manager: DatabaseManager, dates: list) -> list:
+    """Filter out dates that already have news articles."""
+    try:
+        dates_with_news = set()
+        
+        for date in dates:
+            date_obj = datetime.combine(date, datetime.min.time())
+            europe_articles = db_manager.get_news_articles(date_obj, 'europe')
+            romania_articles = db_manager.get_news_articles(date_obj, 'romania')
+            
+            if europe_articles or romania_articles:
+                dates_with_news.add(date)
+        
+        dates_without_news = [d for d in dates if d not in dates_with_news]
+        logger.info(f"Found {len(dates_without_news)} dates without news articles")
+        return dates_without_news
+    except Exception as e:
+        logger.error(f"Error checking existing news: {e}")
+        return dates
+
+def backfill_news_for_date(fetcher: NewsFetcher, db_manager: DatabaseManager, date: datetime) -> tuple:
+    """Fetch and save news articles for a specific date."""
+    europe_count = 0
+    romania_count = 0
+    
+    try:
+        # Fetch European news
+        logger.info(f"Fetching European news for {date.date()}")
+        europe_articles = fetcher.fetch_news_for_date(date, 'europe')
+        
+        # Save European articles
+        if europe_articles:
+            for article in europe_articles:
+                try:
+                    db_manager.save_news_article(article)
+                    europe_count += 1
+                except Exception as e:
+                    logger.warning(f"Failed to save European article: {e}")
+        
+        # Fetch Romanian news
+        logger.info(f"Fetching Romanian news for {date.date()}")
+        romania_articles = fetcher.fetch_news_for_date(date, 'romania')
+        
+        # Save Romanian articles
+        if romania_articles:
+            for article in romania_articles:
+                try:
+                    db_manager.save_news_article(article)
+                    romania_count += 1
+                except Exception as e:
+                    logger.warning(f"Failed to save Romanian article: {e}")
+        
+        return europe_count, romania_count
+        
+    except Exception as e:
+        logger.error(f"Error fetching news for {date.date()}: {e}")
+        return 0, 0
+
+def main():
+    """Main backfill function."""
+    if not DATABASE_AVAILABLE:
+        logger.error("Database not available. Please ensure database models are properly configured.")
+        return
+    
+    # Check if API key is configured
+    newsapi_key = os.getenv('NEWSAPI_KEY', '')
+    if not newsapi_key or newsapi_key == 'demo_key':
+        logger.warning("⚠️  NEWSAPI_KEY not configured!")
+        logger.warning("   Set NEWSAPI_KEY environment variable or configure it in GitHub Secrets")
+        logger.warning("   Example: export NEWSAPI_KEY='your_api_key_here'")
+        logger.warning("   Will attempt to fetch anyway, but will fall back to sample news if API key is missing")
+    
+    try:
+        db_manager = DatabaseManager()
+        fetcher = NewsFetcher()
+        
+        logger.info("="*60)
+        logger.info("Starting news backfill process")
+        logger.info("="*60)
+        
+        # Get all dates with exchange rate data
+        dates = get_dates_with_exchange_rates(db_manager)
+        
+        if not dates:
+            logger.warning("No dates with exchange rate data found")
+            return
+        
+        # Filter out dates that already have news
+        dates_to_fetch = get_dates_without_news(db_manager, dates)
+        
+        if not dates_to_fetch:
+            logger.info("✅ All dates already have news articles!")
+            return
+        
+        logger.info(f"Will fetch news for {len(dates_to_fetch)} dates")
+        
+        # Fetch news for each date
+        total_europe = 0
+        total_romania = 0
+        successful_dates = 0
+        failed_dates = 0
+        
+        for i, date in enumerate(dates_to_fetch, 1):
+            date_obj = datetime.combine(date, datetime.min.time())
+            
+            logger.info(f"\n[{i}/{len(dates_to_fetch)}] Processing {date}")
+            logger.info("-" * 60)
+            
+            try:
+                europe_count, romania_count = backfill_news_for_date(fetcher, db_manager, date_obj)
+                
+                if europe_count > 0 or romania_count > 0:
+                    total_europe += europe_count
+                    total_romania += romania_count
+                    successful_dates += 1
+                    logger.info(f"✅ Successfully fetched {europe_count} European + {romania_count} Romanian articles")
+                else:
+                    failed_dates += 1
+                    logger.warning(f"⚠️  No articles fetched for {date}")
+                
+                # Rate limiting - be respectful to the API
+                if i < len(dates_to_fetch):
+                    time.sleep(1)  # 1 second delay between requests
+                    
+            except Exception as e:
+                logger.error(f"❌ Failed to process {date}: {e}")
+                failed_dates += 1
+                continue
+        
+        # Summary
+        logger.info("\n" + "="*60)
+        logger.info("Backfill Summary")
+        logger.info("="*60)
+        logger.info(f"Total dates processed: {len(dates_to_fetch)}")
+        logger.info(f"Successful: {successful_dates}")
+        logger.info(f"Failed: {failed_dates}")
+        logger.info(f"Total articles fetched:")
+        logger.info(f"  - European: {total_europe}")
+        logger.info(f"  - Romanian: {total_romania}")
+        logger.info(f"  - Total: {total_europe + total_romania}")
+        logger.info("="*60)
+        
+    except Exception as e:
+        logger.error(f"Backfill failed with error: {e}")
+        import traceback
+        traceback.print_exc()
+
+if __name__ == "__main__":
+    main()
+
