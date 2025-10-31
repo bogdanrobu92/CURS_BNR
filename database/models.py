@@ -255,6 +255,8 @@ class DatabaseManager:
                     rate.is_valid
                 ))
                 conn.commit()
+                if cursor.lastrowid is None:
+                    raise ValueError("Failed to insert exchange rate - no row ID returned")
                 return cursor.lastrowid
             except Exception as e:
                 conn.rollback()
@@ -469,6 +471,8 @@ class DatabaseManager:
                     metrics.cpu_percent
                 ))
                 conn.commit()
+                if cursor.lastrowid is None:
+                    raise ValueError("Failed to insert system metrics - no row ID returned")
                 return cursor.lastrowid
             except Exception as e:
                 conn.rollback()
@@ -647,13 +651,15 @@ class DatabaseManager:
                     timestamp_str
                 ))
                 conn.commit()
+                if cursor.lastrowid is None:
+                    raise ValueError("Failed to insert rate alert - no row ID returned")
                 return cursor.lastrowid
             except Exception as e:
                 conn.rollback()
                 raise
     
-    def get_rate_alerts(self, currency: str = None, start_date: datetime = None, 
-                       end_date: datetime = None) -> List[RateAlert]:
+    def get_rate_alerts(self, currency: Optional[str] = None, start_date: Optional[datetime] = None, 
+                       end_date: Optional[datetime] = None) -> List[RateAlert]:
         """Get rate alerts with optional filtering."""
         with sqlite3.connect(self.db_path) as conn:
             conn.row_factory = sqlite3.Row
@@ -735,12 +741,14 @@ class DatabaseManager:
                     timestamp_str
                 ))
                 conn.commit()
+                if cursor.lastrowid is None:
+                    raise ValueError("Failed to insert news article - no row ID returned")
                 return cursor.lastrowid
             except Exception as e:
                 conn.rollback()
                 raise
     
-    def get_news_articles(self, date: datetime, region: str = None) -> List[NewsArticle]:
+    def get_news_articles(self, date: datetime, region: Optional[str] = None) -> List[NewsArticle]:
         """Get news articles for a specific date and optional region."""
         with sqlite3.connect(self.db_path) as conn:
             conn.row_factory = sqlite3.Row
