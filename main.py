@@ -301,8 +301,8 @@ def collect_exchange_rates() -> Dict[str, float]:
         
         if rate_provider and db_manager:
             # Use backup sources with fallback
+            api_start_time = time.time()  # Initialize before try block
             try:
-                api_start_time = time.time()
                 all_rates = rate_provider.get_rates_with_fallback(SUPPORTED_CURRENCIES)
                 best_rates = rate_provider.get_best_rates(SUPPORTED_CURRENCIES)
                 api_response_time = time.time() - api_start_time
@@ -327,8 +327,12 @@ def collect_exchange_rates() -> Dict[str, float]:
                             exchange_rates.append(exchange_rate)
                 
                 if exchange_rates:
-                    db_manager.save_exchange_rates(exchange_rates)
-                    logger.info(f"Saved {len(exchange_rates)} rates to database")
+                    try:
+                        db_manager.save_exchange_rates(exchange_rates)
+                        logger.info(f"Saved {len(exchange_rates)} rates to database")
+                    except Exception as db_error:
+                        logger.error(f"Failed to save rates to database: {db_error}")
+                        # Continue with best_rates even if save failed
                 
                 # Use best rates
                 rates = best_rates
@@ -336,10 +340,33 @@ def collect_exchange_rates() -> Dict[str, float]:
                 
             except Exception as e:
                 logger.error(f"Backup sources failed: {e}, falling back to BNR only")
+                # Calculate api_response_time from the start of API call attempt
                 api_response_time = time.time() - api_start_time
                 # Fallback to original BNR API
                 rates, error_count = fetch_rates_from_bnr_api(SUPPORTED_CURRENCIES)
                 successful_rates = sum(1 for rate in rates.values() if rate is not None)
+                
+                # Save the BNR rates to database
+                if successful_rates > 0 and db_manager:
+                    try:
+                        exchange_rates = []
+                        for currency, rate in rates.items():
+                            if rate is not None:
+                                exchange_rate = ExchangeRate(
+                                    id=None,
+                                    currency=currency,
+                                    rate=rate,
+                                    source='BNR',
+                                    timestamp=datetime.now(),
+                                    multiplier=1,
+                                    is_valid=True
+                                )
+                                exchange_rates.append(exchange_rate)
+                        if exchange_rates:
+                            db_manager.save_exchange_rates(exchange_rates)
+                            logger.info(f"Saved {len(exchange_rates)} BNR rates to database")
+                    except Exception as db_error:
+                        logger.error(f"Failed to save BNR rates to database: {db_error}")
         else:
             # Original BNR API only
             api_start_time = time.time()

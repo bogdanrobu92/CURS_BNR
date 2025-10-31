@@ -240,6 +240,8 @@ class DatabaseManager:
         with sqlite3.connect(self.db_path) as conn:
             try:
                 cursor = conn.cursor()
+                # Convert datetime to ISO format string for consistent storage
+                timestamp_str = rate.timestamp.isoformat() if isinstance(rate.timestamp, datetime) else str(rate.timestamp)
                 cursor.execute("""
                     INSERT INTO exchange_rates 
                     (currency, rate, source, timestamp, multiplier, is_valid)
@@ -248,7 +250,7 @@ class DatabaseManager:
                     rate.currency,
                     rate.rate,
                     rate.source,
-                    rate.timestamp,
+                    timestamp_str,
                     rate.multiplier,
                     rate.is_valid
                 ))
@@ -275,7 +277,7 @@ class DatabaseManager:
                         rate.currency,
                         rate.rate,
                         rate.source,
-                        rate.timestamp,
+                        rate.timestamp.isoformat() if isinstance(rate.timestamp, datetime) else str(rate.timestamp),
                         rate.multiplier,
                         rate.is_valid
                     )
@@ -285,6 +287,9 @@ class DatabaseManager:
                 
                 # Calculate IDs: lastrowid is the ID of the last inserted row
                 # SQLite guarantees sequential IDs, so we can calculate backwards
+                if cursor.lastrowid is None:
+                    # No rows were inserted, return empty list
+                    return []
                 first_id = cursor.lastrowid - len(rates) + 1
                 return list(range(first_id, cursor.lastrowid + 1))
             except Exception as e:
@@ -337,18 +342,22 @@ class DatabaseManager:
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
             
+            # Convert datetime objects to ISO format strings for querying
+            start_date_str = start_date.isoformat() if isinstance(start_date, datetime) else str(start_date)
+            end_date_str = end_date.isoformat() if isinstance(end_date, datetime) else str(end_date)
+            
             if currency:
                 cursor.execute("""
                     SELECT * FROM exchange_rates 
                     WHERE currency = ? AND timestamp BETWEEN ? AND ? AND is_valid = 1
                     ORDER BY timestamp DESC
-                """, (currency, start_date, end_date))
+                """, (currency, start_date_str, end_date_str))
             else:
                 cursor.execute("""
                     SELECT * FROM exchange_rates 
                     WHERE timestamp BETWEEN ? AND ? AND is_valid = 1
                     ORDER BY timestamp DESC
-                """, (start_date, end_date))
+                """, (start_date_str, end_date_str))
             
             rows = cursor.fetchall()
             return [self._row_to_exchange_rate(row) for row in rows]
@@ -361,11 +370,12 @@ class DatabaseManager:
             
             # Get rates for the specified period
             start_date = datetime.now() - timedelta(days=days)
+            start_date_str = start_date.isoformat()
             cursor.execute("""
                 SELECT * FROM exchange_rates 
                 WHERE currency = ? AND timestamp >= ? AND is_valid = 1
                 ORDER BY timestamp ASC
-            """, (currency, start_date))
+            """, (currency, start_date_str))
             
             rows = cursor.fetchall()
             rates = [self._row_to_exchange_rate(row) for row in rows]
@@ -408,6 +418,7 @@ class DatabaseManager:
             cursor = conn.cursor()
             
             start_date = datetime.now() - timedelta(days=days)
+            start_date_str = start_date.isoformat()
             cursor.execute("""
                 SELECT 
                     MIN(rate) as min_rate,
@@ -417,7 +428,7 @@ class DatabaseManager:
                     COUNT(DISTINCT DATE(timestamp)) as days_with_data
                 FROM exchange_rates 
                 WHERE currency = ? AND timestamp >= ? AND is_valid = 1
-            """, (currency, start_date))
+            """, (currency, start_date_str))
             
             row = cursor.fetchone()
             if not row:
@@ -437,6 +448,8 @@ class DatabaseManager:
         with sqlite3.connect(self.db_path) as conn:
             try:
                 cursor = conn.cursor()
+                # Convert datetime to ISO format string for consistent storage
+                timestamp_str = metrics.timestamp.isoformat() if isinstance(metrics.timestamp, datetime) else str(metrics.timestamp)
                 cursor.execute("""
                     INSERT INTO system_metrics 
                     (timestamp, job_execution_time, api_response_time, email_send_time,
@@ -444,7 +457,7 @@ class DatabaseManager:
                      memory_usage_mb, cpu_percent)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
-                    metrics.timestamp,
+                    timestamp_str,
                     metrics.job_execution_time,
                     metrics.api_response_time,
                     metrics.email_send_time,
@@ -549,21 +562,53 @@ class DatabaseManager:
     
     def _row_to_exchange_rate(self, row: sqlite3.Row) -> ExchangeRate:
         """Convert database row to ExchangeRate object."""
+        timestamp_str = row['timestamp']
+        # Handle both ISO format (with 'T') and SQLite format (with space)
+        if isinstance(timestamp_str, str):
+            # Replace space with 'T' if needed for fromisoformat compatibility
+            if ' ' in timestamp_str and 'T' not in timestamp_str:
+                timestamp_str = timestamp_str.replace(' ', 'T', 1)
+            try:
+                timestamp = datetime.fromisoformat(timestamp_str)
+            except ValueError:
+                # Fallback to strptime for older formats
+                try:
+                    timestamp = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S.%f')
+                except ValueError:
+                    timestamp = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+        else:
+            timestamp = timestamp_str
         return ExchangeRate(
             id=row['id'],
             currency=row['currency'],
             rate=row['rate'],
             source=row['source'],
-            timestamp=datetime.fromisoformat(row['timestamp']),
+            timestamp=timestamp,
             multiplier=row['multiplier'],
             is_valid=bool(row['is_valid'])
         )
     
     def _row_to_system_metrics(self, row: sqlite3.Row) -> SystemMetrics:
         """Convert database row to SystemMetrics object."""
+        timestamp_str = row['timestamp']
+        # Handle both ISO format (with 'T') and SQLite format (with space)
+        if isinstance(timestamp_str, str):
+            # Replace space with 'T' if needed for fromisoformat compatibility
+            if ' ' in timestamp_str and 'T' not in timestamp_str:
+                timestamp_str = timestamp_str.replace(' ', 'T', 1)
+            try:
+                timestamp = datetime.fromisoformat(timestamp_str)
+            except ValueError:
+                # Fallback to strptime for older formats
+                try:
+                    timestamp = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S.%f')
+                except ValueError:
+                    timestamp = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+        else:
+            timestamp = timestamp_str
         return SystemMetrics(
             id=row['id'],
-            timestamp=datetime.fromisoformat(row['timestamp']),
+            timestamp=timestamp,
             job_execution_time=row['job_execution_time'],
             api_response_time=row['api_response_time'],
             email_send_time=row['email_send_time'],
@@ -580,6 +625,10 @@ class DatabaseManager:
         with sqlite3.connect(self.db_path) as conn:
             try:
                 cursor = conn.cursor()
+                # Convert datetime objects to ISO format strings
+                start_date_str = alert.start_date.isoformat() if isinstance(alert.start_date, datetime) else str(alert.start_date)
+                end_date_str = alert.end_date.isoformat() if isinstance(alert.end_date, datetime) else str(alert.end_date)
+                timestamp_str = alert.timestamp.isoformat() if isinstance(alert.timestamp, datetime) else str(alert.timestamp)
                 cursor.execute("""
                     INSERT INTO rate_alerts 
                     (currency, start_date, end_date, start_rate, end_rate, 
@@ -587,15 +636,15 @@ class DatabaseManager:
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     alert.currency,
-                    alert.start_date,
-                    alert.end_date,
+                    start_date_str,
+                    end_date_str,
                     alert.start_rate,
                     alert.end_rate,
                     alert.change_percent,
                     alert.duration_days,
                     alert.alert_type,
                     alert.severity,
-                    alert.timestamp
+                    timestamp_str
                 ))
                 conn.commit()
                 return cursor.lastrowid
@@ -619,11 +668,11 @@ class DatabaseManager:
             
             if start_date:
                 query += " AND start_date >= ?"
-                params.append(start_date)
+                params.append(start_date.isoformat() if isinstance(start_date, datetime) else str(start_date))
             
             if end_date:
                 query += " AND end_date <= ?"
-                params.append(end_date)
+                params.append(end_date.isoformat() if isinstance(end_date, datetime) else str(end_date))
             
             query += " ORDER BY start_date DESC"
             
@@ -634,18 +683,32 @@ class DatabaseManager:
     
     def _row_to_rate_alert(self, row: sqlite3.Row) -> RateAlert:
         """Convert database row to RateAlert object."""
+        def parse_datetime(ts):
+            """Helper to parse datetime from string."""
+            if isinstance(ts, str):
+                if ' ' in ts and 'T' not in ts:
+                    ts = ts.replace(' ', 'T', 1)
+                try:
+                    return datetime.fromisoformat(ts)
+                except ValueError:
+                    try:
+                        return datetime.strptime(ts, '%Y-%m-%d %H:%M:%S.%f')
+                    except ValueError:
+                        return datetime.strptime(ts, '%Y-%m-%d %H:%M:%S')
+            return ts
+        
         return RateAlert(
             id=row['id'],
             currency=row['currency'],
-            start_date=datetime.fromisoformat(row['start_date']),
-            end_date=datetime.fromisoformat(row['end_date']),
+            start_date=parse_datetime(row['start_date']),
+            end_date=parse_datetime(row['end_date']),
             start_rate=row['start_rate'],
             end_rate=row['end_rate'],
             change_percent=row['change_percent'],
             duration_days=row['duration_days'],
             alert_type=row['alert_type'],
             severity=row['severity'],
-            timestamp=datetime.fromisoformat(row['timestamp'])
+            timestamp=parse_datetime(row['timestamp'])
         )
     
     def save_news_article(self, article: NewsArticle) -> int:
@@ -653,19 +716,23 @@ class DatabaseManager:
         with sqlite3.connect(self.db_path) as conn:
             try:
                 cursor = conn.cursor()
+                # Convert datetime objects to ISO format strings
+                date_str = article.date.isoformat() if isinstance(article.date, datetime) else str(article.date)
+                published_at_str = article.published_at.isoformat() if isinstance(article.published_at, datetime) else str(article.published_at)
+                timestamp_str = article.timestamp.isoformat() if isinstance(article.timestamp, datetime) else str(article.timestamp)
                 cursor.execute("""
                     INSERT INTO news_articles 
                     (date, region, title, description, source, url, published_at, timestamp)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
-                    article.date,
+                    date_str,
                     article.region,
                     article.title,
                     article.description,
                     article.source,
                     article.url,
-                    article.published_at,
-                    article.timestamp
+                    published_at_str,
+                    timestamp_str
                 ))
                 conn.commit()
                 return cursor.lastrowid
@@ -679,32 +746,49 @@ class DatabaseManager:
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
             
+            # Convert datetime to ISO format string for querying
+            date_str = date.isoformat() if isinstance(date, datetime) else str(date)
+            
             if region:
                 cursor.execute("""
                     SELECT * FROM news_articles 
                     WHERE date = ? AND region = ?
                     ORDER BY published_at DESC
-                """, (date, region))
+                """, (date_str, region))
             else:
                 cursor.execute("""
                     SELECT * FROM news_articles 
                     WHERE date = ?
                     ORDER BY region, published_at DESC
-                """, (date,))
+                """, (date_str,))
             
             rows = cursor.fetchall()
             return [self._row_to_news_article(row) for row in rows]
     
     def _row_to_news_article(self, row: sqlite3.Row) -> NewsArticle:
         """Convert database row to NewsArticle object."""
+        def parse_datetime(ts):
+            """Helper to parse datetime from string."""
+            if isinstance(ts, str):
+                if ' ' in ts and 'T' not in ts:
+                    ts = ts.replace(' ', 'T', 1)
+                try:
+                    return datetime.fromisoformat(ts)
+                except ValueError:
+                    try:
+                        return datetime.strptime(ts, '%Y-%m-%d %H:%M:%S.%f')
+                    except ValueError:
+                        return datetime.strptime(ts, '%Y-%m-%d %H:%M:%S')
+            return ts
+        
         return NewsArticle(
             id=row['id'],
-            date=datetime.fromisoformat(row['date']),
+            date=parse_datetime(row['date']),
             region=row['region'],
             title=row['title'],
             description=row['description'],
             source=row['source'],
             url=row['url'],
-            published_at=datetime.fromisoformat(row['published_at']),
-            timestamp=datetime.fromisoformat(row['timestamp'])
+            published_at=parse_datetime(row['published_at']),
+            timestamp=parse_datetime(row['timestamp'])
         )
