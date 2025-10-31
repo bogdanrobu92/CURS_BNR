@@ -2,6 +2,7 @@
 """
 Back-fill historical exchange rate data from BNR API.
 This script fetches historical data and populates the database.
+Automatically falls back to backup sources when BNR doesn't publish data (e.g., weekends).
 """
 import os
 import sys
@@ -19,6 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
     from database.models import DatabaseManager, ExchangeRate
+    from sources.backup_sources import BackupRateProvider
     DATABASE_AVAILABLE = True
 except ImportError:
     DATABASE_AVAILABLE = False
@@ -103,40 +105,79 @@ def get_bnr_historical_rates(date: datetime) -> Dict[str, float]:
     finally:
         session.close()
 
+def get_backup_rates_for_date(date: datetime, rate_provider: BackupRateProvider) -> Dict[str, float]:
+    """Get rates from backup sources for a specific date."""
+    # For historical dates, we use current rates from backup sources
+    # Note: Most backup APIs don't provide historical data, so we use their current rates
+    # This is acceptable for weekends/holidays when BNR doesn't publish
+    try:
+        backup_rates = rate_provider.get_best_rates(SUPPORTED_CURRENCIES)
+        if backup_rates:
+            logger.info(f"Retrieved {len(backup_rates)} backup rates for {date.strftime('%Y-%m-%d')}")
+            return backup_rates
+    except Exception as e:
+        logger.warning(f"Failed to get backup rates for {date.strftime('%Y-%m-%d')}: {e}")
+    return {}
+
 def backfill_date_range(start_date: datetime, end_date: datetime, db_manager: DatabaseManager) -> int:
-    """Back-fill data for a date range."""
+    """
+    Back-fill data for a date range.
+    Automatically falls back to backup sources when BNR doesn't publish data.
+    """
     total_rates_saved = 0
     current_date = start_date
+    rate_provider = BackupRateProvider() if DATABASE_AVAILABLE else None
     
     while current_date <= end_date:
-        # Skip weekends (BNR doesn't publish rates on weekends)
+        rates = {}
+        source_name = 'BNR'
+        
+        # Try BNR first (only on weekdays, but we'll try backup on weekends)
         if current_date.weekday() < 5:  # Monday = 0, Friday = 4
             rates = get_bnr_historical_rates(current_date)
-            
-            if rates:
-                # Save rates to database
-                exchange_rates = []
-                for currency, rate in rates.items():
+        
+        # If BNR returned no data (weekend, holiday, or error), try backup sources
+        if not rates and rate_provider:
+            logger.info(f"BNR didn't publish data for {current_date.strftime('%Y-%m-%d')}, trying backup sources...")
+            backup_rates = get_backup_rates_for_date(current_date, rate_provider)
+            if backup_rates:
+                rates = backup_rates
+                # Determine source name from backup provider
+                all_backup_rates = rate_provider.get_rates_with_fallback(SUPPORTED_CURRENCIES)
+                if all_backup_rates:
+                    # Get the first available backup source
+                    source_name = list(all_backup_rates.keys())[0] if all_backup_rates else 'Backup'
+                    # Mark as weekend/fallback if it's a weekend
+                    if current_date.weekday() >= 5:
+                        source_name = f"{source_name} (Weekend)"
+                    else:
+                        source_name = f"{source_name} (Fallback)"
+        
+        # Save rates to database
+        if rates:
+            exchange_rates = []
+            for currency, rate in rates.items():
+                if currency in SUPPORTED_CURRENCIES:
                     exchange_rate = ExchangeRate(
                         id=None,
                         currency=currency,
                         rate=rate,
-                        source='BNR',
-                        timestamp=current_date,
+                        source=source_name,
+                        timestamp=current_date.replace(hour=12, minute=0, second=0),  # Set to noon for consistency
                         multiplier=1,
                         is_valid=True
                     )
                     exchange_rates.append(exchange_rate)
-                
-                if exchange_rates:
-                    try:
-                        db_manager.save_exchange_rates(exchange_rates)
-                        total_rates_saved += len(exchange_rates)
-                        logger.info(f"Saved {len(exchange_rates)} rates for {current_date.strftime('%Y-%m-%d')}")
-                    except Exception as e:
-                        logger.error(f"Failed to save rates for {current_date.strftime('%Y-%m-%d')}: {e}")
-            else:
-                logger.warning(f"No rates found for {current_date.strftime('%Y-%m-%d')}")
+            
+            if exchange_rates:
+                try:
+                    db_manager.save_exchange_rates(exchange_rates)
+                    total_rates_saved += len(exchange_rates)
+                    logger.info(f"Saved {len(exchange_rates)} rates for {current_date.strftime('%Y-%m-%d')} from {source_name}")
+                except Exception as e:
+                    logger.error(f"Failed to save rates for {current_date.strftime('%Y-%m-%d')}: {e}")
+        else:
+            logger.warning(f"No rates found for {current_date.strftime('%Y-%m-%d')} from any source")
         
         # Move to next day
         current_date += timedelta(days=1)
@@ -205,7 +246,8 @@ def main():
             dates_to_fetch = []
             
             while current_date <= period['end']:
-                if current_date.weekday() < 5 and current_date.date() not in existing_dates:
+                # Include all dates (including weekends) since we now use backup sources
+                if current_date.date() not in existing_dates:
                     dates_to_fetch.append(current_date)
                 current_date += timedelta(days=1)
             

@@ -2,11 +2,11 @@
   "success": true,
   "data": {
     "EUR": {
-      "rate": 5.0835,
-      "source": "BNR",
-      "timestamp": "2025-10-24T16:11:56.396002",
+      "rate": 5.0887,
+      "source": "Exchange Rates UK (Weekend)",
+      "timestamp": "2025-10-18T12:00:00",
       "multiplier": 1
     }
   },
-  "timestamp": "2025-10-26T09:34:23.552362"
+  "timestamp": "2025-10-31T09:58:07.785193"
 }

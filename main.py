@@ -313,16 +313,33 @@ def collect_exchange_rates() -> Dict[str, float]:
         error_count = 0
         
         if rate_provider and db_manager:
-            # Use backup sources with fallback
+            # Use backup sources with automatic fallback when BNR doesn't publish data
             api_start_time = time.time()  # Initialize before try block
             try:
                 all_rates = rate_provider.get_rates_with_fallback(SUPPORTED_CURRENCIES)
+                
+                # Check if BNR returned data (it doesn't publish on weekends/holidays)
+                bnr_rates = all_rates.get('BNR', {})
+                bnr_has_data = len(bnr_rates) > 0
+                
+                if not bnr_has_data:
+                    logger.info("BNR didn't publish data (likely weekend/holiday), using backup sources")
+                
                 best_rates = rate_provider.get_best_rates(SUPPORTED_CURRENCIES)
                 api_response_time = time.time() - api_start_time
                 
                 # Save all rates to database
                 exchange_rates = []
                 for source_name, source_rates in all_rates.items():
+                    # Mark backup sources appropriately if BNR didn't publish
+                    display_source = source_name
+                    if not bnr_has_data and source_name != 'BNR':
+                        # Check if it's a weekend
+                        if datetime.now().weekday() >= 5:  # Saturday = 5, Sunday = 6
+                            display_source = f"{source_name} (Weekend)"
+                        else:
+                            display_source = f"{source_name} (Fallback)"
+                    
                     for currency, rate in source_rates.items():
                         if currency in SUPPORTED_CURRENCIES:
                             if not validate_rate(rate):
@@ -332,7 +349,7 @@ def collect_exchange_rates() -> Dict[str, float]:
                                 id=None,
                                 currency=currency,
                                 rate=rate,
-                                source=source_name,
+                                source=display_source,
                                 timestamp=datetime.now(),
                                 multiplier=1,
                                 is_valid=True
@@ -350,6 +367,9 @@ def collect_exchange_rates() -> Dict[str, float]:
                 # Use best rates
                 rates = best_rates
                 successful_rates = len([r for r in rates.values() if r is not None])
+                
+                if not bnr_has_data and successful_rates > 0:
+                    logger.info(f"Successfully retrieved {successful_rates} rates from backup sources")
                 
             except Exception as e:
                 logger.error(f"Backup sources failed: {e}, falling back to BNR only")
