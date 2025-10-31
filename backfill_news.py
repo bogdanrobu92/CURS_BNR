@@ -127,9 +127,9 @@ def backfill_news_for_date(fetcher: NewsFetcher, db_manager: DatabaseManager, da
         if deleted_all > 0:
             logger.info(f"Cleared all cached news for {date.date()} to force fresh fetch")
         
-        # Fetch European news directly from API (bypass cache)
-        logger.info(f"Fetching European news for {date.date()} (bypassing cache)")
-        europe_articles = fetcher._fetch_european_news(date)
+        # Fetch European news directly from API (bypass cache, no fallback to sample)
+        logger.info(f"Fetching European news for {date.date()} (bypassing cache, no fallback)")
+        europe_articles = fetcher._fetch_european_news(date, force_no_fallback=True)
         
         # Only save if we got real API articles (not sample news)
         real_europe_articles = [a for a in europe_articles if not is_sample_news_source(a.source)]
@@ -141,12 +141,13 @@ def backfill_news_for_date(fetcher: NewsFetcher, db_manager: DatabaseManager, da
                     europe_count += 1
                 except Exception as e:
                     logger.warning(f"Failed to save European article: {e}")
+            logger.info(f"✅ Saved {europe_count} real European articles for {date.date()}")
         else:
-            logger.warning(f"No real European news found for {date.date()} (API may have returned no results)")
+            logger.warning(f"⚠️ No real European news found for {date.date()} (API may have returned no results)")
         
-        # Fetch Romanian news directly from API (bypass cache)
-        logger.info(f"Fetching Romanian news for {date.date()} (bypassing cache)")
-        romania_articles = fetcher._fetch_romanian_news(date)
+        # Fetch Romanian news directly from API (bypass cache, no fallback to sample)
+        logger.info(f"Fetching Romanian news for {date.date()} (bypassing cache, no fallback)")
+        romania_articles = fetcher._fetch_romanian_news(date, force_no_fallback=True)
         
         # Only save if we got real API articles (not sample news)
         real_romania_articles = [a for a in romania_articles if not is_sample_news_source(a.source)]
@@ -158,8 +159,9 @@ def backfill_news_for_date(fetcher: NewsFetcher, db_manager: DatabaseManager, da
                     romania_count += 1
                 except Exception as e:
                     logger.warning(f"Failed to save Romanian article: {e}")
+            logger.info(f"✅ Saved {romania_count} real Romanian articles for {date.date()}")
         else:
-            logger.warning(f"No real Romanian news found for {date.date()} (API may have returned no results)")
+            logger.warning(f"⚠️ No real Romanian news found for {date.date()} (API may have returned no results)")
         
         return europe_count, romania_count
         

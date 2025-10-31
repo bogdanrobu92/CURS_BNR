@@ -114,7 +114,7 @@ class NewsFetcher:
         
         return articles
     
-    def _fetch_european_news(self, date: datetime) -> List[NewsArticle]:
+    def _fetch_european_news(self, date: datetime, force_no_fallback: bool = False) -> List[NewsArticle]:
         """Fetch European news articles."""
         articles = []
         
@@ -122,23 +122,30 @@ class NewsFetcher:
         try:
             newsapi_articles = self._fetch_from_newsapi(date, 'europe')
             articles.extend(newsapi_articles)
+            if newsapi_articles:
+                print(f"✅ NewsAPI returned {len(newsapi_articles)} European articles")
+            else:
+                print(f"⚠️ NewsAPI returned 0 European articles for {date.date()}")
         except Exception as e:
-            print(f"NewsAPI error: {e}")
+            print(f"❌ NewsAPI error: {e}")
         
         # Try Guardian API as backup
         try:
             guardian_articles = self._fetch_from_guardian(date, 'europe')
             articles.extend(guardian_articles)
+            if guardian_articles:
+                print(f"✅ Guardian API returned {len(guardian_articles)} European articles")
         except Exception as e:
-            print(f"Guardian API error: {e}")
+            print(f"⚠️ Guardian API error: {e}")
         
-        # If no real articles, generate sample data
-        if not articles:
+        # If no real articles, generate sample data (unless forced not to)
+        if not articles and not force_no_fallback:
+            print(f"⚠️ No real articles found, generating sample news for {date.date()}")
             articles = self._generate_sample_news(date, 'europe')
         
         return articles
     
-    def _fetch_romanian_news(self, date: datetime) -> List[NewsArticle]:
+    def _fetch_romanian_news(self, date: datetime, force_no_fallback: bool = False) -> List[NewsArticle]:
         """Fetch Romanian news articles."""
         articles = []
         
@@ -146,11 +153,16 @@ class NewsFetcher:
         try:
             newsapi_articles = self._fetch_from_newsapi(date, 'romania')
             articles.extend(newsapi_articles)
+            if newsapi_articles:
+                print(f"✅ NewsAPI returned {len(newsapi_articles)} Romanian articles")
+            else:
+                print(f"⚠️ NewsAPI returned 0 Romanian articles for {date.date()}")
         except Exception as e:
-            print(f"NewsAPI Romania error: {e}")
+            print(f"❌ NewsAPI Romania error: {e}")
         
-        # If no real articles, generate sample data
-        if not articles:
+        # If no real articles, generate sample data (unless forced not to)
+        if not articles and not force_no_fallback:
+            print(f"⚠️ No real articles found, generating sample news for {date.date()}")
             articles = self._generate_sample_news(date, 'romania')
         
         return articles
