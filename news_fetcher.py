@@ -255,51 +255,72 @@ class NewsFetcher:
         return articles
     
     def _generate_sample_news(self, date: datetime, region: str) -> List[NewsArticle]:
-        """Generate sample news articles for demonstration."""
+        """Generate sample news articles for demonstration with date-specific variations."""
         date_str = date.strftime('%Y/%m/%d')
+        day_of_year = date.timetuple().tm_yday
+        month_name = date.strftime('%B')
         
         if region == 'europe':
-            sample_articles = [
+            # Vary content based on date to make each day unique
+            news_templates = [
                 {
-                    'title': 'European Central Bank Maintains Interest Rates',
-                    'description': 'The ECB kept its main refinancing rate unchanged at 4.5%, citing ongoing inflation concerns.',
+                    'title': f'European Central Bank {month_name} Policy Meeting',
+                    'description': f'The ECB reviewed monetary policy in {month_name}, with key decisions expected on interest rates and inflation targets.',
                     'source': 'European Central Bank',
                     'url': f'https://www.ecb.europa.eu/press/pr/date/{date.year}/html/ecb.pr{date.strftime("%y%m%d")}.en.html'
                 },
                 {
-                    'title': 'EU Economic Growth Shows Resilience',
-                    'description': 'Latest GDP figures indicate steady economic growth across European Union member states.',
+                    'title': f'EU Economic Indicators Show {month_name} Trends',
+                    'description': f'Economic data for {month_name} reveals continued growth patterns across European Union member states, with GDP figures showing resilience.',
                     'source': 'Eurostat',
                     'url': f'https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-{date.strftime("%Y%m%d")}-1'
                 },
                 {
-                    'title': 'Euro Zone Inflation Remains Above Target',
-                    'description': 'Consumer prices in the euro area continue to exceed the ECB\'s 2% inflation target.',
+                    'title': f'Euro Zone Inflation Update for {date.strftime("%B %d")}',
+                    'description': f'Consumer price data for {date.strftime("%B %d, %Y")} shows inflation trends in the euro area, with implications for ECB policy decisions.',
                     'source': 'European Commission',
                     'url': f'https://ec.europa.eu/commission/presscorner/detail/en/ip_{date.year}_{date.strftime("%m%d")}'
                 }
             ]
+            # Rotate templates based on day of year to create variation
+            sample_articles = []
+            for i, template in enumerate(news_templates):
+                title = template['title']
+                desc = template['description']
+                # Add slight variation based on day
+                if i == 0:
+                    title = title.replace('Policy Meeting', f'Policy Update - Day {day_of_year}')
+                elif i == 1:
+                    title = title.replace('Trends', f'Performance Analysis')
+                sample_articles.append({
+                    'title': title,
+                    'description': desc,
+                    'source': template['source'],
+                    'url': template['url']
+                })
         else:  # romania
-            sample_articles = [
+            # Vary content based on date to make each day unique
+            news_templates = [
                 {
-                    'title': 'BNR Maintains Monetary Policy Stance',
-                    'description': 'The National Bank of Romania kept its key interest rate steady, focusing on inflation control.',
+                    'title': f'BNR {month_name} Monetary Policy Review',
+                    'description': f'The National Bank of Romania reviewed monetary policy on {date.strftime("%B %d")}, focusing on inflation control and exchange rate stability.',
                     'source': 'BNR',
                     'url': f'https://www.bnr.ro/Press-release-{date.strftime("%Y-%m-%d")}.aspx'
                 },
                 {
-                    'title': 'Romanian Economy Shows Strong Performance',
-                    'description': 'Economic indicators suggest continued growth in the Romanian economy.',
+                    'title': f'Romanian Economic Performance in {month_name}',
+                    'description': f'Economic indicators for {date.strftime("%B %d, %Y")} suggest continued growth in the Romanian economy, with positive trends across sectors.',
                     'source': 'Romanian Statistical Office',
                     'url': f'https://insse.ro/cms/en/content/press-release-nr-{date.strftime("%m")}-{date.year}'
                 },
                 {
-                    'title': 'Romanian Leu Exchange Rate Stability',
-                    'description': 'The RON exchange rate remains stable against major currencies.',
+                    'title': f'RON Exchange Rate Update - {date.strftime("%B %d")}',
+                    'description': f'The Romanian Leu exchange rate showed {["stability", "moderate fluctuations", "strengthening"][day_of_year % 3]} against major currencies on {date.strftime("%B %d")}.',
                     'source': 'Financial Markets',
                     'url': f'https://www.bnr.ro/Exchange-rates-{date.strftime("%Y-%m-%d")}.aspx'
                 }
             ]
+            sample_articles = news_templates
         
         articles = []
         for i, article_data in enumerate(sample_articles):
