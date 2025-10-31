@@ -274,11 +274,24 @@ def collect_exchange_rates() -> Dict[str, float]:
     
     # Initialize monitoring
     metrics_collector = None
+    health_checker = None
     if MONITORING_AVAILABLE:
         try:
             metrics_collector = MetricsCollector()
+            health_checker = HealthChecker()
+            # Run initial health checks
+            health_checks = health_checker.run_health_checks()
+            health_summary = health_checker.get_health_summary()
+            logger.info(f"Health check status: {health_summary['status']}")
+            
+            # Check for alerts
+            alerts = health_checker.check_for_alerts()
+            if alerts:
+                logger.warning(f"Health alerts detected: {len(alerts)} alerts")
+                for alert in alerts:
+                    logger.warning(f"  - {alert}")
         except Exception as e:
-            logger.warning(f"Failed to initialize metrics collector: {e}")
+            logger.warning(f"Failed to initialize monitoring components: {e}")
     
     start_time = time.time()
     api_start_time = start_time
@@ -403,6 +416,22 @@ def collect_exchange_rates() -> Dict[str, float]:
                 logger.info(f"Metrics collected: execution_time={execution_time:.2f}s, rates_retrieved={successful_rates}, rates_failed={rates_failed}")
             except Exception as e:
                 logger.warning(f"Failed to save metrics: {e}")
+        
+        # Run final health checks after collection
+        if health_checker:
+            try:
+                final_health_checks = health_checker.run_health_checks()
+                final_summary = health_checker.get_health_summary()
+                logger.info(f"Final health check status: {final_summary['status']}")
+                
+                # Check for new alerts after collection
+                final_alerts = health_checker.check_for_alerts()
+                if final_alerts:
+                    logger.warning(f"Post-collection health alerts: {len(final_alerts)} alerts")
+                    for alert in final_alerts:
+                        logger.warning(f"  - {alert}")
+            except Exception as e:
+                logger.warning(f"Failed to run final health checks: {e}")
         
         # Detect significant rate changes
         if db_manager and successful_rates > 0:
