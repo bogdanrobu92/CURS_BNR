@@ -108,7 +108,7 @@ def delete_sample_news_for_date(db_manager: DatabaseManager, date: datetime) -> 
         return 0
 
 def backfill_news_for_date(fetcher: NewsFetcher, db_manager: DatabaseManager, date: datetime) -> tuple:
-    """Fetch and save news articles for a specific date."""
+    """Fetch and save news articles for a specific date (force API fetch, skip cache)."""
     europe_count = 0
     romania_count = 0
     
@@ -116,36 +116,57 @@ def backfill_news_for_date(fetcher: NewsFetcher, db_manager: DatabaseManager, da
         # First, delete any existing sample news for this date
         delete_sample_news_for_date(db_manager, date)
         
-        # Fetch European news
-        logger.info(f"Fetching European news for {date.date()}")
-        europe_articles = fetcher.fetch_news_for_date(date, 'europe')
+        # Delete ALL cached news for this date to force fresh fetch
+        import sqlite3
+        conn = sqlite3.connect(db_manager.db_path)
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM news_articles WHERE DATE(date) = ?", (date.date().isoformat(),))
+        deleted_all = cursor.rowcount
+        conn.commit()
+        conn.close()
+        if deleted_all > 0:
+            logger.info(f"Cleared all cached news for {date.date()} to force fresh fetch")
         
-        # Save European articles
-        if europe_articles:
-            for article in europe_articles:
+        # Fetch European news directly from API (bypass cache)
+        logger.info(f"Fetching European news for {date.date()} (bypassing cache)")
+        europe_articles = fetcher._fetch_european_news(date)
+        
+        # Only save if we got real API articles (not sample news)
+        real_europe_articles = [a for a in europe_articles if not is_sample_news_source(a.source)]
+        
+        if real_europe_articles:
+            for article in real_europe_articles:
                 try:
                     db_manager.save_news_article(article)
                     europe_count += 1
                 except Exception as e:
                     logger.warning(f"Failed to save European article: {e}")
+        else:
+            logger.warning(f"No real European news found for {date.date()} (API may have returned no results)")
         
-        # Fetch Romanian news
-        logger.info(f"Fetching Romanian news for {date.date()}")
-        romania_articles = fetcher.fetch_news_for_date(date, 'romania')
+        # Fetch Romanian news directly from API (bypass cache)
+        logger.info(f"Fetching Romanian news for {date.date()} (bypassing cache)")
+        romania_articles = fetcher._fetch_romanian_news(date)
         
-        # Save Romanian articles
-        if romania_articles:
-            for article in romania_articles:
+        # Only save if we got real API articles (not sample news)
+        real_romania_articles = [a for a in romania_articles if not is_sample_news_source(a.source)]
+        
+        if real_romania_articles:
+            for article in real_romania_articles:
                 try:
                     db_manager.save_news_article(article)
                     romania_count += 1
                 except Exception as e:
                     logger.warning(f"Failed to save Romanian article: {e}")
+        else:
+            logger.warning(f"No real Romanian news found for {date.date()} (API may have returned no results)")
         
         return europe_count, romania_count
         
     except Exception as e:
         logger.error(f"Error fetching news for {date.date()}: {e}")
+        import traceback
+        traceback.print_exc()
         return 0, 0
 
 def main():
