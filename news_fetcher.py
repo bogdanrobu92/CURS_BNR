@@ -20,15 +20,36 @@ try:
 except ImportError:
     DATABASE_AVAILABLE = False
 
+try:
+    from config import config
+    CONFIG_AVAILABLE = True
+except ImportError:
+    CONFIG_AVAILABLE = False
+
 
 class NewsFetcher:
     """Fetches news articles from various sources."""
     
     def __init__(self):
         """Initialize news fetcher with API configurations."""
-        # Note: In a real implementation, these would be environment variables
-        self.newsapi_key = os.getenv('NEWSAPI_KEY', 'demo_key')
-        self.guardian_key = os.getenv('GUARDIAN_KEY', 'demo_key')
+        # Use config if available, otherwise fall back to environment variables
+        if CONFIG_AVAILABLE:
+            self.newsapi_key = config.NEWSAPI_KEY or os.getenv('NEWSAPI_KEY', 'demo_key')
+            self.guardian_key = config.GUARDIAN_KEY or os.getenv('GUARDIAN_KEY', 'demo_key')
+        else:
+            self.newsapi_key = os.getenv('NEWSAPI_KEY', 'demo_key')
+            self.guardian_key = os.getenv('GUARDIAN_KEY', 'demo_key')
+        
+        # Log API key status (without exposing the key)
+        if self.newsapi_key and self.newsapi_key != 'demo_key':
+            print(f"✅ NewsAPI key configured (length: {len(self.newsapi_key)})")
+        else:
+            print("⚠️ NewsAPI key not set - will use sample news")
+        
+        if self.guardian_key and self.guardian_key != 'demo_key':
+            print(f"✅ Guardian API key configured (length: {len(self.guardian_key)})")
+        else:
+            print("⚠️ Guardian API key not set - will skip Guardian API")
         
         # API endpoints
         self.newsapi_url = "https://newsapi.org/v2/everything"
@@ -136,8 +157,8 @@ class NewsFetcher:
     
     def _fetch_from_newsapi(self, date: datetime, region: str) -> List[NewsArticle]:
         """Fetch articles from NewsAPI."""
-        if self.newsapi_key == 'demo_key':
-            print(f"NewsAPI: Skipping (demo_key)")
+        if not self.newsapi_key or self.newsapi_key == 'demo_key':
+            print(f"NewsAPI: Skipping (no API key configured)")
             return []
         
         print(f"NewsAPI: Fetching for {date.date()} ({region})")
@@ -204,7 +225,8 @@ class NewsFetcher:
     
     def _fetch_from_guardian(self, date: datetime, region: str) -> List[NewsArticle]:
         """Fetch articles from Guardian API."""
-        if self.guardian_key == 'demo_key':
+        if not self.guardian_key or self.guardian_key == 'demo_key':
+            print(f"Guardian API: Skipping (no API key configured)")
             return []
         
         # Calculate date range
