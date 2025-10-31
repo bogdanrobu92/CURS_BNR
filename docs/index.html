@@ -616,37 +616,46 @@
             modal.style.display = 'block';
             
             try {
-                // Fetch news for the date (using static file for now)
+                // Fetch comprehensive news data and extract news for the specific date
                 const response = await fetch(`https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/news.json`);
                 const newsData = await response.json();
                 
-                if (newsData.success) {
-                    // Display European news
-                    if (newsData.europe && newsData.europe.length > 0) {
-                        europeanNews.innerHTML = newsData.europe.map(article => `
-                            <div class="news-article">
-                                <h4>${article.title}</h4>
-                                <p>${article.description}</p>
-                                <div class="source">Source: ${article.source}</div>
-                                <a href="${article.url}" target="_blank">Read more →</a>
-                            </div>
-                        `).join('');
-                } else {
-                        europeanNews.innerHTML = '<div class="no-news">No European news available for this date.</div>';
-                    }
+                if (newsData.success && newsData.dates) {
+                    // Extract news for the specific date
+                    const dateNews = newsData.dates[date];
                     
-                    // Display Romanian news
-                    if (newsData.romania && newsData.romania.length > 0) {
-                        romanianNews.innerHTML = newsData.romania.map(article => `
-                            <div class="news-article">
-                                <h4>${article.title}</h4>
-                                <p>${article.description}</p>
-                                <div class="source">Source: ${article.source}</div>
-                                <a href="${article.url}" target="_blank">Read more →</a>
-                            </div>
-                        `).join('');
+                    if (dateNews) {
+                        // Display European news
+                        if (dateNews.europe && dateNews.europe.length > 0) {
+                            europeanNews.innerHTML = dateNews.europe.map(article => `
+                                <div class="news-article">
+                                    <h4>${article.title}</h4>
+                                    <p>${article.description}</p>
+                                    <div class="source">Source: ${article.source}</div>
+                                    <a href="${article.url}" target="_blank">Read more →</a>
+                                </div>
+                            `).join('');
+                        } else {
+                            europeanNews.innerHTML = '<div class="no-news">No European news available for this date.</div>';
+                        }
+                        
+                        // Display Romanian news
+                        if (dateNews.romania && dateNews.romania.length > 0) {
+                            romanianNews.innerHTML = dateNews.romania.map(article => `
+                                <div class="news-article">
+                                    <h4>${article.title}</h4>
+                                    <p>${article.description}</p>
+                                    <div class="source">Source: ${article.source}</div>
+                                    <a href="${article.url}" target="_blank">Read more →</a>
+                                </div>
+                            `).join('');
+                        } else {
+                            romanianNews.innerHTML = '<div class="no-news">No Romanian news available for this date.</div>';
+                        }
                     } else {
-                        romanianNews.innerHTML = '<div class="no-news">No Romanian news available for this date.</div>';
+                        // No news found for this date
+                        europeanNews.innerHTML = '<div class="no-news">No news available for this date.</div>';
+                        romanianNews.innerHTML = '<div class="no-news">No news available for this date.</div>';
                     }
                 } else {
                     // Show error message

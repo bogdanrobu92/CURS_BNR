@@ -19,6 +19,12 @@ try:
 except ImportError:
     DATABASE_AVAILABLE = False
 
+try:
+    from news_fetcher import get_news_for_date
+    NEWS_AVAILABLE = True
+except ImportError:
+    NEWS_AVAILABLE = False
+
 def generate_chart_data(currencies=['EUR'], start_date_str=None, end_date_str=None):
     """Generate chart data for EUR only with optional date filtering."""
     
@@ -238,6 +244,74 @@ def generate_sample_latest_rates():
         'sample_data': True
     }
 
+def generate_news_data():
+    """Generate news data for all dates with exchange rates."""
+    if DATABASE_AVAILABLE and NEWS_AVAILABLE:
+        try:
+            db_manager = DatabaseManager()
+            
+            # Get all unique dates with exchange rates
+            import sqlite3
+            conn = sqlite3.connect(db_manager.db_path)
+            cursor = conn.cursor()
+            
+            # Get all unique dates from exchange_rates table
+            cursor.execute("""
+                SELECT DISTINCT DATE(timestamp) as date
+                FROM exchange_rates
+                ORDER BY date DESC
+            """)
+            dates = [row[0] for row in cursor.fetchall()]
+            conn.close()
+            
+            # Build comprehensive news data with all dates
+            news_data = {
+                'success': True,
+                'dates': {}
+            }
+            
+            print(f"Generating news data for {len(dates)} dates...")
+            for date_str in dates:
+                try:
+                    news_for_date = get_news_for_date(date_str)
+                    news_data['dates'][date_str] = {
+                        'europe': news_for_date.get('europe', []),
+                        'romania': news_for_date.get('romania', []),
+                        'timestamp': news_for_date.get('timestamp', datetime.now().isoformat())
+                    }
+                    print(f"  ✅ {date_str}: {len(news_for_date.get('europe', []))} European, {len(news_for_date.get('romania', []))} Romanian articles")
+                except Exception as e:
+                    print(f"  ⚠️  Error fetching news for {date_str}: {e}")
+                    news_data['dates'][date_str] = {
+                        'europe': [],
+                        'romania': [],
+                        'timestamp': datetime.now().isoformat()
+                    }
+            
+            news_data['timestamp'] = datetime.now().isoformat()
+            return news_data
+            
+        except Exception as e:
+            print(f"Error generating news data from database: {e}")
+            return generate_sample_news_data()
+    else:
+        return generate_sample_news_data()
+
+def generate_sample_news_data():
+    """Generate sample news data."""
+    return {
+        'success': True,
+        'dates': {
+            datetime.now().strftime('%Y-%m-%d'): {
+                'europe': [],
+                'romania': [],
+                'timestamp': datetime.now().isoformat()
+            }
+        },
+        'timestamp': datetime.now().isoformat(),
+        'sample_data': True
+    }
+
 def main():
     """Generate all API data files."""
     
@@ -281,6 +355,13 @@ def main():
     filename = api_dir / 'health.json'
     with open(filename, 'w') as f:
         json.dump(health_data, f, indent=2)
+    print(f"Generated {filename}")
+    
+    # Generate news data for all dates
+    news_data = generate_news_data()
+    filename = api_dir / 'news.json'
+    with open(filename, 'w') as f:
+        json.dump(news_data, f, indent=2)
     print(f"Generated {filename}")
     
     print("API data generation completed!")
