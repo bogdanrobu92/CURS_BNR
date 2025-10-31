@@ -41,25 +41,71 @@ def get_dates_with_exchange_rates(db_manager: DatabaseManager) -> list:
         logger.error(f"Error getting dates with exchange rates: {e}")
         return []
 
+def is_sample_news_source(source: str) -> bool:
+    """Check if a news source is a sample/generated source."""
+    sample_sources = [
+        'European Central Bank',
+        'Eurostat',
+        'European Commission',
+        'BNR',
+        'Romanian Statistical Office',
+        'Financial Markets'
+    ]
+    return source in sample_sources
+
 def get_dates_without_news(db_manager: DatabaseManager, dates: list) -> list:
-    """Filter out dates that already have news articles."""
+    """Filter out dates that already have real news articles (keep dates with only sample news)."""
     try:
-        dates_with_news = set()
+        dates_with_real_news = set()
         
         for date in dates:
             date_obj = datetime.combine(date, datetime.min.time())
             europe_articles = db_manager.get_news_articles(date_obj, 'europe')
             romania_articles = db_manager.get_news_articles(date_obj, 'romania')
             
-            if europe_articles or romania_articles:
-                dates_with_news.add(date)
+            # Check if there are any real (non-sample) news articles
+            has_real_news = False
+            for article in europe_articles + romania_articles:
+                if not is_sample_news_source(article.source):
+                    has_real_news = True
+                    break
+            
+            if has_real_news:
+                dates_with_real_news.add(date)
         
-        dates_without_news = [d for d in dates if d not in dates_with_news]
-        logger.info(f"Found {len(dates_without_news)} dates without news articles")
-        return dates_without_news
+        dates_without_real_news = [d for d in dates if d not in dates_with_real_news]
+        logger.info(f"Found {len(dates_without_real_news)} dates without real news articles (will replace sample news)")
+        return dates_without_real_news
     except Exception as e:
         logger.error(f"Error checking existing news: {e}")
         return dates
+
+def delete_sample_news_for_date(db_manager: DatabaseManager, date: datetime) -> int:
+    """Delete sample news articles for a specific date."""
+    try:
+        import sqlite3
+        conn = sqlite3.connect(db_manager.db_path)
+        cursor = conn.cursor()
+        
+        # Delete sample news articles for this date
+        cursor.execute("""
+            DELETE FROM news_articles 
+            WHERE DATE(date) = ? 
+            AND source IN ('European Central Bank', 'Eurostat', 'European Commission', 
+                           'BNR', 'Romanian Statistical Office', 'Financial Markets')
+        """, (date.date().isoformat(),))
+        
+        deleted_count = cursor.rowcount
+        conn.commit()
+        conn.close()
+        
+        if deleted_count > 0:
+            logger.info(f"Deleted {deleted_count} sample news articles for {date.date()}")
+        
+        return deleted_count
+    except Exception as e:
+        logger.warning(f"Error deleting sample news for {date.date()}: {e}")
+        return 0
 
 def backfill_news_for_date(fetcher: NewsFetcher, db_manager: DatabaseManager, date: datetime) -> tuple:
     """Fetch and save news articles for a specific date."""
@@ -67,6 +113,9 @@ def backfill_news_for_date(fetcher: NewsFetcher, db_manager: DatabaseManager, da
     romania_count = 0
     
     try:
+        # First, delete any existing sample news for this date
+        delete_sample_news_for_date(db_manager, date)
+        
         # Fetch European news
         logger.info(f"Fetching European news for {date.date()}")
         europe_articles = fetcher.fetch_news_for_date(date, 'europe')
@@ -132,7 +181,8 @@ def main():
         dates_to_fetch = get_dates_without_news(db_manager, dates)
         
         if not dates_to_fetch:
-            logger.info("✅ All dates already have news articles!")
+            logger.info("✅ All dates already have real news articles!")
+            logger.info("   (If you want to replace sample news with real news, delete sample news first)")
             return
         
         logger.info(f"Will fetch news for {len(dates_to_fetch)} dates")
