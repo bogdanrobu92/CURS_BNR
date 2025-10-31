@@ -1,0 +1,19 @@
+2025-10-31 09:34:32 - ERROR    - sources.backup_sources:159 - get_rates_from_ecb() - ECB API failed: HTTPSConnectionPool(host='api.exchangerate.host', port=443): Max retries exceeded with url: /latest?base=EUR (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1086056d0>: Failed to resolve 'api.exchangerate.host' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-10-31 09:34:36 - ERROR    - sources.backup_sources:159 - get_rates_from_ecb() - ECB API failed: HTTPSConnectionPool(host='api.exchangerate.host', port=443): Max retries exceeded with url: /latest?base=EUR (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x108606490>: Failed to resolve 'api.exchangerate.host' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-10-31 09:48:52 - ERROR    - main:460 - collect_exchange_rates() - Exchange rate collection failed with unexpected error: '<=' not supported between instances of 'MagicMock' and 'datetime.timedelta'
+2025-10-31 09:51:19 - ERROR    - main:108 - get_bnr_api_rate() - Invalid currency code: INVALID
+2025-10-31 09:52:40 - ERROR    - main:460 - collect_exchange_rates() - Exchange rate collection failed with unexpected error: '<=' not supported between instances of 'MagicMock' and 'datetime.timedelta'
+2025-10-31 09:52:40 - ERROR    - main:456 - collect_exchange_rates() - Failed to retrieve any exchange rates
+2025-10-31 09:52:43 - ERROR    - main:108 - get_bnr_api_rate() - Invalid currency code: INVALID
+2025-10-31 09:53:18 - ERROR    - main:460 - collect_exchange_rates() - Exchange rate collection failed with unexpected error: '<=' not supported between instances of 'MagicMock' and 'datetime.timedelta'
+2025-10-31 09:53:18 - ERROR    - main:456 - collect_exchange_rates() - Failed to retrieve any exchange rates
+2025-10-31 09:53:21 - ERROR    - main:108 - get_bnr_api_rate() - Invalid currency code: INVALID
+2025-10-31 09:53:21 - ERROR    - main:162 - get_bnr_api_rate() - Unexpected error fetching rate for EUR: Network error
+2025-10-31 09:53:21 - ERROR    - main:137 - get_bnr_api_rate() - Failed to parse XML response: syntax error: line 1, column 0
+2025-10-31 09:53:21 - ERROR    - main:162 - get_bnr_api_rate() - Unexpected error fetching rate for EUR: HTTP 500
+2025-10-31 09:53:36 - ERROR    - main:460 - collect_exchange_rates() - Exchange rate collection failed with unexpected error: '<=' not supported between instances of 'MagicMock' and 'datetime.timedelta'
+2025-10-31 09:53:36 - ERROR    - main:456 - collect_exchange_rates() - Failed to retrieve any exchange rates
+2025-10-31 09:53:39 - ERROR    - main:108 - get_bnr_api_rate() - Invalid currency code: INVALID
+2025-10-31 09:53:39 - ERROR    - main:162 - get_bnr_api_rate() - Unexpected error fetching rate for EUR: Network error
+2025-10-31 09:53:39 - ERROR    - main:137 - get_bnr_api_rate() - Failed to parse XML response: syntax error: line 1, column 0
+2025-10-31 09:53:39 - ERROR    - main:162 - get_bnr_api_rate() - Unexpected error fetching rate for EUR: HTTP 500

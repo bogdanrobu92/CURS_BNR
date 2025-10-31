@@ -287,13 +287,19 @@ class DatabaseManager:
                 ])
                 conn.commit()
                 
-                # Calculate IDs: lastrowid is the ID of the last inserted row
-                # SQLite guarantees sequential IDs, so we can calculate backwards
-                if cursor.lastrowid is None:
+                # Get the IDs using last_insert_rowid() SQL function
+                # For bulk inserts, we need to query the last inserted row
+                cursor.execute("SELECT last_insert_rowid()")
+                last_id = cursor.fetchone()[0]
+                
+                if last_id is None:
                     # No rows were inserted, return empty list
                     return []
-                first_id = cursor.lastrowid - len(rates) + 1
-                return list(range(first_id, cursor.lastrowid + 1))
+                
+                # Calculate IDs: lastrowid is the ID of the last inserted row
+                # SQLite guarantees sequential IDs, so we can calculate backwards
+                first_id = last_id - len(rates) + 1
+                return list(range(first_id, last_id + 1))
             except Exception as e:
                 conn.rollback()
                 raise

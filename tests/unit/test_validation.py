@@ -10,7 +10,7 @@ pytestmark = pytest.mark.unit
 # Add parent directory to path to import main module
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import validate_currency, validate_email
+from main import validate_currency, validate_rate
 
 
 class TestCurrencyValidation:
@@ -41,40 +41,24 @@ class TestCurrencyValidation:
         assert validate_currency('Eur') is True
 
 
-class TestEmailValidation:
-    """Test email validation functionality."""
+class TestRateValidation:
+    """Test rate validation functionality."""
     
-    def test_validate_email_valid_addresses(self):
-        """Test validation of valid email addresses."""
-        valid_emails = [
-            'test@example.com',
-            'user.name@domain.co.uk',
-            'user+tag@example.org',
-            'user123@test-domain.com',
-            'a@b.co'
-        ]
-        for email in valid_emails:
-            assert validate_email(email) is True, f"Should validate {email}"
+    def test_validate_rate_valid_rates(self):
+        """Test validation of valid exchange rates."""
+        valid_rates = [4.95, 4.55, 5.75, 0.1, 99.99, 10.0]
+        for rate in valid_rates:
+            assert validate_rate(rate) is True, f"Should validate {rate}"
     
-    def test_validate_email_invalid_addresses(self):
-        """Test validation of invalid email addresses."""
-        invalid_emails = [
-            'invalid-email',
-            '@example.com',
-            'user@',
-            'user@.com',
-            'user..name@example.com',
-            'user@example..com',
-            '',
-            'user@example',
-            'user name@example.com'
-        ]
-        for email in invalid_emails:
-            assert validate_email(email) is False, f"Should reject {email}"
+    def test_validate_rate_invalid_rates(self):
+        """Test validation of invalid exchange rates."""
+        invalid_rates = [0, -1, 101, 1000, -0.01]
+        for rate in invalid_rates:
+            assert validate_rate(rate) is False, f"Should reject {rate}"
     
-    def test_validate_email_edge_cases(self):
-        """Test email validation edge cases."""
-        assert validate_email(None) is False
-        assert validate_email(123) is False
-        assert validate_email([]) is False
-        assert validate_email({}) is False
+    def test_validate_rate_edge_cases(self):
+        """Test rate validation edge cases."""
+        assert validate_rate(0.1) is True  # Minimum valid
+        assert validate_rate(100.0) is False  # Maximum invalid (exclusive)
+        assert validate_rate(99.99) is True  # Just below maximum
+        assert validate_rate(0.11) is True  # Just above minimum

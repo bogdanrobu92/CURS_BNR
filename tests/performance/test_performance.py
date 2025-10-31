@@ -10,7 +10,7 @@ from unittest.mock import Mock, patch
 # Add parent directory to path to import main module
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import get_bnr_api_rate, job, create_secure_session
+from main import get_bnr_api_rate, collect_exchange_rates, create_secure_session
 
 
 class TestPerformance:
@@ -18,6 +18,10 @@ class TestPerformance:
     
     def test_api_response_time(self, mock_bnr_xml_response):
         """Test API response time is within acceptable limits."""
+        # Clear cache first
+        from main import _BNR_API_CACHE
+        _BNR_API_CACHE.clear()
+        
         with patch('main.create_secure_session') as mock_create_session:
             # Setup mock session
             mock_session = Mock()
@@ -25,6 +29,7 @@ class TestPerformance:
             mock_response.content = mock_bnr_xml_response.encode('utf-8')
             mock_response.raise_for_status.return_value = None
             mock_session.get.return_value = mock_response
+            mock_session.close = Mock()
             mock_create_session.return_value = mock_session
             
             # Measure response time
@@ -39,25 +44,33 @@ class TestPerformance:
             assert rate == 4.9500
             assert isinstance(rate, float)
     
-    def test_job_execution_time(self, sample_rates_data):
-        """Test job execution time is within acceptable limits."""
-        with patch('main.get_bnr_api_rate') as mock_get_rate, \
-             patch('main.send_email') as mock_send_email:
-            
-            # Setup mocks
-            mock_get_rate.side_effect = lambda currency: sample_rates_data.get(currency)
-            mock_send_email.return_value = True
-            
-            # Measure execution time
-            start_time = time.time()
-            result = job()
-            end_time = time.time()
-            
-            execution_time = end_time - start_time
-            
-            # Should complete within 5 seconds (mocked)
-            assert execution_time < 5.0
-            assert result is True
+    @patch('main.BackupRateProvider')
+    @patch('main.DatabaseManager')
+    def test_collect_exchange_rates_execution_time(self, mock_db_manager, mock_rate_provider):
+        """Test collect_exchange_rates execution time is within acceptable limits."""
+        # Setup mocks
+        mock_provider_instance = mock_rate_provider.return_value
+        mock_provider_instance.get_rates_with_fallback.return_value = {
+            'BNR': {'EUR': 4.95, 'USD': 4.55, 'GBP': 5.75}
+        }
+        mock_provider_instance.get_best_rates.return_value = {
+            'EUR': 4.95, 'USD': 4.55, 'GBP': 5.75
+        }
+        
+        mock_db_instance = mock_db_manager.return_value
+        mock_db_instance.save_exchange_rates.return_value = [1, 2, 3]
+        
+        # Measure execution time
+        start_time = time.time()
+        result = collect_exchange_rates()
+        end_time = time.time()
+        
+        execution_time = end_time - start_time
+        
+        # Should complete within 5 seconds (mocked)
+        assert execution_time < 5.0
+        assert isinstance(result, dict)
+        assert len(result) > 0
     
     def test_memory_usage(self, mock_bnr_xml_response):
         """Test memory usage is reasonable."""
@@ -91,6 +104,10 @@ class TestPerformance:
         import threading
         import queue
         
+        # Clear cache first
+        from main import _BNR_API_CACHE
+        _BNR_API_CACHE.clear()
+        
         results = queue.Queue()
         
         def worker():
@@ -101,6 +118,7 @@ class TestPerformance:
                 mock_response.content = mock_bnr_xml_response.encode('utf-8')
                 mock_response.raise_for_status.return_value = None
                 mock_session.get.return_value = mock_response
+                mock_session.close = Mock()
                 mock_create_session.return_value = mock_session
                 
                 rate = get_bnr_api_rate('EUR')
@@ -120,7 +138,9 @@ class TestPerformance:
         # Verify all requests succeeded
         assert results.qsize() == 5
         while not results.empty():
-            assert results.get() == '4.9500'
+            rate = results.get()
+            assert rate == 4.9500  # Should be float, not string
+            assert isinstance(rate, float)
     
     def test_session_reuse_efficiency(self):
         """Test that session creation is efficient."""
@@ -144,28 +164,45 @@ class TestPerformance:
             session.close()
     
     @pytest.mark.slow
-    def test_load_testing(self, sample_rates_data):
-        """Load test the job function."""
-        with patch('main.get_bnr_api_rate') as mock_get_rate, \
-             patch('main.send_email') as mock_send_email:
-            
-            # Setup mocks
-            mock_get_rate.side_effect = lambda currency: sample_rates_data.get(currency)
-            mock_send_email.return_value = True
-            
-            # Execute job multiple times
-            start_time = time.time()
-            success_count = 0
-            
-            for _ in range(50):  # Run 50 iterations
-                result = job()
-                if result:
-                    success_count += 1
-            
-            end_time = time.time()
-            total_time = end_time - start_time
-            
-            # Should complete within reasonable time
-            assert total_time < 30.0  # 30 seconds for 50 iterations
-            assert success_count == 50  # All should succeed
-            assert mock_send_email.call_count == 50
+    @patch('main.BackupRateProvider')
+    @patch('main.DatabaseManager')
+    @patch('main.MetricsCollector')
+    @patch('main.HealthChecker')
+    def test_load_testing(self, mock_health_checker, mock_metrics_collector, mock_db_manager, mock_rate_provider):
+        """Load test the collect_exchange_rates function."""
+        # Setup mocks
+        mock_provider_instance = mock_rate_provider.return_value
+        mock_provider_instance.get_rates_with_fallback.return_value = {
+            'BNR': {'EUR': 4.95, 'USD': 4.55, 'GBP': 5.75}
+        }
+        mock_provider_instance.get_best_rates.return_value = {
+            'EUR': 4.95, 'USD': 4.55, 'GBP': 5.75
+        }
+        
+        mock_db_instance = mock_db_manager.return_value
+        mock_db_instance.save_exchange_rates.return_value = [1, 2, 3]
+        
+        mock_metrics_instance = mock_metrics_collector.return_value
+        mock_metrics_instance.collect_application_metrics.return_value = {}
+        mock_metrics_instance.save_metrics.return_value = None
+        
+        mock_health_instance = mock_health_checker.return_value
+        mock_health_instance.run_health_checks.return_value = []
+        mock_health_instance.get_health_summary.return_value = {'status': 'healthy'}
+        mock_health_instance.check_for_alerts.return_value = []
+        
+        # Execute collection multiple times
+        start_time = time.time()
+        success_count = 0
+        
+        for _ in range(50):  # Run 50 iterations
+            result = collect_exchange_rates()
+            if result and len(result) > 0:
+                success_count += 1
+        
+        end_time = time.time()
+        total_time = end_time - start_time
+        
+        # Should complete within reasonable time (mocked, so should be fast)
+        assert total_time < 30.0  # 30 seconds for 50 iterations
+        assert success_count == 50  # All should succeed

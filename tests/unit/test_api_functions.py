@@ -36,12 +36,17 @@ class TestBNRAPIRate:
     @patch('main.create_secure_session')
     def test_get_bnr_api_rate_success(self, mock_create_session, mock_bnr_xml_response):
         """Test successful API rate retrieval."""
+        # Clear cache first
+        from main import _BNR_API_CACHE
+        _BNR_API_CACHE.clear()
+        
         # Setup mock session
         mock_session = Mock()
         mock_response = Mock()
         mock_response.content = mock_bnr_xml_response.encode('utf-8')
         mock_response.raise_for_status.return_value = None
         mock_session.get.return_value = mock_response
+        mock_session.close = Mock()
         mock_create_session.return_value = mock_session
         
         # Test successful rate retrieval
@@ -81,9 +86,14 @@ class TestBNRAPIRate:
     @patch('main.create_secure_session')
     def test_get_bnr_api_rate_network_error(self, mock_create_session):
         """Test API rate retrieval with network error."""
+        # Clear cache first
+        from main import _BNR_API_CACHE
+        _BNR_API_CACHE.clear()
+        
         # Setup mock session to raise exception
         mock_session = Mock()
         mock_session.get.side_effect = Exception("Network error")
+        mock_session.close = Mock()
         mock_create_session.return_value = mock_session
         
         # Test network error
@@ -95,12 +105,17 @@ class TestBNRAPIRate:
     @patch('main.create_secure_session')
     def test_get_bnr_api_rate_invalid_xml(self, mock_create_session, mock_bnr_xml_response_invalid):
         """Test API rate retrieval with invalid XML response."""
+        # Clear cache first
+        from main import _BNR_API_CACHE
+        _BNR_API_CACHE.clear()
+        
         # Setup mock session
         mock_session = Mock()
         mock_response = Mock()
         mock_response.content = mock_bnr_xml_response_invalid.encode('utf-8')
         mock_response.raise_for_status.return_value = None
         mock_session.get.return_value = mock_response
+        mock_session.close = Mock()
         mock_create_session.return_value = mock_session
         
         # Test invalid XML
@@ -112,11 +127,16 @@ class TestBNRAPIRate:
     @patch('main.create_secure_session')
     def test_get_bnr_api_rate_http_error(self, mock_create_session):
         """Test API rate retrieval with HTTP error."""
+        # Clear cache first
+        from main import _BNR_API_CACHE
+        _BNR_API_CACHE.clear()
+        
         # Setup mock session
         mock_session = Mock()
         mock_response = Mock()
         mock_response.raise_for_status.side_effect = Exception("HTTP 500")
         mock_session.get.return_value = mock_response
+        mock_session.close = Mock()
         mock_create_session.return_value = mock_session
         
         # Test HTTP error

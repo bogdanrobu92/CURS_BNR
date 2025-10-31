@@ -9,129 +9,100 @@ from unittest.mock import Mock, patch, MagicMock
 # Add parent directory to path to import main module
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import job
+from main import collect_exchange_rates
 
 
 class TestJobIntegration:
-    """Test job function integration."""
+    """Test collect_exchange_rates function integration."""
     
-    @patch('main.send_email')
-    @patch('main.get_bnr_api_rate')
-    def test_job_success_all_rates(self, mock_get_rate, mock_send_email, sample_rates_data):
-        """Test successful job execution with all rates retrieved."""
+    @patch('main.BackupRateProvider')
+    @patch('main.DatabaseManager')
+    def test_collect_exchange_rates_success(self, mock_db_manager, mock_rate_provider):
+        """Test successful rate collection."""
         # Setup mocks
-        mock_get_rate.side_effect = lambda currency: sample_rates_data.get(currency)
-        mock_send_email.return_value = True
+        mock_provider_instance = mock_rate_provider.return_value
+        mock_provider_instance.get_rates_with_fallback.return_value = {
+            'BNR': {'EUR': 4.95, 'USD': 4.55, 'GBP': 5.75}
+        }
+        mock_provider_instance.get_best_rates.return_value = {
+            'EUR': 4.95, 'USD': 4.55, 'GBP': 5.75
+        }
         
-        # Execute job
-        result = job()
+        mock_db_instance = mock_db_manager.return_value
+        mock_db_instance.save_exchange_rates.return_value = [1, 2, 3]
+        
+        # Execute collection
+        result = collect_exchange_rates()
         
         # Verify results
-        assert result is True
-        assert mock_get_rate.call_count == 3  # EUR, USD, GBP
-        mock_send_email.assert_called_once()
-        
-        # Verify email content
-        call_args = mock_send_email.call_args
-        subject = call_args[0][0]
-        body = call_args[0][1]
-        
-        assert "Curs BNR" in subject
-        assert "EUR: 4.9500" in body
-        assert "USD: 4.5500" in body
-        assert "GBP: 5.7500" in body
+        assert isinstance(result, dict)
+        assert len(result) == 3
+        assert 'EUR' in result
+        assert 'USD' in result
+        assert 'GBP' in result
     
-    @patch('main.send_email')
-    @patch('main.get_bnr_api_rate')
-    def test_job_success_partial_rates(self, mock_get_rate, mock_send_email):
-        """Test job execution with partial rate retrieval."""
+    @patch('main.BackupRateProvider')
+    @patch('main.DatabaseManager')
+    def test_collect_exchange_rates_partial_success(self, mock_db_manager, mock_rate_provider):
+        """Test collection with partial rate retrieval."""
         # Setup mocks - only EUR and USD succeed
-        def mock_rate_side_effect(currency):
-            rates = {'EUR': 4.9500, 'USD': 4.5500, 'GBP': None}
-            return rates.get(currency)
+        mock_provider_instance = mock_rate_provider.return_value
+        mock_provider_instance.get_rates_with_fallback.return_value = {
+            'BNR': {'EUR': 4.95, 'USD': 4.55}
+        }
+        mock_provider_instance.get_best_rates.return_value = {
+            'EUR': 4.95, 'USD': 4.55
+        }
         
-        mock_get_rate.side_effect = mock_rate_side_effect
-        mock_send_email.return_value = True
+        mock_db_instance = mock_db_manager.return_value
+        mock_db_instance.save_exchange_rates.return_value = [1, 2]
         
-        # Execute job
-        result = job()
+        # Execute collection
+        result = collect_exchange_rates()
         
         # Verify results
-        assert result is True
-        assert mock_get_rate.call_count == 3
-        mock_send_email.assert_called_once()
-        
-        # Verify email content includes unavailable rate
-        call_args = mock_send_email.call_args
-        body = call_args[0][1]
-        
-        assert "EUR: 4.9500" in body
-        assert "USD: 4.5500" in body
-        assert "GBP: Curs indisponibil" in body
+        assert isinstance(result, dict)
+        assert len(result) == 2
+        assert 'EUR' in result
+        assert 'USD' in result
     
-    @patch('main.send_email')
-    @patch('main.get_bnr_api_rate')
-    def test_job_failure_no_rates(self, mock_get_rate, mock_send_email):
-        """Test job execution when no rates are retrieved."""
+    @patch('main.BackupRateProvider')
+    @patch('main.DatabaseManager')
+    def test_collect_exchange_rates_failure_no_rates(self, mock_db_manager, mock_rate_provider):
+        """Test collection when no rates are retrieved."""
         # Setup mocks - all rates fail
-        mock_get_rate.return_value = None
-        mock_send_email.return_value = True
+        mock_provider_instance = mock_rate_provider.return_value
+        mock_provider_instance.get_rates_with_fallback.return_value = {}
+        mock_provider_instance.get_best_rates.return_value = {}
         
-        # Execute job
-        result = job()
+        mock_db_instance = mock_db_manager.return_value
         
-        # Verify results
-        assert result is True  # Job still succeeds, just with no rates
-        assert mock_get_rate.call_count == 3
-        mock_send_email.assert_called_once()
-        
-        # Verify email content shows all rates unavailable
-        call_args = mock_send_email.call_args
-        body = call_args[0][1]
-        
-        assert "EUR: Curs indisponibil" in body
-        assert "USD: Curs indisponibil" in body
-        assert "GBP: Curs indisponibil" in body
-    
-    @patch('main.send_email')
-    @patch('main.get_bnr_api_rate')
-    def test_job_failure_email_send_fails(self, mock_get_rate, mock_send_email, sample_rates_data):
-        """Test job execution when email sending fails."""
-        # Setup mocks
-        mock_get_rate.side_effect = lambda currency: sample_rates_data.get(currency)
-        mock_send_email.return_value = False
-        
-        # Execute job
-        result = job()
+        # Execute collection
+        result = collect_exchange_rates()
         
         # Verify results
-        assert result is False
-        mock_send_email.assert_called_once()
+        assert isinstance(result, dict)
+        assert len(result) == 0
     
-    def test_job_failure_invalid_recipient_email(self):
-        """Test job execution with invalid recipient email."""
-        with patch.dict(os.environ, {'EMAIL_RECIPIENT': 'invalid-email'}):
-            result = job()
-            
-            assert result is False
-    
-    def test_job_failure_missing_recipient_email(self):
-        """Test job execution with missing recipient email."""
-        with patch.dict(os.environ, {}, clear=True):
-            result = job()
-            
-            assert result is False
-    
-    @patch('main.send_email')
-    @patch('main.get_bnr_api_rate')
-    def test_job_exception_handling(self, mock_get_rate, mock_send_email):
-        """Test job execution with unexpected exception."""
+    @patch('main.BackupRateProvider')
+    @patch('main.DatabaseManager')
+    @patch('main.MetricsCollector')
+    @patch('main.HealthChecker')
+    @patch('main.fetch_rates_from_bnr_api')
+    def test_collect_exchange_rates_exception_handling(self, mock_fetch_rates, mock_health_checker, mock_metrics_collector, mock_db_manager, mock_rate_provider):
+        """Test collection with unexpected exception."""
         # Setup mocks to raise exception
-        mock_get_rate.side_effect = Exception("Unexpected error")
-        mock_send_email.return_value = True
+        mock_rate_provider.side_effect = Exception("Unexpected error")
+        mock_db_manager.side_effect = Exception("Unexpected error")
+        mock_fetch_rates.return_value = ({}, 3)  # No rates, 3 errors
         
-        # Execute job
-        result = job()
+        mock_metrics_instance = mock_metrics_collector.return_value
+        mock_metrics_instance.collect_application_metrics.return_value = {}
+        mock_metrics_instance.save_metrics.return_value = None
         
-        # Verify results
-        assert result is False
+        # Execute collection
+        result = collect_exchange_rates()
+        
+        # Verify results - should return empty dict on error
+        assert isinstance(result, dict)
+        assert len(result) == 0

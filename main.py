@@ -62,8 +62,8 @@ def validate_rate(rate: float) -> bool:
     if rate <= 0:
         logger.warning(f"Invalid rate: {rate} (must be positive)")
         return False
-    # RON rates typically between 1-10 for major currencies
-    if rate > 100 or rate < 0.1:
+    # RON rates typically between 0.1-100 for major currencies
+    if rate >= 100 or rate < 0.1:
         logger.warning(f"Suspicious rate value: {rate} (expected range: 0.1-100)")
         return False
     return True
