@@ -10,12 +10,17 @@ jobs:
   backfill-news:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write  # Required to push changes
+    
     env:
       NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -55,6 +60,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "🤖 Backfill news articles - $(date +%Y-%m-%d)" || echo "Commit skipped"
-            git push || echo "Push failed (this is OK)"
+            git push origin main || echo "Push failed - check permissions"
           fi
 
