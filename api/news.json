@@ -4,11 +4,11 @@
     "2025-11-04": {
       "europe": [
         {
-          "title": "European Central Bank November Policy Update - Day 308",
-          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
-          "source": "European Central Bank",
-          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251104.en.html",
-          "published_at": "2025-11-04T09:00:00"
+          "title": "Euro Zone Inflation Update for November 04",
+          "description": "Consumer price data for November 04, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
+          "source": "European Commission",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1104",
+          "published_at": "2025-11-04T17:00:00"
         },
         {
           "title": "EU Economic Indicators Show November Performance Analysis",
@@ -18,20 +18,20 @@
           "published_at": "2025-11-04T13:00:00"
         },
         {
-          "title": "Euro Zone Inflation Update for November 04",
-          "description": "Consumer price data for November 04, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
-          "source": "European Commission",
-          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1104",
-          "published_at": "2025-11-04T17:00:00"
+          "title": "European Central Bank November Policy Update - Day 308",
+          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
+          "source": "European Central Bank",
+          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251104.en.html",
+          "published_at": "2025-11-04T09:00:00"
         }
       ],
       "romania": [
         {
-          "title": "BNR November Monetary Policy Review",
-          "description": "The National Bank of Romania reviewed monetary policy on November 04, focusing on inflation control and exchange rate stability.",
-          "source": "BNR",
-          "url": "https://www.bnr.ro/Press-release-2025-11-04.aspx",
-          "published_at": "2025-11-04T09:00:00"
+          "title": "RON Exchange Rate Update - November 04",
+          "description": "The Romanian Leu exchange rate showed strengthening against major currencies on November 04.",
+          "source": "Financial Markets",
+          "url": "https://www.bnr.ro/Exchange-rates-2025-11-04.aspx",
+          "published_at": "2025-11-04T17:00:00"
         },
         {
           "title": "Romanian Economic Performance in November",
@@ -41,14 +41,161 @@
           "published_at": "2025-11-04T13:00:00"
         },
         {
-          "title": "RON Exchange Rate Update - November 04",
-          "description": "The Romanian Leu exchange rate showed strengthening against major currencies on November 04.",
-          "source": "Financial Markets",
-          "url": "https://www.bnr.ro/Exchange-rates-2025-11-04.aspx",
-          "published_at": "2025-11-04T17:00:00"
+          "title": "BNR November Monetary Policy Review",
+          "description": "The National Bank of Romania reviewed monetary policy on November 04, focusing on inflation control and exchange rate stability.",
+          "source": "BNR",
+          "url": "https://www.bnr.ro/Press-release-2025-11-04.aspx",
+          "published_at": "2025-11-04T09:00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.186116"
+      "timestamp": "2025-11-04T20:06:30.929164"
+    },
+    "2025-11-03": {
+      "europe": [
+        {
+          "title": "European Central Bank November Policy Update - Day 307",
+          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
+          "source": "European Central Bank",
+          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251103.en.html",
+          "published_at": "2025-11-03T09:00:00"
+        },
+        {
+          "title": "EU Economic Indicators Show November Performance Analysis",
+          "description": "Economic data for November reveals continued growth patterns across European Union member states, with GDP figures showing resilience.",
+          "source": "Eurostat",
+          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20251103-1",
+          "published_at": "2025-11-03T13:00:00"
+        },
+        {
+          "title": "Euro Zone Inflation Update for November 03",
+          "description": "Consumer price data for November 03, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
+          "source": "European Commission",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1103",
+          "published_at": "2025-11-03T17:00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "BNR November Monetary Policy Review",
+          "description": "The National Bank of Romania reviewed monetary policy on November 03, focusing on inflation control and exchange rate stability.",
+          "source": "BNR",
+          "url": "https://www.bnr.ro/Press-release-2025-11-03.aspx",
+          "published_at": "2025-11-03T09:00:00"
+        },
+        {
+          "title": "Romanian Economic Performance in November",
+          "description": "Economic indicators for November 03, 2025 suggest continued growth in the Romanian economy, with positive trends across sectors.",
+          "source": "Romanian Statistical Office",
+          "url": "https://insse.ro/cms/en/content/press-release-nr-11-2025",
+          "published_at": "2025-11-03T13:00:00"
+        },
+        {
+          "title": "RON Exchange Rate Update - November 03",
+          "description": "The Romanian Leu exchange rate showed moderate fluctuations against major currencies on November 03.",
+          "source": "Financial Markets",
+          "url": "https://www.bnr.ro/Exchange-rates-2025-11-03.aspx",
+          "published_at": "2025-11-03T17:00:00"
+        }
+      ],
+      "timestamp": "2025-11-04T20:06:30.933328"
+    },
+    "2025-11-02": {
+      "europe": [
+        {
+          "title": "European Central Bank November Policy Update - Day 306",
+          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
+          "source": "European Central Bank",
+          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251102.en.html",
+          "published_at": "2025-11-02T09:00:00"
+        },
+        {
+          "title": "EU Economic Indicators Show November Performance Analysis",
+          "description": "Economic data for November reveals continued growth patterns across European Union member states, with GDP figures showing resilience.",
+          "source": "Eurostat",
+          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20251102-1",
+          "published_at": "2025-11-02T13:00:00"
+        },
+        {
+          "title": "Euro Zone Inflation Update for November 02",
+          "description": "Consumer price data for November 02, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
+          "source": "European Commission",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1102",
+          "published_at": "2025-11-02T17:00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "BNR November Monetary Policy Review",
+          "description": "The National Bank of Romania reviewed monetary policy on November 02, focusing on inflation control and exchange rate stability.",
+          "source": "BNR",
+          "url": "https://www.bnr.ro/Press-release-2025-11-02.aspx",
+          "published_at": "2025-11-02T09:00:00"
+        },
+        {
+          "title": "Romanian Economic Performance in November",
+          "description": "Economic indicators for November 02, 2025 suggest continued growth in the Romanian economy, with positive trends across sectors.",
+          "source": "Romanian Statistical Office",
+          "url": "https://insse.ro/cms/en/content/press-release-nr-11-2025",
+          "published_at": "2025-11-02T13:00:00"
+        },
+        {
+          "title": "RON Exchange Rate Update - November 02",
+          "description": "The Romanian Leu exchange rate showed stability against major currencies on November 02.",
+          "source": "Financial Markets",
+          "url": "https://www.bnr.ro/Exchange-rates-2025-11-02.aspx",
+          "published_at": "2025-11-02T17:00:00"
+        }
+      ],
+      "timestamp": "2025-11-04T20:06:30.938313"
+    },
+    "2025-11-01": {
+      "europe": [
+        {
+          "title": "European Central Bank November Policy Update - Day 305",
+          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
+          "source": "European Central Bank",
+          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251101.en.html",
+          "published_at": "2025-11-01T09:00:00"
+        },
+        {
+          "title": "EU Economic Indicators Show November Performance Analysis",
+          "description": "Economic data for November reveals continued growth patterns across European Union member states, with GDP figures showing resilience.",
+          "source": "Eurostat",
+          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20251101-1",
+          "published_at": "2025-11-01T13:00:00"
+        },
+        {
+          "title": "Euro Zone Inflation Update for November 01",
+          "description": "Consumer price data for November 01, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
+          "source": "European Commission",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1101",
+          "published_at": "2025-11-01T17:00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "BNR November Monetary Policy Review",
+          "description": "The National Bank of Romania reviewed monetary policy on November 01, focusing on inflation control and exchange rate stability.",
+          "source": "BNR",
+          "url": "https://www.bnr.ro/Press-release-2025-11-01.aspx",
+          "published_at": "2025-11-01T09:00:00"
+        },
+        {
+          "title": "Romanian Economic Performance in November",
+          "description": "Economic indicators for November 01, 2025 suggest continued growth in the Romanian economy, with positive trends across sectors.",
+          "source": "Romanian Statistical Office",
+          "url": "https://insse.ro/cms/en/content/press-release-nr-11-2025",
+          "published_at": "2025-11-01T13:00:00"
+        },
+        {
+          "title": "RON Exchange Rate Update - November 01",
+          "description": "The Romanian Leu exchange rate showed strengthening against major currencies on November 01.",
+          "source": "Financial Markets",
+          "url": "https://www.bnr.ro/Exchange-rates-2025-11-01.aspx",
+          "published_at": "2025-11-01T17:00:00"
+        }
+      ],
+      "timestamp": "2025-11-04T20:06:30.942806"
     },
     "2025-10-31": {
       "europe": [
@@ -181,7 +328,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.187187"
+      "timestamp": "2025-11-04T20:06:30.944085"
     },
     "2025-10-30": {
       "europe": [
@@ -314,7 +461,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.188936"
+      "timestamp": "2025-11-04T20:06:30.945071"
     },
     "2025-10-29": {
       "europe": [
@@ -454,7 +601,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.190072"
+      "timestamp": "2025-11-04T20:06:30.946085"
     },
     "2025-10-28": {
       "europe": [
@@ -601,7 +748,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.191121"
+      "timestamp": "2025-11-04T20:06:30.947077"
     },
     "2025-10-27": {
       "europe": [
@@ -741,7 +888,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.192694"
+      "timestamp": "2025-11-04T20:06:30.948079"
     },
     "2025-10-26": {
       "europe": [
@@ -874,7 +1021,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.193756"
+      "timestamp": "2025-11-04T20:06:30.949108"
     },
     "2025-10-25": {
       "europe": [
@@ -1007,7 +1154,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.194857"
+      "timestamp": "2025-11-04T20:06:30.950162"
     },
     "2025-10-24": {
       "europe": [
@@ -1147,7 +1294,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.195895"
+      "timestamp": "2025-11-04T20:06:30.951146"
     },
     "2025-10-23": {
       "europe": [
@@ -1294,7 +1441,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.196922"
+      "timestamp": "2025-11-04T20:06:30.952114"
     },
     "2025-10-22": {
       "europe": [
@@ -1441,7 +1588,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.198005"
+      "timestamp": "2025-11-04T20:06:30.953090"
     },
     "2025-10-21": {
       "europe": [
@@ -1588,7 +1735,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.199059"
+      "timestamp": "2025-11-04T20:06:30.954070"
     },
     "2025-10-20": {
       "europe": [
@@ -1735,7 +1882,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.200324"
+      "timestamp": "2025-11-04T20:06:30.955138"
     },
     "2025-10-19": {
       "europe": [
@@ -1882,7 +2029,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.201368"
+      "timestamp": "2025-11-04T20:06:30.956164"
     },
     "2025-10-18": {
       "europe": [
@@ -2029,8 +2176,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-04T20:05:43.202455"
+      "timestamp": "2025-11-04T20:06:30.957200"
     }
   },
-  "timestamp": "2025-11-04T20:05:43.202458"
+  "timestamp": "2025-11-04T20:06:30.957204"
 }
