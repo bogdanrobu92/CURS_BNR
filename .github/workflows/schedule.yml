@@ -9,12 +9,16 @@ jobs:
   collect-data:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write  # Required to push changes back to repository
     env:
       NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -36,6 +40,24 @@ jobs:
         run: |
           echo "Generating API data files..."
           python3 generate_api_data.py
+          
+      - name: Commit and push changes
+        continue-on-error: true
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          
+          # Add database, API files, and metrics
+          git add data/exchange_rates.db api/ metrics/ || echo "No files to add"
+          
+          # Commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit (data already up to date)"
+          else
+            git commit -m "🤖 Daily data collection - $(date +%Y-%m-%d)"
+            git push origin main
+            echo "✅ Changes pushed to repository"
+          fi
           
       - name: Success Message
         if: success()
