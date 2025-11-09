@@ -139,7 +139,7 @@
           "published_at": "2025-11-07T08:40:34+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.878270"
+      "timestamp": "2025-11-09T03:13:13.142644"
     },
     "2025-11-07": {
       "europe": [
@@ -265,7 +265,7 @@
           "published_at": "2025-11-06T07:56:09+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.880781"
+      "timestamp": "2025-11-09T03:13:13.144182"
     },
     "2025-11-06": {
       "europe": [
@@ -398,7 +398,7 @@
           "published_at": "2025-11-05T08:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.884027"
+      "timestamp": "2025-11-09T03:13:13.145627"
     },
     "2025-11-05": {
       "europe": [
@@ -531,203 +531,581 @@
           "published_at": "2025-11-04T06:58:39+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.886034"
+      "timestamp": "2025-11-09T03:13:13.147397"
     },
     "2025-11-04": {
       "europe": [
         {
-          "title": "Euro Zone Inflation Update for November 04",
-          "description": "Consumer price data for November 04, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
-          "source": "European Commission",
-          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1104",
-          "published_at": "2025-11-04T17:00:00"
+          "title": "A Look Ahead to a Busy Weekend",
+          "description": "Good evening, everyone. It\u2019s full-steam ahead toward a very active weekend of weather across Kentucky. This weekend looks to bring strong thunderstorms and snowflakes as cold air surges in from the northwest. Let\u2019s hit the high points of this whole setup. We \u2026",
+          "source": "kyweathercenter.com",
+          "url": "https://kyweathercenter.com/?p=73391",
+          "published_at": "2025-11-05T23:58:19+00:00"
         },
         {
-          "title": "EU Economic Indicators Show November Performance Analysis",
-          "description": "Economic data for November reveals continued growth patterns across European Union member states, with GDP figures showing resilience.",
-          "source": "Eurostat",
-          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20251104-1",
-          "published_at": "2025-11-04T13:00:00"
+          "title": "Fianna F\u00e1ilers vent about so-called 'naughty list' while the boss is en route to Brazil",
+          "description": "The meeting was also told there is \u201cserious risk\u201d the government is taking a flawed approach to the nitrates derogation deal.",
+          "source": "TheJournal.ie",
+          "url": "https://www.thejournal.ie/fianna-fail-naughty-list-rebel-group-6865824-Nov2025/",
+          "published_at": "2025-11-05T23:53:04+00:00"
         },
         {
-          "title": "European Central Bank November Policy Update - Day 308",
-          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
-          "source": "European Central Bank",
-          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251104.en.html",
-          "published_at": "2025-11-04T09:00:00"
+          "title": "Foden and Haaland Lead Man City Past Dortmund in Champions League Victory",
+          "description": "Foden and Haaland Shine as Man City Sweep Aside Dortmund in Champions LeagueManchester City delivered a commanding Champions League performance at the Etihad, dismantling Borussia Dortmund 4-1 to tigh...",
+          "source": "English Premier League Index - Opta Stats",
+          "url": "https://eplindex.com/138838/foden-and-haaland-lead-man-city-past-dortmund-in-champions-league-victory.html",
+          "published_at": "2025-11-05T23:50:00+00:00"
+        },
+        {
+          "title": "Dynamic and dangerous vs. Dortmund, Foden must be part of England's World Cup squad",
+          "description": "England coach Thomas Tuchel knows how good Phil Foden is. But Foden's Champions League brace was a timely reminder of his immense talent.",
+          "source": "ESPN",
+          "url": "https://www.espn.com/soccer/story/_/id/46861483/man-city-foden-deserves-world-cup-spot-england-champions-league",
+          "published_at": "2025-11-05T23:49:33+00:00"
+        },
+        {
+          "title": "Flick doubles down on Bar\u00e7a tactics, it's 'our DNA'",
+          "description": "Barcelona coach Hansi Flick doubled down on his team's attacking style after Wednesday's 3-3 draw with Club Brugge in the Champions League, insisting he will not change his philosophy.",
+          "source": "ESPN",
+          "url": "https://www.espn.com/soccer/story/_/id/46862511/hansi-flick-doubles-barcelona-tactics",
+          "published_at": "2025-11-05T23:42:20+00:00"
+        },
+        {
+          "title": "\u201cAs Time Goes By\u201d: The Song That Defines Casablanca\u2019s Timeless Love",
+          "description": "Over time, I have learned not to associate music with the people in my life. Unpopular opinion, but music can be cruel. It interweaves itself with your memories, only to become a lifelong trigger, once that special person is gone from your life. Don\u2019t believe\u2026",
+          "source": "Nofilmschool.com",
+          "url": "https://nofilmschool.com/as-time-goes-by-casablanca",
+          "published_at": "2025-11-05T23:40:04+00:00"
+        },
+        {
+          "title": "Dispatch Episodes 5 and 6 Release Time and Episode Schedule: When will new episode air? Here's global release timings, episode titles, plot and gameplay",
+          "description": "Dispatch Episodes 5 and 6 release time and schedule are confirmed for November 5, 2025. The new chapters, titled \u201cTeam Building\u201d and \u201cMoving Parts,\u201d will release together worldwide. Fans can expect weekly updates as Dispatch continues its story of retired sup\u2026",
+          "source": "The Times of India",
+          "url": "https://economictimes.indiatimes.com/news/international/us/dispatch-episodes-5-and-6-release-time-and-episode-schedule-when-will-new-episode-air-heres-global-release-timings-episode-titles-plot-and-gameplay-adhoc-studio-team-building-and-moving-parts-robert-robertson-weekly-release-pattern/articleshow/125120068.cms",
+          "published_at": "2025-11-05T23:38:33+00:00"
+        },
+        {
+          "title": "How English sides are dominating the Champions League",
+          "description": "English clubs appear to be bossing things in Europe as, for the second time in this season's Champions League, five sides from the Premier League won in a single round of fixtures.",
+          "source": "BBC News",
+          "url": "https://www.bbc.com/sport/football/articles/ceq0z4pnp1yo",
+          "published_at": "2025-11-05T23:36:24+00:00"
+        },
+        {
+          "title": "How English sides are dominating the Champions League",
+          "description": "English clubs appear to be bossing things in Europe as, for the second time in this season's Champions League, five sides from the Premier League won in a single round of fixtures.",
+          "source": "BBC News",
+          "url": "https://www.bbc.com/sport/football/articles/ceq0z4pnp1yo",
+          "published_at": "2025-11-05T23:36:19+00:00"
+        },
+        {
+          "title": "\u2018Weeds\u2019 Returns to Netflix But Only In International Regions",
+          "description": "At least at the moment, the United States isn't amongst the list of recipients, however.",
+          "source": "What's on Netflix",
+          "url": "https://www.whats-on-netflix.com/news/weeds-returns-to-netflix-but-only-in-select-countries/",
+          "published_at": "2025-11-05T23:34:27+00:00"
         }
       ],
       "romania": [
         {
-          "title": "RON Exchange Rate Update - November 04",
-          "description": "The Romanian Leu exchange rate showed strengthening against major currencies on November 04.",
-          "source": "Financial Markets",
-          "url": "https://www.bnr.ro/Exchange-rates-2025-11-04.aspx",
-          "published_at": "2025-11-04T17:00:00"
+          "title": "Chivu not satisfied with Inter victory: \u2018I didn\u2019t transmit right mentality\u2019",
+          "description": "Cristian Chivu takes \u2018responsibility\u2019 for Inter\u2019s disappointing performance to beat Kairat Almaty 2-1 in the Champions League. \u2018Evidently I was unable to transmit the right mentality.\u2019The Ne...",
+          "source": "Football Italia",
+          "url": "https://football-italia.net/chivu-not-satisfied-inter-victory-mentality/",
+          "published_at": "2025-11-05T23:00:00+00:00"
         },
         {
-          "title": "Romanian Economic Performance in November",
-          "description": "Economic indicators for November 04, 2025 suggest continued growth in the Romanian economy, with positive trends across sectors.",
-          "source": "Romanian Statistical Office",
-          "url": "https://insse.ro/cms/en/content/press-release-nr-11-2025",
-          "published_at": "2025-11-04T13:00:00"
+          "title": "A Muzzarell 2024 720p MAX WEB-DL H264-ZooeyDes",
+          "description": "Awards 20 wins & 5 nominations total See more awards \u00bbPlot: Daniele, a rebellious and impatient 14-year-old from Castel Volturno and his best friend Lucio, are high on crack for the first time. Daniele is about to loose his ailing grandmother who lives 40 km \u2026",
+          "source": "Rlsbb.to",
+          "url": "https://post.rlsbb.to/a-muzzarell-2024-720p-max-web-dl-h264-zooeydes/",
+          "published_at": "2025-11-05T22:54:56+00:00"
         },
         {
-          "title": "BNR November Monetary Policy Review",
-          "description": "The National Bank of Romania reviewed monetary policy on November 04, focusing on inflation control and exchange rate stability.",
-          "source": "BNR",
-          "url": "https://www.bnr.ro/Press-release-2025-11-04.aspx",
-          "published_at": "2025-11-04T09:00:00"
+          "title": "From New York to the Netherlands, Election Day went well for TikTok\u2019s favorite politicians",
+          "description": "TikTok\u00a0is the hot new tool in the world of political campaigning, and two newly elected government officials have shown just how potent that tool can be. On the same day that\u00a0Zohran Mamdani\u00a0secured his status as the next Mayor of New York City, Dutch politici\u2026",
+          "source": "Tubefilter",
+          "url": "https://www.tubefilter.com/2025/11/05/election-day-zohran-mamdani-rob-jetten-tiktok/",
+          "published_at": "2025-11-05T22:13:48+00:00"
+        },
+        {
+          "title": "Meze Audio Gen 2 99 Classics Headphones",
+          "description": "Romania-based Meze Audio releases a new flagship with the second-generation 99 Classics. The closed-back design is made with real walnut wood for the earcups, delivering detailed, neutral sound, housing 40mm dynamic drivers, with vegan leather detachable earc\u2026",
+          "source": "Uncrate.com",
+          "url": "https://uncrate.com/meze-audio-gen-2-99-classics-headphones/",
+          "published_at": "2025-11-05T22:00:01+00:00"
+        },
+        {
+          "title": "Scientists shocked to discover the world\u2019s biggest spiderweb \u2014 home to over 100K creepy crawlers",
+          "description": "\"The natural world still holds countless surprises.\"",
+          "source": "New York Post",
+          "url": "https://nypost.com/2025/11/05/science/scientists-discover-worlds-largest-spiderweb-at-over-1100-square-feet/",
+          "published_at": "2025-11-05T20:38:59+00:00"
+        },
+        {
+          "title": "Pentagon faces bipartisan criticism over lack of communication with Congress",
+          "description": "Senate Armed Services Committee grills Trump nominees over communication breakdowns, policy confusion and lack of congressional consultation on key decisions.",
+          "source": "Fox News",
+          "url": "https://www.foxnews.com/politics/pentagon-faces-bipartisan-criticism-over-lack-communication-congress",
+          "published_at": "2025-11-05T20:01:03+00:00"
+        },
+        {
+          "title": "Senators call out Pentagon policy office as \u2018Pigpen-like mess,\u2019 accuse top official of stonewalling",
+          "description": "Austin Dahmer, President Trump\u2019s pick to be assistant secretary for strategy, plans and forces was grilled over what lawmakers described as the Pentagon's failure to communicate \u2014 with Congress, foreign allies, and even the White House.",
+          "source": "New York Post",
+          "url": "https://nypost.com/2025/11/05/us-news/senators-call-out-pentagon-policy-office-as-pigpen-like-mess-accuse-top-official-of-stonewalling/",
+          "published_at": "2025-11-05T19:29:30+00:00"
+        },
+        {
+          "title": "Fianna F\u00e1il, Fine Gael and Sinn F\u00e9in all criticised for 'riding both horses' on immigration",
+          "description": "There was also a call from the Labour Party for a public awareness campaign about the benefits of immigration.",
+          "source": "TheJournal.ie",
+          "url": "https://www.thejournal.ie/international-protection-dail-statements-6865679-Nov2025/",
+          "published_at": "2025-11-05T18:12:51+00:00"
+        },
+        {
+          "title": "World's largest spiderweb discovered inside a cave in Europe",
+          "description": "The enormous webbed structure is thought to contain more than 111,000 individual spiders. Walking into a spiderweb is bad enough at the best of times,...",
+          "source": "Unexplained-mysteries.com",
+          "url": "https://www.unexplained-mysteries.com/news/391803/worlds-largest-spiderweb-discovered-inside-a-cave-in-europe",
+          "published_at": "2025-11-05T17:56:32+00:00"
+        },
+        {
+          "title": "A Western military just picked up a big batch of F-16 fighter jets for $1.15",
+          "description": "The Netherlands sold 18 F-16s to Romania.\nUS Air Force photo by Airman 1st Class Zachary Jakel\nThe Netherlands sold 18 F-16 fighter jets to Romania for $1.15 in a largely symbolic move.\nIt gives Romania ownership of the US-made jets, which have been used to t\u2026",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/dac7651e9ee179c1",
+          "published_at": "2025-11-05T17:48:41+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.887928"
+      "timestamp": "2025-11-09T03:13:13.149201"
     },
     "2025-11-03": {
       "europe": [
         {
-          "title": "Euro Zone Inflation Update for November 03",
-          "description": "Consumer price data for November 03, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
-          "source": "European Commission",
-          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1103",
-          "published_at": "2025-11-03T17:00:00"
+          "title": "Insurance tech firm Exzeo raises $168 million in US IPO",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/7306d8b98a062704",
+          "published_at": "2025-11-04T23:58:50+00:00"
         },
         {
-          "title": "EU Economic Indicators Show November Performance Analysis",
-          "description": "Economic data for November reveals continued growth patterns across European Union member states, with GDP figures showing resilience.",
-          "source": "Eurostat",
-          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20251103-1",
-          "published_at": "2025-11-03T13:00:00"
+          "title": "Wall Street Bigwigs Are Talking About a Big Pullback in Stocks. Should You Be Worried?",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/fadea4f2212a8ad5",
+          "published_at": "2025-11-04T23:58:44+00:00"
         },
         {
-          "title": "European Central Bank November Policy Update - Day 307",
-          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
-          "source": "European Central Bank",
-          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251103.en.html",
-          "published_at": "2025-11-03T09:00:00"
+          "title": "Tesla Sees Demand Drop In Europe In October: Here's How The Company Performed In 9 Key Markets",
+          "description": "After a record-breaking third quarter, things could get bad fast for electric vehicle company Tesla Inc (NASDAQ:TSLA). A new report shows a sharp decline for Tesla vehicle registrations in several key European markets.\n \u2022 TSLA shares are retreating from recen\u2026",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/dd0379aab5d0a16d",
+          "published_at": "2025-11-04T23:58:34+00:00"
+        },
+        {
+          "title": "Bayern Munich prove they are Champions League contenders while injury bug gives PSG reasons to worry",
+          "description": "A 2-1 win in Paris for Bayern Munich showed that Bayern Munich could very well be the team to beat in the Champions League",
+          "source": "CBS Sports",
+          "url": "https://www.cbssports.com/soccer/news/bayern-munich-beat-psg-champions-league-matchday-4/",
+          "published_at": "2025-11-04T23:57:12+00:00"
+        },
+        {
+          "title": "Questex Expands Life Sciences Portfolio With Acquisitons",
+          "description": "On Tuesday, event company Questex announced it had acquired The Conference Forum, a research and conference development firm specializing in life Questex\u2019s latest deal sees it considerably expand its reach into life sciences, both in terms of content-led even\u2026",
+          "source": "Skift",
+          "url": "http://meetings.skift.com/2025/11/04/questex-expands-life-sciences/",
+          "published_at": "2025-11-04T23:50:00+00:00"
+        },
+        {
+          "title": "In attack and defense, Bayern Munich show why they're Champions League favorites",
+          "description": "Luis D\u00edaz's first-half red card but Bayern under pressure on Tuesday but, in a way, it also gave the German champions a chance to showcase their UCL bona fides.",
+          "source": "ESPN",
+          "url": "https://www.espn.com/soccer/story/_/id/46850089/in-attack-defense-bayern-show-why-theyre-ucl-favorites",
+          "published_at": "2025-11-04T23:46:56+00:00"
+        },
+        {
+          "title": "\u201cWhat Is This Thing?\u201d \u2014 25 Times People Asked The Internet To Identify Mysterious Objects This Week",
+          "description": "The post \u201cWhat Is This Thing?\u201d \u2014 25 Times People Asked The Internet To Identify Mysterious Objects This Week appeared first on Pleated Jeans.",
+          "source": "Pleated-jeans.com",
+          "url": "https://pleated-jeans.com/2025/11/04/what-is-this-thing-times-people-asked-the-internet-to-identify-mysterious-objects-this-week-11-4-25/",
+          "published_at": "2025-11-04T23:45:11+00:00"
+        },
+        {
+          "title": "Kylian Mbappe struggles again at Anfield as Liverpool beats Real Madrid 1-0",
+          "description": "Kylian Mbappe has been near-unstoppable this season. At Anfield on Tuesday, he hit a roadblock. For the second year running, the Real Madrid forward had a night to forget on Merseyside as Liverpool won 1-0 in the Champions League, and Mbappe looked a shadow o\u2026",
+          "source": "Yahoo Entertainment",
+          "url": "https://sports.yahoo.com/article/kylian-mbappe-struggles-again-anfield-234227400.html",
+          "published_at": "2025-11-04T23:42:27+00:00"
+        },
+        {
+          "title": "Mesoblast to Meet With FDA Next Month to Discuss Rexlemestrocel-L and Opioid Cessation",
+          "description": "NEW YORK, Nov. 04, 2025 (GLOBE NEWSWIRE) -- Mesoblast Limited (Nasdaq:MESO; ASX:MSB), global leader in allogeneic cellular medicines for inflammatory diseases, today announced that the U.S. Food & Drug Administration (FDA) has scheduled a meeting in early Dec\u2026",
+          "source": "GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2025/11/04/3181021/0/en/Mesoblast-to-Meet-With-FDA-Next-Month-to-Discuss-Rexlemestrocel-L-and-Opioid-Cessation.html",
+          "published_at": "2025-11-04T23:40:00+00:00"
+        },
+        {
+          "title": "ISS to plunge into ocean soon? Here's complete truth, NASA plan for final reentry, what is Point Nemo, why was it chosen and what happens after mission ends",
+          "description": "ISS to plunge into ocean soon as NASA finalizes plans for its controlled reentry by 2030. The International Space Station will descend over Point Nemo, the world\u2019s most remote ocean site, using a SpaceX-built vehicle to ensure safe deorbit and transition to p\u2026",
+          "source": "The Times of India",
+          "url": "https://economictimes.indiatimes.com/news/international/us/iss-to-plunge-into-ocean-soon-heres-complete-truth-nasa-plan-for-final-reentry-what-is-point-nemo-why-was-it-chosen-and-what-happens-after-mission-ends-international-space-station-spacex-deorbit-vehicle-spacex-dragon-cargo-capsule/articleshow/125098786.cms",
+          "published_at": "2025-11-04T23:39:39+00:00"
         }
       ],
       "romania": [
         {
-          "title": "RON Exchange Rate Update - November 03",
-          "description": "The Romanian Leu exchange rate showed moderate fluctuations against major currencies on November 03.",
-          "source": "Financial Markets",
-          "url": "https://www.bnr.ro/Exchange-rates-2025-11-03.aspx",
-          "published_at": "2025-11-03T17:00:00"
+          "title": "Belgian airports closed after drone sightings",
+          "description": "Belgium's Brussels and Liege airports were closed on Tuesday evening after drone sightings, diverting many incoming planes and preventing others from taking  off.",
+          "source": "CBC News",
+          "url": "https://www.cbc.ca/news/world/belgium-brussels-airports-closed-drones-9.6966947",
+          "published_at": "2025-11-04T23:37:07+00:00"
         },
         {
-          "title": "Romanian Economic Performance in November",
-          "description": "Economic indicators for November 03, 2025 suggest continued growth in the Romanian economy, with positive trends across sectors.",
-          "source": "Romanian Statistical Office",
-          "url": "https://insse.ro/cms/en/content/press-release-nr-11-2025",
-          "published_at": "2025-11-03T13:00:00"
+          "title": "Global Payments Says New Point-of-Sale Software is Resonating with Merchants",
+          "description": "Global Payments\u2019 new point-of-sale software, Genius, has been resonating with merchants since the launch of its configurations for restaurants and retail in the second quarter, executives said Tuesday (Nov. 4) during the company\u2019s third quarter earnings call.\u2026",
+          "source": "pymnts.com",
+          "url": "https://www.pymnts.com/smbs/2025/global-payments-says-new-point-of-sale-software-is-resonating-with-merchants/",
+          "published_at": "2025-11-04T22:59:06+00:00"
         },
         {
-          "title": "BNR November Monetary Policy Review",
-          "description": "The National Bank of Romania reviewed monetary policy on November 03, focusing on inflation control and exchange rate stability.",
-          "source": "BNR",
-          "url": "https://www.bnr.ro/Press-release-2025-11-03.aspx",
-          "published_at": "2025-11-03T09:00:00"
+          "title": "Illegal crossings drop, but U.S. agents fear migrants 'will continue to lose their lives'",
+          "description": "While the number of illegal crossings at the North Dakota and Minnesota border with Canada is dropping, U.S. authorities still fear human trafficking will lead to more deaths during the dangerous winter months.",
+          "source": "CBC News",
+          "url": "https://www.cbc.ca/news/canada/manitoba/north-dakota-minnesota-border-illegal-crossings-9.6966690",
+          "published_at": "2025-11-04T22:58:10+00:00"
+        },
+        {
+          "title": "'Really bad': GOP senator rails over Trump's Pentagon official",
+          "description": "Sen. Dan Sullivan (R-AK) isn't happy with President Donald Trump's Department of Defense, and he's speaking out. Reuters reported Tuesday that, after so many leaks, Secretary of Defense Pete Hegseth has locked down the Pentagon to the point that no one is all\u2026",
+          "source": "Raw Story",
+          "url": "https://www.rawstory.com/pentagon-2674265069/",
+          "published_at": "2025-11-04T22:44:06+00:00"
+        },
+        {
+          "title": "Why did Liverpool not get a penalty for Tchouameni handball ? VAR decision saves Real Madrid in Champions League",
+          "description": "One of the premium matchups of the league phase in the 2025/26 Champions League was Real Madrid's visit to Anfield Stadium for a meeting with Liverpool, and with that spotlight comes increased scrutiny on the referee.",
+          "source": "Sporting News",
+          "url": "https://www.sportingnews.com/us/soccer/news/why-liverpool-not-penalty-handball-real-madrid-var-tchouameni/a33ec89c073ee7e95537aaf2",
+          "published_at": "2025-11-04T21:30:00+00:00"
+        },
+        {
+          "title": "Artissima\u2019s 32nd Edition Grounded Global Contemporary Art in Regional Identity",
+          "description": "Although a distinctly Italian sensibility runs through the fair\u2019s context, fair director Luigi Fassi pointed out that the majority of participating galleries were not Italian.",
+          "source": "Observer",
+          "url": "https://observer.com/2025/11/market-artissima-art-fair-report-turin-italy/",
+          "published_at": "2025-11-04T21:18:04+00:00"
+        },
+        {
+          "title": "Pentagon\u2019s policy shop is \u2018a pigpen-like\u2019 mess: Sen. Cotton",
+          "description": "Senate Armed Services Committee members from both parties question DOD missteps, actions that contravened president\u2019s foreign-policy positions.",
+          "source": "Defense One",
+          "url": "https://www.defenseone.com/policy/2025/11/pentagons-policy-shop-pigpen-mess-sen-cotton/409297/",
+          "published_at": "2025-11-04T20:23:11+00:00"
+        },
+        {
+          "title": "Where to watch Love Island: Stream USA, UK, Australian series, and more free from anywhere",
+          "description": "Love Island may have started in the UK, but some of the international versions rival the original. We'll show you where to watch Love Island around the world.",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/guides/streaming/where-to-watch-love-island-stream-all-series",
+          "published_at": "2025-11-04T18:57:20+00:00"
+        },
+        {
+          "title": "Russian spies pack custom malware into hidden VMs on Windows machines",
+          "description": "Curly COMrades strike again\nRussia's Curly COMrades is abusing Microsoft's Hyper-V hypervisor in compromised Windows machines to create a hidden Alpine Linux-based virtual machine that bypasses endpoint security tools, giving the spies long-term network acces\u2026",
+          "source": "Theregister.com",
+          "url": "https://www.theregister.com/2025/11/04/russian_spies_pack_custom_malware/",
+          "published_at": "2025-11-04T18:53:59+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.889868"
+      "timestamp": "2025-11-09T03:13:13.150994"
     },
     "2025-11-02": {
       "europe": [
         {
-          "title": "Euro Zone Inflation Update for November 02",
-          "description": "Consumer price data for November 02, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
-          "source": "European Commission",
-          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1102",
-          "published_at": "2025-11-02T17:00:00"
+          "title": "Monday Evening Look Ahead",
+          "description": "Good evening, everyone. It\u2019s a gorgeous stretch of weather that continues through Thursday before we change it up in a hurry. Gusty showers roll in for Friday with the chance for the first taste of winter behind it late Sunday and Monday. Let\u2019s talk about the\u2026",
+          "source": "kyweathercenter.com",
+          "url": "https://kyweathercenter.com/?p=73332",
+          "published_at": "2025-11-03T23:59:27+00:00"
         },
         {
-          "title": "EU Economic Indicators Show November Performance Analysis",
-          "description": "Economic data for November reveals continued growth patterns across European Union member states, with GDP figures showing resilience.",
-          "source": "Eurostat",
-          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20251102-1",
-          "published_at": "2025-11-02T13:00:00"
+          "title": "Foreign currency exchange rates set for today",
+          "description": "KATHMANDU: Nepal Rastra Bank (NRB) has announced the official foreign exchange rates for today. According to the central bank, the buying rate for one US dollar is Rs 141.75 and the selling rate is Rs 142.35. Similarly, the buying rate for one euro is Rs 163.\u2026",
+          "source": "Khabarhub.com",
+          "url": "https://english.khabarhub.com/2025/04/504235/",
+          "published_at": "2025-11-03T23:54:12+00:00"
         },
         {
-          "title": "European Central Bank November Policy Update - Day 306",
-          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
-          "source": "European Central Bank",
-          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251102.en.html",
-          "published_at": "2025-11-02T09:00:00"
+          "title": "Macquarie tips more than 60% upside for this ASX All Ords stock",
+          "description": "This professional services firm's shares are looking cheap, Macquarie says.\nThe post Macquarie tips more than 60% upside for this ASX All Ords stock appeared first on The Motley Fool Australia.",
+          "source": "Motley Fool Australia",
+          "url": "https://www.fool.com.au/2025/11/04/macquarie-tips-more-than-60-upside-for-this-asx-all-ords-stock/",
+          "published_at": "2025-11-03T23:50:07+00:00"
+        },
+        {
+          "title": "Tesla\u2019s Sales Collapsed Nearly 90 Percent in Some Countries Last Month",
+          "description": "In Europe, there's more bad news for Tesla.",
+          "source": "Gizmodo.com",
+          "url": "https://gizmodo.com/teslas-sales-collapse-90-percent-2000680992",
+          "published_at": "2025-11-03T23:38:35+00:00"
+        },
+        {
+          "title": "Farmers concerns raised at nitrates derogation meeting",
+          "description": "Around 1,500 people attended a meeting in Cork last night to address farmers' concerns over the renewal of Ireland's nitrates derogation.",
+          "source": "RTE",
+          "url": "https://www.rte.ie/news/ireland/2025/1103/1542013-nitrates-derogation-meeting/",
+          "published_at": "2025-11-03T23:31:58+00:00"
+        },
+        {
+          "title": "Philippines\u2019 Quezon City Scores UNESCO Creative Cities of Film Designation",
+          "description": "Quezon City has joined UNESCO\u2019s Creative Cities of Film Network, becoming one of the first Southeast Asian cities to earn the designation. The Philippine metropolis joins a global network of 26 Cities of Film spanning Europe, Asia, and the Americas. Bradford,\u2026",
+          "source": "Variety",
+          "url": "https://variety.com/2025/film/news/philippines-quezon-city-unesco-creative-cities-of-film-1236569009/",
+          "published_at": "2025-11-03T23:28:04+00:00"
+        },
+        {
+          "title": "Recession Risk in Europe Has Come Down: ING Bank CEO",
+          "description": "Steven van Rijswijk, ING CEO and Chairman of the Executive Board, says the risk of a European recession has declined. He tells Katie Greifeld and Romaine...",
+          "source": "Yahoo Entertainment",
+          "url": "https://finance.yahoo.com/video/recession-risk-europe-come-down-232159492.html",
+          "published_at": "2025-11-03T23:21:59+00:00"
+        },
+        {
+          "title": "2025-11-03 Emacs news",
+          "description": "The Emacs Carnival blog theme for November is An Ode to Org Babel. Check out last month's posts about maintenance!\n\n\n<ul>\n<li>Upcoming events (iCal file, Org):\n<ul>\n<li>Emacs Paris: S: Emacs workshop in Paris (online) https://emacs-doctor.com/ Thu Nov 6 0830 \u2026",
+          "source": "Sachachua.com",
+          "url": "https://sachachua.com/blog/2025/11/2025-11-03-emacs-news/",
+          "published_at": "2025-11-03T23:21:39+00:00"
+        },
+        {
+          "title": "Belgian defense chief blames \u2018wipe Moscow off the map\u2019 remark on \u2018mean media\u2019",
+          "description": "Belgian Defense Minister Theo Francken insists he did not actually mean to \u201cwipe Moscow off the map\u201d Read Full Article at RT.com",
+          "source": "RT",
+          "url": "https://www.rt.com/news/627294-belgium-wipe-moscow-map/",
+          "published_at": "2025-11-03T23:21:38+00:00"
+        },
+        {
+          "title": "Atlantica Announces Pricing of Additional $285 Million of 6.375% Green Senior Notes due 2032",
+          "description": "November 3, 2025 - Atlantica Sustainable Infrastructure Group plc (\u201cAtlantica Group\u201d or the \u201cIssuer\u201d) and Atlantica Sustainable Infrastructure Ltd (\u201cAtlantica\u201d and together with the Issuer, collectively, the \u201cCo-Issuers\u201d) have priced their offering (the \u201cGree\u2026",
+          "source": "GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2025/11/03/3179912/33705/en/Atlantica-Announces-Pricing-of-Additional-285-Million-of-6-375-Green-Senior-Notes-due-2032.html",
+          "published_at": "2025-11-03T23:20:00+00:00"
         }
       ],
       "romania": [
         {
-          "title": "RON Exchange Rate Update - November 02",
-          "description": "The Romanian Leu exchange rate showed stability against major currencies on November 02.",
-          "source": "Financial Markets",
-          "url": "https://www.bnr.ro/Exchange-rates-2025-11-02.aspx",
-          "published_at": "2025-11-02T17:00:00"
+          "title": "Rescuers free man trapped in partly collapsed medieval tower in Rome",
+          "description": "Parts of the Torre dei Conti crashed to the ground on at least two occasions, videos on social media showed",
+          "source": "The Irish Times",
+          "url": "https://www.irishtimes.com/world/europe/2025/11/03/rescuers-free-man-trapped-in-partly-collapsed-medieval-tower-in-rome/",
+          "published_at": "2025-11-03T23:40:32+00:00"
         },
         {
-          "title": "Romanian Economic Performance in November",
-          "description": "Economic indicators for November 02, 2025 suggest continued growth in the Romanian economy, with positive trends across sectors.",
-          "source": "Romanian Statistical Office",
-          "url": "https://insse.ro/cms/en/content/press-release-nr-11-2025",
-          "published_at": "2025-11-02T13:00:00"
+          "title": "In Waves and War 2024 1080p WEB h264-EDITH",
+          "description": "In Waves and War: Ehemalige Navy SEALs in Therapie (original title) Plot: Highly decorated Navy SEAL Marcus Capone struggles with PTSD after returning from Afghanistan. His wife finds hope in psychedelic therapy. They embark on providing access to this treatm\u2026",
+          "source": "Rlsbb.to",
+          "url": "https://post.rlsbb.to/in-waves-and-war-2024-1080p-web-h264-edith/",
+          "published_at": "2025-11-03T22:43:53+00:00"
         },
         {
-          "title": "BNR November Monetary Policy Review",
-          "description": "The National Bank of Romania reviewed monetary policy on November 02, focusing on inflation control and exchange rate stability.",
-          "source": "BNR",
-          "url": "https://www.bnr.ro/Press-release-2025-11-02.aspx",
-          "published_at": "2025-11-02T09:00:00"
+          "title": "Dr Seusss The Sneetches 2025 1080p WEB h264-DOLORES",
+          "description": "Plot: Follows star-belly and moon-belly creatures. They are friends and realize that their differences are to be celebrated, not a source of conflict. Genre: Animation | Adventure | ComedyIMDB Rating Live: IMDB Rating: N/ATMDB Rating: N/ARotten Rating: N/AMet\u2026",
+          "source": "Rlsbb.to",
+          "url": "https://post.rlsbb.to/dr-seusss-the-sneetches-2025-1080p-web-h264-dolores/",
+          "published_at": "2025-11-03T22:35:59+00:00"
+        },
+        {
+          "title": "Medieval tower partially collapses in Rome, trapping worker",
+          "description": "ROME: A medieval tower in central Rome that was under renovation partially collapsed on Monday (Nov 3), with one worker trapped alive under rubble, authorities said.Part of the Torre dei Conti collapsed just after 11.30am, sending rubble into the street and a\u2026",
+          "source": "CNA",
+          "url": "https://www.channelnewsasia.com/world/medieval-tower-partially-collapses-rome-5442331",
+          "published_at": "2025-11-03T21:36:00+00:00"
+        },
+        {
+          "title": "A teacher's simple music trick helps a 16-year-old boy overcome a debilitating stutter",
+          "description": "For anyone who watched the hit show \"Educating Yorkshire,\" it\u2019s a moment impossible to forget. A 16-year-old student, Musharaf Asghar, who battled a severe stammer that often left him unable to speak, was encouraged by his teacher, Mr. Matthew Burton, to try \u2026",
+          "source": "GOOD Magazine",
+          "url": "https://www.good.is/teachers-simple-music-trick-helps-a-16-year-old-boy-overcome-a-debilitating-stutter-ex1",
+          "published_at": "2025-11-03T21:16:56+00:00"
+        },
+        {
+          "title": "'Magical' clip showing octopus communicating with scientist is just incredible",
+          "description": "Octopuses are often described as \"alien.\" As marine biologist Dr. Alex Schnell explains, the description fits. \"They're just so alien\u2014they have three hearts that pump blue blood, no bones, and skin that can change color in an eye-blink,\" she recently told New\u2026",
+          "source": "GOOD Magazine",
+          "url": "https://www.good.is/magical-clip-showing-octopus-communicating-with-scientist-is-just-incredible-ex1",
+          "published_at": "2025-11-03T21:16:03+00:00"
+        },
+        {
+          "title": "License Plate Surveillance Logs Reveal Racist Policing Against Romani People",
+          "description": "More than 80 law enforcement agencies across the United States have used language perpetuating harmful stereotypes against Romani people when searching the nationwide Flock Safety automated license plate reader (ALPR) network, according to audit logs obtained\u2026",
+          "source": "EFF",
+          "url": "https://www.eff.org/deeplinks/2025/11/license-plate-surveillance-logs-reveal-racist-policing-against-romani-people",
+          "published_at": "2025-11-03T21:05:09+00:00"
+        },
+        {
+          "title": "Medieval tower partially collapses in Rome, trapping worker",
+          "description": "A medieval tower in central Rome that was under renovation partially collapsed on Monday, with one worker trapped alive under rubble, authorities said. Part of the Torre dei Conti collapsed just after 11:30 am (1030 GMT), sending rubble into the street and a \u2026",
+          "source": "Digital Journal",
+          "url": "https://www.digitaljournal.com/world/medieval-tower-partially-collapses-in-rome-trapping-worker/article",
+          "published_at": "2025-11-03T20:42:20+00:00"
+        },
+        {
+          "title": "Valladolid\u2019s 70th Seminci Crowns Kelly Reichardt\u2019s \u2018The Mastermind\u2019 and Lav D\u00edaz\u2019s \u2018Magellan\u2019",
+          "description": "Spain\u2019s 70th Valladolid International Film Festival (Seminci) wrapped Nov. 1 by sharing its top honor, the Golden Spike for best film, between Kelly Reichardt\u2019s \u201cThe Mastermind\u201d and Lav Diaz\u2019s \u201cMagellan.\u201d It marked just the fourth tie in the event\u2019s seven dec\u2026",
+          "source": "Variety",
+          "url": "https://variety.com/2025/film/global/valladolid-festival-seminci-70-kelly-reichardt-lav-diaz-1236568768/",
+          "published_at": "2025-11-03T20:18:28+00:00"
+        },
+        {
+          "title": "Indian reservation focus of human smuggling probe at U.S.-Canada border",
+          "description": "(The Center Square) \u2013 An Indian reservation that spans the U. S.",
+          "source": "The Center Square",
+          "url": "https://www.thecentersquare.com/national/article_89f7b8b8-b9dc-40dd-8fd8-927fa8a2c465.html",
+          "published_at": "2025-11-03T19:26:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.891772"
+      "timestamp": "2025-11-09T03:13:13.152766"
     },
     "2025-11-01": {
       "europe": [
         {
-          "title": "Euro Zone Inflation Update for November 01",
-          "description": "Consumer price data for November 01, 2025 shows inflation trends in the euro area, with implications for ECB policy decisions.",
-          "source": "European Commission",
-          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_2025_1101",
-          "published_at": "2025-11-01T17:00:00"
+          "title": "Eel-egal trade: the world\u2019s most lucrative wildlife crime?",
+          "description": "Trafficking of juvenile \u2018glass\u2019 eels from Europe to Asia generates up to \u20ac3bn a year but the species is on the brink of extinction",
+          "source": "The Week Magazine",
+          "url": "https://theweek.com/environment/eel-egal-trade-the-worlds-most-lucrative-wildlife-crime",
+          "published_at": "2025-11-02T23:58:33+00:00"
         },
         {
-          "title": "EU Economic Indicators Show November Performance Analysis",
-          "description": "Economic data for November reveals continued growth patterns across European Union member states, with GDP figures showing resilience.",
-          "source": "Eurostat",
-          "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20251101-1",
-          "published_at": "2025-11-01T13:00:00"
+          "title": "Husband Expressed Disappointment About His Wife Taking Their Baby On An International Trip, So He Was Labeled Controlling And Jealous",
+          "description": "Every parent wants to witness their child's first experiences.",
+          "source": "Twistedsifter.com",
+          "url": "http://twistedsifter.com/2025/11/husband-expressed-disappointment-about-his-wife-taking-their-baby-on-an-international-trip-so-he-was-labeled-controlling-and-jealous/",
+          "published_at": "2025-11-02T23:55:06+00:00"
         },
         {
-          "title": "European Central Bank November Policy Update - Day 305",
-          "description": "The ECB reviewed monetary policy in November, with key decisions expected on interest rates and inflation targets.",
-          "source": "European Central Bank",
-          "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr251101.en.html",
-          "published_at": "2025-11-01T09:00:00"
+          "title": "Taiwan crafts balanced AI regulations as EU enforces strict AI Act and global frameworks diverge",
+          "description": "The EU's AI Act, the world's first comprehensive artificial intelligence law, took effect on August 1, 2024, setting strict rules on high-risk AI systems. As the EU enforces tougher oversight, Taiwan is drafting balanced legislation, while the US and China pu\u2026",
+          "source": "Digitimes",
+          "url": "https://www.digitimes.com/news/a20251030PD211/eu-taiwan-governance-trends-regulation.html",
+          "published_at": "2025-11-02T23:50:32+00:00"
+        },
+        {
+          "title": "EU Regulators Look to Widen Crypto Supervision Umbrella",
+          "description": "European regulators are reportedly planning to expand central supervision of stock exchanges and cryptocurrency exchanges.\u00a0 This effort is part of a larger push to strengthen the EU\u2019s competitiveness in relation to the U.S. by making sure companies can find f\u2026",
+          "source": "pymnts.com",
+          "url": "https://www.pymnts.com/cryptocurrency/2025/eu-regulators-look-to-widen-crypto-supervision-umbrella/",
+          "published_at": "2025-11-02T23:49:34+00:00"
+        },
+        {
+          "title": "Over 128,000 tourists visit Nepal in October alone",
+          "description": "KATHMANDU: A total of 128,443 tourists visited Nepal in October, marking one of the busiest months of the year for tourism. October traditionally falls in Nepal\u2019s peak tourist season, and the latest data from the Nepal Tourism Board show a strong influx of vi\u2026",
+          "source": "Khabarhub.com",
+          "url": "https://english.khabarhub.com/2025/03/504090/",
+          "published_at": "2025-11-02T23:43:33+00:00"
+        },
+        {
+          "title": "Better Weather Before a Big Change",
+          "description": "Good evening, everyone. The weekend is wrapping up with better weather pushing into the region. This sets the stage for some pleasant weather in the week ahead, but is Old Man Winter lurking for an early visit in about a week or so from now? Maybe Showers are\u2026",
+          "source": "kyweathercenter.com",
+          "url": "https://kyweathercenter.com/?p=73308",
+          "published_at": "2025-11-02T23:42:07+00:00"
+        },
+        {
+          "title": "Afghan Refugee Doc \u2018Far From Home\u2019 Adds Indian Thespian Naseeruddin Shah as Executive Producer in Oscar Push (EXCLUSIVE)",
+          "description": "Revered Indian actor Naseeruddin Shah (\u201cMonsoon Wedding\u201d) has joined the Oscar-qualifying documentary \u201cFar From Home\u201d as executive producer, marking his first foray into the documentary space in this capacity. The short doc, currently campaigning for best doc\u2026",
+          "source": "Variety",
+          "url": "https://variety.com/2025/film/news/afghan-refugee-doc-far-from-home-naseeruddin-shah-ep-oscar-1236568104/",
+          "published_at": "2025-11-02T23:40:25+00:00"
+        },
+        {
+          "title": "Will AI mean the end of call centres?",
+          "description": "Some commentators predict artificial intelligence is about to replace most customer support jobs.",
+          "source": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cz913ylq3k3o",
+          "published_at": "2025-11-02T23:20:59+00:00"
+        },
+        {
+          "title": "Illegal migrants get \u00a33,000 'bribes' to return home... then boast how easy it is to sneak back in",
+          "description": "Hundreds of illegal migrants are secretly sneaking back to the UK just weeks after being given \u00a33,000 in British taxpayers' cash as a bribe to return home, The Mail on Sunday can reveal.Our investigation has discovered the migrants are cynically gaming the Ho\u2026",
+          "source": "Freerepublic.com",
+          "url": "https://freerepublic.com/focus/f-news/4350309/posts",
+          "published_at": "2025-11-02T23:05:51+00:00"
+        },
+        {
+          "title": "Ireland \u2018steadfast\u2019 on climate pledges, says Taoiseach ahead of Cop30 talks in Brazil",
+          "description": "Miche\u00e1l Martin to address gathering of world leaders in host city Bel\u00e9m, Brazil, later in week",
+          "source": "The Irish Times",
+          "url": "https://www.irishtimes.com/environment/climate-crisis/2025/11/02/ireland-steadfast-on-climate-pledges-says-taoiseach-ahead-of-cop30-talks-in-brazil/",
+          "published_at": "2025-11-02T23:00:00+00:00"
         }
       ],
       "romania": [
         {
-          "title": "RON Exchange Rate Update - November 01",
-          "description": "The Romanian Leu exchange rate showed strengthening against major currencies on November 01.",
-          "source": "Financial Markets",
-          "url": "https://www.bnr.ro/Exchange-rates-2025-11-01.aspx",
-          "published_at": "2025-11-01T17:00:00"
+          "title": "Country codes",
+          "description": "Physicists of many nations \u2013 CC BY-NC-ND by Ann Fisher Day 3 of 30DayMapChallenge: \u00ab Polygons \u00bb (previously). An interesting challenge a few weeks ago on https://en.osm.town/@opencage/115271196316302891: Post by @opencage@en.osm.town View on Mastodon Name cou\u2026",
+          "source": "R-bloggers.com",
+          "url": "https://www.r-bloggers.com/2025/11/country-codes/",
+          "published_at": "2025-11-02T23:00:00+00:00"
         },
         {
-          "title": "Romanian Economic Performance in November",
-          "description": "Economic indicators for November 01, 2025 suggest continued growth in the Romanian economy, with positive trends across sectors.",
-          "source": "Romanian Statistical Office",
-          "url": "https://insse.ro/cms/en/content/press-release-nr-11-2025",
-          "published_at": "2025-11-01T13:00:00"
+          "title": "Nato 'will stand with Ukraine' to get long-lasting peace, senior official tells BBC",
+          "description": "Admiral Giuseppe Cavo Dragone tells the BBC the Russia-Ukraine war is bogged down, and it is \"almost time to sit and talk\".",
+          "source": "BBC News",
+          "url": "https://www.bbc.com/news/articles/czxng7kxnp9o",
+          "published_at": "2025-11-02T20:34:19+00:00"
         },
         {
-          "title": "BNR November Monetary Policy Review",
-          "description": "The National Bank of Romania reviewed monetary policy on November 01, focusing on inflation control and exchange rate stability.",
-          "source": "BNR",
-          "url": "https://www.bnr.ro/Press-release-2025-11-01.aspx",
-          "published_at": "2025-11-01T09:00:00"
+          "title": "Connected 2025 1080p WEB h264-Ginnungagap",
+          "description": "Awards 1 win total See more awards \u00bb Plot: Connected is the extraordinary story of an unlikely 30-year bond between two remarkable men who listed the first Russian company on the New York Stock Exchange (NYSE). The film captures Dr. Dmitry Zimin's extraordina\u2026",
+          "source": "Rlsbb.to",
+          "url": "https://post.rlsbb.to/connected-2025-1080p-web-h264-ginnungagap/",
+          "published_at": "2025-11-02T17:41:10+00:00"
+        },
+        {
+          "title": "Belgium says suspicious drones \u2018come to spy\u2019 on fighter jets, ammunition",
+          "description": "The drones are trying \"to see where the F-16s are, where the ammunition is, and other highly strategic information,\u201d Belgian Defense Minister Th\u00e9o Francken told RTBF.",
+          "source": "POLITICO.eu",
+          "url": "https://www.politico.eu/article/belgium-says-suspicious-drones-come-spy-fighter-jets-ammunition/",
+          "published_at": "2025-11-02T15:32:06+00:00"
+        },
+        {
+          "title": "Titanosaurs were the biggest land animals Earth\u2019s ever seen \u2212 these plant-powered dinos combined reptile and mammal traits",
+          "description": "Some of these giant vegetarians were as tall as a 3-story building. Microscopic analysis of their teeth, bones and eggshells reveals how they grew, what they...",
+          "source": "Yahoo Entertainment",
+          "url": "https://www.yahoo.com/news/articles/titanosaurs-were-biggest-land-animals-151103349.html",
+          "published_at": "2025-11-02T15:11:03+00:00"
+        },
+        {
+          "title": "Drones buzz military base 'storing US nuke weapons' twice in 24 hours...",
+          "description": "The incursion comes just days after Nato revealed it is ramping up its air defences as rogue drones continue to menace Europe",
+          "source": "The-sun.com",
+          "url": "https://www.the-sun.com/news/15430278/mystery-drones-buzz-military-base/",
+          "published_at": "2025-11-02T12:46:40+00:00"
+        },
+        {
+          "title": "Jesus once fed 5000 taken literally by Orthodox faith? 5000-seater church in Romania will shock you;half the height of Burj Khalifa: National Cathedral in Bucharest stands at 417 ft, costs $315 mn",
+          "description": "Hundreds of thousands of Romanians have traveled to Bucharest to visit the newly opened National Cathedral, now the world\u2019s largest Orthodox church. After 15 years of construction, the cathedral has become a national symbol, attracting pilgrims nationwide and\u2026",
+          "source": "The Times of India",
+          "url": "https://economictimes.indiatimes.com/news/international/us/jesus-once-fed-5000-taken-literally-by-orthodox-faith-5000-seater-church-in-romania-will-shock-youhalf-the-height-of-burj-khalifa-national-cathedral-in-bucharest-stands-at-417-ft-costs-315-mn/articleshow/125031578.cms",
+          "published_at": "2025-11-02T09:10:50+00:00"
+        },
+        {
+          "title": "Romania blacklists Polymarket for illegal crypto betting amid $600M election wagers",
+          "description": "Romania\u2019s gambling regulator banned Polymarket for operating without a license after $600 million in crypto election bets, calling its model illegal gambling, not trading.",
+          "source": "Cointelegraph",
+          "url": "https://cointelegraph.com/news/romania-blacklists-polymarket-illegal-crypto-betting",
+          "published_at": "2025-11-02T08:53:15+00:00"
+        },
+        {
+          "title": "Four new films to see this week: Kontinental 25, Kenny Dalglish, Bugonia and Palestine 36",
+          "description": "Hiam Abbass, Emma Stone and Jesse Plemons, and Eszter Tompa feature in a quartet of movies released in the week of October 31st, 2025",
+          "source": "The Irish Times",
+          "url": "https://www.irishtimes.com/culture/film/2025/11/02/four-new-films-to-see-this-week-kontinental-25-kenny-dalglish-bugonia-and-palestine-36/",
+          "published_at": "2025-11-02T04:54:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.893699"
+      "timestamp": "2025-11-09T03:13:13.154511"
     },
     "2025-10-31": {
       "europe": [
@@ -860,7 +1238,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.895643"
+      "timestamp": "2025-11-09T03:13:13.157048"
     },
     "2025-10-30": {
       "europe": [
@@ -993,7 +1371,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.897871"
+      "timestamp": "2025-11-09T03:13:13.158509"
     },
     "2025-10-29": {
       "europe": [
@@ -1133,7 +1511,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.900260"
+      "timestamp": "2025-11-09T03:13:13.159948"
     },
     "2025-10-28": {
       "europe": [
@@ -1280,7 +1658,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.902682"
+      "timestamp": "2025-11-09T03:13:13.161401"
     },
     "2025-10-27": {
       "europe": [
@@ -1420,7 +1798,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.906150"
+      "timestamp": "2025-11-09T03:13:13.162826"
     },
     "2025-10-26": {
       "europe": [
@@ -1553,7 +1931,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.908202"
+      "timestamp": "2025-11-09T03:13:13.164246"
     },
     "2025-10-25": {
       "europe": [
@@ -1686,7 +2064,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.910181"
+      "timestamp": "2025-11-09T03:13:13.165688"
     },
     "2025-10-24": {
       "europe": [
@@ -1826,7 +2204,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.912145"
+      "timestamp": "2025-11-09T03:13:13.167140"
     },
     "2025-10-23": {
       "europe": [
@@ -1973,7 +2351,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.914120"
+      "timestamp": "2025-11-09T03:13:13.168676"
     },
     "2025-10-22": {
       "europe": [
@@ -2120,7 +2498,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.916075"
+      "timestamp": "2025-11-09T03:13:13.171401"
     },
     "2025-10-21": {
       "europe": [
@@ -2267,7 +2645,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.919078"
+      "timestamp": "2025-11-09T03:13:13.172960"
     },
     "2025-10-20": {
       "europe": [
@@ -2414,7 +2792,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.922083"
+      "timestamp": "2025-11-09T03:13:13.174420"
     },
     "2025-10-19": {
       "europe": [
@@ -2561,7 +2939,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.925086"
+      "timestamp": "2025-11-09T03:13:13.175864"
     },
     "2025-10-18": {
       "europe": [
@@ -2708,8 +3086,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-08T10:41:56.927828"
+      "timestamp": "2025-11-09T03:13:13.177273"
     }
   },
-  "timestamp": "2025-11-08T10:41:56.927838"
+  "timestamp": "2025-11-09T03:13:13.177283"
 }
