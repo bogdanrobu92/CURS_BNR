@@ -1,6 +1,132 @@
 {
   "success": true,
   "dates": {
+    "2025-11-14": {
+      "europe": [
+        {
+          "title": "EU industry output rises slightly in September, remains weak",
+          "description": "Trump signs bill ending U.S. shutdown; Cisco lifts outlook - what\u2019s moving markets\nInvesting.com -- Euro-zone industrial production increased by 0.2% in September, recovering only a fraction of the 1.1% decline recorded in August, according to the latest econ\u2026",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/a7f0b2a112de316c",
+          "published_at": "2025-11-13T10:45:26+00:00"
+        },
+        {
+          "title": "Art deco at 100: why the sleek design aesthetic of the \u2018machine age\u2019 endures",
+          "description": "Although originally conceived in Europe, art deco came to define American interwar prosperity, optimism and luxury.",
+          "source": "The Conversation Africa",
+          "url": "https://theconversation.com/art-deco-at-100-why-the-sleek-design-aesthetic-of-the-machine-age-endures-268979",
+          "published_at": "2025-11-13T10:41:37+00:00"
+        },
+        {
+          "title": "One of America\u2019s Most Beloved Restaurants Is on the Brink. People Forget About the Time It Almost Changed the World.",
+          "description": "A delicious caper of vodka bribes and world-altering salad bars.",
+          "source": "Slate Magazine",
+          "url": "https://slate.com/news-and-politics/2025/11/pizza-hut-cold-war-us-history-russia.html",
+          "published_at": "2025-11-13T10:40:00+00:00"
+        },
+        {
+          "title": "Pepe Escobar: Tech Sinica - China\u2019s Relentless Innovation Drive",
+          "description": "China\u2019s innovation drive is reaching fever pitch in 2025. Let\u2019s cut to the chase and focus on four crucial domains.",
+          "source": "Sputnikglobe.com",
+          "url": "https://sputnikglobe.com/20251113/pepe-escobar-tech-sinica---chinas-relentless-innovation-drive-1123110639.html",
+          "published_at": "2025-11-13T10:39:57+00:00"
+        },
+        {
+          "title": "Europe Strives to Counter Russian and Chinese Satellite Menace",
+          "description": "Paris, France (SPX) Nov 10, 2025\n\nEurope finds itself in the midst of a new space race, one defined less by exploration and more by the imperative to safeguard critical orbital infrastructure from the mounting threats of Russian and Chinese satellite activiti\u2026",
+          "source": "Spacewar.com",
+          "url": "https://www.spacewar.com/reports/Europe_Strives_to_Counter_Russian_and_Chinese_Satellite_Menace_999.html",
+          "published_at": "2025-11-13T10:38:49+00:00"
+        },
+        {
+          "title": "ESA actively monitoring severe space weather event",
+          "description": "Paris, France (ESA) Nov 13, 2025\n\n\nOn 11 November 2025, an intense solar flare was observed, peaking around 10:04 UTC. Less than an hour later, a coronal mass ejection (CME) was detected, with an initial speed of approximately 1500 km/s. Arrival at Earth was \u2026",
+          "source": "Space Daily",
+          "url": "https://www.spacedaily.com/reports/ESA_actively_monitoring_severe_space_weather_event_999.html",
+          "published_at": "2025-11-13T10:38:49+00:00"
+        },
+        {
+          "title": "Italy aim for goals and confidence boost against Moldova ahead of Norway clash",
+          "description": "Italy face Moldova in their penultimate 2026 World Cup qualifier and while hopes of topping the group remain slim with Norway still leading the way, Rino",
+          "source": "Football Italia",
+          "url": "https://football-italia.net/italy-aim-for-goals-confidence-against-moldova/",
+          "published_at": "2025-11-13T10:36:40+00:00"
+        },
+        {
+          "title": "Cider Market Size to Reach USD 16 Billion by 2030, Driven by Low-Alcohol and Craft Beverage Trends, Reports Mordor Intelligence",
+          "description": "HYDERABAD, India, Nov. 13, 2025 /PRNewswire/ -- According to Mordor Intelligence, the global cider market is valued at USD 14.18 billion in 2025 and is projected to reach USD 16.58 billion by 2030, growing at a CAGR of 3.19% during the forecast period (2025-2\u2026",
+          "source": "PR Newswire UK",
+          "url": "https://www.prnewswire.co.uk/news-releases/cider-market-size-to-reach-usd-16-billion-by-2030-driven-by-low-alcohol-and-craft-beverage-trends-reports-mordor-intelligence-302614319.html",
+          "published_at": "2025-11-13T10:36:00+00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "Where to watch England vs. Serbia live stream, TV channel, start time for World Cup qualifier match",
+          "description": "England vs. Serbia kickoff time: Here\u2019s how to watch the World Cup qualifying match on TV and live stream. The Sporting News takes you through all the information you need to follow the game.",
+          "source": "Sporting News",
+          "url": "https://www.sportingnews.com/us/soccer/news/watch-england-serbia-live-stream-tv-channel-time-world-cup-qualifier/08ec6246c7d61baa7a0bb392",
+          "published_at": "2025-11-13T10:00:01+00:00"
+        },
+        {
+          "title": "Where to watch Moldova vs. Italy live stream, TV channel, start time for World Cup qualifier match",
+          "description": "Here's everything you need to know about Moldova vs. Italy, including TV channel and streaming options for the World Cup qualifier match.",
+          "source": "Sporting News",
+          "url": "https://www.sportingnews.com/us/soccer/news/watch-moldova-italy-live-stream-tv-channel-time-world-cup-qualifier/a92b503f651132f8611c8c9f",
+          "published_at": "2025-11-13T10:00:01+00:00"
+        },
+        {
+          "title": "Where to watch Ireland vs. Portugal live stream, TV channel, start time for World Cup qualifier match",
+          "description": "Ireland vs. Portugal kickoff time: Here's how to watch the World Cup qualifying match on TV and live stream. The Sporting News takes you through all the information you need to follow the game.",
+          "source": "Sporting News",
+          "url": "https://www.sportingnews.com/us/soccer/news/watch-ireland-portugal-live-stream-tv-channel-time-world-cup-qualifier/2fe3aabe30dba96450f9d248",
+          "published_at": "2025-11-13T10:00:01+00:00"
+        },
+        {
+          "title": "Where to watch France vs. Ukraine live stream, TV channel, start time for World Cup qualifier match",
+          "description": "France vs. Ukraine kickoff time: Here's how to watch the World Cup qualifying match on TV and live stream. The Sporting News takes you through all the information you need to follow the game.",
+          "source": "Sporting News",
+          "url": "https://www.sportingnews.com/us/soccer/news/watch-france-ukraine-live-stream-tv-channel-time-world-cup/382ff75694142fcdcd4f8029",
+          "published_at": "2025-11-13T10:00:01+00:00"
+        },
+        {
+          "title": "Moldova vs Italy: How to Watch, Odds, WCQ Preview",
+          "description": "Preview Moldova vs Italy in World Cup Qualifying with TV info, start time, betting odds, and recent form ahead of kickoff.",
+          "source": "Fox Sports",
+          "url": "https://www.foxsports.com/stories/soccer/moldova-vs-italy-how-watch-odds-wcq-preview",
+          "published_at": "2025-11-13T09:18:49+00:00"
+        },
+        {
+          "title": "EU targets China imports, urging small parcel fee from 2026",
+          "description": "BRUSSELS: The EU executive urged the bloc's finance ministers meeting on Thursday (Nov 13) to impose a fee from next year on low-value orders from the likes of Temu and Shein to help tackle a flood of cheap Chinese imports.Today, there is no levy on packages \u2026",
+          "source": "CNA",
+          "url": "https://www.channelnewsasia.com/world/eu-targets-china-imports-urging-small-parcel-fee-2026-5464791",
+          "published_at": "2025-11-13T08:57:54+00:00"
+        },
+        {
+          "title": " Play-offs or direct World Cup spot: how Italy can qualify ",
+          "description": "180 decisive minutes. It's do or die, at least as far as direct qualification is concerned.Watch the entire Serie BKT live on OneFootball for only \u20ac9.99 per month. Click here to purchase the LaB Cha...",
+          "source": "Onefootball.com",
+          "url": "https://onefootball.com/en/news/play-offs-or-direct-world-cup-spot-how-italy-can-qualify-41944722",
+          "published_at": "2025-11-13T07:56:00+00:00"
+        },
+        {
+          "title": "Resident Evil Welcome to Raccoon City 2021 2160p UHD BluRay H265-FLAME",
+          "description": "Awards 1 win & 2 nominations total See more awards \u00bb Plot: Set in 1998, this origin story explores the secrets of the mysterious Spencer Mansion and the ill-fated Raccoon City. Genre: Action | Horror | Sci-FiIMDB Rating Live: IMDB Rating: 5.2/10 From 70,012 U\u2026",
+          "source": "Rlsbb.to",
+          "url": "https://post.rlsbb.to/resident-evil-welcome-to-raccoon-city-2021-2160p-uhd-bluray-h265-flame/",
+          "published_at": "2025-11-13T07:46:20+00:00"
+        },
+        {
+          "title": "Where to watch Nigeria vs. Gabon live stream, TV channel, start time for World Cup qualifying playoff match",
+          "description": "Nigeria vs. Gabon kickoff time: Here's how to watch the CAF World Cup qualifying playoff match on TV and live stream. The Sporting News takes you through all the information you need to follow the game.",
+          "source": "Sporting News",
+          "url": "https://www.sportingnews.com/us/soccer/news/watch-nigeria-gabon-live-stream-tv-channel-time-world-cup-playoff/c910983dbdf118573f41773b",
+          "published_at": "2025-11-13T05:00:01+00:00"
+        }
+      ],
+      "timestamp": "2025-11-14T10:45:54.168126"
+    },
     "2025-11-13": {
       "europe": [
         {
@@ -139,7 +265,7 @@
           "published_at": "2025-11-12T08:54:07+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.579706"
+      "timestamp": "2025-11-14T10:45:54.170595"
     },
     "2025-11-12": {
       "europe": [
@@ -265,7 +391,7 @@
           "published_at": "2025-11-11T08:15:39+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.582188"
+      "timestamp": "2025-11-14T10:45:54.173679"
     },
     "2025-11-11": {
       "europe": [
@@ -405,7 +531,7 @@
           "published_at": "2025-11-10T00:00:21+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.585376"
+      "timestamp": "2025-11-14T10:45:54.175675"
     },
     "2025-11-10": {
       "europe": [
@@ -552,7 +678,7 @@
           "published_at": "2025-11-09T08:01:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.587418"
+      "timestamp": "2025-11-14T10:45:54.177713"
     },
     "2025-11-09": {
       "europe": [
@@ -692,7 +818,7 @@
           "published_at": "2025-11-08T03:20:01+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.589407"
+      "timestamp": "2025-11-14T10:45:54.179705"
     },
     "2025-11-08": {
       "europe": [
@@ -832,7 +958,7 @@
           "published_at": "2025-11-07T08:40:34+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.591420"
+      "timestamp": "2025-11-14T10:45:54.181722"
     },
     "2025-11-07": {
       "europe": [
@@ -958,7 +1084,7 @@
           "published_at": "2025-11-06T07:56:09+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.593384"
+      "timestamp": "2025-11-14T10:45:54.183687"
     },
     "2025-11-06": {
       "europe": [
@@ -1091,7 +1217,7 @@
           "published_at": "2025-11-05T08:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.595352"
+      "timestamp": "2025-11-14T10:45:54.185897"
     },
     "2025-11-05": {
       "europe": [
@@ -1224,7 +1350,7 @@
           "published_at": "2025-11-04T06:58:39+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.597420"
+      "timestamp": "2025-11-14T10:45:54.188286"
     },
     "2025-11-04": {
       "europe": [
@@ -1371,7 +1497,7 @@
           "published_at": "2025-11-05T17:48:41+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.599782"
+      "timestamp": "2025-11-14T10:45:54.190665"
     },
     "2025-11-03": {
       "europe": [
@@ -1511,7 +1637,7 @@
           "published_at": "2025-11-04T18:53:59+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.602241"
+      "timestamp": "2025-11-14T10:45:54.194044"
     },
     "2025-11-02": {
       "europe": [
@@ -1658,7 +1784,7 @@
           "published_at": "2025-11-03T19:26:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.605697"
+      "timestamp": "2025-11-14T10:45:54.196097"
     },
     "2025-11-01": {
       "europe": [
@@ -1798,7 +1924,7 @@
           "published_at": "2025-11-02T04:54:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.607727"
+      "timestamp": "2025-11-14T10:45:54.198090"
     },
     "2025-10-31": {
       "europe": [
@@ -1931,7 +2057,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.609712"
+      "timestamp": "2025-11-14T10:45:54.200084"
     },
     "2025-10-30": {
       "europe": [
@@ -2064,7 +2190,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.611690"
+      "timestamp": "2025-11-14T10:45:54.202059"
     },
     "2025-10-29": {
       "europe": [
@@ -2204,7 +2330,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.613669"
+      "timestamp": "2025-11-14T10:45:54.204050"
     },
     "2025-10-28": {
       "europe": [
@@ -2351,7 +2477,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.615677"
+      "timestamp": "2025-11-14T10:45:54.206017"
     },
     "2025-10-27": {
       "europe": [
@@ -2491,7 +2617,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.617687"
+      "timestamp": "2025-11-14T10:45:54.207962"
     },
     "2025-10-26": {
       "europe": [
@@ -2624,7 +2750,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.620491"
+      "timestamp": "2025-11-14T10:45:54.210145"
     },
     "2025-10-25": {
       "europe": [
@@ -2757,7 +2883,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.622794"
+      "timestamp": "2025-11-14T10:45:54.212124"
     },
     "2025-10-24": {
       "europe": [
@@ -2897,7 +3023,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.624806"
+      "timestamp": "2025-11-14T10:45:54.216007"
     },
     "2025-10-23": {
       "europe": [
@@ -3044,7 +3170,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.629023"
+      "timestamp": "2025-11-14T10:45:54.218040"
     },
     "2025-10-22": {
       "europe": [
@@ -3191,7 +3317,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.631031"
+      "timestamp": "2025-11-14T10:45:54.220070"
     },
     "2025-10-21": {
       "europe": [
@@ -3338,7 +3464,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.633019"
+      "timestamp": "2025-11-14T10:45:54.222066"
     },
     "2025-10-20": {
       "europe": [
@@ -3485,7 +3611,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.635013"
+      "timestamp": "2025-11-14T10:45:54.224150"
     },
     "2025-10-19": {
       "europe": [
@@ -3632,7 +3758,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.636983"
+      "timestamp": "2025-11-14T10:45:54.226157"
     },
     "2025-10-18": {
       "europe": [
@@ -3779,8 +3905,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-13T10:47:38.638962"
+      "timestamp": "2025-11-14T10:45:54.228165"
     }
   },
-  "timestamp": "2025-11-13T10:47:38.638972"
+  "timestamp": "2025-11-14T10:45:54.228173"
 }
