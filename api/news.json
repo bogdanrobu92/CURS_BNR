@@ -1,6 +1,153 @@
 {
   "success": true,
   "dates": {
+    "2025-11-15": {
+      "europe": [
+        {
+          "title": "WhatsApp is launching third-party chat integration in Europe",
+          "description": "Meta is on the cusp of launching third-party integration with WhatsApp in Europe \u2014 something that\u2019s required by the Digital Markets Act (DMA). It\u2019s rolling out \u201cover the coming months\u201d with WhatsApp\u2019s level of end-to-end encryption (E2EE) maintained. Meta say\u2026",
+          "source": "The Verge",
+          "url": "https://www.theverge.com/news/820858/whatsapp-third-party-messaging-date-eu-e2ee",
+          "published_at": "2025-11-14T10:41:35+00:00"
+        },
+        {
+          "title": "Expanding International Bureaucracy",
+          "description": "As multilateral cooperation is increasingly under attack, Katerina Linos challenges certain misperceptions about the role of international institutions, particularly the European Union, and emphasizes their capacity for action in times of multiple crises. Thi\u2026",
+          "source": "Booksandideas.net",
+          "url": "https://booksandideas.net/Expanding-International-Bureaucracy",
+          "published_at": "2025-11-14T10:40:11+00:00"
+        },
+        {
+          "title": "All FIFA World Cup 2026 matches live on MagentaTV, 44 exclusively!",
+          "description": "ADVERTISEMENT: MagentaTV is the only broadcaster in Germany showing all 104 matches of the FIFA World Cup 2026 live \u2013 44 of them exclusively. From June 11 to July 19, fans will experience the bigges...",
+          "source": "Onefootball.com",
+          "url": "https://onefootball.com/en/news/all-fifa-world-cup-2026-matches-live-on-magentatv-44-exclusively-41950125",
+          "published_at": "2025-11-14T10:39:00+00:00"
+        },
+        {
+          "title": "Ransomware's Fragmentation Reaches a Breaking Point While LockBit Returns",
+          "description": "Key Takeaways:\n\n85 active ransomware and extortion groups observed in Q3 2025, reflecting the most decentralized ransomware ecosystem to date.\n1,590 victims disclosed across 85 leak sites, showing high, sustained activity despite law-enforcement pressure.\n14 \u2026",
+          "source": "Internet",
+          "url": "https://thehackernews.com/2025/11/ransomwares-fragmentation-reaches.html",
+          "published_at": "2025-11-14T10:37:00+00:00"
+        },
+        {
+          "title": "Berlin enters deforestation debate with call to delay, review EU law",
+          "description": "A political tug-of-war delayed a formal position on the controversial legislation from the German government",
+          "source": "EURACTIV",
+          "url": "https://www.euractiv.com/news/berlin-enters-deforestation-debate-with-call-to-delay-review-eu-law/",
+          "published_at": "2025-11-14T10:36:57+00:00"
+        },
+        {
+          "title": "As First Brands Headed for Failure, Its Founder Spent Big in Europe",
+          "description": "In the months before the collapse of the auto-parts conglomerate, Patrick James was busy creating a new business group in Europe.",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/2de79c84332e246b",
+          "published_at": "2025-11-14T10:35:50+00:00"
+        },
+        {
+          "title": "Tata Motors Passenger Vehicles Profit Boosted by One-Time Gains",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/db0add87ae3a3dfd",
+          "published_at": "2025-11-14T10:35:39+00:00"
+        },
+        {
+          "title": "Google proposes ad tech changes to address a \u20ac2.95B EU antitrust fine, including enhancing interoperability across its ad services, but still plans to appeal",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/996ae73b17c4ea0f",
+          "published_at": "2025-11-14T10:35:37+00:00"
+        },
+        {
+          "title": "Watch for This Toxic Trifecta Before the Next Financial Meltdown",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/d72b3f2e4c181da0",
+          "published_at": "2025-11-14T10:35:34+00:00"
+        },
+        {
+          "title": "COP30 Needs a Security Upgrade and Better Air Conditioning, UN Says",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/f40dbd77b754e609",
+          "published_at": "2025-11-14T10:35:30+00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "Expanding International Bureaucracy",
+          "description": "As multilateral cooperation is increasingly under attack, Katerina Linos challenges certain misperceptions about the role of international institutions, particularly the European Union, and emphasizes their capacity for action in times of multiple crises. Thi\u2026",
+          "source": "Booksandideas.net",
+          "url": "https://booksandideas.net/Expanding-International-Bureaucracy",
+          "published_at": "2025-11-14T10:40:11+00:00"
+        },
+        {
+          "title": "Moscow mocks Zelensky after Berlin asks Kiev to keep fighting-age males",
+          "description": "Russian Foreign Ministry spokeswoman Maria Zakharova has commented on Germany\u2019s efforts to keep fighting-age Ukrainians at home Read Full Article at RT.com",
+          "source": "RT",
+          "url": "https://www.rt.com/russia/627786-zelensky-exodus-males-germany/",
+          "published_at": "2025-11-14T09:43:04+00:00"
+        },
+        {
+          "title": "The Forever Protectorate",
+          "description": "Thirty years after Dayton, Bosnia is still overseen by a foreigner who has become a source of political instability.",
+          "source": "Foreign Policy",
+          "url": "http://foreignpolicy.com/2025/11/14/bosnia-dayton-accords-anniversary-protectorate-forever/",
+          "published_at": "2025-11-14T09:39:41+00:00"
+        },
+        {
+          "title": "Consolidation of Allied presence and defence capabilities in the Black Sea region",
+          "description": "On Wednesday, November 12th, Minister of National Defence, Liviu-Ionu\u021b Mo\u0219teanu, met, as part of the Distinguished Visitors Day of the DACIAN FALL 2025 Exercise, with Matthew Whitaker, the US Ambassador to NATO, and with General Christopher Donahue, Commander\u2026",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/military/library/news/2025/11/mil-251112-ro-mnd02.htm",
+          "published_at": "2025-11-14T09:24:12+00:00"
+        },
+        {
+          "title": "The Chief of Defence Staff met with the Commander of LANDCOM",
+          "description": "On Wednesday, November 12th, the Chief of Defence Staff, General Gheorghi\u021b\u0103 Vlad, had an official meeting, at \"Nicolae B\u0103lcescu\" Land Forces Academy in Sibiu, with General Christopher Donahue, Commander of NATO's Allied Land Command (LANDCOM), as part of the \u2026",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/military/library/news/2025/11/mil-251112-ro-mnd01.htm",
+          "published_at": "2025-11-14T09:24:12+00:00"
+        },
+        {
+          "title": "A Very Jonas Christmas Movie 2025 720p DSNP WEB-DL H264-playWEB",
+          "description": "Plot: Three famous brothers race against time and face mounting challenges during a chaotic journey from London to New York, desperate to make it home in time for Christmas with their loved ones. Genre: Comedy | MusicalIMDB Rating Live: IMDB Rating: N/ATMDB R\u2026",
+          "source": "Rlsbb.to",
+          "url": "https://post.rlsbb.to/a-very-jonas-christmas-movie-2025-720p-dsnp-web-dl-h264-playweb/",
+          "published_at": "2025-11-14T08:28:03+00:00"
+        },
+        {
+          "title": "The next Mazas & Uzuns? These German gems could switch national teams",
+          "description": "With Ibrahim Maza and Can Uzun, two top talents have recently decided against staying with the DFB in order to play for other nations.The same fate could befall Germany with numerous young players. A ...",
+          "source": "Onefootball.com",
+          "url": "https://onefootball.com/en/news/the-next-mazas-uzuns-these-german-gems-could-switch-national-teams-41949542",
+          "published_at": "2025-11-14T08:25:00+00:00"
+        },
+        {
+          "title": "Where to watch Luxembourg vs. Germany live stream, TV channel, start time for World Cup qualifying match",
+          "description": "Luxembourg vs. Germany kickoff time: Here's how to watch the World Cup qualifying match on TV and live stream. The Sporting News takes you through all the information you need to follow the game.",
+          "source": "Sporting News",
+          "url": "https://www.sportingnews.com/us/soccer/news/watch-luxembourg-germany-live-stream-tv-channel-time-world-cup-qualifying/6d24811a7a4e0f9ee4745e0e",
+          "published_at": "2025-11-14T08:00:01+00:00"
+        },
+        {
+          "title": "EU states back small parcel duties to tackle China flood",
+          "description": "EU finance ministers have agreed to scrap a bloc-wide duty exemption on low-value orders from the likes of retail giants Temu and Shein to help tackle a flood of cheap Chinese imports.",
+          "source": "RTE",
+          "url": "https://www.rte.ie/news/business/2025/1114/1543923-eu-states-back-small-parcel-duties/",
+          "published_at": "2025-11-14T07:54:40+00:00"
+        },
+        {
+          "title": "PPC Group completes construction of a 36 MW wind farm in Fokida",
+          "description": "PPC Group has completed the construction of one more wind farm, with an installed capacity of 36 MW, at Karkaros, in the Municipal Units of Antikyra and Desfina, Central Greece.\u2026\nPPC Group completes construction of a 36 MW wind farm in Fokida - \u0397 \u039d\u0391\u03a5\u03a4\u0395\u039c\u03a0\u039f\u03a1\u0399\u039a\u0397",
+          "source": "Naftemporiki.gr",
+          "url": "https://www.naftemporiki.gr/english/2033615/ppc-group-completes-construction-of-a-36-mw-wind-farm-in-fokida/",
+          "published_at": "2025-11-14T06:27:37+00:00"
+        }
+      ],
+      "timestamp": "2025-11-15T10:41:49.276292"
+    },
     "2025-11-14": {
       "europe": [
         {
@@ -125,7 +272,7 @@
           "published_at": "2025-11-13T05:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.168126"
+      "timestamp": "2025-11-15T10:41:49.278732"
     },
     "2025-11-13": {
       "europe": [
@@ -265,7 +412,7 @@
           "published_at": "2025-11-12T08:54:07+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.170595"
+      "timestamp": "2025-11-15T10:41:49.281881"
     },
     "2025-11-12": {
       "europe": [
@@ -391,7 +538,7 @@
           "published_at": "2025-11-11T08:15:39+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.173679"
+      "timestamp": "2025-11-15T10:41:49.283886"
     },
     "2025-11-11": {
       "europe": [
@@ -531,7 +678,7 @@
           "published_at": "2025-11-10T00:00:21+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.175675"
+      "timestamp": "2025-11-15T10:41:49.285953"
     },
     "2025-11-10": {
       "europe": [
@@ -678,7 +825,7 @@
           "published_at": "2025-11-09T08:01:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.177713"
+      "timestamp": "2025-11-15T10:41:49.288162"
     },
     "2025-11-09": {
       "europe": [
@@ -818,7 +965,7 @@
           "published_at": "2025-11-08T03:20:01+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.179705"
+      "timestamp": "2025-11-15T10:41:49.290527"
     },
     "2025-11-08": {
       "europe": [
@@ -958,7 +1105,7 @@
           "published_at": "2025-11-07T08:40:34+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.181722"
+      "timestamp": "2025-11-15T10:41:49.292857"
     },
     "2025-11-07": {
       "europe": [
@@ -1084,7 +1231,7 @@
           "published_at": "2025-11-06T07:56:09+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.183687"
+      "timestamp": "2025-11-15T10:41:49.295169"
     },
     "2025-11-06": {
       "europe": [
@@ -1217,7 +1364,7 @@
           "published_at": "2025-11-05T08:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.185897"
+      "timestamp": "2025-11-15T10:41:49.297617"
     },
     "2025-11-05": {
       "europe": [
@@ -1350,7 +1497,7 @@
           "published_at": "2025-11-04T06:58:39+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.188286"
+      "timestamp": "2025-11-15T10:41:49.300057"
     },
     "2025-11-04": {
       "europe": [
@@ -1497,7 +1644,7 @@
           "published_at": "2025-11-05T17:48:41+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.190665"
+      "timestamp": "2025-11-15T10:41:49.303366"
     },
     "2025-11-03": {
       "europe": [
@@ -1637,7 +1784,7 @@
           "published_at": "2025-11-04T18:53:59+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.194044"
+      "timestamp": "2025-11-15T10:41:49.305368"
     },
     "2025-11-02": {
       "europe": [
@@ -1784,7 +1931,7 @@
           "published_at": "2025-11-03T19:26:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.196097"
+      "timestamp": "2025-11-15T10:41:49.307333"
     },
     "2025-11-01": {
       "europe": [
@@ -1924,7 +2071,7 @@
           "published_at": "2025-11-02T04:54:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.198090"
+      "timestamp": "2025-11-15T10:41:49.309325"
     },
     "2025-10-31": {
       "europe": [
@@ -2057,7 +2204,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.200084"
+      "timestamp": "2025-11-15T10:41:49.311318"
     },
     "2025-10-30": {
       "europe": [
@@ -2190,7 +2337,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.202059"
+      "timestamp": "2025-11-15T10:41:49.313265"
     },
     "2025-10-29": {
       "europe": [
@@ -2330,7 +2477,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.204050"
+      "timestamp": "2025-11-15T10:41:49.315245"
     },
     "2025-10-28": {
       "europe": [
@@ -2477,7 +2624,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.206017"
+      "timestamp": "2025-11-15T10:41:49.317551"
     },
     "2025-10-27": {
       "europe": [
@@ -2617,7 +2764,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.207962"
+      "timestamp": "2025-11-15T10:41:49.319591"
     },
     "2025-10-26": {
       "europe": [
@@ -2750,7 +2897,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.210145"
+      "timestamp": "2025-11-15T10:41:49.321596"
     },
     "2025-10-25": {
       "europe": [
@@ -2883,7 +3030,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.212124"
+      "timestamp": "2025-11-15T10:41:49.325381"
     },
     "2025-10-24": {
       "europe": [
@@ -3023,7 +3170,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.216007"
+      "timestamp": "2025-11-15T10:41:49.327325"
     },
     "2025-10-23": {
       "europe": [
@@ -3170,7 +3317,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.218040"
+      "timestamp": "2025-11-15T10:41:49.329328"
     },
     "2025-10-22": {
       "europe": [
@@ -3317,7 +3464,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.220070"
+      "timestamp": "2025-11-15T10:41:49.331310"
     },
     "2025-10-21": {
       "europe": [
@@ -3464,7 +3611,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.222066"
+      "timestamp": "2025-11-15T10:41:49.333336"
     },
     "2025-10-20": {
       "europe": [
@@ -3611,7 +3758,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.224150"
+      "timestamp": "2025-11-15T10:41:49.335300"
     },
     "2025-10-19": {
       "europe": [
@@ -3758,7 +3905,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.226157"
+      "timestamp": "2025-11-15T10:41:49.337269"
     },
     "2025-10-18": {
       "europe": [
@@ -3905,8 +4052,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-14T10:45:54.228165"
+      "timestamp": "2025-11-15T10:41:49.339254"
     }
   },
-  "timestamp": "2025-11-14T10:45:54.228173"
+  "timestamp": "2025-11-15T10:41:49.339263"
 }
