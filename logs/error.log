@@ -17,3 +17,15 @@
 2025-10-31 09:53:39 - ERROR    - main:162 - get_bnr_api_rate() - Unexpected error fetching rate for EUR: Network error
 2025-10-31 09:53:39 - ERROR    - main:137 - get_bnr_api_rate() - Failed to parse XML response: syntax error: line 1, column 0
 2025-10-31 09:53:39 - ERROR    - main:162 - get_bnr_api_rate() - Unexpected error fetching rate for EUR: HTTP 500
+2025-11-20 10:12:44 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:13:14 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:13:44 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:14:12 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:14:14 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:14:17 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:14:44 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:14:47 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:15:14 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:15:17 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:15:35 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
+2025-11-20 10:15:47 - ERROR    - web.app:236 - get_rate_trends() - Error getting rate trends: 'RateTrend' object has no attribute 'timestamp'
