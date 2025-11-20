@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EUR/RON Exchange Rate</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
     <style>
+        :root {
+            /* Dark theme (default) */
+            --bg-gradient-start: #2d2d30;
+            --bg-gradient-end: #1a1a1c;
+            --bg-overlay-1: rgba(88, 166, 255, 0.08);
+            --bg-overlay-2: rgba(168, 85, 247, 0.08);
+            --text-primary: #ececf1;
+            --text-secondary: #b4b4b9;
+            --card-bg: rgba(52, 53, 65, 0.5);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-shadow: rgba(0, 0, 0, 0.3);
+            --input-bg: rgba(68, 70, 84, 0.4);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --accent-color: #58a6ff;
+            --chart-grid: rgba(255, 255, 255, 0.05);
+            --chart-border: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            /* Light theme */
+            --bg-gradient-start: #f5f7fa;
+            --bg-gradient-end: #e8ecf1;
+            --bg-overlay-1: rgba(88, 166, 255, 0.03);
+            --bg-overlay-2: rgba(168, 85, 247, 0.03);
+            --text-primary: #1a1a1c;
+            --text-secondary: #5a5a5f;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: rgba(0, 0, 0, 0.08);
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --input-bg: rgba(255, 255, 255, 0.8);
+            --input-border: rgba(0, 0, 0, 0.15);
+            --accent-color: #0969da;
+            --chart-grid: rgba(0, 0, 0, 0.05);
+            --chart-border: rgba(0, 0, 0, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,13 +56,14 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #2d2d30 0%, #1a1a1c 100%);
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             background-attachment: fixed;
             min-height: 100vh;
-            color: #ececf1;
+            color: var(--text-primary);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         body::before {
@@ -33,11 +73,47 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(88, 166, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+            background:
+                radial-gradient(circle at 20% 30%, var(--bg-overlay-1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, var(--bg-overlay-2) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
+            transition: background 0.3s ease;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px var(--card-shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 6px 24px var(--card-shadow);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .theme-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
         .container {
@@ -57,29 +133,32 @@
             font-size: 3rem;
             font-weight: 600;
             letter-spacing: -0.03em;
-            color: #ececf1;
+            color: var(--text-primary);
             margin-bottom: 12px;
             line-height: 1.1;
+            transition: color 0.3s ease;
         }
 
         .header p {
             font-size: 1.125rem;
             font-weight: 400;
-            color: #b4b4b9;
+            color: var(--text-secondary);
             line-height: 1.5;
+            transition: color 0.3s ease;
         }
 
         .controls {
-            background: rgba(52, 53, 65, 0.5);
+            background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 16px;
             padding: 28px;
             margin-bottom: 24px;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
+            box-shadow:
+                0 8px 32px var(--card-shadow),
                 inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
         }
 
         .currency-info {
@@ -184,8 +263,8 @@
             max-width: 900px;
             max-height: 80vh;
             overflow: hidden;
-            box-shadow: 
-                0 20px 60px rgba(0,0,0,0.5),
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -302,7 +381,7 @@
             .news-sections {
                 grid-template-columns: 1fr;
             }
-            
+
             .modal-content {
                 width: 95%;
                 margin: 10% auto;
@@ -315,7 +394,7 @@
             -webkit-backdrop-filter: blur(20px);
             border-radius: 16px;
             padding: 32px;
-            box-shadow: 
+            box-shadow:
                 0 8px 32px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -416,7 +495,7 @@
             .container {
                 padding: 10px;
             }
-            
+
             .header h1 {
                 font-size: 2rem;
             }
@@ -445,7 +524,13 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon" id="themeIcon">🌙</span>
+    </button>
+
     <div class="container">
         <div class="header">
             <h1>EUR/RON</h1>
@@ -460,11 +545,11 @@
                 <div class="date-input-group">
                     <label for="startDate">From:</label>
                     <input type="date" id="startDate" value="2025-10-24" readonly>
-            </div>
+                </div>
                 <div class="date-input-group">
                     <label for="endDate">To:</label>
                     <input type="date" id="endDate">
-            </div>
+                </div>
             </div>
         </div>
 
@@ -473,27 +558,34 @@
             <div class="chart-wrapper" style="position: relative; overflow: hidden;">
                 <canvas id="exchangeRateChart"></canvas>
                 <!-- Drag selection overlay -->
-                <div id="dragOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: none;">
-                    <div id="dragSelection" style="position: absolute; background: rgba(88, 166, 255, 0.12); border: 2px solid rgba(88, 166, 255, 0.5); border-radius: 6px;"></div>
-                    <div id="dragInfo" style="position: absolute; background: rgba(52, 53, 65, 0.98); backdrop-filter: blur(20px); color: #ececf1; padding: 12px 16px; border-radius: 12px; font-size: 0.875rem; white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.4); border: 1px solid rgba(255, 255, 255, 0.1);"></div>
+                <div id="dragOverlay"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: none;">
+                    <div id="dragSelection"
+                        style="position: absolute; background: rgba(88, 166, 255, 0.12); border: 2px solid rgba(88, 166, 255, 0.5); border-radius: 6px;">
+                    </div>
+                    <div id="dragInfo"
+                        style="position: absolute; background: rgba(52, 53, 65, 0.98); backdrop-filter: blur(20px); color: #ececf1; padding: 12px 16px; border-radius: 12px; font-size: 0.875rem; white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.4); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    </div>
                 </div>
             </div>
             <div class="loading" id="loadingIndicator">Loading chart data...</div>
             <div class="error" id="errorMessage" style="display: none;"></div>
-            </div>
+        </div>
 
         <div class="stats-grid" id="statsGrid">
             <!-- Stats will be populated by JavaScript -->
-                </div>
+        </div>
 
-        <div class="last-updated" id="lastUpdated" style="text-align: center; color: white; font-size: 0.9rem; margin-top: 20px; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+        <div class="last-updated" id="lastUpdated"
+            style="text-align: center; color: white; font-size: 0.9rem; margin-top: 20px; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
             Last updated: Loading...
-            </div>
+        </div>
 
-        <div class="data-source-info" style="text-align: center; color: white; font-size: 0.8rem; margin-top: 10px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); opacity: 0.9;">
+        <div class="data-source-info"
+            style="text-align: center; color: white; font-size: 0.8rem; margin-top: 10px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); opacity: 0.9;">
             <span id="dataSource">📊 Data Source: Sample Data (Demo Mode)</span>
-                </div>
-            </div>
+        </div>
+    </div>
 
     <!-- News Modal -->
     <div id="newsModal" class="modal" style="display: none;">
@@ -501,27 +593,78 @@
             <div class="modal-header">
                 <h2 id="modalTitle">📰 News for <span id="modalDate"></span></h2>
                 <span class="close" id="closeModal">&times;</span>
-                </div>
+            </div>
             <div class="modal-body">
                 <div class="news-sections">
                     <div class="news-section">
                         <h3>🇪🇺 European News</h3>
                         <div id="europeanNews" class="news-articles">
                             <div class="loading">Loading European news...</div>
-            </div>
-                </div>
+                        </div>
+                    </div>
                     <div class="news-section">
                         <h3>🇷🇴 Romanian News</h3>
                         <div id="romanianNews" class="news-articles">
                             <div class="loading">Loading Romanian news...</div>
-            </div>
-                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+        // Theme toggle handler
+        themeToggle.addEventListener('click', function () {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+
+            // Update chart colors if chart exists
+            if (chart) {
+                updateChartTheme(newTheme);
+            }
+        });
+
+        // Update chart theme colors
+        function updateChartTheme(theme) {
+            const isDark = theme === 'dark';
+
+            if (chart && chart.options) {
+                // Update grid colors
+                chart.options.scales.x.grid.color = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+                chart.options.scales.x.grid.borderColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                chart.options.scales.x.ticks.color = isDark ? '#ececf1' : '#1a1a1c';
+                chart.options.scales.x.title.color = isDark ? '#ececf1' : '#1a1a1c';
+
+                chart.options.scales.y.grid.color = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+                chart.options.scales.y.grid.borderColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                chart.options.scales.y.ticks.color = isDark ? '#ececf1' : '#1a1a1c';
+                chart.options.scales.y.title.color = isDark ? '#ececf1' : '#1a1a1c';
+
+                // Update tooltip colors
+                chart.options.plugins.tooltip.backgroundColor = isDark ? 'rgba(29, 29, 31, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+                chart.options.plugins.tooltip.titleColor = isDark ? '#ececf1' : '#1a1a1c';
+                chart.options.plugins.tooltip.bodyColor = isDark ? '#ececf1' : '#1a1a1c';
+                chart.options.plugins.tooltip.borderColor = isDark ? 'rgba(88, 166, 255, 0.5)' : 'rgba(9, 105, 218, 0.5)';
+
+                chart.update('none'); // Update without animation
+            }
+        }
+
         // Chart configuration
         let chart = null;
         let chartData = {};
@@ -530,13 +673,10 @@
             end: null
         };
 
-        // Chart colors - Dark theme
-        const colors = {
-            EUR: '#58a6ff'
-        };
-
+        // Chart colors - Dynamic based on theme
         function get_currency_color(currency) {
-            return colors[currency] || '#58a6ff';
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            return isDark ? '#58a6ff' : '#0969da';
         }
 
         // Drag selection state
@@ -551,20 +691,20 @@
         function initializeDatePicker() {
             const startDateInput = document.getElementById('startDate');
             const endDateInput = document.getElementById('endDate');
-            
+
             // Set today as default end date
             const today = new Date().toISOString().split('T')[0];
             endDateInput.value = today;
             currentDateRange.end = today;
-            
+
             // Set minimum date to start date (2025-10-24)
             endDateInput.min = '2025-10-24';
-            
+
             // Auto-update on date change
-            endDateInput.addEventListener('change', function() {
+            endDateInput.addEventListener('change', function () {
                 const startDate = startDateInput.value;
                 const endDate = endDateInput.value;
-                
+
                 if (validateDateRange(startDate, endDate)) {
                     currentDateRange.start = startDate;
                     currentDateRange.end = endDate;
@@ -572,58 +712,58 @@
                 }
             });
         }
-        
+
         // News modal functionality
         function initializeNewsModal() {
             const modal = document.getElementById('newsModal');
             const closeBtn = document.getElementById('closeModal');
-            
+
             // Close modal when clicking the X
-            closeBtn.addEventListener('click', function() {
+            closeBtn.addEventListener('click', function () {
                 modal.style.display = 'none';
             });
-            
+
             // Close modal when clicking outside
-            window.addEventListener('click', function(event) {
+            window.addEventListener('click', function (event) {
                 if (event.target === modal) {
                     modal.style.display = 'none';
                 }
             });
-            
+
             // Close modal with Escape key
-            document.addEventListener('keydown', function(event) {
+            document.addEventListener('keydown', function (event) {
                 if (event.key === 'Escape' && modal.style.display === 'block') {
                     modal.style.display = 'none';
                 }
             });
         }
-        
+
         // Show news modal for a specific date
         async function showNewsModal(date) {
             const modal = document.getElementById('newsModal');
             const modalDate = document.getElementById('modalDate');
             const europeanNews = document.getElementById('europeanNews');
             const romanianNews = document.getElementById('romanianNews');
-            
+
             // Set the date in the modal title
             modalDate.textContent = date;
-            
+
             // Show loading state
             europeanNews.innerHTML = '<div class="loading">Loading European news...</div>';
             romanianNews.innerHTML = '<div class="loading">Loading Romanian news...</div>';
-            
+
             // Show the modal
             modal.style.display = 'block';
-            
+
             try {
                 // Fetch comprehensive news data and extract news for the specific date
                 const response = await fetch(`https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/news.json`);
                 const newsData = await response.json();
-                
+
                 if (newsData.success && newsData.dates) {
                     // Extract news for the specific date
                     const dateNews = newsData.dates[date];
-                    
+
                     if (dateNews) {
                         // Display European news
                         if (dateNews.europe && dateNews.europe.length > 0) {
@@ -638,7 +778,7 @@
                         } else {
                             europeanNews.innerHTML = '<div class="no-news">No European news available for this date.</div>';
                         }
-                        
+
                         // Display Romanian news
                         if (dateNews.romania && dateNews.romania.length > 0) {
                             romanianNews.innerHTML = dateNews.romania.map(article => `
@@ -668,63 +808,63 @@
                 romanianNews.innerHTML = '<div class="error">Error loading news. Please try again.</div>';
             }
         }
-        
+
         function validateDateRange(startDate, endDate) {
             const start = new Date(startDate);
             const end = new Date(endDate);
             const minDate = new Date('2025-10-24');
-            
+
             if (start < minDate) {
                 alert('Start date cannot be before 2025-10-24 (first data collection date)');
                 return false;
             }
-            
+
             if (start > end) {
                 alert('Start date cannot be after end date');
                 return false;
             }
-            
+
             // Future dates are allowed - useful for planning/forecasting
             return true;
         }
-        
+
         function filterDataByDateRange(data, startDate, endDate) {
             if (!data || !data.labels || !data.datasets) {
                 return data;
             }
-            
+
             const start = new Date(startDate);
             const end = new Date(endDate);
-            
+
             // Create a map of existing data for quick lookup
             const dataMap = {};
             data.labels.forEach((label, index) => {
                 dataMap[label] = index;
             });
-            
+
             // Generate all dates from start to end (including future dates)
             const allLabels = [];
             const currentDate = new Date(start);
-            
+
             while (currentDate <= end) {
                 allLabels.push(currentDate.toISOString().split('T')[0]);
                 currentDate.setDate(currentDate.getDate() + 1);
             }
-            
+
             // Build filtered datasets with null for missing dates
             const filteredDatasets = data.datasets.map(dataset => {
                 const newData = allLabels.map(label => {
                     const originalIndex = dataMap[label];
                     return originalIndex !== undefined ? dataset.data[originalIndex] : null;
                 });
-                
+
                 return {
                     ...dataset,
                     data: newData,
                     spanGaps: false  // Don't connect lines across gaps (null values)
                 };
             });
-            
+
             return {
                 labels: allLabels,
                 datasets: filteredDatasets
@@ -734,13 +874,13 @@
         // Initialize chart
         function initChart() {
             console.log('Initializing chart...');
-            
+
             // Check if Chart.js is loaded
             if (typeof Chart === 'undefined') {
                 console.error('Chart.js not loaded!');
                 return;
             }
-            
+
             // Register the annotation plugin if available
             try {
                 if (typeof ChartAnnotation !== 'undefined') {
@@ -752,10 +892,10 @@
             } catch (error) {
                 console.warn('Error registering annotation plugin:', error);
             }
-            
+
             const ctx = document.getElementById('exchangeRateChart').getContext('2d');
             console.log('Chart context created');
-            
+
             chart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -780,7 +920,7 @@
                             borderColor: 'rgba(88, 166, 255, 0.5)',
                             borderWidth: 1,
                             callbacks: {
-                                label: function(context) {
+                                label: function (context) {
                                     return `EUR: ${context.parsed.y.toFixed(4)} RON`;
                                 }
                             }
@@ -829,7 +969,7 @@
                     }
                 }
             });
-            
+
             // Initialize drag selection
             initializeDragSelection();
         }
@@ -841,16 +981,16 @@
             const dragInfo = document.getElementById('dragInfo');
             const selection = document.getElementById('dragSelection');
 
-            canvas.addEventListener('mousedown', function(event) {
+            canvas.addEventListener('mousedown', function (event) {
                 // Check if it's a click on a data point first
                 const points = chart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, true);
-                
+
                 // If clicking directly on a point, show news (don't start drag)
                 if (points.length > 0 && event.shiftKey === false) {
                     const firstPoint = points[0];
                     const dataIndex = firstPoint.index;
                     const date = chart.data.labels[dataIndex];
-                    
+
                     if (date) {
                         console.log(`Clicked on date: ${date}`);
                         showNewsModal(date);
@@ -862,49 +1002,49 @@
                 const rect = canvas.getBoundingClientRect();
                 const x = event.clientX - rect.left;
                 const y = event.clientY - rect.top;
-                
+
                 // Only start drag if within chart area
                 const chartArea = chart.chartArea;
-                if (x < chartArea.left || x > chartArea.right || 
+                if (x < chartArea.left || x > chartArea.right ||
                     y < chartArea.top || y > chartArea.bottom) {
                     return;
                 }
-                
+
                 dragSelection.isSelecting = true;
                 dragSelection.startX = x;
                 dragSelection.startIndex = getDataIndexAtX(x);
-                
+
                 overlay.style.display = 'block';
             });
 
-            canvas.addEventListener('mousemove', function(event) {
+            canvas.addEventListener('mousemove', function (event) {
                 if (!dragSelection.isSelecting) return;
-                
+
                 const rect = canvas.getBoundingClientRect();
                 const x = event.clientX - rect.left;
-                
+
                 dragSelection.endIndex = getDataIndexAtX(x);
-                
+
                 // Update selection visualization - constrain to chart area
                 const chartArea = chart.chartArea;
                 const startX = Math.max(chartArea.left, Math.min(dragSelection.startX, x));
                 const endX = Math.min(chartArea.right, Math.max(dragSelection.startX, x));
                 const width = Math.abs(endX - startX);
-                
+
                 selection.style.left = startX + 'px';
                 selection.style.width = width + 'px';
                 selection.style.top = chartArea.top + 'px';
                 selection.style.height = (chartArea.bottom - chartArea.top) + 'px';
-                
+
                 // Calculate and show percentage change
                 updateDragInfo();
             });
 
-            canvas.addEventListener('mouseup', function(event) {
+            canvas.addEventListener('mouseup', function (event) {
                 if (!dragSelection.isSelecting) return;
-                
+
                 dragSelection.isSelecting = false;
-                
+
                 // Keep the selection visible for a moment
                 setTimeout(() => {
                     overlay.style.display = 'none';
@@ -913,7 +1053,7 @@
                 }, 2000);
             });
 
-            canvas.addEventListener('mouseleave', function(event) {
+            canvas.addEventListener('mouseleave', function (event) {
                 if (dragSelection.isSelecting) {
                     dragSelection.isSelecting = false;
                     overlay.style.display = 'none';
@@ -924,13 +1064,13 @@
         function getDataIndexAtX(x) {
             const chartArea = chart.chartArea;
             const datasetMeta = chart.getDatasetMeta(0);
-            
+
             if (!datasetMeta || !datasetMeta.data) return null;
-            
+
             // Find closest data point
             let closestIndex = 0;
             let closestDistance = Math.abs(datasetMeta.data[0].x - x);
-            
+
             for (let i = 1; i < datasetMeta.data.length; i++) {
                 const distance = Math.abs(datasetMeta.data[i].x - x);
                 if (distance < closestDistance) {
@@ -938,35 +1078,35 @@
                     closestIndex = i;
                 }
             }
-            
+
             return closestIndex;
         }
 
         function updateDragInfo() {
             const { startIndex, endIndex } = dragSelection;
-            
+
             if (startIndex === null || endIndex === null) return;
-            
+
             const start = Math.min(startIndex, endIndex);
             const end = Math.max(startIndex, endIndex);
-            
+
             const dataset = chart.data.datasets[0];
             const startRate = dataset.data[start];
             const endRate = dataset.data[end];
-            
+
             if (startRate === null || endRate === null) {
                 dragInfo.innerHTML = 'No data for selected range';
                 return;
             }
-            
+
             const change = endRate - startRate;
             const changePercent = ((change / startRate) * 100).toFixed(2);
             const startDate = chart.data.labels[start];
             const endDate = chart.data.labels[end];
-            
+
             const arrow = change >= 0 ? '↑' : '↓';
             const color = change >= 0 ? '#22c55e' : '#ef4444';
-            
+
             dragInfo.innerHTML = `
                 <div style="font-weight: bold; color: ${color};">
                     ${arrow} ${Math.abs(changePercent)}%
@@ -978,13 +1118,13 @@
                     ${startRate.toFixed(4)} → ${endRate.toFixed(4)}
                 </div>
             `;
-            
+
             // Position the info box
             const rect = chart.canvas.getBoundingClientRect();
             const datasetMeta = chart.getDatasetMeta(0);
             const midIndex = Math.floor((start + end) / 2);
             const midPoint = datasetMeta.data[midIndex];
-            
+
             dragInfo.style.left = (midPoint.x - 60) + 'px';
             dragInfo.style.top = (midPoint.y - 80) + 'px';
         }
@@ -997,64 +1137,64 @@
                 document.getElementById('errorMessage').style.display = 'none';
 
                 let data;
-                
+
                 // Try to fetch real data first with date range
                 let realData = null;
-                
+
                 try {
                     console.log('Fetching data from API...');
                     const response = await fetch(`https://raw.githubusercontent.com/bogdanrobu92/CURS_BNR/main/api/chart-data.json`);
                     console.log('Response status:', response.status);
-                    
+
                     if (response.ok) {
                         realData = await response.json();
                         console.log('API data received:', realData);
-                        
+
                         // Filter data based on date range on the frontend
                         if (realData && realData.success && realData.data) {
                             const filteredData = filterDataByDateRange(realData.data, currentDateRange.start, currentDateRange.end);
                             realData.data = filteredData;
                             console.log('Filtered data:', filteredData);
                         }
-                } else {
+                    } else {
                         console.error('API response not ok:', response.status);
-                }
-            } catch (error) {
+                    }
+                } catch (error) {
                     console.error('Direct fetch failed:', error);
                 }
-                
+
                 if (realData && realData.success) {
                     data = realData.data;
                     const alerts = realData.alerts || [];
                     console.log('Using real data from API');
                     console.log(`Found ${alerts.length} significant changes`);
                     document.getElementById('dataSource').textContent = '📊 Data Source: BNR API (Live Data)';
-                    
+
                     // Update chart with alerts
                     updateChart(data, alerts);
                 } else {
                     console.log('Real data not available, using sample data');
                     data = generateSampleData();
                     document.getElementById('dataSource').textContent = '📊 Data Source: Sample Data (Demo Mode)';
-                    
+
                     // Update chart without alerts
                     updateChart(data, []);
                 }
-                
+
                 chartData = data; // Store data globally
                 updateStats(data);
-                
+
                 // Hide loading and error indicators on success
                 document.getElementById('loadingIndicator').style.display = 'none';
                 document.getElementById('errorMessage').style.display = 'none';
-                document.getElementById('lastUpdated').textContent = 
+                document.getElementById('lastUpdated').textContent =
                     `Last updated: ${new Date().toLocaleString()}`;
 
             } catch (error) {
                 console.error('Error loading chart data:', error);
                 document.getElementById('loadingIndicator').style.display = 'none';
                 document.getElementById('errorMessage').style.display = 'block';
-                document.getElementById('errorMessage').textContent = 
+                document.getElementById('errorMessage').textContent =
                     'Failed to load chart data. Please try again.';
             }
         }
@@ -1084,7 +1224,7 @@
                 borderColor: colors.EUR,
                 backgroundColor: colors.EUR + '20',
                 fill: false,
-                        tension: 0.4
+                tension: 0.4
             };
 
             // Generate rate data with some variation
@@ -1110,7 +1250,7 @@
             // Add alert highlighting zones to chart options
             if (alerts.length > 0) {
                 const annotations = {};
-                
+
                 alerts.forEach((alert, index) => {
                     const annotationId = `alert-${index}`;
                     annotations[annotationId] = {
@@ -1133,7 +1273,7 @@
                         }
                     };
                 });
-                
+
                 // Update chart options with annotations
                 chart.options.plugins.annotation = {
                     annotations: annotations
@@ -1148,7 +1288,7 @@
             chart.data = data;
             chart.update('active');
         }
-        
+
         // Get alert color based on type and severity
         function getAlertColor(alertType, severity) {
             const colors = {
@@ -1165,7 +1305,7 @@
             };
             return colors[alertType]?.[severity] || 'rgba(156, 163, 175, 0.2)';
         }
-        
+
         // Get alert border color
         function getAlertBorderColor(alertType) {
             return alertType === 'positive' ? 'rgba(34, 197, 94, 0.8)' : 'rgba(239, 68, 68, 0.8)';
@@ -1180,10 +1320,10 @@
             if (!dataset) return;
 
             const rates = dataset.data;
-            
+
             // Filter out null values (future dates with no data)
             const validRates = rates.filter(r => r !== null && r !== undefined);
-            
+
             if (validRates.length === 0) {
                 // No data available
                 const statCard = document.createElement('div');
@@ -1195,10 +1335,10 @@
                 statsGrid.appendChild(statCard);
                 return;
             }
-            
+
             const current = validRates[validRates.length - 1];
             const previous = validRates[validRates.length - 2];
-            
+
             let changeInfo = '';
             if (previous !== null && previous !== undefined) {
                 const change = current - previous;
@@ -1219,20 +1359,20 @@
         }
 
         // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             console.log('DOM loaded, initializing...');
-            
+
             // Ensure error message is hidden on page load
             const errorEl = document.getElementById('errorMessage');
             if (errorEl) {
                 errorEl.style.display = 'none';
             }
-            
+
             initializeDatePicker();
             console.log('Date picker initialized');
             initializeNewsModal();
             console.log('News modal initialized');
-            
+
             // Wait a bit for all scripts to load, then initialize chart
             setTimeout(() => {
                 initChart();
@@ -1243,4 +1383,5 @@
         });
     </script>
 </body>
+
 </html>
