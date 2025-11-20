@@ -1,10 +1,10 @@
 """
-Async support for concurrent API calls using asyncio and aiohttp.
-Provides async versions of BNR API fetching functions for improved performance.
+Async fetcher for exchange rates using aiohttp.
+Provides concurrent fetching for improved performance.
 """
 import asyncio
 import aiohttp
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as ET
 from typing import Dict, Optional, List
 from datetime import datetime
 import logging
@@ -204,4 +204,3 @@ if __name__ == "__main__":
             print(f"{currency}: {rate}")
         else:
             print(f"{currency}: Failed")
-

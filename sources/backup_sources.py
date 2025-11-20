@@ -102,7 +102,7 @@ class BackupRateProvider:
             )
             response.raise_for_status()
             
-            import xml.etree.ElementTree as ET
+            import defusedxml.ElementTree as ET
             tree = ET.fromstring(response.content)
             ns = {'ns': 'http://www.bnr.ro/xsd'}
             

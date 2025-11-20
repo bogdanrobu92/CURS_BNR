@@ -7,7 +7,7 @@ Automatically falls back to backup sources when BNR doesn't publish data (e.g., 
 import os
 import sys
 import requests
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as ET
 from datetime import datetime, timedelta
 import time
 import logging

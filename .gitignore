@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.benchmarks/
+test-results.html
+test-results.json
+coverage.xml
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Metrics
+metrics/
+*.jsonl
+
+# Security Reports
+bandit-report.json
+safety-report.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated API data (keep in git for GitHub Pages)
+# api/*.json - keeping these for static site
+
+# Temporary files
+*.tmp
+*.bak
+*.swp

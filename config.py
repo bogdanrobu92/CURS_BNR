@@ -23,11 +23,6 @@ class Config:
     # Database Configuration
     DB_PATH: str = os.getenv('DB_PATH', 'data/exchange_rates.db')
     
-    # Flask Configuration
-    FLASK_HOST: str = os.getenv('FLASK_HOST', '0.0.0.0')
-    FLASK_PORT: int = int(os.getenv('PORT', '5000'))
-    FLASK_DEBUG: bool = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
-    
     # Monitoring Configuration
     METRICS_DIR: str = os.getenv('METRICS_DIR', 'metrics')
     
