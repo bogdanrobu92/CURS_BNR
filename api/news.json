@@ -1,6 +1,132 @@
 {
   "success": true,
   "dates": {
+    "2025-11-21": {
+      "europe": [
+        {
+          "title": "Norman Reedus wraps filming on Daryl Dixon season 4, but it sounds more like a goodbye to his Walking Dead character",
+          "description": "\"I feel really blessed\"",
+          "source": "GamesRadar+",
+          "url": "https://www.gamesradar.com/entertainment/horror-shows/norman-reedus-wraps-filming-on-daryl-dixon-season-4-but-it-sounds-more-like-a-goodbye-to-his-walking-dead-character/",
+          "published_at": "2025-11-20T10:45:06+00:00"
+        },
+        {
+          "title": "The Worst Humanitarian Crisis in the World Is Going Mostly Ignored",
+          "description": "And things are only going to get worse as U.S. aid lags.",
+          "source": "Slate Magazine",
+          "url": "https://slate.com/news-and-politics/2025/11/rapid-support-forces-sudan-army-south-sudan-genocide-update.html",
+          "published_at": "2025-11-20T10:45:00+00:00"
+        },
+        {
+          "title": "Walmart and Target are both getting new CEOs\u2014one succession plan has gone smoother than the other",
+          "description": "Also: All the news and watercooler chat from Fortune.",
+          "source": "Fortune",
+          "url": "https://fortune.com/2025/11/20/walmart-ceo-target-ceo-succession-planning/",
+          "published_at": "2025-11-20T10:43:25+00:00"
+        },
+        {
+          "title": "IHG\u2019s Up To 25% Off 2025 Cyber Sale For Stays Through March 31, 2026 (Book By December 4)",
+          "description": "IHG has launched its\u00a0Cyber Sale for 2025 on its website (it was exclusively on its app for the first two days), covering Black Friday, Cyber Monday, and Travel Tuesday, and\u00a0valid for bookings until December 4. IHG One Rewards members save up to 20% to 25% [\u2026]",
+          "source": "Loyaltylobby.com",
+          "url": "https://loyaltylobby.com/2025/11/20/ihgs-up-to-25-off-2025-cyber-sale-for-stays-through-march-31-2026-book-by-december-4/",
+          "published_at": "2025-11-20T10:43:01+00:00"
+        },
+        {
+          "title": "Microsoft and SAP sign deal to keep EU cloud running, even in \"times of crisis\"",
+          "description": "SAP\u2019s Delos Cloud has signed deals with France\u2019s Bleu and Microsoft to ensure cloud continuity in times of crisis.",
+          "source": "TechRadar",
+          "url": "https://www.techradar.com/pro/microsoft-and-sap-sign-deal-to-keep-eu-cloud-running-even-in-times-of-crisis",
+          "published_at": "2025-11-20T10:41:09+00:00"
+        },
+        {
+          "title": "Russian Duma says any asset seizure by EU must be met by action against Belgium and Euroclear",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/c744ee07898532f9",
+          "published_at": "2025-11-20T10:40:58+00:00"
+        },
+        {
+          "title": "Why Zelenskyy has to tread carefully over peace plan, or face a Trump ultimatum",
+          "description": "It seemed like Ukraine had finally convinced Donald Trump to change tack, but now it's all change again.",
+          "source": "Sky.com",
+          "url": "https://news.sky.com/story/why-zelenskyy-has-to-tread-carefully-over-peace-plan-or-face-a-trump-ultimatum-13473083",
+          "published_at": "2025-11-20T10:39:00+00:00"
+        },
+        {
+          "title": "Why Payments Still Break Marketplaces (and How Fintech Can Finally Fix It)",
+          "description": "By Raman Korneu, CEO and co-founder of neobank myTU  In 2025, you\u2019d think payments would move as fa...",
+          "source": "Finextra",
+          "url": "https://www.finextra.com/blogposting/30155/why-payments-still-break-marketplaces-and-how-fintech-can-finally-fix-it",
+          "published_at": "2025-11-20T10:36:44+00:00"
+        },
+        {
+          "title": "iOS 26.2 To Complicate Wi-Fi Sharing Between iPhone And Apple Watch In The EU",
+          "description": "Thanks to a new madate from the EU, your iPhone may not be able to sync Wi-Fi networks with your Apple Watch once you update to iOS 26.2 and watchOS 26.2.",
+          "source": "BGR",
+          "url": "https://www.bgr.com/2031574/ios-26-2-iphone-apple-watch-wi-fi-sharing-eu/",
+          "published_at": "2025-11-20T10:36:00+00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "At Least 26 Killed In Russian Missile Strike On Ukraine's Ternopil",
+          "description": "Russian missiles hit two apartment buildings in the western Ukrainian city of Ternopil, killing at least 26 people, including three children, amid an overnight barrage of Russian drones and missiles that wounded scores across the country and drew internationa\u2026",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/wmd/library/news/ukraine/2025/11/ukraine-251119-rferl02.htm",
+          "published_at": "2025-11-20T10:21:46+00:00"
+        },
+        {
+          "title": "World Cup play-off draw: Start time and where to watch",
+          "description": "The European 2026 World Cup play-off draw takes place in Zurich today, Thursday, November 20, at 13:00 CET (12:30 GMT): here's how to follow it live.",
+          "source": "Football Italia",
+          "url": "https://football-italia.net/world-cup-play-off-draw-start-time-watch-live/",
+          "published_at": "2025-11-20T10:16:32+00:00"
+        },
+        {
+          "title": "The Romanian Air Force has detected a drone in the national airspace",
+          "description": "Two German Eurofighter Typhoon aircraft deployed to the 57th Mihail Kog\u0103lniceanu Air Base, conducting enhanced air policing missions, scrambled on the night of November 18th to 19th, at 00:25, to monitor the air situation at the border with Ukraine, following\u2026",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/military/library/news/2025/11/mil-251119-ro-mnd01.htm",
+          "published_at": "2025-11-20T10:14:20+00:00"
+        },
+        {
+          "title": "USA will continue to firmly support Romania in order strengthen deterrence and defence at national and allied levels",
+          "description": "A new meeting of the Romania-US High-Level Defence Group (HLDG) coordinated with the new administration in Washington took place in Bucharest, on November 17th and 18th.",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/military/library/news/2025/11/mil-251119-ro-mnd02.htm",
+          "published_at": "2025-11-20T10:14:20+00:00"
+        },
+        {
+          "title": "World Cup 2026 live playoffs draw: Updated teams, schedule, brackets for UEFA and intercontinental matches",
+          "description": "The latest updates from Zurich, Switzerland as the World Cup playoff brackets take shape.",
+          "source": "Sporting News",
+          "url": "https://www.sportingnews.com/us/soccer/news/world-cup-2026-playoffs-draw-live-teams-schedule-brackets/586ab80739ab1d277c5952c2",
+          "published_at": "2025-11-20T10:00:01+00:00"
+        },
+        {
+          "title": "World Cup playoff draw live updates: Ireland await their fate",
+          "description": "Heimir Hallgr\u00edmsson will be in pot 3 for today\u2019s draw in Zurich",
+          "source": "The Irish Times",
+          "url": "https://www.irishtimes.com/sport/soccer/2025/11/20/world-cup-playoff-draw-live-updates-ireland-await-their-fate/",
+          "published_at": "2025-11-20T10:00:00+00:00"
+        },
+        {
+          "title": "FIFA World Cup 2026: All you need to know \u2013 qualifying teams, format, draw",
+          "description": "Al Jazeera answers all the key questions around the 2026 World Cup in the United States, Canada and Mexico.",
+          "source": "Al Jazeera English",
+          "url": "https://www.aljazeera.com/sports/2025/11/20/fifa-world-cup-2026-all-you-need-to-know-qualifying-teams-format-draw",
+          "published_at": "2025-11-20T09:30:35+00:00"
+        },
+        {
+          "title": "Giant spider web found in Greek-Albanian border cave",
+          "description": "Scientists have discovered a giant spider web spanning about half the size of a tennis court and with some 111,000 spiders in a cave on the border between Greece and Albania.",
+          "source": "RTE",
+          "url": "https://www.rte.ie/news/newslens/2025/1120/1544922-spider-cave/",
+          "published_at": "2025-11-20T09:25:28+00:00"
+        }
+      ],
+      "timestamp": "2025-11-21T10:45:19.699793"
+    },
     "2025-11-20": {
       "europe": [
         {
@@ -125,7 +251,7 @@
           "published_at": "2025-11-19T09:28:02+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.585330"
+      "timestamp": "2025-11-21T10:45:19.703151"
     },
     "2025-11-19": {
       "europe": [
@@ -272,7 +398,7 @@
           "published_at": "2025-11-18T09:22:34+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.588983"
+      "timestamp": "2025-11-21T10:45:19.705232"
     },
     "2025-11-18": {
       "europe": [
@@ -419,7 +545,7 @@
           "published_at": "2025-11-17T08:06:13+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.591170"
+      "timestamp": "2025-11-21T10:45:19.707238"
     },
     "2025-11-17": {
       "europe": [
@@ -552,7 +678,7 @@
           "published_at": "2025-11-16T06:56:12+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.593188"
+      "timestamp": "2025-11-21T10:45:19.709233"
     },
     "2025-11-16": {
       "europe": [
@@ -692,7 +818,7 @@
           "published_at": "2025-11-15T05:46:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.595224"
+      "timestamp": "2025-11-21T10:45:19.711228"
     },
     "2025-11-15": {
       "europe": [
@@ -839,7 +965,7 @@
           "published_at": "2025-11-14T06:27:37+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.597531"
+      "timestamp": "2025-11-21T10:45:19.713272"
     },
     "2025-11-14": {
       "europe": [
@@ -965,7 +1091,7 @@
           "published_at": "2025-11-13T05:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.599903"
+      "timestamp": "2025-11-21T10:45:19.715470"
     },
     "2025-11-13": {
       "europe": [
@@ -1105,7 +1231,7 @@
           "published_at": "2025-11-12T08:54:07+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.602241"
+      "timestamp": "2025-11-21T10:45:19.717863"
     },
     "2025-11-12": {
       "europe": [
@@ -1231,7 +1357,7 @@
           "published_at": "2025-11-11T08:15:39+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.604691"
+      "timestamp": "2025-11-21T10:45:19.720275"
     },
     "2025-11-11": {
       "europe": [
@@ -1371,7 +1497,7 @@
           "published_at": "2025-11-10T00:00:21+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.607238"
+      "timestamp": "2025-11-21T10:45:19.722677"
     },
     "2025-11-10": {
       "europe": [
@@ -1518,7 +1644,7 @@
           "published_at": "2025-11-09T08:01:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.609736"
+      "timestamp": "2025-11-21T10:45:19.725851"
     },
     "2025-11-09": {
       "europe": [
@@ -1658,7 +1784,7 @@
           "published_at": "2025-11-08T03:20:01+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.613432"
+      "timestamp": "2025-11-21T10:45:19.727848"
     },
     "2025-11-08": {
       "europe": [
@@ -1798,7 +1924,7 @@
           "published_at": "2025-11-07T08:40:34+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.615547"
+      "timestamp": "2025-11-21T10:45:19.729877"
     },
     "2025-11-07": {
       "europe": [
@@ -1924,7 +2050,7 @@
           "published_at": "2025-11-06T07:56:09+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.617614"
+      "timestamp": "2025-11-21T10:45:19.731852"
     },
     "2025-11-06": {
       "europe": [
@@ -2057,7 +2183,7 @@
           "published_at": "2025-11-05T08:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.619768"
+      "timestamp": "2025-11-21T10:45:19.733837"
     },
     "2025-11-05": {
       "europe": [
@@ -2190,7 +2316,7 @@
           "published_at": "2025-11-04T06:58:39+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.621815"
+      "timestamp": "2025-11-21T10:45:19.735834"
     },
     "2025-11-04": {
       "europe": [
@@ -2337,7 +2463,7 @@
           "published_at": "2025-11-05T17:48:41+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.623826"
+      "timestamp": "2025-11-21T10:45:19.737831"
     },
     "2025-11-03": {
       "europe": [
@@ -2477,7 +2603,7 @@
           "published_at": "2025-11-04T18:53:59+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.625863"
+      "timestamp": "2025-11-21T10:45:19.739819"
     },
     "2025-11-02": {
       "europe": [
@@ -2624,7 +2750,7 @@
           "published_at": "2025-11-03T19:26:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.627864"
+      "timestamp": "2025-11-21T10:45:19.742340"
     },
     "2025-11-01": {
       "europe": [
@@ -2764,7 +2890,7 @@
           "published_at": "2025-11-02T04:54:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.630428"
+      "timestamp": "2025-11-21T10:45:19.748965"
     },
     "2025-10-31": {
       "europe": [
@@ -2897,7 +3023,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.633655"
+      "timestamp": "2025-11-21T10:45:19.751818"
     },
     "2025-10-30": {
       "europe": [
@@ -3030,7 +3156,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.639939"
+      "timestamp": "2025-11-21T10:45:19.753922"
     },
     "2025-10-29": {
       "europe": [
@@ -3170,7 +3296,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.641988"
+      "timestamp": "2025-11-21T10:45:19.755925"
     },
     "2025-10-28": {
       "europe": [
@@ -3317,7 +3443,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.644001"
+      "timestamp": "2025-11-21T10:45:19.757929"
     },
     "2025-10-27": {
       "europe": [
@@ -3457,7 +3583,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.646011"
+      "timestamp": "2025-11-21T10:45:19.759925"
     },
     "2025-10-26": {
       "europe": [
@@ -3590,7 +3716,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.647999"
+      "timestamp": "2025-11-21T10:45:19.761910"
     },
     "2025-10-25": {
       "europe": [
@@ -3723,7 +3849,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.649982"
+      "timestamp": "2025-11-21T10:45:19.763919"
     },
     "2025-10-24": {
       "europe": [
@@ -3863,7 +3989,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.652012"
+      "timestamp": "2025-11-21T10:45:19.765926"
     },
     "2025-10-23": {
       "europe": [
@@ -4010,7 +4136,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.654064"
+      "timestamp": "2025-11-21T10:45:19.767917"
     },
     "2025-10-22": {
       "europe": [
@@ -4157,7 +4283,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.656048"
+      "timestamp": "2025-11-21T10:45:19.771072"
     },
     "2025-10-21": {
       "europe": [
@@ -4304,7 +4430,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.659660"
+      "timestamp": "2025-11-21T10:45:19.773058"
     },
     "2025-10-20": {
       "europe": [
@@ -4451,7 +4577,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.661731"
+      "timestamp": "2025-11-21T10:45:19.775043"
     },
     "2025-10-19": {
       "europe": [
@@ -4598,7 +4724,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.663758"
+      "timestamp": "2025-11-21T10:45:19.777054"
     },
     "2025-10-18": {
       "europe": [
@@ -4745,8 +4871,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-20T10:46:45.665770"
+      "timestamp": "2025-11-21T10:45:19.779044"
     }
   },
-  "timestamp": "2025-11-20T10:46:45.665780"
+  "timestamp": "2025-11-21T10:45:19.779053"
 }
