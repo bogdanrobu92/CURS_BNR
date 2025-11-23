@@ -1,6 +1,125 @@
 {
   "success": true,
   "dates": {
+    "2025-11-23": {
+      "europe": [
+        {
+          "title": "Nokia Pledges $4 Billion U.S. Investment in Trump Admin Partnership",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/49bbfbe2971a1fd1",
+          "published_at": "2025-11-22T10:39:16+00:00"
+        },
+        {
+          "title": "COP30 climate summit deadlocked as EU rejects draft deal",
+          "description": "Negotiations at COP30 climate talks in Brazil have run into overtime with no agreement struck and delegates still locked in a bitter fight over whether to mention fossil fuels in the final text.",
+          "source": "RTE",
+          "url": "https://www.rte.ie/news/2025/1122/1545301-cop30/",
+          "published_at": "2025-11-22T10:38:01+00:00"
+        },
+        {
+          "title": "France pile more misery on winless Australia",
+          "description": "France beat Australia 48-33 in a see-saw match to end the Wallabies' first winless tour of Europe in 67 years, spoiling Joe Schmidt's farewell test as both teams closed their Autumn series at the Stade de France on Saturday.",
+          "source": "RTE",
+          "url": "https://www.rte.ie/sport/rugby/2025/1122/1545306-france-pile-more-misery-on-winless-australia/",
+          "published_at": "2025-11-22T10:35:53+00:00"
+        },
+        {
+          "title": "Russia and Ukraine escalate energy wars with peace talks looming",
+          "description": "Russia-Ukraine War: Ukraine faces an escalating energy war with Russia, compounded by a corruption scandal involving a $100 million embezzlement scheme. President Zelensky is seeking crucial financial aid for air defense and natural gas imports, with a recent\u2026",
+          "source": "The Times of India",
+          "url": "https://economictimes.indiatimes.com/news/defence/russia-and-ukraine-escalate-energy-wars-with-peace-talks-looming/articleshow/125503708.cms",
+          "published_at": "2025-11-22T10:32:05+00:00"
+        },
+        {
+          "title": "What Elon Musk posts in a month: Conspiracy theories, fringe politics and self-promotion",
+          "description": "An NBC News analysis of one month of Musk\u2019s social media posts shows what\u2019s been on his mind, including a broad cross-section of fringe political topics.",
+          "source": "NBC News",
+          "url": "https://www.nbcnews.com/tech/elon-musk/elon-musk-x-politics-crime-conspiracy-content-month-posts-acount-ai-rcna241593",
+          "published_at": "2025-11-22T10:30:00+00:00"
+        },
+        {
+          "title": "Orban urges EU to unite behind Trump's Ukraine plan",
+          "description": "Hungarian Prime Minister Viktor Orban urged European countries on Saturday to unite behind United States President Donald Trump's initiative regarding the Ukrainian peace proposal.In his post on X, Or...",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/1392b7f290a55f24",
+          "published_at": "2025-11-22T10:28:25+00:00"
+        },
+        {
+          "title": "TEPCO eyes capital tie-ups in electricity retail, power grids",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/203cd36ba6e7da80",
+          "published_at": "2025-11-22T10:28:19+00:00"
+        },
+        {
+          "title": "Charting the Global Economy: US Jobs Growth Tops Forecasts",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/a092dd40e90e9795",
+          "published_at": "2025-11-22T10:28:18+00:00"
+        },
+        {
+          "title": "Unpacking China Committee minerals report",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/d9885594df986395",
+          "published_at": "2025-11-22T10:28:18+00:00"
+        },
+        {
+          "title": "Daily Mail Owner Reaches \u00a3500M Deal for Telegraph, FT Says",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/6d67a21f0ccd04b8",
+          "published_at": "2025-11-22T10:28:12+00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "Serie A: What time and channel is Inter Milan vs AC Milan?",
+          "description": "Everything you need to know about the Inter Milan vs AC Milan clashInter Milan \u2013 AC Milan/@sempreinterThe Milan derby pits Inter Milan against AC Milan this Sunday as part of the 12th round ofSerie ...",
+          "source": "Foot-africa.com",
+          "url": "https://foot-africa.com/en/news/serie-a-what-time-and-channel-is-inter-milan-vs-ac-milan-971744/",
+          "published_at": "2025-11-22T10:20:00+00:00"
+        },
+        {
+          "title": "The Chief of Defence Staff participated in the European Union Military Committee Meeting",
+          "description": "On Thursday, November 20th, the Chief of Defence Staff, General Vlad Gheorghi\u021b\u0103, participated in the European Union Military Committee Meeting, held in Brussels, in the chiefs of defence format.",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/military/library/news/2025/11/mil-251121-ro-mnd01.htm",
+          "published_at": "2025-11-22T10:10:57+00:00"
+        },
+        {
+          "title": "Inter vs Milan: Chivu & Allegri derby duel goes far beyond bragging rights",
+          "description": "Inter host Milan at San Siro on Sunday evening, in the first Derby della Madonnina of the season and the first under respective new coaches Massimiliano",
+          "source": "Football Italia",
+          "url": "https://football-italia.net/inter-vs-milan-chivu-allegri-derby-duel/",
+          "published_at": "2025-11-22T10:00:00+00:00"
+        },
+        {
+          "title": "Tallinn Black Nights Festival Awards: Family Dramas \u2018The Good Daughter\u2019 and \u2018The Well\u2019 Win Big at a Still Growing Event",
+          "description": "Two weeks after a triumphal opening to the Tallinn Black Nights Film Festival with \u201cThey Will be Dust,\u201d Catalan cinema, honored by a Focus at Tallinn this year, closed out the major film event with a bang, scooping three awards, including the heavyweight top \u2026",
+          "source": "Variety",
+          "url": "https://variety.com/2025/film/global/tallinn-black-nights-awards-the-good-daughter-the-well-1236589142/",
+          "published_at": "2025-11-22T09:00:08+00:00"
+        },
+        {
+          "title": "Much-maligned World Cup format to thank for Ireland\u2019s dream week",
+          "description": "A 16-team tournament would have put paid to qualification hopes long ago",
+          "source": "The Irish Times",
+          "url": "https://www.irishtimes.com/sport/soccer/2025/11/22/bloated-world-cup-format-to-thank-for-irelands-dream-week/",
+          "published_at": "2025-11-22T06:00:00+00:00"
+        },
+        {
+          "title": "Enzyme action optimizer based infinite impulse response filter identification through a comprehensive benchmark across full and reduced orders",
+          "description": "Scientific Reports - Enzyme action optimizer based infinite impulse response filter identification through a comprehensive benchmark across full and reduced orders",
+          "source": "Nature.com",
+          "url": "https://www.nature.com/articles/s41598-025-28411-w",
+          "published_at": "2025-11-22T00:00:00+00:00"
+        }
+      ],
+      "timestamp": "2025-11-23T10:42:23.902935"
+    },
     "2025-11-22": {
       "europe": [
         {
@@ -132,7 +251,7 @@
           "published_at": "2025-11-21T06:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.230569"
+      "timestamp": "2025-11-23T10:42:23.906600"
     },
     "2025-11-21": {
       "europe": [
@@ -258,7 +377,7 @@
           "published_at": "2025-11-20T09:25:28+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.232082"
+      "timestamp": "2025-11-23T10:42:23.908775"
     },
     "2025-11-20": {
       "europe": [
@@ -384,7 +503,7 @@
           "published_at": "2025-11-19T09:28:02+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.233515"
+      "timestamp": "2025-11-23T10:42:23.910842"
     },
     "2025-11-19": {
       "europe": [
@@ -531,7 +650,7 @@
           "published_at": "2025-11-18T09:22:34+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.235278"
+      "timestamp": "2025-11-23T10:42:23.912965"
     },
     "2025-11-18": {
       "europe": [
@@ -678,7 +797,7 @@
           "published_at": "2025-11-17T08:06:13+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.237061"
+      "timestamp": "2025-11-23T10:42:23.915073"
     },
     "2025-11-17": {
       "europe": [
@@ -811,7 +930,7 @@
           "published_at": "2025-11-16T06:56:12+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.238789"
+      "timestamp": "2025-11-23T10:42:23.917151"
     },
     "2025-11-16": {
       "europe": [
@@ -951,7 +1070,7 @@
           "published_at": "2025-11-15T05:46:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.240581"
+      "timestamp": "2025-11-23T10:42:23.919486"
     },
     "2025-11-15": {
       "europe": [
@@ -1098,7 +1217,7 @@
           "published_at": "2025-11-14T06:27:37+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.243054"
+      "timestamp": "2025-11-23T10:42:23.921966"
     },
     "2025-11-14": {
       "europe": [
@@ -1224,7 +1343,7 @@
           "published_at": "2025-11-13T05:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.244502"
+      "timestamp": "2025-11-23T10:42:23.924422"
     },
     "2025-11-13": {
       "europe": [
@@ -1364,7 +1483,7 @@
           "published_at": "2025-11-12T08:54:07+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.245954"
+      "timestamp": "2025-11-23T10:42:23.926922"
     },
     "2025-11-12": {
       "europe": [
@@ -1490,7 +1609,7 @@
           "published_at": "2025-11-11T08:15:39+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.247367"
+      "timestamp": "2025-11-23T10:42:23.930635"
     },
     "2025-11-11": {
       "europe": [
@@ -1630,7 +1749,7 @@
           "published_at": "2025-11-10T00:00:21+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.248774"
+      "timestamp": "2025-11-23T10:42:23.932720"
     },
     "2025-11-10": {
       "europe": [
@@ -1777,7 +1896,7 @@
           "published_at": "2025-11-09T08:01:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.250233"
+      "timestamp": "2025-11-23T10:42:23.934806"
     },
     "2025-11-09": {
       "europe": [
@@ -1917,7 +2036,7 @@
           "published_at": "2025-11-08T03:20:01+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.251661"
+      "timestamp": "2025-11-23T10:42:23.936854"
     },
     "2025-11-08": {
       "europe": [
@@ -2057,7 +2176,7 @@
           "published_at": "2025-11-07T08:40:34+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.253166"
+      "timestamp": "2025-11-23T10:42:23.938892"
     },
     "2025-11-07": {
       "europe": [
@@ -2183,7 +2302,7 @@
           "published_at": "2025-11-06T07:56:09+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.254919"
+      "timestamp": "2025-11-23T10:42:23.940922"
     },
     "2025-11-06": {
       "europe": [
@@ -2316,7 +2435,7 @@
           "published_at": "2025-11-05T08:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.256678"
+      "timestamp": "2025-11-23T10:42:23.942924"
     },
     "2025-11-05": {
       "europe": [
@@ -2449,7 +2568,7 @@
           "published_at": "2025-11-04T06:58:39+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.259242"
+      "timestamp": "2025-11-23T10:42:23.944965"
     },
     "2025-11-04": {
       "europe": [
@@ -2596,7 +2715,7 @@
           "published_at": "2025-11-05T17:48:41+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.260727"
+      "timestamp": "2025-11-23T10:42:23.947027"
     },
     "2025-11-03": {
       "europe": [
@@ -2736,7 +2855,7 @@
           "published_at": "2025-11-04T18:53:59+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.262182"
+      "timestamp": "2025-11-23T10:42:23.952242"
     },
     "2025-11-02": {
       "europe": [
@@ -2883,7 +3002,7 @@
           "published_at": "2025-11-03T19:26:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.263608"
+      "timestamp": "2025-11-23T10:42:23.954501"
     },
     "2025-11-01": {
       "europe": [
@@ -3023,7 +3142,7 @@
           "published_at": "2025-11-02T04:54:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.265049"
+      "timestamp": "2025-11-23T10:42:23.956563"
     },
     "2025-10-31": {
       "europe": [
@@ -3156,7 +3275,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.266459"
+      "timestamp": "2025-11-23T10:42:23.958790"
     },
     "2025-10-30": {
       "europe": [
@@ -3289,7 +3408,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.267912"
+      "timestamp": "2025-11-23T10:42:23.960973"
     },
     "2025-10-29": {
       "europe": [
@@ -3429,7 +3548,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.269349"
+      "timestamp": "2025-11-23T10:42:23.963023"
     },
     "2025-10-28": {
       "europe": [
@@ -3576,7 +3695,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.270747"
+      "timestamp": "2025-11-23T10:42:23.965108"
     },
     "2025-10-27": {
       "europe": [
@@ -3716,7 +3835,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.273877"
+      "timestamp": "2025-11-23T10:42:23.967150"
     },
     "2025-10-26": {
       "europe": [
@@ -3849,7 +3968,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.275402"
+      "timestamp": "2025-11-23T10:42:23.969251"
     },
     "2025-10-25": {
       "europe": [
@@ -3982,7 +4101,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.276892"
+      "timestamp": "2025-11-23T10:42:23.971302"
     },
     "2025-10-24": {
       "europe": [
@@ -4122,7 +4241,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.278323"
+      "timestamp": "2025-11-23T10:42:23.974940"
     },
     "2025-10-23": {
       "europe": [
@@ -4269,7 +4388,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.279759"
+      "timestamp": "2025-11-23T10:42:23.977004"
     },
     "2025-10-22": {
       "europe": [
@@ -4416,7 +4535,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.281193"
+      "timestamp": "2025-11-23T10:42:23.979060"
     },
     "2025-10-21": {
       "europe": [
@@ -4563,7 +4682,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.283070"
+      "timestamp": "2025-11-23T10:42:23.981187"
     },
     "2025-10-20": {
       "europe": [
@@ -4710,7 +4829,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.284555"
+      "timestamp": "2025-11-23T10:42:23.983228"
     },
     "2025-10-19": {
       "europe": [
@@ -4857,7 +4976,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.286039"
+      "timestamp": "2025-11-23T10:42:23.985282"
     },
     "2025-10-18": {
       "europe": [
@@ -5004,8 +5123,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-23T03:27:16.287513"
+      "timestamp": "2025-11-23T10:42:23.987323"
     }
   },
-  "timestamp": "2025-11-23T03:27:16.287522"
+  "timestamp": "2025-11-23T10:42:23.987332"
 }
