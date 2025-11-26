@@ -1,6 +1,139 @@
 {
   "success": true,
   "dates": {
+    "2025-11-26": {
+      "europe": [
+        {
+          "title": "Equinor plans 250 oil and gas exploration wells in Norway by 2035",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/6976eb2913b35fdd",
+          "published_at": "2025-11-25T10:47:22+00:00"
+        },
+        {
+          "title": "Mark Kelly becomes Trump\u2019s newest target",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/c8ce1c18a52ef4a4",
+          "published_at": "2025-11-25T10:47:20+00:00"
+        },
+        {
+          "title": "Same-sex marriage should be recognised in bloc - EU court",
+          "description": "The EU's highest court has ruled that same-sex marriages must be respected throughout the bloc and rebuked Poland for refusing to recognise a marriage between two of its citizens that took place in Germany.",
+          "source": "RTE",
+          "url": "https://www.rte.ie/news/europe/2025/1125/1545728-marriage-eu-bloc/",
+          "published_at": "2025-11-25T10:47:13+00:00"
+        },
+        {
+          "title": "FDA Approves Gene Therapy for Treatment of Spinal Muscular Atrophy",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/f6d80f1685d853dd",
+          "published_at": "2025-11-25T10:47:07+00:00"
+        },
+        {
+          "title": "Inflation weighing on US income growth ahead of holiday season, study says",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/230d581ef903b352",
+          "published_at": "2025-11-25T10:47:05+00:00"
+        },
+        {
+          "title": "Gold Rises on Renewed U.S. Rate-Cut Bets",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/112c5a3e3892787a",
+          "published_at": "2025-11-25T10:47:02+00:00"
+        },
+        {
+          "title": "Is Tesla Stock Outperforming the Dow?",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/72e63ce3318586bd",
+          "published_at": "2025-11-25T10:47:02+00:00"
+        },
+        {
+          "title": "Inside Congress\u2019 reaction to Trump\u2019s in-limbo ACA plan",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/a53f034918766cd9",
+          "published_at": "2025-11-25T10:47:00+00:00"
+        },
+        {
+          "title": "Analysts muse whether Jack Dorsey is Satoshi after enigmatic response",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/c65f2574791883c6",
+          "published_at": "2025-11-25T10:46:59+00:00"
+        },
+        {
+          "title": "Alphabet\u2019s Rally Threatens World\u2019s Most Valuable Stock Standings",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/09f6bb5d69e77176",
+          "published_at": "2025-11-25T10:46:58+00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "Apple Faces Polish Antitrust Probe Over App Tracking Transparency",
+          "description": "Poland's antitrust regulator is investigating whether Apple is restricting competition in the mobile ads market through its App Tracking Transparency (ATT) framework, reports Reuters.\n\n\n\n\n\nIntroduced in April 2021 with the release of iOS 14.5 and iPadOS 14.5,\u2026",
+          "source": "MacRumors",
+          "url": "https://www.macrumors.com/2025/11/25/apple-polish-probe-app-tracking-transparency/",
+          "published_at": "2025-11-25T10:23:46+00:00"
+        },
+        {
+          "title": "Can Tutoring\u2014and Technology\u2014Finally Solve Bloom\u2019s Two Sigma Problem?",
+          "description": "Tutoring and technology are revolutionizing education, addressing Bloom's two sigma problem with scalable, cost-effective, high-impact solutions.\nThe post Can Tutoring\u2014and Technology\u2014Finally Solve Bloom\u2019s Two Sigma Problem? appeared first on Getting Smart.",
+          "source": "Gettingsmart.com",
+          "url": "https://www.gettingsmart.com/2025/11/25/can-tutoring-and-technology-finally-solve-blooms-two-sigma-problem/",
+          "published_at": "2025-11-25T10:15:00+00:00"
+        },
+        {
+          "title": "U.S. And Russia Hold Peace Talks In Abu Dhabi As Missiles Pound Kyiv",
+          "description": "The talks come as U.S. and Ukrainian officials sought to narrow the gaps between them over a controversial peace plan, with core issues still unresolved.",
+          "source": "HuffPost",
+          "url": "https://www.huffpost.com/entry/us-russia-abu-dhabi-peace-talks_n_69257d0be4b06328531098e2",
+          "published_at": "2025-11-25T10:05:21+00:00"
+        },
+        {
+          "title": "Russian attacks kill at least 6 in Ukraine, as U.S. and Russia diplomats hold talks in Abu Dhabi",
+          "description": "Russia launched a wave of attacks on Ukraine on Tuesday, killing at least six people in overnight strikes that hit city buildings and energy infrastructure, while a Ukrainian attack in southern Russia killed three people and damaged homes, authorities said. M\u2026",
+          "source": "CBC News",
+          "url": "https://www.cbc.ca/news/world/russia-ukraine-war-nov25-9.6991263",
+          "published_at": "2025-11-25T09:52:17+00:00"
+        },
+        {
+          "title": "Russian attacks kill at least 6 in Ukraine as U.S. and Russia hold peace talks in Abu Dhabi",
+          "description": "Russia launched a wave of attacks on Ukraine on Tuesday, killing at least six people in overnight strikes that hit city buildings and energy infrastructure, while a Ukrainian attack in southern Russia killed three people and damaged homes, authorities said.",
+          "source": "CBC News",
+          "url": "https://www.cbc.ca/news/world/russian-attacks-kill-at-least-6-in-ukraine-as-u-s-and-russia-hold-peace-talks-in-abu-dhabi-9.6991263",
+          "published_at": "2025-11-25T09:52:17+00:00"
+        },
+        {
+          "title": "UEFA Champions League: What time and on which channel to watch Manchester City vs Bayer Leverkusen?",
+          "description": "Everything you need to know about the Manchester City vs Bayer Leverkusen matchUEFA Champions League: What time and on which channel to watch Manchester City vs Bayer Leverkusen?Manchester City hosts ...",
+          "source": "Foot-africa.com",
+          "url": "https://foot-africa.com/en/news/uefa-champions-league-what-time-and-on-which-channel-to-watch-manchester-city-vs-bayer-leverkusen-975581/",
+          "published_at": "2025-11-25T09:25:00+00:00"
+        },
+        {
+          "title": "US to Meet Russians in Abu Dhabi as Moscow and Kyiv Trade Fire",
+          "description": "A US official was due to meet a Russian delegation in Abu Dhabi as President Donald Trump cited progress on his peace proposal and Moscow and Ukraine traded airstrikes overnight.",
+          "source": "Financial Post",
+          "url": "https://financialpost.com/pmn/business-pmn/us-to-meet-russians-in-abu-dhabi-as-moscow-and-kyiv-trade-fire",
+          "published_at": "2025-11-25T08:19:42+00:00"
+        },
+        {
+          "title": "Russian Drones Breach NATO Airspace In Long-Range Strikes",
+          "description": "Romania scrambled fighter jets as two Russian drones crossed into the country's airspace from Ukraine on Tuesday.",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/2f6ace4729771ddb",
+          "published_at": "2025-11-25T07:59:43+00:00"
+        }
+      ],
+      "timestamp": "2025-11-26T10:48:12.946375"
+    },
     "2025-11-25": {
       "europe": [
         {
@@ -139,7 +272,7 @@
           "published_at": "2025-11-24T03:12:16+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.800406"
+      "timestamp": "2025-11-26T10:48:12.948923"
     },
     "2025-11-24": {
       "europe": [
@@ -279,7 +412,7 @@
           "published_at": "2025-11-23T03:47:55+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.802846"
+      "timestamp": "2025-11-26T10:48:12.951300"
     },
     "2025-11-23": {
       "europe": [
@@ -398,7 +531,7 @@
           "published_at": "2025-11-22T00:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.805190"
+      "timestamp": "2025-11-26T10:48:12.953741"
     },
     "2025-11-22": {
       "europe": [
@@ -531,7 +664,7 @@
           "published_at": "2025-11-21T06:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.807609"
+      "timestamp": "2025-11-26T10:48:12.956168"
     },
     "2025-11-21": {
       "europe": [
@@ -657,7 +790,7 @@
           "published_at": "2025-11-20T09:25:28+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.810013"
+      "timestamp": "2025-11-26T10:48:12.958626"
     },
     "2025-11-20": {
       "europe": [
@@ -783,7 +916,7 @@
           "published_at": "2025-11-19T09:28:02+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.813629"
+      "timestamp": "2025-11-26T10:48:12.961949"
     },
     "2025-11-19": {
       "europe": [
@@ -930,7 +1063,7 @@
           "published_at": "2025-11-18T09:22:34+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.815724"
+      "timestamp": "2025-11-26T10:48:12.963994"
     },
     "2025-11-18": {
       "europe": [
@@ -1077,7 +1210,7 @@
           "published_at": "2025-11-17T08:06:13+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.817736"
+      "timestamp": "2025-11-26T10:48:12.965980"
     },
     "2025-11-17": {
       "europe": [
@@ -1210,7 +1343,7 @@
           "published_at": "2025-11-16T06:56:12+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.819716"
+      "timestamp": "2025-11-26T10:48:12.967991"
     },
     "2025-11-16": {
       "europe": [
@@ -1350,7 +1483,7 @@
           "published_at": "2025-11-15T05:46:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.821701"
+      "timestamp": "2025-11-26T10:48:12.969992"
     },
     "2025-11-15": {
       "europe": [
@@ -1497,7 +1630,7 @@
           "published_at": "2025-11-14T06:27:37+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.823690"
+      "timestamp": "2025-11-26T10:48:12.971987"
     },
     "2025-11-14": {
       "europe": [
@@ -1623,7 +1756,7 @@
           "published_at": "2025-11-13T05:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.825651"
+      "timestamp": "2025-11-26T10:48:12.974037"
     },
     "2025-11-13": {
       "europe": [
@@ -1763,7 +1896,7 @@
           "published_at": "2025-11-12T08:54:07+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.827610"
+      "timestamp": "2025-11-26T10:48:12.976042"
     },
     "2025-11-12": {
       "europe": [
@@ -1889,7 +2022,7 @@
           "published_at": "2025-11-11T08:15:39+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.829581"
+      "timestamp": "2025-11-26T10:48:12.978028"
     },
     "2025-11-11": {
       "europe": [
@@ -2029,7 +2162,7 @@
           "published_at": "2025-11-10T00:00:21+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.831570"
+      "timestamp": "2025-11-26T10:48:12.982167"
     },
     "2025-11-10": {
       "europe": [
@@ -2176,7 +2309,7 @@
           "published_at": "2025-11-09T08:01:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.835630"
+      "timestamp": "2025-11-26T10:48:12.984172"
     },
     "2025-11-09": {
       "europe": [
@@ -2316,7 +2449,7 @@
           "published_at": "2025-11-08T03:20:01+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.837616"
+      "timestamp": "2025-11-26T10:48:12.986159"
     },
     "2025-11-08": {
       "europe": [
@@ -2456,7 +2589,7 @@
           "published_at": "2025-11-07T08:40:34+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.839599"
+      "timestamp": "2025-11-26T10:48:12.988147"
     },
     "2025-11-07": {
       "europe": [
@@ -2582,7 +2715,7 @@
           "published_at": "2025-11-06T07:56:09+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.842163"
+      "timestamp": "2025-11-26T10:48:12.990799"
     },
     "2025-11-06": {
       "europe": [
@@ -2715,7 +2848,7 @@
           "published_at": "2025-11-05T08:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.844172"
+      "timestamp": "2025-11-26T10:48:12.992824"
     },
     "2025-11-05": {
       "europe": [
@@ -2848,7 +2981,7 @@
           "published_at": "2025-11-04T06:58:39+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.846203"
+      "timestamp": "2025-11-26T10:48:12.994821"
     },
     "2025-11-04": {
       "europe": [
@@ -2995,7 +3128,7 @@
           "published_at": "2025-11-05T17:48:41+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.848218"
+      "timestamp": "2025-11-26T10:48:12.996864"
     },
     "2025-11-03": {
       "europe": [
@@ -3135,7 +3268,7 @@
           "published_at": "2025-11-04T18:53:59+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.850249"
+      "timestamp": "2025-11-26T10:48:12.998849"
     },
     "2025-11-02": {
       "europe": [
@@ -3282,7 +3415,7 @@
           "published_at": "2025-11-03T19:26:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.852238"
+      "timestamp": "2025-11-26T10:48:13.000840"
     },
     "2025-11-01": {
       "europe": [
@@ -3422,7 +3555,7 @@
           "published_at": "2025-11-02T04:54:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.854259"
+      "timestamp": "2025-11-26T10:48:13.003915"
     },
     "2025-10-31": {
       "europe": [
@@ -3555,7 +3688,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.857286"
+      "timestamp": "2025-11-26T10:48:13.005896"
     },
     "2025-10-30": {
       "europe": [
@@ -3688,7 +3821,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.859248"
+      "timestamp": "2025-11-26T10:48:13.007863"
     },
     "2025-10-29": {
       "europe": [
@@ -3828,7 +3961,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.861275"
+      "timestamp": "2025-11-26T10:48:13.009870"
     },
     "2025-10-28": {
       "europe": [
@@ -3975,7 +4108,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.863283"
+      "timestamp": "2025-11-26T10:48:13.011864"
     },
     "2025-10-27": {
       "europe": [
@@ -4115,7 +4248,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.865265"
+      "timestamp": "2025-11-26T10:48:13.013829"
     },
     "2025-10-26": {
       "europe": [
@@ -4248,7 +4381,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.867250"
+      "timestamp": "2025-11-26T10:48:13.015805"
     },
     "2025-10-25": {
       "europe": [
@@ -4381,7 +4514,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.869256"
+      "timestamp": "2025-11-26T10:48:13.017750"
     },
     "2025-10-24": {
       "europe": [
@@ -4521,7 +4654,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.871235"
+      "timestamp": "2025-11-26T10:48:13.019722"
     },
     "2025-10-23": {
       "europe": [
@@ -4668,7 +4801,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.873214"
+      "timestamp": "2025-11-26T10:48:13.022805"
     },
     "2025-10-22": {
       "europe": [
@@ -4815,7 +4948,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.876334"
+      "timestamp": "2025-11-26T10:48:13.024843"
     },
     "2025-10-21": {
       "europe": [
@@ -4962,7 +5095,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.878329"
+      "timestamp": "2025-11-26T10:48:13.026835"
     },
     "2025-10-20": {
       "europe": [
@@ -5109,7 +5242,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.880307"
+      "timestamp": "2025-11-26T10:48:13.028853"
     },
     "2025-10-19": {
       "europe": [
@@ -5256,7 +5389,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.882297"
+      "timestamp": "2025-11-26T10:48:13.030869"
     },
     "2025-10-18": {
       "europe": [
@@ -5403,8 +5536,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-25T10:49:38.884269"
+      "timestamp": "2025-11-26T10:48:13.032850"
     }
   },
-  "timestamp": "2025-11-25T10:49:38.884278"
+  "timestamp": "2025-11-26T10:48:13.032858"
 }
