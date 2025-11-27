@@ -1,6 +1,153 @@
 {
   "success": true,
   "dates": {
+    "2025-11-27": {
+      "europe": [
+        {
+          "title": "VIG profit before tax rises 31% in Q1\u2013Q3 2025",
+          "description": "The result was supported by improved combined ratios and business volume, particularly in the Special segment.",
+          "source": "Lifeinsuranceinternational.com",
+          "url": "https://www.lifeinsuranceinternational.com/news/vig-profit-q1-q3-2025/",
+          "published_at": "2025-11-26T10:46:02+00:00"
+        },
+        {
+          "title": "We're Americans who've traveled to 12 countries this year doing the 'Schengen shuffle.' Here's how it works.",
+          "description": "Eric and Christina Schwendeman left the US for Italy in 2022. Now, they're traveling across the world doing the \"Schengen shuffle.\"",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/schengen-shuffle-travel-2025-11",
+          "published_at": "2025-11-26T10:41:01+00:00"
+        },
+        {
+          "title": "\"Industrial design should have dropped its messianic claims long ago\"",
+          "description": "It's time to recognise that design's status as a force for social change was only ever a blip and instead embrace its role as applied art, writes John Jervis as part of our Performance Review series. The cult of design \u2013 and of the designer \u2013 first ignited in\u2026",
+          "source": "Dezeen",
+          "url": "https://www.dezeen.com/2025/11/26/industrial-design-john-jervis-opinion-performance-review/",
+          "published_at": "2025-11-26T10:40:12+00:00"
+        },
+        {
+          "title": "ECB Warns Dutch Pension Reform Risks Spurring Bonds Selloff",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/c1294b1fed5d0987",
+          "published_at": "2025-11-26T10:39:42+00:00"
+        },
+        {
+          "title": "EU \u2018ready\u2019 to propose Russian assets loan despite Belgian doubts",
+          "description": "Ursula von der Leyen hinted on Wednesday that the European Commission is poised to table a legal proposal to use up to \u20ac185 billion worth of Russian central bank assets to support Ukraine\u2019s economy and defence.\nHer comments come despite continued opposition f\u2026",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/d41cb5b9cd16032b",
+          "published_at": "2025-11-26T10:39:21+00:00"
+        },
+        {
+          "title": "Bitcoin stalls around $86k, could dip lower; Check forecast",
+          "description": "Key takeaways BTC is down by less than 1% in the last 24 hours and is currently trading below $87k. It could dip lower if the bullish trend fails to prevail. Bitcoin stalls around $86k Bitcoin (BTC), Ethereum (ETH), and Ripple (XRP) prices hover around key le\u2026",
+          "source": "Coinjournal.net",
+          "url": "https://coinjournal.net/news/bitcoin-stalls-around-86k-could-dip-lower-check-forecast/",
+          "published_at": "2025-11-26T10:36:22+00:00"
+        },
+        {
+          "title": "Poland Expects Russia to Escalate Sabotage After Rail Explosion",
+          "description": "Poland\u2019s deputy prime minister said he expects Russia to escalate its sabotage activities in the country following an explosion on a busy rail route to Ukraine for which authorities blame Moscow. Krzysztof Gawkowski told Bloomberg News that the NATO member\u2019s \u2026",
+          "source": "Insurance Journal",
+          "url": "https://www.insurancejournal.com/news/international/2025/11/26/849160.htm",
+          "published_at": "2025-11-26T10:33:13+00:00"
+        },
+        {
+          "title": "EU \u2018ready\u2019 to propose Russian assets loan despite Belgian doubts",
+          "description": "\"I cannot see any scenario in which the European taxpayers alone will pay the bill,\" von der Leyen said",
+          "source": "EURACTIV",
+          "url": "https://www.euractiv.com/news/eu-ready-to-propose-russian-assets-loan-despite-belgian-doubts/",
+          "published_at": "2025-11-26T10:32:59+00:00"
+        },
+        {
+          "title": "Winklevoss crypto exchange moved to Malta after compliance concerns, WRC hears",
+          "description": "Gemini\u2019s EU head of compliance tells hearing he warned company seeking Irish authorisation its procedures breached incoming EU law",
+          "source": "The Irish Times",
+          "url": "https://www.irishtimes.com/business/work/2025/11/26/winklevoss-crypto-exchange-moved-to-malta-after-compliance-concerns-wrc-hears/",
+          "published_at": "2025-11-26T10:31:52+00:00"
+        },
+        {
+          "title": "Samsung Galaxy S25 Ultra November Update Goes Global: Europe & US Rollout Begins",
+          "description": "The Samsung Galaxy S25 Ultra has received its latest software update, featuring the November 1, 2025, security patch. This update is a critical step in maintaining the security and performance of Samsung\u2019s flagship device. With a download size of 539 MB, it a\u2026",
+          "source": "Geeky Gadgets",
+          "url": "https://www.geeky-gadgets.com/samsung-galaxy-s25-ultra-november-update/",
+          "published_at": "2025-11-26T10:30:41+00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "New drone strikes in Ukraine, in the proximity of the border with Romania",
+          "description": "Two F-16 Fighting Falcon fighter aircraft scrambled on the night of November 21th to 22nd from the 86th Air Base, to monitor the air situation on the border with Ukraine, following the attacks launched by the Russian Federation in the vicinity of the river bo\u2026",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/wmd/library/news/ukraine/2025/11/ukraine-251124-ro-mnd01.htm",
+          "published_at": "2025-11-26T10:22:57+00:00"
+        },
+        {
+          "title": "Russian air attacks on Ukraine, in the vicinity of the border with Romania",
+          "description": "The Russian Federation resumed its drone attacks on civilian targets and port infrastructure in Ukraine, on the night of November 23rd to 24th, in the vicinity of the border with Romania.",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/military/library/news/2025/11/mil-251124-ro-mnd01.htm",
+          "published_at": "2025-11-26T10:22:57+00:00"
+        },
+        {
+          "title": "Statement by President von der Leyen following the Call of the Coalition of the Willing",
+          "description": "Today, the partners of the Coalition of the Willing convened to discuss ongoing negotiations toward a just and lasting peace for Ukraine.",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/wmd/library/news/ukraine/2025/11/ukraine-251125-european-commission01.htm",
+          "published_at": "2025-11-26T10:22:22+00:00"
+        },
+        {
+          "title": "Russia Pounds Kyiv Amid More Reported Talks On US Peace Proposal",
+          "description": "Russia again battered Kyiv, killing at least six people, as US officials were reportedly in Abu Dhabi for separate meetings with Russian and Ukrainian officials to try to hammer out agreement on a US-proposed peace deal whose initial draft was seen as heavily\u2026",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/wmd/library/news/ukraine/2025/11/ukraine-251125-rferl03.htm",
+          "published_at": "2025-11-26T10:16:43+00:00"
+        },
+        {
+          "title": "Romanian Mayor Says His Village Now 'Part Of The War' Amid Russian Drone Incursions",
+          "description": "German and Romanian fighter jets scrambled on November 25 to track the latest in a series of drone incursions into Romania's airspace as Russia continues to attack targets just across the Danube River in neighboring Ukraine.",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/wmd/library/news/ukraine/2025/11/ukraine-251125-rferl02.htm",
+          "published_at": "2025-11-26T10:16:43+00:00"
+        },
+        {
+          "title": "Drone incursions into the national airspace detected by the Romanian Air Force",
+          "description": "The Ministry of National Defence radars detected a target heading towards the national airspace on the morning of November 25th, near Tulcea County. At 06:28, two German Eurofighter Typhoon aircraft scrambled from Mihail Kog\u0103lniceanu Air Base to monitor the s\u2026",
+          "source": "Globalsecurity.org",
+          "url": "https://www.globalsecurity.org/military/library/news/2025/11/mil-251125-ro-mnd01.htm",
+          "published_at": "2025-11-26T10:16:43+00:00"
+        },
+        {
+          "title": "UEFA Champions League: What time and channel is Atl\u00e9tico Madrid vs Inter Milan on?",
+          "description": "Everything you need to know about the Atl\u00e9tico Madrid vs Inter Milan clashAtl\u00e9tico Madrid vs Inter Milan/@Atl\u00e9tico MadridWhile the evening's first blockbuster pits Arsenal against Bayern Munich, an...",
+          "source": "Foot-africa.com",
+          "url": "https://foot-africa.com/en/news/uefa-champions-league-what-time-and-channel-is-atletico-madrid-vs-inter-milan-on-977141/",
+          "published_at": "2025-11-26T10:05:00+00:00"
+        },
+        {
+          "title": "Drones crash in Romania, Moldova as Russia bombards Ukraine",
+          "description": "Bucharest (AFP) Nov 25, 2025\n\n\n Drones crashed in both Romania and Moldova on Tuesday, with Bucharest deploying four fighter jets after a night of massive Russian air strikes in neighbouring Ukraine. \n\nNATO member Romania and its neighbour, Moldova, have repe\u2026",
+          "source": "Spacewar.com",
+          "url": "https://www.spacewar.com/reports/Drones_crash_in_Romania_Moldova_as_Russia_bombards_Ukraine_999.html",
+          "published_at": "2025-11-26T08:05:59+00:00"
+        },
+        {
+          "title": "Jingle Bell Heist 2025 1080p WEB h264-ETHEL",
+          "description": "Plot: At the height of the holiday season, two strangers team up to rob one of London's most famous department stores while accidentally falling in love. Genre: Comedy | RomanceIMDB Rating Live: IMDB Rating: N/ATMDB Rating: N/ARotten Rating: N/AMetacritic Rat\u2026",
+          "source": "Rlsbb.to",
+          "url": "https://post.rlsbb.to/jingle-bell-heist-2025-1080p-web-h264-ethel/",
+          "published_at": "2025-11-26T07:43:22+00:00"
+        },
+        {
+          "title": "As Ukraine battles for key city, pro-Russian accounts wage AI war",
+          "description": "Fighting for control of Pokrovsk in Ukraine\u2019s east is raging on, but in pro-Russian social media circles, Moscow has already won: viral, AI-generated videos depict a Ukrainian army in retreat, complete with fake, tearful soldiers. Russia has been trying to ca\u2026",
+          "source": "Digital Journal",
+          "url": "https://www.digitaljournal.com/world/as-ukraine-battles-for-key-city-pro-russian-accounts-wage-ai-war/article",
+          "published_at": "2025-11-26T07:17:49+00:00"
+        }
+      ],
+      "timestamp": "2025-11-27T10:47:30.242278"
+    },
     "2025-11-26": {
       "europe": [
         {
@@ -132,7 +279,7 @@
           "published_at": "2025-11-25T07:59:43+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.946375"
+      "timestamp": "2025-11-27T10:47:30.244770"
     },
     "2025-11-25": {
       "europe": [
@@ -272,7 +419,7 @@
           "published_at": "2025-11-24T03:12:16+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.948923"
+      "timestamp": "2025-11-27T10:47:30.247213"
     },
     "2025-11-24": {
       "europe": [
@@ -412,7 +559,7 @@
           "published_at": "2025-11-23T03:47:55+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.951300"
+      "timestamp": "2025-11-27T10:47:30.249645"
     },
     "2025-11-23": {
       "europe": [
@@ -531,7 +678,7 @@
           "published_at": "2025-11-22T00:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.953741"
+      "timestamp": "2025-11-27T10:47:30.252107"
     },
     "2025-11-22": {
       "europe": [
@@ -664,7 +811,7 @@
           "published_at": "2025-11-21T06:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.956168"
+      "timestamp": "2025-11-27T10:47:30.255862"
     },
     "2025-11-21": {
       "europe": [
@@ -790,7 +937,7 @@
           "published_at": "2025-11-20T09:25:28+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.958626"
+      "timestamp": "2025-11-27T10:47:30.257868"
     },
     "2025-11-20": {
       "europe": [
@@ -916,7 +1063,7 @@
           "published_at": "2025-11-19T09:28:02+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.961949"
+      "timestamp": "2025-11-27T10:47:30.259892"
     },
     "2025-11-19": {
       "europe": [
@@ -1063,7 +1210,7 @@
           "published_at": "2025-11-18T09:22:34+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.963994"
+      "timestamp": "2025-11-27T10:47:30.261890"
     },
     "2025-11-18": {
       "europe": [
@@ -1210,7 +1357,7 @@
           "published_at": "2025-11-17T08:06:13+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.965980"
+      "timestamp": "2025-11-27T10:47:30.263891"
     },
     "2025-11-17": {
       "europe": [
@@ -1343,7 +1490,7 @@
           "published_at": "2025-11-16T06:56:12+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.967991"
+      "timestamp": "2025-11-27T10:47:30.265886"
     },
     "2025-11-16": {
       "europe": [
@@ -1483,7 +1630,7 @@
           "published_at": "2025-11-15T05:46:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.969992"
+      "timestamp": "2025-11-27T10:47:30.267949"
     },
     "2025-11-15": {
       "europe": [
@@ -1630,7 +1777,7 @@
           "published_at": "2025-11-14T06:27:37+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.971987"
+      "timestamp": "2025-11-27T10:47:30.269960"
     },
     "2025-11-14": {
       "europe": [
@@ -1756,7 +1903,7 @@
           "published_at": "2025-11-13T05:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.974037"
+      "timestamp": "2025-11-27T10:47:30.271942"
     },
     "2025-11-13": {
       "europe": [
@@ -1896,7 +2043,7 @@
           "published_at": "2025-11-12T08:54:07+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.976042"
+      "timestamp": "2025-11-27T10:47:30.273938"
     },
     "2025-11-12": {
       "europe": [
@@ -2022,7 +2169,7 @@
           "published_at": "2025-11-11T08:15:39+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.978028"
+      "timestamp": "2025-11-27T10:47:30.278383"
     },
     "2025-11-11": {
       "europe": [
@@ -2162,7 +2309,7 @@
           "published_at": "2025-11-10T00:00:21+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.982167"
+      "timestamp": "2025-11-27T10:47:30.280416"
     },
     "2025-11-10": {
       "europe": [
@@ -2309,7 +2456,7 @@
           "published_at": "2025-11-09T08:01:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.984172"
+      "timestamp": "2025-11-27T10:47:30.282581"
     },
     "2025-11-09": {
       "europe": [
@@ -2449,7 +2596,7 @@
           "published_at": "2025-11-08T03:20:01+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.986159"
+      "timestamp": "2025-11-27T10:47:30.284583"
     },
     "2025-11-08": {
       "europe": [
@@ -2589,7 +2736,7 @@
           "published_at": "2025-11-07T08:40:34+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.988147"
+      "timestamp": "2025-11-27T10:47:30.286589"
     },
     "2025-11-07": {
       "europe": [
@@ -2715,7 +2862,7 @@
           "published_at": "2025-11-06T07:56:09+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.990799"
+      "timestamp": "2025-11-27T10:47:30.288581"
     },
     "2025-11-06": {
       "europe": [
@@ -2848,7 +2995,7 @@
           "published_at": "2025-11-05T08:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.992824"
+      "timestamp": "2025-11-27T10:47:30.290590"
     },
     "2025-11-05": {
       "europe": [
@@ -2981,7 +3128,7 @@
           "published_at": "2025-11-04T06:58:39+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.994821"
+      "timestamp": "2025-11-27T10:47:30.292575"
     },
     "2025-11-04": {
       "europe": [
@@ -3128,7 +3275,7 @@
           "published_at": "2025-11-05T17:48:41+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.996864"
+      "timestamp": "2025-11-27T10:47:30.294562"
     },
     "2025-11-03": {
       "europe": [
@@ -3268,7 +3415,7 @@
           "published_at": "2025-11-04T18:53:59+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:12.998849"
+      "timestamp": "2025-11-27T10:47:30.296534"
     },
     "2025-11-02": {
       "europe": [
@@ -3415,7 +3562,7 @@
           "published_at": "2025-11-03T19:26:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.000840"
+      "timestamp": "2025-11-27T10:47:30.299707"
     },
     "2025-11-01": {
       "europe": [
@@ -3555,7 +3702,7 @@
           "published_at": "2025-11-02T04:54:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.003915"
+      "timestamp": "2025-11-27T10:47:30.301679"
     },
     "2025-10-31": {
       "europe": [
@@ -3688,7 +3835,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.005896"
+      "timestamp": "2025-11-27T10:47:30.303729"
     },
     "2025-10-30": {
       "europe": [
@@ -3821,7 +3968,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.007863"
+      "timestamp": "2025-11-27T10:47:30.305712"
     },
     "2025-10-29": {
       "europe": [
@@ -3961,7 +4108,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.009870"
+      "timestamp": "2025-11-27T10:47:30.307689"
     },
     "2025-10-28": {
       "europe": [
@@ -4108,7 +4255,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.011864"
+      "timestamp": "2025-11-27T10:47:30.309740"
     },
     "2025-10-27": {
       "europe": [
@@ -4248,7 +4395,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.013829"
+      "timestamp": "2025-11-27T10:47:30.311739"
     },
     "2025-10-26": {
       "europe": [
@@ -4381,7 +4528,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.015805"
+      "timestamp": "2025-11-27T10:47:30.313722"
     },
     "2025-10-25": {
       "europe": [
@@ -4514,7 +4661,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.017750"
+      "timestamp": "2025-11-27T10:47:30.315697"
     },
     "2025-10-24": {
       "europe": [
@@ -4654,7 +4801,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.019722"
+      "timestamp": "2025-11-27T10:47:30.318883"
     },
     "2025-10-23": {
       "europe": [
@@ -4801,7 +4948,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.022805"
+      "timestamp": "2025-11-27T10:47:30.320976"
     },
     "2025-10-22": {
       "europe": [
@@ -4948,7 +5095,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.024843"
+      "timestamp": "2025-11-27T10:47:30.323030"
     },
     "2025-10-21": {
       "europe": [
@@ -5095,7 +5242,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.026835"
+      "timestamp": "2025-11-27T10:47:30.325097"
     },
     "2025-10-20": {
       "europe": [
@@ -5242,7 +5389,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.028853"
+      "timestamp": "2025-11-27T10:47:30.327155"
     },
     "2025-10-19": {
       "europe": [
@@ -5389,7 +5536,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.030869"
+      "timestamp": "2025-11-27T10:47:30.329179"
     },
     "2025-10-18": {
       "europe": [
@@ -5536,8 +5683,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-26T10:48:13.032850"
+      "timestamp": "2025-11-27T10:47:30.331191"
     }
   },
-  "timestamp": "2025-11-26T10:48:13.032858"
+  "timestamp": "2025-11-27T10:47:30.331200"
 }
