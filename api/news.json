@@ -1,6 +1,118 @@
 {
   "success": true,
   "dates": {
+    "2025-11-28": {
+      "europe": [
+        {
+          "title": "These Reader-Favorite Comfy Shoes Are Up To 50% Off On Black Friday",
+          "description": "The brand's latest sale is knocking prices down on some of its best footwear for the season.",
+          "source": "HuffPost",
+          "url": "https://www.huffpost.com/entry/merrell-black-friday-sale-2025_l_6925e8c4e4b0774c10d490eb",
+          "published_at": "2025-11-27T10:45:17+00:00"
+        },
+        {
+          "title": "Wine prices: Which is Europe\u2019s most expensive country?",
+          "description": "Wine duty will rise with inflation in the UK, said the government in its 2025 Budget, and a recent ranking compared wine prices across Europe...",
+          "source": "decanter.com",
+          "url": "https://www.decanter.com/learn/wine-prices-which-is-europes-most-expensive-country-570903/",
+          "published_at": "2025-11-27T10:44:21+00:00"
+        },
+        {
+          "title": "Rise in asylum seekers being housed in hotels, as stats show big change in net migration",
+          "description": "While the government claims to have halved the number of hotels used to house asylum seekers, the latest figures show more people are being held in this type of accommodation.",
+          "source": "Sky.com",
+          "url": "https://news.sky.com/story/rise-in-number-of-asylum-seekers-being-housed-in-hotels-as-official-net-migration-stats-are-released-13476052",
+          "published_at": "2025-11-27T10:44:00+00:00"
+        },
+        {
+          "title": "Where Do You Find The Most AI Leaders In Europe?",
+          "description": "Where Do You Find The Most AI Leaders In Europe?\n \nCorporate spending on AI is surging. So, our friends at The Big Search asked themselves a practical question: who is actually building and deploying AI inside Europe\u2019s major consumer goods, retail and digital\u2026",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/01f0bae8d5c3719c",
+          "published_at": "2025-11-27T10:41:54+00:00"
+        },
+        {
+          "title": "T\u00fcrkiye\u2019s avocado hub expects 150 million units in harvest",
+          "description": "T\u00fcrkiye\u2019s main avocado-growing region Alanya, a coastal district in the Mediterranean city of Antalya, expects a harvest of around 150 million fruits this year, reflecting both rising production and expanding export markets.",
+          "source": "Hurriyet Daily News",
+          "url": "https://www.hurriyetdailynews.com/turkiyes-avocado-hub-expects-150-million-units-in-harvest-216204",
+          "published_at": "2025-11-27T10:39:27+00:00"
+        },
+        {
+          "title": "Top 10 countries offering the highest salaries in 2025",
+          "description": "Money has long been described as the force that makes the world go round.",
+          "source": "GhanaWeb",
+          "url": "https://www.ghanaweb.com/GhanaHomePage/business/Top-10-countries-offering-the-highest-salaries-in-2025-2011238",
+          "published_at": "2025-11-27T10:39:16+00:00"
+        },
+        {
+          "title": "\u201cMy Priority is to Deepen the Trust and Chemistry on Both Sides\u201d: India\u2019s New UAE Ambassador Sets Clear Agenda at IGF Middle East 2025",
+          "description": "\u201cMy Priority is to Deepen the Trust and Chemistry on Both Sides\u201d: India\u2019s New UAE Ambassador Sets Clear Agenda at IGF Middle East 2025",
+          "source": "BusinessLine",
+          "url": "https://www.thehindubusinessline.com/brandhub/my-priority-is-to-deepen-the-trust-and-chemistry-on-both-sides-indias-new-uae-ambassador-sets-clear-agenda-at-igf-middle-east-2025/article70329855.ece",
+          "published_at": "2025-11-27T10:38:32+00:00"
+        },
+        {
+          "title": "Swiss Security Pioneer 3D AG Launches soorce3D to Accelerate the Circular Economy and Enable EU Digital Product Passport Compliance",
+          "description": "EU's 2027 product passport mandate threatens market access for non-compliant manufacturers. Swiss firm launches blockchain solution called soorce3D.......",
+          "source": "GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2025/11/27/3195572/0/en/Swiss-Security-Pioneer-3D-AG-Launches-soorce3D-to-Accelerate-the-Circular-Economy-and-Enable-EU-Digital-Product-Passport-Compliance.html",
+          "published_at": "2025-11-27T10:38:00+00:00"
+        },
+        {
+          "title": "Scotland women join men in Euro curling knockouts",
+          "description": "Scotland women beat Germany to reach the European Curling Championships semi-finals, where they will face Switzerland.",
+          "source": "BBC News",
+          "url": "https://www.bbc.com/sport/articles/cm21e8g4wp1o?xtor=AL-72-%5Bpartner%5D-%5Byahoo.north.america%5D-%5Bheadline%5D-%5Bsport%5D-%5Bbizdev%5D-%5Bisapi%5D",
+          "published_at": "2025-11-27T10:37:37+00:00"
+        },
+        {
+          "title": "India Global Forum Announces First-of-its-Kind $250 Million Fund to Take Indian Brands Global",
+          "description": "India Global Forum Announces First-of-its-Kind $250 Million Fund to Take Indian Brands Global",
+          "source": "BusinessLine",
+          "url": "https://www.thehindubusinessline.com/brandhub/india-global-forum-announces-first-of-its-kind-250-million-fund-to-take-indian-brands-global/article70329614.ece",
+          "published_at": "2025-11-27T10:37:19+00:00"
+        }
+      ],
+      "romania": [
+        {
+          "title": "30 Beautiful Portraits of Romanian Wedding Couples in the 1920s and \u201930s",
+          "description": "The 1920s and \u201930s marked a fascinating period of transition for Romanian wedding couples, as the burgeoning modernization and increasing in...",
+          "source": "Vintag.es",
+          "url": "https://www.vintag.es/2025/11/romanian-wedding-couples.html",
+          "published_at": "2025-11-27T09:15:00+00:00"
+        },
+        {
+          "title": "Romania signs deal to buy French Mistral air defence systems",
+          "description": "",
+          "source": "Biztoc.com",
+          "url": "https://biztoc.com/x/7e5fe143ca658eaf",
+          "published_at": "2025-11-27T07:43:23+00:00"
+        },
+        {
+          "title": "Henriksen rules Mwene out of Conference League duty in Romania",
+          "description": "Speaking to the media in advance of Mainz 05's clash with Craiova, Bo Henriksen gave a squad update and insights into their Romanian hosts.\u00a0\u201cPhillipp Mwene is unavailable due to illness, Anthony Ca...",
+          "source": "Bulinews.com",
+          "url": "https://bulinews.com/henriksen-rules-mwene-out-conference-league-duty-romania",
+          "published_at": "2025-11-27T07:15:00+00:00"
+        },
+        {
+          "title": "Brunner rules out EU-led return hubs",
+          "description": "In today\u2019s edition: Magnus Brunner defends Europe\u2019s hard-edged migration shift as he rewrites the asylum rulebook, MEPs brace for a pre-Christmas immunity vote tied to Qatargate, and Big Oil drags the EU to court over its new carbon-storage mandate",
+          "source": "EURACTIV",
+          "url": "https://www.euractiv.com/news/rapporteur-brunner-rules-out-eu-led-return-hubs/",
+          "published_at": "2025-11-27T07:07:23+00:00"
+        },
+        {
+          "title": "Some Say the Constitution Has Failed. This Thanksgiving, Here's Why It Hasn't.",
+          "description": "Most countries emerged from a shared language, lineage, or ancient heritage. The United States built a state first and then had to discover what it meant to be a nation.",
+          "source": "Reason",
+          "url": "https://reason.com/2025/11/27/some-say-the-constitution-has-failed-this-thanksgiving-heres-why-it-hasnt/",
+          "published_at": "2025-11-27T01:40:04+00:00"
+        }
+      ],
+      "timestamp": "2025-11-28T10:45:54.602866"
+    },
     "2025-11-27": {
       "europe": [
         {
@@ -146,7 +258,7 @@
           "published_at": "2025-11-26T07:17:49+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.242278"
+      "timestamp": "2025-11-28T10:45:54.605419"
     },
     "2025-11-26": {
       "europe": [
@@ -279,7 +391,7 @@
           "published_at": "2025-11-25T07:59:43+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.244770"
+      "timestamp": "2025-11-28T10:45:54.607774"
     },
     "2025-11-25": {
       "europe": [
@@ -419,7 +531,7 @@
           "published_at": "2025-11-24T03:12:16+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.247213"
+      "timestamp": "2025-11-28T10:45:54.610166"
     },
     "2025-11-24": {
       "europe": [
@@ -559,7 +671,7 @@
           "published_at": "2025-11-23T03:47:55+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.249645"
+      "timestamp": "2025-11-28T10:45:54.612605"
     },
     "2025-11-23": {
       "europe": [
@@ -678,7 +790,7 @@
           "published_at": "2025-11-22T00:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.252107"
+      "timestamp": "2025-11-28T10:45:54.615041"
     },
     "2025-11-22": {
       "europe": [
@@ -811,7 +923,7 @@
           "published_at": "2025-11-21T06:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.255862"
+      "timestamp": "2025-11-28T10:45:54.618419"
     },
     "2025-11-21": {
       "europe": [
@@ -937,7 +1049,7 @@
           "published_at": "2025-11-20T09:25:28+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.257868"
+      "timestamp": "2025-11-28T10:45:54.620431"
     },
     "2025-11-20": {
       "europe": [
@@ -1063,7 +1175,7 @@
           "published_at": "2025-11-19T09:28:02+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.259892"
+      "timestamp": "2025-11-28T10:45:54.622447"
     },
     "2025-11-19": {
       "europe": [
@@ -1210,7 +1322,7 @@
           "published_at": "2025-11-18T09:22:34+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.261890"
+      "timestamp": "2025-11-28T10:45:54.624457"
     },
     "2025-11-18": {
       "europe": [
@@ -1357,7 +1469,7 @@
           "published_at": "2025-11-17T08:06:13+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.263891"
+      "timestamp": "2025-11-28T10:45:54.626455"
     },
     "2025-11-17": {
       "europe": [
@@ -1490,7 +1602,7 @@
           "published_at": "2025-11-16T06:56:12+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.265886"
+      "timestamp": "2025-11-28T10:45:54.628448"
     },
     "2025-11-16": {
       "europe": [
@@ -1630,7 +1742,7 @@
           "published_at": "2025-11-15T05:46:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.267949"
+      "timestamp": "2025-11-28T10:45:54.630439"
     },
     "2025-11-15": {
       "europe": [
@@ -1777,7 +1889,7 @@
           "published_at": "2025-11-14T06:27:37+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.269960"
+      "timestamp": "2025-11-28T10:45:54.632424"
     },
     "2025-11-14": {
       "europe": [
@@ -1903,7 +2015,7 @@
           "published_at": "2025-11-13T05:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.271942"
+      "timestamp": "2025-11-28T10:45:54.634403"
     },
     "2025-11-13": {
       "europe": [
@@ -2043,7 +2155,7 @@
           "published_at": "2025-11-12T08:54:07+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.273938"
+      "timestamp": "2025-11-28T10:45:54.636629"
     },
     "2025-11-12": {
       "europe": [
@@ -2169,7 +2281,7 @@
           "published_at": "2025-11-11T08:15:39+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.278383"
+      "timestamp": "2025-11-28T10:45:54.640496"
     },
     "2025-11-11": {
       "europe": [
@@ -2309,7 +2421,7 @@
           "published_at": "2025-11-10T00:00:21+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.280416"
+      "timestamp": "2025-11-28T10:45:54.642478"
     },
     "2025-11-10": {
       "europe": [
@@ -2456,7 +2568,7 @@
           "published_at": "2025-11-09T08:01:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.282581"
+      "timestamp": "2025-11-28T10:45:54.644466"
     },
     "2025-11-09": {
       "europe": [
@@ -2596,7 +2708,7 @@
           "published_at": "2025-11-08T03:20:01+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.284583"
+      "timestamp": "2025-11-28T10:45:54.646453"
     },
     "2025-11-08": {
       "europe": [
@@ -2736,7 +2848,7 @@
           "published_at": "2025-11-07T08:40:34+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.286589"
+      "timestamp": "2025-11-28T10:45:54.648473"
     },
     "2025-11-07": {
       "europe": [
@@ -2862,7 +2974,7 @@
           "published_at": "2025-11-06T07:56:09+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.288581"
+      "timestamp": "2025-11-28T10:45:54.650796"
     },
     "2025-11-06": {
       "europe": [
@@ -2995,7 +3107,7 @@
           "published_at": "2025-11-05T08:00:01+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.290590"
+      "timestamp": "2025-11-28T10:45:54.652789"
     },
     "2025-11-05": {
       "europe": [
@@ -3128,7 +3240,7 @@
           "published_at": "2025-11-04T06:58:39+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.292575"
+      "timestamp": "2025-11-28T10:45:54.654798"
     },
     "2025-11-04": {
       "europe": [
@@ -3275,7 +3387,7 @@
           "published_at": "2025-11-05T17:48:41+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.294562"
+      "timestamp": "2025-11-28T10:45:54.656803"
     },
     "2025-11-03": {
       "europe": [
@@ -3415,7 +3527,7 @@
           "published_at": "2025-11-04T18:53:59+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.296534"
+      "timestamp": "2025-11-28T10:45:54.659837"
     },
     "2025-11-02": {
       "europe": [
@@ -3562,7 +3674,7 @@
           "published_at": "2025-11-03T19:26:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.299707"
+      "timestamp": "2025-11-28T10:45:54.661857"
     },
     "2025-11-01": {
       "europe": [
@@ -3702,7 +3814,7 @@
           "published_at": "2025-11-02T04:54:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.301679"
+      "timestamp": "2025-11-28T10:45:54.663844"
     },
     "2025-10-31": {
       "europe": [
@@ -3835,7 +3947,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.303729"
+      "timestamp": "2025-11-28T10:45:54.665826"
     },
     "2025-10-30": {
       "europe": [
@@ -3968,7 +4080,7 @@
           "published_at": "2025-10-30T04:48:59+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.305712"
+      "timestamp": "2025-11-28T10:45:54.667812"
     },
     "2025-10-29": {
       "europe": [
@@ -4108,7 +4220,7 @@
           "published_at": "2025-10-30T18:44:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.307689"
+      "timestamp": "2025-11-28T10:45:54.669814"
     },
     "2025-10-28": {
       "europe": [
@@ -4255,7 +4367,7 @@
           "published_at": "2025-10-29T19:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.309740"
+      "timestamp": "2025-11-28T10:45:54.671788"
     },
     "2025-10-27": {
       "europe": [
@@ -4395,7 +4507,7 @@
           "published_at": "2025-10-28T17:07:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.311739"
+      "timestamp": "2025-11-28T10:45:54.673774"
     },
     "2025-10-26": {
       "europe": [
@@ -4528,7 +4640,7 @@
           "published_at": "2025-10-27T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.313722"
+      "timestamp": "2025-11-28T10:45:54.675909"
     },
     "2025-10-25": {
       "europe": [
@@ -4661,7 +4773,7 @@
           "published_at": "2025-10-26T17:41:54+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.315697"
+      "timestamp": "2025-11-28T10:45:54.677902"
     },
     "2025-10-24": {
       "europe": [
@@ -4801,7 +4913,7 @@
           "published_at": "2025-10-25T09:26:11+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.318883"
+      "timestamp": "2025-11-28T10:45:54.680924"
     },
     "2025-10-23": {
       "europe": [
@@ -4948,7 +5060,7 @@
           "published_at": "2025-10-24T14:29:56+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.320976"
+      "timestamp": "2025-11-28T10:45:54.682919"
     },
     "2025-10-22": {
       "europe": [
@@ -5095,7 +5207,7 @@
           "published_at": "2025-10-23T16:22:36+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.323030"
+      "timestamp": "2025-11-28T10:45:54.684990"
     },
     "2025-10-21": {
       "europe": [
@@ -5242,7 +5354,7 @@
           "published_at": "2025-10-22T16:15:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.325097"
+      "timestamp": "2025-11-28T10:45:54.687091"
     },
     "2025-10-20": {
       "europe": [
@@ -5389,7 +5501,7 @@
           "published_at": "2025-10-21T19:22:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.327155"
+      "timestamp": "2025-11-28T10:45:54.689088"
     },
     "2025-10-19": {
       "europe": [
@@ -5536,7 +5648,7 @@
           "published_at": "2025-10-20T15:51:57+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.329179"
+      "timestamp": "2025-11-28T10:45:54.691134"
     },
     "2025-10-18": {
       "europe": [
@@ -5683,8 +5795,8 @@
           "published_at": "2025-10-19T11:00:00+00:00"
         }
       ],
-      "timestamp": "2025-11-27T10:47:30.331191"
+      "timestamp": "2025-11-28T10:45:54.693113"
     }
   },
-  "timestamp": "2025-11-27T10:47:30.331200"
+  "timestamp": "2025-11-28T10:45:54.693122"
 }
